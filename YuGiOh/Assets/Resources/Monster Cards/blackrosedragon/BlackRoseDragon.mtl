@@ -1,0 +1,26 @@
+# Blender MTL File: 'BlackRoseDragon.blend'
+# Material Count: 2
+
+newmtl m14_BlackRD_A.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd m14_BlackRD_A.png
+map_d m14_BlackRD_A.png
+map_Ks m14_BlackRD_A.png
+
+newmtl m14_BlackRD_B.png
+Ns 96.078431
+Ka 0.000000 0.000000 0.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ni 1.000000
+d 0.000000
+illum 2
+map_Kd m14_BlackRD_B.png
+map_d m14_BlackRD_B.png
+map_Ks m14_BlackRD_B.png

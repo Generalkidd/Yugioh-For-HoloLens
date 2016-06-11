@@ -1,0 +1,44 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 03.02.2012 15:50:24
+
+newmtl Material__35
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Prototype Mercer\Desktop\Blue Eyes Ultimate Dragon\m32_UltimateBlueE_A_.png
+	map_Kd C:\Users\Prototype Mercer\Desktop\Blue Eyes Ultimate Dragon\m32_UltimateBlueE_A_.png
+
+newmtl Material__47
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Prototype Mercer\Desktop\Blue Eyes Ultimate Dragon\m32_UltimateBlueE_B_.png
+	map_Kd C:\Users\Prototype Mercer\Desktop\Blue Eyes Ultimate Dragon\m32_UltimateBlueE_B_.png
+
+newmtl Material__83
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.5880 0.5880 0.5880
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka C:\Users\Prototype Mercer\Desktop\Blue Eyes Ultimate Dragon\UltimateZunge.png
+	map_Kd C:\Users\Prototype Mercer\Desktop\Blue Eyes Ultimate Dragon\UltimateZunge.png

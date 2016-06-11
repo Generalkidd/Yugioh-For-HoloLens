@@ -1,0 +1,178 @@
+fileFormatVersion: 2
+guid: c25ed2058ff2aa24bbd5ef6198c721f1
+timeCreated: 1463688664
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: _000_mesh5
+    100002: _001_mesh5
+    100004: //RootNode
+    100006: Crest1
+    100008: EFF_CNT
+    100010: GlobalSRT
+    100012: Head
+    100014: Jaw
+    100016: LFootBone1
+    100018: LShin
+    100020: LThigh
+    100022: Lumbar1
+    100024: Lumbar2
+    100026: m14_BlackRD
+    100028: Neck1
+    100030: Neck2
+    100032: Neck3
+    100034: Neck4
+    100036: petal_B
+    100038: petal_F
+    100040: RFootBone1
+    100042: RShin
+    100044: RThigh
+    100046: Tail1
+    100048: Tail2
+    100050: Tail3
+    100052: Tail4
+    100054: Tail5
+    100056: UpperBody
+    100058: VineB_L1
+    100060: VineB_L2
+    100062: VineB_L3
+    100064: VineB_R1
+    100066: VineB_R2
+    100068: VineB_R3
+    100070: VineF_L1
+    100072: VineF_L2
+    100074: VineF_L3
+    100076: VineF_R1
+    100078: VineF_R2
+    100080: VineF_R3
+    100082: WingL1
+    100084: WingL1_1
+    100086: WingL2
+    100088: WingL2_1
+    100090: WingL3
+    100092: WingR1
+    100094: WingR1_1
+    100096: WingR2
+    100098: WingR2_1
+    100100: WingR3
+    400000: _000_mesh5
+    400002: _001_mesh5
+    400004: //RootNode
+    400006: Crest1
+    400008: EFF_CNT
+    400010: GlobalSRT
+    400012: Head
+    400014: Jaw
+    400016: LFootBone1
+    400018: LShin
+    400020: LThigh
+    400022: Lumbar1
+    400024: Lumbar2
+    400026: m14_BlackRD
+    400028: Neck1
+    400030: Neck2
+    400032: Neck3
+    400034: Neck4
+    400036: petal_B
+    400038: petal_F
+    400040: RFootBone1
+    400042: RShin
+    400044: RThigh
+    400046: Tail1
+    400048: Tail2
+    400050: Tail3
+    400052: Tail4
+    400054: Tail5
+    400056: UpperBody
+    400058: VineB_L1
+    400060: VineB_L2
+    400062: VineB_L3
+    400064: VineB_R1
+    400066: VineB_R2
+    400068: VineB_R3
+    400070: VineF_L1
+    400072: VineF_L2
+    400074: VineF_L3
+    400076: VineF_R1
+    400078: VineF_R2
+    400080: VineF_R3
+    400082: WingL1
+    400084: WingL1_1
+    400086: WingL2
+    400088: WingL2_1
+    400090: WingL3
+    400092: WingR1
+    400094: WingR1_1
+    400096: WingR2
+    400098: WingR2_1
+    400100: WingR3
+    4300000: _000_mesh5
+    4300002: _001_mesh5
+    9500000: //RootNode
+    13700000: _000_mesh5
+    13700002: _001_mesh5
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
