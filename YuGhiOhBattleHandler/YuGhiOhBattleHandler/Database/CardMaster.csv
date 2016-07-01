@@ -1,0 +1,41 @@
+Name,Level,Attribute,Type,Attack,Defense,Description,Card Number,isPendulum,isXyz,isSynchro,isSynchroTuner,isFusion,isRitual,CardImage,Rarity,Edition
+Hitotsu-Me Giant,4,Earth,Beast-Warrior,1200,1000,A one-eyed behemoth with thick powerful arms made for delivering punishing blows,76184692,N,N,N,N,N,N,HitotsuMeGiant.png,Common,1
+Dark Magician,7,Dark,Spellcaster,2500,2100,The ultimate wizard in terms of attack and defense,46986414,N,N,N,N,N,N,DarkMagician.png,Ultra Rare,1
+Gaia The Fierce Knight,7,Earth,Warrior,2300,2100,A knight whose horse travels faster than the wind. His battle-charge is a force to be reckoned with.,6368038,N,N,N,N,N,N,GaiaTheFierceKnight.png,Ultra Rare,1
+Mammoth Graveyard,3,Earth,Dinosaur,1200,800,A mammoth that protects the graves of its pack and is absolutely merciless when facing grave-robbers.,40374923,N,N,N,N,N,N,MammothGraveyard.png,Common,1
+Silver Fang,3,Earth,Beast,1200,800,A snow wolf that's beautiful to the eye but absolutely vicious in battle.,90357090,N,N,N,N,N,N,SilverFang.jpg,Common,1
+Curtain of the Dark Ones,2,Dark,Spellcaster,600,500,A curtain that a spellcaster made it is said to raise a dark power.,22026707,N,N,N,N,N,N,CurtainoftheDarkOnes.png,Common,1
+Tomozaurus,2,Earth,Dinosaur,500,400,Small but vicious this monster even attacks its own kind.,46457856,N,N,N,N,N,N,Tomozaurus.png,Common,1
+Dark Gray,3,Earth,Beast,800,900,Entirely gray this beast has rarely been seen by mortal eyes.,9159938,N,N,N,N,N,N,DarkGray.jpg,Common,1
+Nemuriko,3,Dark,Spellcaster,800,700,A child-like creature that controls a sleep fiend to beckon enemies into eternal slumber.,90963488,N,N,N,N,N,N,Nemuriko.jpg,Common,1
+Fiend's Hand,2,Dark,Zombie,600,600,Arms that reach out from the Swamp of Chaos to drag down the damned.,52800428,N,N,N,N,N,N,FiendsHand.jpg,Common,1
+Fire Reaper,2,Dark,Zombie,700,500,A reaper with a flaming arrow that burns an enemy to a crisp.,53581214,N,N,N,N,N,N,FireReaper.jpg,Common,1
+Firegrass,2,Earth,Plant,700,600,A fire-breathing plant found growing near volcanoes.,53293545,N,N,N,N,N,N,Firegrass.jpg,Common,1
+Eyearmor,2,Earth,Warrior,600,500,This warrior transforms into various creatures to confuse enemies in battle.,64511793,N,N,N,N,N,N,Eyearmor.jpg,Common,1
+LaLa Li-Oon,2,Wind,Thunder,600,600,An electric cloud creature its acid rain makes it very dangerous.,9430387,N,N,N,N,N,N,LaLaLiOon.jpg,Common,1
+Petit Dragon,2,Wind,Dragon,600,700,A very small dragon known for its vicious attacks.,75356564,N,N,N,N,N,N,PetitDragon.jpg,Common,1
+Archfiend Marmot of Nefariousness,2,Earth,Beast,400,600,An air marmot that has a nefarious horn and wings. It attacks by throwing acorns.,75889523,N,N,N,N,N,N,ArchfiendMarmotofNefariousness.jpg,Common,1
+Petit Angel,3,Light,Fairy,600,900,A quick-moving and tiny fairy that's very difficult to hit.,38142739,N,N,N,N,N,N,PetitAngel.png,Common,1
+Winged Cleaver,2,Earth,Insect,700,700,Few can withstand the scythe-like arms of this dangerous creature.,39175982,N,N,N,N,N,N,WingedCleaver.jpg,Common,1
+Thunder Kid,2,Wind,Thunder,700,600,This monster stores electricity within his body and can unleash it with catastrophic power.,15510988,N,N,N,N,N,N,ThunderKid.jpg,Common,1
+Meotoko,2,Earth,Beast,700,600,Dis big ol' guy wit' a big ol' eye shoots a nasty ray beam right atcha!,53832650,N,N,N,N,N,N,Meotoko.png,Common,1
+Kagemusha of the Blue Flame,2,Earth,Warrior,800,400,Serving as a double for the Ruler of the Blue Flame he's a master swordsman that wields a fine blade.,15401633,N,N,N,N,N,N,KagemushaoftheBlueFlame.png,Common,1
+Hitodenchak,2,Water,Aqua,600,700,A rabid starfish that spits a lethal acid that can melt almost anything.,46718686,N,N,N,N,N,N,Hitodenchak.jpg,Common,1
+Hourglass of Life,2,Light,Fairy,700,600,This creature grants power instead of shortening life.,8783685,N,N,N,N,N,N,HourglassofLife.jpg,Common,1
+Haniwa,2,Earth,Rock,500,500,An earthen figure that protects the tomb of an ancient ruler.,84285623,N,N,N,N,N,N,Haniwa.jpg,Common,1
+The Drdek,3,Dark,Fiend,700,800,A bipedal eyeball that seldom misses an enemy with its lethal talons.,8944575,N,N,N,N,N,N,TheDrdek.jpg,Common,1
+Candle of Fate,2,Dark,Fiend,600,600,Decides the fate of an opponent when the candle on its fingertip burns out.,47695416,N,N,N,N,N,N,CandleofFate.jpg,Common,1
+Archfiend Mirror,2,Dark,Fiend,700,600,A wicked mirror that hypnotizes enemies diverting attacks from their intended targets.,15150371,N,N,N,N,N,N,ArchfiendMirror.jpg,Common,1
+The Furious Sea King,3,Water,Aqua,800,700,Grand King of the Seven Seas he's able to summon massive tidal waves to drown the enemy.,18710707,N,N,N,N,N,N,TheFuriousSeaKing.jpg,Common,1
+Sectarian of Secrets,2,Dark,Spellcaster,700,500,This wizard worships the darkness and is served by a sinister hand that drags its enemies into oblivion.,15507080,N,N,N,N,N,N,SectarianofSecrets.jpg,Common,1
+Kurama,3,Wind,Winged Beast,800,800,A vicious bird that attacks from the skies with its whip-like tail.,85705804,N,N,N,N,N,N,Kurama.png,Common,1
+Legendary Sword,0,Spell,Equip,0,0,A Warrior-Type monster equipped with this card increases its ATK and DEF by 300 points.,61854111,N,N,N,N,N,N,LegendarySword.jpg,Rare,1
+Beast Fangs,0,Spell,Equip,0,0,A Beast-Type monster equipped with this card increases its ATK and DEF by 300 points.,46009906,N,N,N,N,N,N,BeastFangs.jpg,Rare,1
+Violet Crystal,0,Spell,Equip,0,0,A Zombie-Type monster equipped with this card increases its ATK and DEF by 300 points.,15052462,N,N,N,N,N,N,VioletCrystal.png,Rare,1
+Book of Secret Arts,0,Spell,Equip,0,0,A Spellcaster-Type monster equipped with this card increases its ATK and DEF by 300 points.,91595718,N,N,N,N,N,N,BookofSecretArts.png,Rare,1
+Power of Kaishin,0,Spell,Equip,0,0,An Aqua-Type monster equipped with this card increases its ATK and DEF by 300 points.,77027445,N,N,N,N,N,N,PowerofKaishin.png,Rare,1
+Dark Hole,0,Spell,Normal,0,0,Destroy all monsters on the field.,53129443,N,N,N,N,N,N,DarkHole.png,Super Rare,1
+Red Medicine,0,Spell,Normal,0,0,Increase your Life Points by 500 points.,38199696,N,N,N,N,N,N,RedMedicine.png,Common,1
+Sparks,0,Spell,Normal,0,0,Inflict 200 points of damage to your opponent's Life Points.,76103675,N,N,N,N,N,N,Sparks.png,Common,1
+Fissure,0,Spell,Normal,0,0,Destroy the 1 face-up monster your opponent controls that has the lowest ATK (your choice if tied).,66788016,N,N,N,N,N,N,Fissure.png,Super Rare,1
+Trap Hole,0,Trap,Normal,0,0,When your opponent Normal or Flip Summons 1 monster with 1000 or more ATK: Target that monster; destroy that target.,4206964,N,N,N,N,N,N,TrapHole.png,Super Rare,1
