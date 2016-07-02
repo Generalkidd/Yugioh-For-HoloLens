@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace YuGhiOhBattleHandler
 {
@@ -34,7 +35,7 @@ namespace YuGhiOhBattleHandler
         private Icon m_icon;
         private bool m_isPlayed;
         private Card c=new Card();
-        internal SpellAndTrapCard(string cardName, CardAttributeOrType attributeOrType, Icon ico, string cardDescription, long cardNumber)
+        internal SpellAndTrapCard(string cardName, CardAttributeOrType attributeOrType, Icon ico, string cardDescription, long cardNumber, BitmapImage bi)
         {
             c.setCardName(cardName);
             m_icon = ico;
@@ -42,6 +43,22 @@ namespace YuGhiOhBattleHandler
             c.setCardDescrip(cardDescription);
             c.setCardNumb(cardNumber);
             m_isPlayed = false;
+            c.setBitmapImage(bi);
+        }
+        public string getDescription()
+        {
+            return c.getCardDescrip();
+        }
+
+
+        public string getName()
+        {
+            return c.getCardName();
+        }
+
+        public BitmapImage getImage()
+        {
+            return c.getImage();
         }
 
         public void Play(Player user, Player opponent)

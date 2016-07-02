@@ -127,8 +127,48 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Decks\SideDeck.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Images\" />
+    <EmbeddedResource Include="Images\ArchfiendMarmotofNefariousness.jpg" />
+    <EmbeddedResource Include="Images\ArchfiendMirror.jpg" />
+    <EmbeddedResource Include="Images\BeastFangs.jpg" />
+    <EmbeddedResource Include="Images\BookofSecretArts.png" />
+    <EmbeddedResource Include="Images\CandleofFate.jpg" />
+    <EmbeddedResource Include="Images\CurtainoftheDarkOnes.png" />
+    <EmbeddedResource Include="Images\DarkGray.jpg" />
+    <EmbeddedResource Include="Images\DarkHole.png" />
+    <EmbeddedResource Include="Images\DarkMagician.png" />
+    <EmbeddedResource Include="Images\Eyearmor.jpg" />
+    <EmbeddedResource Include="Images\FiendsHand.jpg" />
+    <EmbeddedResource Include="Images\Firegrass.jpg" />
+    <EmbeddedResource Include="Images\FireReaper.jpg" />
+    <EmbeddedResource Include="Images\Fissure.png" />
+    <EmbeddedResource Include="Images\GaiaTheFierceKnight.png" />
+    <EmbeddedResource Include="Images\Haniwa.jpg" />
+    <EmbeddedResource Include="Images\Hitodenchak.jpg" />
+    <EmbeddedResource Include="Images\HitotsuMeGiant.png" />
+    <EmbeddedResource Include="Images\HourglassofLife.jpg" />
+    <EmbeddedResource Include="Images\KagemushaoftheBlueFlame.png" />
+    <EmbeddedResource Include="Images\Kurama.png" />
+    <EmbeddedResource Include="Images\LaLaLiOon.jpg" />
+    <EmbeddedResource Include="Images\LegendarySword.jpg" />
+    <EmbeddedResource Include="Images\MammothGraveyard.png" />
+    <EmbeddedResource Include="Images\Meotoko.png" />
+    <EmbeddedResource Include="Images\Nemuriko.jpg" />
+    <EmbeddedResource Include="Images\PetitAngel.png" />
+    <EmbeddedResource Include="Images\PetitDragon.jpg" />
+    <EmbeddedResource Include="Images\PowerofKaishin.png" />
+    <EmbeddedResource Include="Images\RedMedicine.png" />
+    <EmbeddedResource Include="Images\SectarianofSecrets.jpg" />
+    <EmbeddedResource Include="Images\SilverFang.jpg" />
+    <EmbeddedResource Include="Images\Sparks.png" />
+    <EmbeddedResource Include="Images\TheDrdek.jpg" />
+    <EmbeddedResource Include="Images\TheFuriousSeaKing.jpg" />
+    <EmbeddedResource Include="Images\ThunderKid.jpg" />
+    <EmbeddedResource Include="Images\Tomozaurus.png" />
+    <EmbeddedResource Include="Images\TrapHole.png" />
+    <EmbeddedResource Include="Images\VioletCrystal.png" />
+    <EmbeddedResource Include="Images\WingedCleaver.jpg" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

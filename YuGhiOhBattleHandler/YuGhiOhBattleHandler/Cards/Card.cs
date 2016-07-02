@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace YuGhiOhBattleHandler
 {
@@ -29,13 +30,14 @@ namespace YuGhiOhBattleHandler
         private CardAttributeOrType m_attribute;
         private long m_cardNumber;
         private string m_cardDescription;
+        private BitmapImage cardImage;
 
         public string getCardName()
         {
             return m_cardName;
         }
 
-        public void setCardName(string s)
+        internal void setCardName(string s)
         {
             m_cardName = s;
         }
@@ -55,7 +57,7 @@ namespace YuGhiOhBattleHandler
             return m_cardNumber;
         }
 
-        public void setCardNumb(long s)
+        internal void setCardNumb(long s)
         {
             m_cardNumber = s;
         }
@@ -65,7 +67,17 @@ namespace YuGhiOhBattleHandler
             return m_cardDescription;
         }
 
-        public void setCardDescrip(string s)
+        public BitmapImage getImage()
+        {
+            return cardImage;
+        }
+
+        internal void setBitmapImage(BitmapImage bi)
+        {
+            cardImage = bi;
+        }
+
+        internal void setCardDescrip(string s)
         {
             m_cardDescription = s;
         }

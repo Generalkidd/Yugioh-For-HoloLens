@@ -5,85 +5,202 @@
     xmlns:local="using:YuGhiOhTester"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-
-    <StackPanel Orientation="Horizontal">
-        <StackPanel Margin="0,0,100,0">
-            <TextBlock Foreground="Blue" FontSize="30"  Text="Player 1" />
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="MonsterZone" />
-                <ComboBox x:Name="MonsterZoneCombo" />
+    mc:Ignorable="d"
+    Width="1000"
+    Height="1000">
+    <StackPanel Margin="0,0,0,0" >
+        <StackPanel BorderThickness="2" BorderBrush="Red">
+            <TextBlock Height="20" x:Name="OpponentUsernameBlock" Text="No User"/>
+            <ProgressBar HorizontalAlignment="Left" x:Name="OpponentLifepointsBar" Value="100" Width="500" Height="30"/>
+            <StackPanel BorderThickness="2" BorderBrush="DarkRed" x:Name="OppSpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
+                <StackPanel BorderThickness="2" BorderBrush="DarkRed" Margin="20,0,0,0" Width="140" Height="140" x:Name="OppSpellOneZone">
+                    <TextBlock Height="20" x:Name="OppSpellOneNameBlock" Text="No Spell" />
+                    <Image Height="70" x:Name="OppSpellOneImage" />
+                    <TextBlock Height="20" x:Name="OppSpellOneDescBlock" Text="No Descrip" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkRed" Width="140" Height="140" x:Name="OppSpellTwoZone">
+                    <TextBlock Height="20" x:Name="OppSpellTwoNameBlock" Text="No Spell" />
+                    <Image Height="70" x:Name="OppSpellTwoImage" />
+                    <TextBlock Height="20" x:Name="OppSpellTwoDescBlock" Text="No Descrip" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkRed" Width="140" Height="140" x:Name="OppSpellThreeZone">
+                    <TextBlock Height="20" x:Name="OppSpellThreeNameBlock" Text="No Spell" />
+                    <Image Height="70" x:Name="OppSpellThreeImage" />
+                    <TextBlock Height="20" x:Name="OppSpellThreeDescBlock" Text="No Descrip" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkRed" Width="140" Height="140" x:Name="OppSpellFourZone">
+                    <TextBlock Height="20" x:Name="OppSpellFourNameBlock" Text="No Spell" />
+                    <Image Height="70" x:Name="OppSpellFourImage" />
+                    <TextBlock Height="20" x:Name="OppSpellFourDescBlock" Text="No Descrip" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkRed" Width="140" Height="140" x:Name="OppSpellFiveZone">
+                    <TextBlock Height="20" x:Name="OppSpellFiveNameBlock" Text="No Spell" />
+                    <Image Height="70" x:Name="OppSpellFiveImage" />
+                    <TextBlock Height="20" x:Name="OppSpellFiveDescBlock" Text="No Descrip" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkRed" Width="140" Height="140" x:Name="OppSpellSixZone">
+                    <TextBlock Height="20" x:Name="OppSpellSixNameBlock" Text="No Spell" />
+                    <Image Height="70" x:Name="OppSpellSixImage" />
+                    <TextBlock Height="20" x:Name="OppSpellSixDescBlock" Text="No Descrip" />
+                </StackPanel>
             </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="DeckZone" />
-                <ComboBox x:Name="DeckZoneCombo" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="ExtraDeckZone" />
-                <ComboBox x:Name="ExtraDeckZoneCombo" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="FieldZone" />
-                <ComboBox x:Name="FieldZoneCombo" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="GraveYard" />
-                <ComboBox x:Name="GraveyardCombo" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="HandZone" />
-                <ComboBox x:Name="HandZoneCombo" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="PendulumZone" />
-                <ComboBox x:Name="PendulumZoneCombo" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="SpellAndTrapZone" />
-                <ComboBox x:Name="SpellAndTrapZoneCombo" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Blue" Text="SelectedMonster" />
-                <TextBlock x:Name="SelectedMonsterTextBox" />
+            <StackPanel x:Name="OppMonsterZonePanel" BorderThickness="2" BorderBrush="Tomato" MinHeight="50" Orientation="Horizontal">
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterOneZone">
+                    <TextBlock Height="20" x:Name="OppMonsterOneNameBlock" Text="No Monster" />
+                    <Image Height="70" x:Name="OppMonsterOneImage" />
+                    <TextBlock Height="20" x:Name="OppMonsterOneAttackPoints" Text="No ATK" />
+                    <TextBlock Height="20" x:Name="OppMonsterOneDefensePoints" Text="No DEF" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterTwoZone">
+                    <TextBlock Height="20" x:Name="OppMonsterTwoNameBlock" Text="No Monster" />
+                    <Image Height="70" x:Name="OppMonsterTwoImage" />
+                    <TextBlock Height="20" x:Name="OppMonsterTwoAttackPoints" Text="No ATK" />
+                    <TextBlock Height="20" x:Name="OppMonsterTwoDefensePoints" Text="No DEF" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterThreeZone">
+                    <TextBlock Height="20" x:Name="OppMonsterThreeNameBlock" Text="No Monster" />
+                    <Image Height="70" x:Name="OppMonsterThreeImage" />
+                    <TextBlock Height="20" x:Name="OppMonsterThreeAttackPoints" Text="No ATK" />
+                    <TextBlock Height="20" x:Name="OppMonsterThreeDefensePoints" Text="No DEF" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterFourZone">
+                    <TextBlock Height="20" x:Name="OppMonsterFourNameBlock" Text="No Monster" />
+                    <Image Height="70" x:Name="OppMonsterFourImage" />
+                    <TextBlock Height="20" x:Name="OppMonsterFourAttackPoints" Text="No ATK" />
+                    <TextBlock Height="20" x:Name="OppMonsterFourDefensePoints" Text="No DEF" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterFiveZone">
+                    <TextBlock Height="20" x:Name="OppMonsterFiveNameBlock" Text="No Monster" />
+                    <Image Height="70" x:Name="OppMonsterFiveImage" />
+                    <TextBlock Height="20" x:Name="OppMonsterFiveAttackPoints" Text="No ATK" />
+                    <TextBlock Height="20" x:Name="OppMonsterFiveDefensePoints" Text="No DEF" />
+                </StackPanel>
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterSixZone">
+                    <TextBlock Height="20" x:Name="OppMonsterSixNameBlock" Text="No Monster" />
+                    <Image Height="70" x:Name="OppMonsterSixImage" />
+                    <TextBlock Height="20" x:Name="OppMonsterSixAttackPoints" Text="No ATK" />
+                    <TextBlock Height="20" x:Name="OppMonsterSixDefensePoints" Text="No DEF" />
+                </StackPanel>
             </StackPanel>
         </StackPanel>
-        <StackPanel>
-            <TextBlock Foreground="Red" FontSize="30"  Text="Player 2" />
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="MonsterZone" />
-                <ComboBox x:Name="MonsterZoneCombo2" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="DeckZone" />
-                <ComboBox x:Name="DeckZoneCombo2" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="ExtraDeckZone" />
-                <ComboBox x:Name="ExtraDeckZoneCombo2" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="FieldZone" />
-                <ComboBox x:Name="FieldZoneCombo2" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="GraveYard" />
-                <ComboBox x:Name="GraveyardCombo2" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="HandZone" />
-                <ComboBox x:Name="HandZoneCombo2" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="PendulumZone" />
-                <ComboBox x:Name="PendulumZoneCombo2" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="SpellAndTrapZone" />
-                <ComboBox x:Name="SpellAndTrapZoneCombo2" />
-            </StackPanel>
-            <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
-                <TextBlock Margin="0,0,20,0" FontSize="15" Foreground="Red" Text="SelectedMonster" />
-                <TextBlock x:Name="SelectedMonsterTextBox2" />
+        <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
+            <StackPanel>
+                <StackPanel BorderThickness="2" BorderBrush="DarkBlue" x:Name="MySpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
+                    <StackPanel BorderThickness="2" BorderBrush="DarkBlue" Margin="20,0,0,0" Width="140" Height="140" x:Name="MySpellOneZone">
+                        <TextBlock Height="20" x:Name="MySpellOneNameBlock" Text="No Spell" />
+                        <Image Height="70" x:Name="MySpellOneImage" />
+                        <TextBlock Height="20" x:Name="MySpellOneDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellTwoZone">
+                        <TextBlock Height="20" x:Name="MySpellTwoNameBlock" Text="No Spell" />
+                        <Image Height="70" x:Name="MySpellTwoImage" />
+                        <TextBlock Height="20" x:Name="MySpellTwoDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellThreeZone">
+                        <TextBlock Height="20" x:Name="MySpellThreeNameBlock" Text="No Spell" />
+                        <Image Height="70" x:Name="MySpellThreeImage" />
+                        <TextBlock Height="20" x:Name="MySpellThreeDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellFourZone">
+                        <TextBlock Height="20" x:Name="MySpellFourNameBlock" Text="No Spell" />
+                        <Image Height="70" x:Name="MySpellFourImage" />
+                        <TextBlock Height="20" x:Name="MySpellFourDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellFiveZone">
+                        <TextBlock Height="20" x:Name="MySpellFiveNameBlock" Text="No Spell" />
+                        <Image Height="70" x:Name="MySpellFiveImage" />
+                        <TextBlock Height="20" x:Name="MySpellFiveDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellSixZone">
+                        <TextBlock Height="20" x:Name="MySpellSixNameBlock" Text="No Spell" />
+                        <Image Height="70" x:Name="MySpellSixImage" />
+                        <TextBlock Height="20" x:Name="MySpellSixDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="MyMonsterZonePanel" BorderThickness="2" BorderBrush="LightBlue" MinHeight="50" Orientation="Horizontal">
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterOneZone">
+                        <TextBlock Height="20" x:Name="MyMonsterOneNameBlock" Text="No Monster" />
+                        <Image Height="70" x:Name="MyMonsterOneImage" />
+                        <TextBlock Height="20" x:Name="MyMonsterOneAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyMonsterOneDefensePoints" Text="No DEF" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterTwoZone">
+                        <TextBlock Height="20" x:Name="MyMonsterTwoNameBlock" Text="No Monster" />
+                        <Image Height="70" x:Name="MyMonsterTwoImage" />
+                        <TextBlock Height="20" x:Name="MyMonsterTwoAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyMonsterTwoDefensePoints" Text="No DEF" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterThreeZone">
+                        <TextBlock Height="20" x:Name="MyMonsterThreeNameBlock" Text="No Monster" />
+                        <Image Height="70" x:Name="MyMonsterThreeImage" />
+                        <TextBlock Height="20" x:Name="MyMonsterThreeAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyMonsterThreeDefensePoints" Text="No DEF" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterFourZone">
+                        <TextBlock Height="20" x:Name="MyMonsterFourNameBlock" Text="No Monster" />
+                        <Image Height="70" x:Name="MyMonsterFourImage" />
+                        <TextBlock Height="20" x:Name="MyMonsterFourAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyMonsterFourDefensePoints" Text="No DEF" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterFiveZone">
+                        <TextBlock Height="20" x:Name="MyMonsterFiveNameBlock" Text="No Monster" />
+                        <Image Height="70" x:Name="MyMonsterFiveImage" />
+                        <TextBlock Height="20" x:Name="MyMonsterFiveAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyMonsterFiveDefensePoints" Text="No DEF" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterSixZone">
+                        <TextBlock Height="20" x:Name="MyMonsterSixNameBlock" Text="No Monster" />
+                        <Image Height="70" x:Name="MyMonsterSixImage" />
+                        <TextBlock Height="20" x:Name="MyMonsterSixAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyMonsterSixDefensePoints" Text="No DEF" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="MyHandPanel" BorderThickness="2" BorderBrush="Purple" MinHeight="50" Orientation="Horizontal">
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple" Tapped="MyHandOneZone_Tapped" x:Name="MyHandOneZone">
+                        <TextBlock Height="20" x:Name="MyHandOneNameBlock" Text="No Card" />
+                        <Image Height="70" x:Name="MyHandOneImage" />
+                        <TextBlock Height="20" x:Name="MyHandOneAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyHandOneDefensePoints" Text="No DEF" />
+                        <TextBlock Height="20" x:Name="MyHandOneDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple" Tapped="MyHandTwoZone_Tapped" x:Name="MyHandTwoZone">
+                        <TextBlock Height="20" x:Name="MyHandTwoNameBlock" Text="No Card" />
+                        <Image Height="70" x:Name="MyHandTwoImage" />
+                        <TextBlock Height="20" x:Name="MyHandTwoAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyHandTwoDefensePoints" Text="No DEF" />
+                        <TextBlock Height="20" x:Name="MyHandTwoDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple" Tapped="MyHandThreeZone_Tapped" x:Name="MyHandThreeZone">
+                        <TextBlock Height="20" x:Name="MyHandThreeNameBlock" Text="No Card" />
+                        <Image Height="70" x:Name="MyHandThreeImage" />
+                        <TextBlock Height="20" x:Name="MyHandThreeAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyHandThreeDefensePoints" Text="No DEF" />
+                        <TextBlock Height="20" x:Name="MyHandThreeDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple" Tapped="MyHandFourZone_Tapped" x:Name="MyHandFourZone">
+                        <TextBlock Height="20" x:Name="MyHandFourNameBlock" Text="No Card" />
+                        <Image Height="70" x:Name="MyHandFourImage" />
+                        <TextBlock Height="20" x:Name="MyHandFourAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyHandFourDefensePoints" Text="No DEF" />
+                        <TextBlock Height="20" x:Name="MyHandFourDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple" Tapped="MyHandFiveZone_Tapped" x:Name="MyHandFiveZone">
+                        <TextBlock Height="20" x:Name="MyHandFiveNameBlock" Text="No Card" />
+                        <Image Height="70" x:Name="MyHandFiveImage" />
+                        <TextBlock Height="20" x:Name="MyHandFiveAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyHandFiveDefensePoints" Text="No DEF" />
+                        <TextBlock Height="20" x:Name="MyHandFiveDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple" Tapped="MyHandSixZone_Tapped" x:Name="MyHandSixZone">
+                        <TextBlock Height="20" x:Name="MyHandSixNameBlock" Text="No Card" />
+                        <Image Height="70" x:Name="MyHandSixImage" />
+                        <TextBlock Height="20" x:Name="MyHandSixAttackPoints" Text="No ATK" />
+                        <TextBlock Height="20" x:Name="MyHandSixDefensePoints" Text="No DEF" />
+                        <TextBlock Height="20" x:Name="MyHandSixDescBlock" Text="No Descrip" />
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock Height="20" x:Name="MyUserName"  Text="No User"/>
+                <ProgressBar x:Name="MyLifePointBar" HorizontalAlignment="Left" Value="100" Width="500" Height="30" />
             </StackPanel>
         </StackPanel>
     </StackPanel>

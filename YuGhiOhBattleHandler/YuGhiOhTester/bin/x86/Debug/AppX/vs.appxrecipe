@@ -9,8 +9,8 @@
     <SolutionConfiguration>Debug|x86</SolutionConfiguration>
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>84665637-707e-4796-8c28-950298b08916</PackageIdentityName>
-    <IntermediateOutputPath>C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\obj\x86\Debug\</IntermediateOutputPath>
-    <RegisteredManifestChecksum>CCC963FEC8F47340D30D751CBF72C9CA9660AD1A23110B6724E307EAB7C29013</RegisteredManifestChecksum>
+    <IntermediateOutputPath>C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\obj\x86\Debug\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>D15B8D795CE8AD9F4D64E5A4E1896797E19757C0DCCFDB34B07B707234559261</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>84665637-707e-4796-8c28-950298b08916_1.0.0.0_x86__n0e1saagh4jn6</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>84665637-707e-4796-8c28-950298b08916_n0e1saagh4jn6!App</RegisteredUserModeAppID>
     <RegisteredPackageID>84665637-707e-4796-8c28-950298b08916</RegisteredPackageID>
@@ -19,16 +19,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-07-01T23:05:01.611</Modified>
+      <Modified>2016-07-02T22:08:19.411</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\YuGhiOhTester.exe">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\YuGhiOhTester.exe">
       <PackagePath>entrypoint\YuGhiOhTester.exe</PackagePath>
-      <Modified>2016-07-01T23:04:57.998</Modified>
+      <Modified>2016-07-02T22:08:18.739</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seth\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -442,63 +442,63 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-08-19T02:09:28.640</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhBattleHandler\bin\Debug\YuGhiOhBattleHandler.winmd">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\bin\Debug\YuGhiOhBattleHandler.winmd">
       <PackagePath>YuGhiOhBattleHandler.winmd</PackagePath>
-      <Modified>2016-07-01T23:04:57.007</Modified>
+      <Modified>2016-07-02T21:35:09.344</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2016-06-26T01:20:30.645</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2015-07-22T23:25:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-07-22T23:25:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-07-22T23:25:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-07-22T23:25:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-07-22T23:25:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-07-22T23:25:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-07-22T23:25:18.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\YuGhiOhTester.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\YuGhiOhTester.xr.xml">
       <PackagePath>YuGhiOhTester.xr.xml</PackagePath>
-      <Modified>2016-06-26T17:42:30.876</Modified>
+      <Modified>2016-07-02T21:57:02.413</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2016-04-16T03:57:37.004</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-07-01T22:28:27.733</Modified>
+      <Modified>2016-07-02T22:08:19.200</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\Core\YuGhiOhTester.exe">
+    <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\Core\YuGhiOhTester.exe">
       <PackagePath>YuGhiOhTester.exe</PackagePath>
-      <Modified>2016-07-01T23:05:01.608</Modified>
+      <Modified>2016-07-02T22:08:19.408</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

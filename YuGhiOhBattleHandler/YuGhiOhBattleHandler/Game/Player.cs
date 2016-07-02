@@ -55,7 +55,12 @@ namespace YuGhiOhBattleHandler
         /// The facedown spell and trap cards the player has played. The face up cards are in m_meReadOnly.
         /// </summary>
         private List<SpellAndTrapCard> faceDownCardsInSpellAndTrapZone=new List<SpellAndTrapCard>();
-       
+
+        /// <summary>
+        /// Says whether or not the decks have already been set.
+        /// </summary>
+        private bool hasDecks = false;
+
         /// <summary>
         /// Purposely private... cannot initiate a player with no data.
         /// </summary>
@@ -73,7 +78,13 @@ namespace YuGhiOhBattleHandler
         public Player(int userId, string userName)
         {
             id = userId;
+            m_meReadOnly = new ReadOnlyPlayer();
             m_meReadOnly.setUserName(userName);
+        }
+        
+        public string getUsername()
+        {
+            return m_meReadOnly.getUserName();
         }
 
         /// <summary>
@@ -85,6 +96,11 @@ namespace YuGhiOhBattleHandler
             return m_meReadOnly;
         }
 
+        public IList<Object> getHand()
+        {
+            return hand;
+        }
+
         /// <summary>
         /// Set the usable decks for the duel(s). Only callable by innards of this code. The Game will
         /// assign decks based on what was selected in the deck creator.
@@ -93,11 +109,20 @@ namespace YuGhiOhBattleHandler
         /// <param name="mainDeck">What the Player will be dueling majorily with</param>
         /// <param name="sideDeck">What the Player is using for tradeouts</param>
         /// <param name="extraDeck">What the Player is using for xyz,synchro,and fusion</param>
-        internal void setDecks(Deck mainDeck, SideDeck sideDeck, ExtraDeck extraDeck)
+        internal bool setDecks(Deck mainDeck, SideDeck sideDeck, ExtraDeck extraDeck)
         {
-            m_mainDeck = mainDeck;
-            m_sideDeck = sideDeck;
-            m_extraDeck = extraDeck;
+            if (!hasDecks)
+            {
+                m_mainDeck = mainDeck;
+                m_sideDeck = sideDeck;
+                m_extraDeck = extraDeck;
+                hasDecks = true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         

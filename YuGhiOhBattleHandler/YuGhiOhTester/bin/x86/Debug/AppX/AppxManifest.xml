@@ -38,18 +38,18 @@
     <Extension Category="windows.activatableClass.inProcessServer">
       <InProcessServer>
         <Path>YuGhiOhTester.exe</Path>
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Deck" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Counter" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.ExtraDeck" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Player" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Counter" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Card" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.MonsterToken" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Game" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.SideDeck" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.MainDeckBuilder" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.ReadOnlyPlayer" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Coin" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Player" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.SideDeck" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Dice" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Game" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.MainDeckBuilder" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Deck" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.MonsterToken" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.ReadOnlyPlayer" ThreadingModel="both" />
       </InProcessServer>
     </Extension>
   </Extensions>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace YuGhiOhBattleHandler
 {
@@ -35,7 +36,7 @@ namespace YuGhiOhBattleHandler
         private bool m_isAttackMode;
 
 
-        internal MonsterCard(string cardName, int cardLevel, CardAttributeOrType attributeOrType, string cardType,int attackPoints, int defensePoints, string cardDescription, long cardNumber, bool isPendulum, bool isXyz, bool isSynchro, bool isSynchroTuner, bool isFusion, bool isRitual)
+        internal MonsterCard(string cardName, int cardLevel, CardAttributeOrType attributeOrType, string cardType,int attackPoints, int defensePoints, string cardDescription, long cardNumber, bool isPendulum, bool isXyz, bool isSynchro, bool isSynchroTuner, bool isFusion, bool isRitual, BitmapImage bi)
         {
             c.setCardName(cardName);
             m_type = cardType;
@@ -51,6 +52,27 @@ namespace YuGhiOhBattleHandler
             m_isSynchroTuner = isSynchroTuner;
             m_isPlayed = false;
             m_isAttackMode = false;
+            c.setBitmapImage(bi);
+        }
+
+        public int getAttackPoints()
+        {
+            return m_attackPoints;
+        }
+
+        public int getDefensePoints()
+        {
+            return m_defensePoints;
+        }
+
+        public string getName()
+        {
+            return c.getCardName();
+        }
+
+        public BitmapImage getImage()
+        {
+            return c.getImage();
         }
 
         public void Play(Player user, Player opponent)

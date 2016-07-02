@@ -100,6 +100,28 @@ namespace YuGhiOhBattleHandler
             }
         }
 
+        public bool RequestSetPlayer1Deck(IList<Object> mainDeck, IList<Object> sideDeck, IList<Object> extraDeck)
+        {
+            Deck deck = new Deck();
+            deck.Set(mainDeck);
+            SideDeck sDeck = new SideDeck();
+            sDeck.Set(sideDeck);
+            ExtraDeck exDeck = new ExtraDeck();
+            exDeck.Set(extraDeck);
+            return player1.setDecks(deck, sDeck, exDeck);
+        }
+
+        public bool RequestSetPlayer2Deck(IList<Object> mainDeck, IList<Object> sideDeck, IList<Object> extraDeck)
+        {
+            Deck deck = new Deck();
+            deck.Set(mainDeck);
+            SideDeck sDeck = new SideDeck();
+            sDeck.Set(sideDeck);
+            ExtraDeck exDeck = new ExtraDeck();
+            exDeck.Set(extraDeck);
+            return player2.setDecks(deck, sDeck, exDeck);
+        }
+
         public Game(Player p_player1, Player p_player2, int id)
         {
             player1 = p_player1;
