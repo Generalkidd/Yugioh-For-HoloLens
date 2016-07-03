@@ -72,6 +72,8 @@
     <Compile Include="Assets\Scripts\CardCommand3.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GazeGestureManager.cs" />
+    <Compile Include="Assets\Scripts\GodCard.cs" />
+    <Compile Include="Assets\Scripts\Reset.cs" />
     <Compile Include="Assets\Scripts\Seal.cs" />
     <Compile Include="Assets\Scripts\SpeechManager.cs" />
     <Compile Include="Assets\Scripts\TapToPlaceParent.cs" />

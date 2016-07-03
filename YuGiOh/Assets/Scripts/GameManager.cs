@@ -39,4 +39,10 @@ public class GameManager : MonoBehaviour
 	void Update () {
 	
 	}
+
+    void OnReset()
+    {
+        hand.Clear();
+        Start();
+    }
 }

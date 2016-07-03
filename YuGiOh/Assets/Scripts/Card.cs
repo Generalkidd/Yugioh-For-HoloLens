@@ -10,6 +10,7 @@ public class Card : MonoBehaviour
     public int attack = 0;
     public int defense = 0;
     public int level = 0;
+    public bool godCard = false;
     public Quaternion rotation = new Quaternion(0f, 90f, 0f, 0f);
     
     // Use this for initialization
@@ -32,11 +33,28 @@ public class Card : MonoBehaviour
                 yield return new WaitForSeconds(2);
 
                 GameObject monster;
-                monster = (GameObject)Instantiate(GameObject.Find(CardName), new Vector3(this.transform.position.x, -0.5f, 6.5f), rotation);
+
+                if (godCard == true)
+                {
+                    monster = (GameObject)Instantiate(GameObject.Find(CardName), new Vector3(this.transform.position.x, 1.5f, 10f), rotation);
+                }
+                else
+                {
+                    monster = (GameObject)Instantiate(GameObject.Find(CardName), new Vector3(this.transform.position.x, -0.5f, 6.5f), rotation);
+                }
+                
+                AudioSource audio = monster.GetComponent<AudioSource>();
+                audio.Play();
             }
             else
             {
                 float temp = spawnPos.x;
+
+                if(godCard == true && temp - 3f >= -5f)
+                {
+                    spawnPos = new Vector3(temp - 3f, -1.5f, 10f);
+                    goto SpawnCheck;
+                }
                 if (temp - 0.5f >= -3f)
                 {
                     spawnPos = new Vector3(temp - 0.5f, -1.5f, 6.5f);
@@ -74,15 +92,7 @@ public class Card : MonoBehaviour
     // Called by SpeechManager when the user says the "Reset world" command
     void OnReset()
     {
-        // If the sphere has a Rigidbody component, remove it to disable physics.
-        var rigidbody = this.GetComponent<Rigidbody>();
-        if (rigidbody != null)
-        {
-            DestroyImmediate(rigidbody);
-        }
-
-        // Put the sphere back into its original local position.
-        this.transform.localPosition = originalPosition;
+        Destroy(this.gameObject);
     }
 
     // Called by SpeechManager when the user says the "Drop sphere" command

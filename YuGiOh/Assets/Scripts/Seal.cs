@@ -15,6 +15,9 @@ public class Seal : MonoBehaviour
 
     IEnumerator OnSelect()
     {
+        AudioSource audio = this.GetComponent<AudioSource>();
+        audio.Play();
+
         yield return new WaitForSeconds(2);
 
         TheSeal = (GameObject)Instantiate(GameObject.Find("Seal"), new Vector3(0, -2f, 0), GameObject.Find("Seal").transform.rotation);
@@ -24,6 +27,9 @@ public class Seal : MonoBehaviour
             Vector3 temp = new Vector3(i, 0.00001f, i);
             TheSeal.transform.localScale = temp;
         }
+
+        //AudioSource audio = TheSeal.GetComponent<AudioSource>();
+        //audio.Play();
 
     }
 
