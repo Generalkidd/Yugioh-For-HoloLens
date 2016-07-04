@@ -16,6 +16,7 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="Orientation" />
       <RootProperty Name="MinHeight" />
+      <RootProperty Name="Background" />
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootEvent Name="Tapped" />

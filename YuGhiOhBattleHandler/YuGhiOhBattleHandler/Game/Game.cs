@@ -61,14 +61,15 @@ namespace YuGhiOhBattleHandler
             Success,
             NotYourTurn,
             AlreadyNormalSummonedThisTurn,
+            AlreadyPlayedMaxNumberOfMonsters,
             InvalidMove
         }
 
-        internal Result RequestNormalSummon(int idOfAttacker, int moveIndex)
+        internal Result RequestNormalSummon(int idOfAttacker, Object cardToSummon, int numberOfMonstersAlreadyPlayed)
         {
-            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1 && !playerHasNormalSummonedThisTurn)
+            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1 && !playerHasNormalSummonedThisTurn && numberOfMonstersAlreadyPlayed<6)
             {
-                //NormalSummon
+                player1.addFaceDownToMonsterZone(cardToSummon);
                 playerHasNormalSummonedThisTurn = true;
                 return Result.Success;
             }
@@ -76,13 +77,17 @@ namespace YuGhiOhBattleHandler
             {
                 return Result.NotYourTurn;
             }
+            else if(!(numberOfMonstersAlreadyPlayed<6))
+            {
+                return Result.AlreadyPlayedMaxNumberOfMonsters;
+            }
             else if(player1.id==idOfAttacker)
             {
                 return Result.AlreadyNormalSummonedThisTurn;
             }
             else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2 && !playerHasNormalSummonedThisTurn)
             {
-                //NormalSummon
+                player2.addFaceDownToMonsterZone(cardToSummon);
                 playerHasNormalSummonedThisTurn = true;
                 return Result.Success;
             }
@@ -129,8 +134,8 @@ namespace YuGhiOhBattleHandler
             gameID = id;
             playerWhosTurnItIs = 1;
             playerHasNormalSummonedThisTurn = false;
-            //player1.setCurrentGame(this);
-            //player2.setCurrentGame(this);
+            player1.SetCurrentGame(this);
+            player2.SetCurrentGame(this);
         }
         
         public void StartGame()

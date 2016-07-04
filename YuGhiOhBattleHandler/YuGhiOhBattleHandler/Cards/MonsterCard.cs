@@ -33,7 +33,7 @@ namespace YuGhiOhBattleHandler
         private bool m_isFusion;
         private bool m_isRitual;
         private bool m_isPlayed;
-        private bool m_isAttackMode;
+        private Mode m_Mode;
 
 
         internal MonsterCard(string cardName, int cardLevel, CardAttributeOrType attributeOrType, string cardType,int attackPoints, int defensePoints, string cardDescription, long cardNumber, bool isPendulum, bool isXyz, bool isSynchro, bool isSynchroTuner, bool isFusion, bool isRitual, BitmapImage bi)
@@ -51,7 +51,7 @@ namespace YuGhiOhBattleHandler
             m_isSynchro = isSynchro;
             m_isSynchroTuner = isSynchroTuner;
             m_isPlayed = false;
-            m_isAttackMode = false;
+            m_Mode = Mode.Attack;
             c.setBitmapImage(bi);
         }
 
@@ -79,9 +79,32 @@ namespace YuGhiOhBattleHandler
         {
 
         }
-        public bool ChangeBattlePosition(Mode mode)
+
+        public Mode getBattlePosition()
         {
-            return true;
+            return m_Mode;
+        }
+
+        internal void changeIsPlayed()
+        {
+            m_isPlayed = !m_isPlayed;
+        }
+
+        public bool getIsPlayed()
+        {
+            return m_isPlayed;
+        }
+
+        internal void ChangeBattlePosition()
+        {
+            if (m_Mode == Mode.Attack)
+            {
+                m_Mode = Mode.Defense;
+            }
+            else
+            {
+                m_Mode = Mode.Attack;
+            }
         }
 
         public bool Battle(Player user, Player opponent, int indexOfOpponentsMonsterToBattle)

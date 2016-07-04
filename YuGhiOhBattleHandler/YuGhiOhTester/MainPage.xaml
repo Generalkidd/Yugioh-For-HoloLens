@@ -117,7 +117,7 @@
                         <TextBlock Height="20" x:Name="MySpellSixDescBlock" Text="No Descrip" />
                     </StackPanel>
                 </StackPanel>
-                <StackPanel x:Name="MyMonsterZonePanel" BorderThickness="2" BorderBrush="LightBlue" MinHeight="50" Orientation="Horizontal">
+                <StackPanel x:Name="MyMonsterZonePanel" Tapped="MyMonsterZonePanel_Tapped" BorderThickness="2" Background="LightBlue" BorderBrush="LightBlue" MinHeight="50" Orientation="Horizontal">
                     <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterOneZone">
                         <TextBlock Height="20" x:Name="MyMonsterOneNameBlock" Text="No Monster" />
                         <Image Height="70" x:Name="MyMonsterOneImage" />

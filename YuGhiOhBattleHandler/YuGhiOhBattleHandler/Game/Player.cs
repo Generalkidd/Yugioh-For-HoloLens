@@ -51,6 +51,24 @@ namespace YuGhiOhBattleHandler
         /// </summary>
         private List<MonsterCard> faceDownCardsInMonsterZone=new List<MonsterCard>();
 
+        internal void addFaceDownToMonsterZone(Object toPlay)
+        {
+            faceDownCardsInMonsterZone.Add(toPlay as MonsterCard);
+            m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInAttackMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInAttackMode() + 1);
+            hand.Remove(toPlay);
+            (toPlay as MonsterCard).changeIsPlayed();
+        }
+
+        public IList<MonsterCard> getFaceDownCardsInMonsterZone()
+        {
+            return faceDownCardsInMonsterZone;
+        }
+
+        public IList<MonsterCard> getFaceUpMonstersInMonsterZone()
+        {
+            return m_meReadOnly.getFaceUpMonstersInMonsterZone();
+        }
+
         /// <summary>
         /// The facedown spell and trap cards the player has played. The face up cards are in m_meReadOnly.
         /// </summary>
@@ -60,6 +78,9 @@ namespace YuGhiOhBattleHandler
         /// Says whether or not the decks have already been set.
         /// </summary>
         private bool hasDecks = false;
+
+        private Game myCurrentGame;
+
 
         /// <summary>
         /// Purposely private... cannot initiate a player with no data.
@@ -82,6 +103,20 @@ namespace YuGhiOhBattleHandler
             m_meReadOnly.setUserName(userName);
         }
         
+        /// <summary>
+        /// Set in the Game Constructor.
+        /// </summary>
+        /// <param name="g">the current game the player is in</param>
+        internal void SetCurrentGame(Game g)
+        {
+            myCurrentGame = g;
+        }
+
+        public Game getCurrentGame()
+        {
+            return myCurrentGame;
+        }
+
         public string getUsername()
         {
             return m_meReadOnly.getUserName();
@@ -96,9 +131,31 @@ namespace YuGhiOhBattleHandler
             return m_meReadOnly;
         }
 
+
+
         public IList<Object> getHand()
         {
             return hand;
+        }
+
+        public string NormalSummon(Object monsterToSummon)
+        {
+            if (monsterToSummon is MonsterCard && hand.Contains(monsterToSummon))
+            {
+                Game.Result amIAllowedToSummon=myCurrentGame.RequestNormalSummon(id, monsterToSummon,faceDownCardsInMonsterZone.Count+m_meReadOnly.getFaceUpMonstersInMonsterZone().Count);
+                if(amIAllowedToSummon.ToString().Equals("Success"))
+                {
+                    return "";
+                }
+                else
+                {
+                    return amIAllowedToSummon.ToString();
+                }
+            }
+            else
+            {
+                return "Either Card is not a monster or the card is not in your hand!";
+            }
         }
 
         /// <summary>
