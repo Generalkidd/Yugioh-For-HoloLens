@@ -30,3 +30,6 @@ Then My Lifepoints bar.
 So far, you can click on a monster in your hand (it will turn green) and then click on the Monster Zone (light blue)
 and it will summon the monster. If you try to summon another, a toast notification will be given saying you already
 summoned this turn.
+
+You can then end your turn and player2 (acting by computer) will play the first monster in its hand. No battling is built
+yet just summoning.

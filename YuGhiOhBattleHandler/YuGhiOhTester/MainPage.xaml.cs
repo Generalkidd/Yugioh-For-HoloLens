@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -12,6 +13,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using YuGhiOhBattleHandler;
 
@@ -28,6 +30,11 @@ namespace YuGhiOhTester
         private Player me;
         private Object myCurrentlySelectedCard;
         private StackPanel myCurrentlySelectedStackPanel;
+        private BitmapImage cardBack;
+
+        //Normally both Player1 and Player 2 would not be stored by the users.
+        private Player p1;
+        private Player p2;
 
         public MainPage()
         {
@@ -40,12 +47,15 @@ namespace YuGhiOhTester
             List<Object> randomSideDeck = new List<Object>();
             List<Object> randomExtraDeck = new List<Object>();
 
+            //Initialize Card Back
+            cardBack = mdb.getCardBack();
+
             //Build the players just like a Network Manager would do.
             int random1 = rand.Next();
             int random2 = rand.Next();
             int randomGameId = rand.Next();
-            Player p1 = new Player(random1, "SethRocks!");
-            Player p2 = new Player(random2, "BobSucks!");
+            p1 = new Player(random1, "SethRocks!");
+            p2 = new Player(random2, "BobSucks!");
 
             //Now the network manager would give a handle to the users and to the game.
             //Since this is just for testing we will control both players from this one class.
@@ -270,67 +280,67 @@ namespace YuGhiOhTester
             {
                 if (i + faceDownCards.Count == 0)
                 {
-                    MonsterCard c = faceDownCards[i];
+                    MonsterCard c = faceUpCards[i];
                     MyMonsterOneZone.Visibility = Visibility.Visible;
                     MyMonsterOneAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterOneDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
-                    MyMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterOneNameBlock.Text = c.getName();
                     MyMonsterOneImage.Source = c.getImage();
                 }
                 else if (i + faceDownCards.Count == 1)
                 {
-                    MonsterCard c = faceDownCards[i];
+                    MonsterCard c = faceUpCards[i];
                     MyMonsterTwoZone.Visibility = Visibility.Visible;
                     MyMonsterTwoAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterTwoDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
-                    MyMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterTwoNameBlock.Text = c.getName();
                     MyMonsterTwoImage.Source = c.getImage();
                 }
                 else if (i + faceDownCards.Count == 2)
                 {
-                    MonsterCard c = faceDownCards[i];
+                    MonsterCard c = faceUpCards[i];
                     MyMonsterThreeZone.Visibility = Visibility.Visible;
                     MyMonsterThreeAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterThreeDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
-                    MyMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterThreeNameBlock.Text = c.getName();
                     MyMonsterThreeImage.Source = c.getImage();
                 }
                 else if (i + faceDownCards.Count == 3)
                 {
-                    MonsterCard c = faceDownCards[i];
+                    MonsterCard c = faceUpCards[i];
                     MyMonsterFourZone.Visibility = Visibility.Visible;
                     MyMonsterFourAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFourDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
-                    MyMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterFourNameBlock.Text = c.getName();
                     MyMonsterFourImage.Source = c.getImage();
                 }
                 else if (i + faceDownCards.Count == 4)
                 {
-                    MonsterCard c = faceDownCards[i];
+                    MonsterCard c = faceUpCards[i];
                     MyMonsterFiveZone.Visibility = Visibility.Visible;
                     MyMonsterFiveAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFiveDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
-                    MyMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterFiveNameBlock.Text = c.getName();
                     MyMonsterFiveImage.Source = c.getImage();
                 }
                 else if (i + faceDownCards.Count == 5)
                 {
-                    MonsterCard c = faceDownCards[i];
+                    MonsterCard c = faceUpCards[i];
                     MyMonsterSixZone.Visibility = Visibility.Visible;
                     MyMonsterSixAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterSixDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
-                    MyMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterSixNameBlock.Text = c.getName();
                     MyMonsterSixImage.Source = c.getImage();
                 }
@@ -698,6 +708,253 @@ namespace YuGhiOhTester
                         ToastNotification toast = new ToastNotification(xmlDocument);
                         ToastNotificationManager.CreateToastNotifier().Show(toast);
                     }
+                }
+            }
+        }
+
+        private void EndTurnBtn_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            me.EndTurn();
+
+            //Do Some Random Action for Player2
+            IList<Object> player2Hand = p2.getHand();
+            Object toPlay = null;
+            for (int i = 0; i < player2Hand.Count; i++)
+            {
+                if (player2Hand[i] is MonsterCard)
+                {
+                    toPlay = player2Hand[i];
+                    break;
+                }
+            }
+            string result = p2.NormalSummon(toPlay);
+
+            //Update GUI
+            if (result == "")
+            {
+                placeOppMonsterCardsOnGUI();
+            }
+            else
+            {
+                // template to load for showing Toast Notification
+                var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                         "<visual>" +
+                                           "<binding template =\"ToastGeneric\">" +
+                                             "<text>Opp Can't Summon Monster</text>" +
+                                             "<text>" +
+                                               result +
+                                             "</text>" +
+                                           "</binding>" +
+                                         "</visual>" +
+                                       "</toast>";
+                // load the template as XML document
+                var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                xmlDocument.LoadXml(xmlToastTemplate);
+                ToastNotification toast = new ToastNotification(xmlDocument);
+                ToastNotificationManager.CreateToastNotifier().Show(toast);
+            }
+
+            p2.EndTurn();
+        }
+
+        private void placeOppMonsterCardsOnGUI()
+        {
+            int faceDownCardsAttackMode = me.getOpponent().getNumberOfFaceDownCardsInMonsterZoneInAttackMode();
+            int faceDownCardsDefMode = me.getOpponent().getNumberOfFaceDownCardsInMonsterZoneInDefenseMode();
+            List<MonsterCard> faceUpCards = me.getOpponent().getFaceUpMonstersInMonsterZone() as List<MonsterCard>;
+            for (int i = 0; i < faceDownCardsAttackMode; i++)
+            {
+                if (i == 0)
+                {
+                    OppMonsterOneZone.Visibility = Visibility.Visible;
+                    OppMonsterOneAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterOneDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterOneAttackPoints.Text = "ATK: ? ATKMode";
+                    OppMonsterOneDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterOneNameBlock.Text = "?";
+                    OppMonsterOneImage.Source = cardBack;
+                }
+                else if (i == 1)
+                {
+                    OppMonsterTwoZone.Visibility = Visibility.Visible;
+                    OppMonsterTwoAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterTwoDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterTwoAttackPoints.Text = "ATK: ? ATKMode";
+                    OppMonsterTwoDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterTwoNameBlock.Text = "?";
+                    OppMonsterTwoImage.Source = cardBack;
+                }
+                else if (i == 2)
+                {
+                    OppMonsterThreeZone.Visibility = Visibility.Visible;
+                    OppMonsterThreeAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterThreeDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterThreeAttackPoints.Text = "ATK: ? ATKMode";
+                    OppMonsterThreeDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterThreeNameBlock.Text = "?";
+                    OppMonsterThreeImage.Source = cardBack;
+                }
+                else if (i == 3)
+                {
+                    OppMonsterFourZone.Visibility = Visibility.Visible;
+                    OppMonsterFourAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterFourDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterFourAttackPoints.Text = "ATK: ? ATKMode";
+                    OppMonsterFourDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterFourNameBlock.Text = "?";
+                    OppMonsterFourImage.Source = cardBack;
+                }
+                else if (i == 4)
+                {
+                    OppMonsterFiveZone.Visibility = Visibility.Visible;
+                    OppMonsterFiveAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterFiveDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterFiveAttackPoints.Text = "ATK: ? ATKMode";
+                    OppMonsterFiveDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterFiveNameBlock.Text = "?";
+                    OppMonsterFiveImage.Source = cardBack;
+                }
+                else if (i == 5)
+                {
+                    OppMonsterSixZone.Visibility = Visibility.Visible;
+                    OppMonsterSixAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterSixDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterSixAttackPoints.Text = "ATK: ? ATKMode";
+                    OppMonsterSixDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterSixNameBlock.Text = "?";
+                    OppMonsterSixImage.Source = cardBack;
+                }
+            }
+            for (int i = 0; i < faceDownCardsDefMode; i++)
+            {
+                if (i+faceDownCardsAttackMode == 0)
+                {
+                    OppMonsterOneZone.Visibility = Visibility.Visible;
+                    OppMonsterOneAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterOneDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterOneAttackPoints.Text = "ATK: ? DEFMode";
+                    OppMonsterOneDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterOneNameBlock.Text = "?";
+                    OppMonsterOneImage.Source = cardBack;
+                }
+                else if (i+faceDownCardsAttackMode == 1)
+                {
+                    OppMonsterTwoZone.Visibility = Visibility.Visible;
+                    OppMonsterTwoAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterTwoDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterTwoAttackPoints.Text = "ATK: ? DEFMode";
+                    OppMonsterTwoDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterTwoNameBlock.Text = "?";
+                    OppMonsterTwoImage.Source = cardBack;
+                }
+                else if (i+faceDownCardsAttackMode == 2)
+                {
+                    OppMonsterThreeZone.Visibility = Visibility.Visible;
+                    OppMonsterThreeAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterThreeDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterThreeAttackPoints.Text = "ATK: ? DEFMode";
+                    OppMonsterThreeDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterThreeNameBlock.Text = "?";
+                    OppMonsterThreeImage.Source = cardBack;
+                }
+                else if (i+faceDownCardsAttackMode == 3)
+                {
+                    OppMonsterFourZone.Visibility = Visibility.Visible;
+                    OppMonsterFourAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterFourDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterFourAttackPoints.Text = "ATK: ? DEFMode";
+                    OppMonsterFourDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterFourNameBlock.Text = "?";
+                    OppMonsterFourImage.Source = cardBack;
+                }
+                else if (i+faceDownCardsAttackMode == 4)
+                {
+                    OppMonsterFiveZone.Visibility = Visibility.Visible;
+                    OppMonsterFiveAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterFiveDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterFiveAttackPoints.Text = "ATK: ? DEFMode";
+                    OppMonsterFiveDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterFiveNameBlock.Text = "?";
+                    OppMonsterFiveImage.Source = cardBack;
+                }
+                else if (i+faceDownCardsAttackMode == 5)
+                {
+                    OppMonsterSixZone.Visibility = Visibility.Visible;
+                    OppMonsterSixAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterSixDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterSixAttackPoints.Text = "ATK: ? DEFMode";
+                    OppMonsterSixDefensePoints.Text = "DEF: ? FDown";
+                    OppMonsterSixNameBlock.Text = "?";
+                    OppMonsterSixImage.Source = cardBack;
+                }
+            }
+            for (int i = 0; i < faceUpCards.Count; i++)
+            {
+                if (i + faceDownCardsAttackMode+faceDownCardsDefMode == 0)
+                {
+                    MonsterCard c = faceUpCards[i];
+                    OppMonsterOneZone.Visibility = Visibility.Visible;
+                    OppMonsterOneAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterOneDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    OppMonsterOneNameBlock.Text = c.getName();
+                    OppMonsterOneImage.Source = c.getImage();
+                }
+                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 1)
+                {
+                    MonsterCard c = faceUpCards[i];
+                    OppMonsterTwoZone.Visibility = Visibility.Visible;
+                    OppMonsterTwoAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterTwoDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    OppMonsterTwoNameBlock.Text = c.getName();
+                    OppMonsterTwoImage.Source = c.getImage();
+                }
+                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 2)
+                {
+                    MonsterCard c = faceUpCards[i];
+                    OppMonsterThreeZone.Visibility = Visibility.Visible;
+                    OppMonsterThreeAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterThreeDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    OppMonsterThreeNameBlock.Text = c.getName();
+                    OppMonsterThreeImage.Source = c.getImage();
+                }
+                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 3)
+                {
+                    MonsterCard c = faceUpCards[i];
+                    OppMonsterFourZone.Visibility = Visibility.Visible;
+                    OppMonsterFourAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterFourDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    OppMonsterFourNameBlock.Text = c.getName();
+                    OppMonsterFourImage.Source = c.getImage();
+                }
+                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 4)
+                {
+                    MonsterCard c = faceUpCards[i];
+                    OppMonsterFiveZone.Visibility = Visibility.Visible;
+                    OppMonsterFiveAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterFiveDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    OppMonsterFiveNameBlock.Text = c.getName();
+                    OppMonsterFiveImage.Source = c.getImage();
+                }
+                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 5)
+                {
+                    MonsterCard c = faceUpCards[i];
+                    OppMonsterSixZone.Visibility = Visibility.Visible;
+                    OppMonsterSixAttackPoints.Visibility = Visibility.Visible;
+                    OppMonsterSixDefensePoints.Visibility = Visibility.Visible;
+                    OppMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    OppMonsterSixNameBlock.Text = c.getName();
+                    OppMonsterSixImage.Source = c.getImage();
                 }
             }
         }

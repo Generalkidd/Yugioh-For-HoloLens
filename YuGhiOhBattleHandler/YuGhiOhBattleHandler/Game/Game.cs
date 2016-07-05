@@ -85,7 +85,7 @@ namespace YuGhiOhBattleHandler
             {
                 return Result.AlreadyNormalSummonedThisTurn;
             }
-            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2 && !playerHasNormalSummonedThisTurn)
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2 && !playerHasNormalSummonedThisTurn && numberOfMonstersAlreadyPlayed<6)
             {
                 player2.addFaceDownToMonsterZone(cardToSummon);
                 playerHasNormalSummonedThisTurn = true;
@@ -114,6 +114,38 @@ namespace YuGhiOhBattleHandler
             ExtraDeck exDeck = new ExtraDeck();
             exDeck.Set(extraDeck);
             return player1.setDecks(deck, sDeck, exDeck);
+        }
+
+        internal Result RequestEndTurn(int idOfAttacker)
+        {
+            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                playerWhosTurnItIs = 2;
+                playerHasNormalSummonedThisTurn = false;
+                player2.NotifyOfYourTurn();
+                player1.NotifyOfOppTurn();
+                return Result.Success;
+            }
+            else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                playerWhosTurnItIs = 1;
+                playerHasNormalSummonedThisTurn = false;
+                player1.NotifyOfYourTurn();
+                player2.NotifyOfOppTurn();
+                return Result.Success;
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
         }
 
         public bool RequestSetPlayer2Deck(IList<Object> mainDeck, IList<Object> sideDeck, IList<Object> extraDeck)

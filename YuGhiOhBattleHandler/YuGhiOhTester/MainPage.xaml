@@ -201,6 +201,7 @@
                 </StackPanel>
                 <TextBlock Height="20" x:Name="MyUserName"  Text="No User"/>
                 <ProgressBar x:Name="MyLifePointBar" HorizontalAlignment="Left" Value="100" Width="500" Height="30" />
+                <Button x:Name="EndTurnBtn" Content="End Turn" Tapped="EndTurnBtn_Tapped" />
             </StackPanel>
         </StackPanel>
     </StackPanel>

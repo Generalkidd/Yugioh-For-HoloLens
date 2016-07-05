@@ -22,6 +22,41 @@ namespace YuGhiOhBattleHandler
             LoadAllPossibleCards();
         }
 
+        public BitmapImage getCardBack()
+        {
+            return getCardBackAsync().Result;
+        }
+
+        private async Task<BitmapImage> getCardBackAsync()
+        {
+            var names = this.GetType().GetTypeInfo().Assembly.GetManifestResourceNames();
+            string imagePath = "";
+            foreach (string n in names)
+            {
+                if (n.Contains("CardBack"))
+                {
+                    imagePath = n;
+                    break;
+                }
+            }
+            BitmapImage toReturn = new BitmapImage();
+            var assembly = this.GetType().GetTypeInfo().Assembly;
+
+            using (var imageStream = assembly.GetManifestResourceStream(imagePath))
+            using (var memStream = new MemoryStream())
+            {
+                await imageStream.CopyToAsync(memStream);
+
+                memStream.Position = 0;
+
+                using (var raStream = memStream.AsRandomAccessStream())
+                {
+                    toReturn.SetSource(raStream);
+                }
+            }
+            return toReturn;
+        }
+
         public IList<Object> getRandomDeck()
         {
             currentlySelectedDeck = allPossibleCards;

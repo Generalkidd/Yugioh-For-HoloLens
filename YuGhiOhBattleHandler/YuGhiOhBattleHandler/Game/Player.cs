@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Foundation;
+using Windows.UI.Notifications;
 
 namespace YuGhiOhBattleHandler
 {
@@ -88,6 +89,64 @@ namespace YuGhiOhBattleHandler
         private Player()
         {
 
+        }
+
+        internal void NotifyOfYourTurn()
+        {
+            // template to load for showing Toast Notification
+            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                     "<visual>" +
+                                       "<binding template =\"ToastGeneric\">" +
+                                         "<text>Turn</text>" +
+                                         "<text>" +
+                                           "It's your turn!" +
+                                         "</text>" +
+                                       "</binding>" +
+                                     "</visual>" +
+                                   "</toast>";
+            // load the template as XML document
+            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+            xmlDocument.LoadXml(xmlToastTemplate);
+            ToastNotification toast = new ToastNotification(xmlDocument);
+            ToastNotificationManager.CreateToastNotifier().Show(toast);
+        }
+
+        internal void NotifyOfOppTurn()
+        {
+            // template to load for showing Toast Notification
+            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                     "<visual>" +
+                                       "<binding template =\"ToastGeneric\">" +
+                                         "<text>Turn</text>" +
+                                         "<text>" +
+                                           "It's the opponent's turn!" +
+                                         "</text>" +
+                                       "</binding>" +
+                                     "</visual>" +
+                                   "</toast>";
+            // load the template as XML document
+            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+            xmlDocument.LoadXml(xmlToastTemplate);
+            ToastNotification toast = new ToastNotification(xmlDocument);
+            ToastNotificationManager.CreateToastNotifier().Show(toast);
+        }
+
+        public ReadOnlyPlayer getOpponent()
+        {
+            return myCurrentGame.otherPlayer(id);
+        }
+
+        public string EndTurn()
+        {
+            Game.Result r = myCurrentGame.RequestEndTurn(id);
+            if(r==Game.Result.Success)
+            {
+                return "";
+            }
+            else
+            {
+                return r.ToString();
+            }
         }
 
         /// <summary>

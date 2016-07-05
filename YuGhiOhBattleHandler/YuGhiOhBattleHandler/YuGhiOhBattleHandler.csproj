@@ -127,7 +127,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Decks\SideDeck.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Images\CardBack.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\ArchfiendMarmotofNefariousness.jpg" />
     <EmbeddedResource Include="Images\ArchfiendMirror.jpg" />
