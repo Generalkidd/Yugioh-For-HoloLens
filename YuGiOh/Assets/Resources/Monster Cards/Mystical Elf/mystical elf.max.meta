@@ -4,7 +4,65 @@ timeCreated: 1463598980
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: mesh11_mater
+    100002: mesh14_mater
+    100004: mesh17_mater
+    100006: mesh20_mater
+    100008: mesh23_mater
+    100010: mesh38_mater
+    100012: mesh44_mater
+    100014: mesh4_materi
+    100016: mesh50_mater
+    100018: mesh56_mater
+    100020: mesh8_materi
+    100022: //RootNode
+    400000: mesh11_mater
+    400002: mesh14_mater
+    400004: mesh17_mater
+    400006: mesh20_mater
+    400008: mesh23_mater
+    400010: mesh38_mater
+    400012: mesh44_mater
+    400014: mesh4_materi
+    400016: mesh50_mater
+    400018: mesh56_mater
+    400020: mesh8_materi
+    400022: //RootNode
+    2300000: mesh11_mater
+    2300002: mesh14_mater
+    2300004: mesh17_mater
+    2300006: mesh20_mater
+    2300008: mesh23_mater
+    2300010: mesh38_mater
+    2300012: mesh44_mater
+    2300014: mesh4_materi
+    2300016: mesh50_mater
+    2300018: mesh56_mater
+    2300020: mesh8_materi
+    3300000: mesh11_mater
+    3300002: mesh14_mater
+    3300004: mesh17_mater
+    3300006: mesh20_mater
+    3300008: mesh23_mater
+    3300010: mesh38_mater
+    3300012: mesh44_mater
+    3300014: mesh4_materi
+    3300016: mesh50_mater
+    3300018: mesh56_mater
+    3300020: mesh8_materi
+    4300000: mesh4_materi
+    4300002: mesh8_materi
+    4300004: mesh11_mater
+    4300006: mesh14_mater
+    4300008: mesh17_mater
+    4300010: mesh20_mater
+    4300012: mesh23_mater
+    4300014: mesh38_mater
+    4300016: mesh44_mater
+    4300018: mesh50_mater
+    4300020: mesh56_mater
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0

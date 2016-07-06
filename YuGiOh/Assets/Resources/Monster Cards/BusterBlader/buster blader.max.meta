@@ -4,7 +4,25 @@ timeCreated: 1463767497
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: mesh01
+    100004: mesh02
+    100006: mesh04
+    400000: //RootNode
+    400002: mesh01
+    400004: mesh02
+    400006: mesh04
+    2300000: mesh01
+    2300002: mesh02
+    2300004: mesh04
+    3300000: mesh01
+    3300002: mesh02
+    3300004: mesh04
+    4300000: mesh01
+    4300002: mesh02
+    4300004: mesh04
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
