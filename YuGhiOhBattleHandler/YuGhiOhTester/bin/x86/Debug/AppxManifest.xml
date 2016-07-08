@@ -38,10 +38,10 @@
         <Path>CLRHost.dll</Path>
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.ExtraDeck" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Counter" ThreadingModel="both" />
-        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Card" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Coin" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Player" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.SideDeck" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Card" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Dice" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.Game" ThreadingModel="both" />
         <ActivatableClass ActivatableClassId="YuGhiOhBattleHandler.MainDeckBuilder" ThreadingModel="both" />
@@ -54,7 +54,7 @@
   <build:Metadata>
     <build:Item Name="TargetFrameworkMoniker" Value=".NETCore,Version=v5.0" />
     <build:Item Name="VisualStudio" Version="14.0" />
-    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Professional 2015" />
+    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Enterprise 2015" />
     <build:Item Name="OperatingSystem" Version="10.0.10586.0 (th2_release.151029-1700)" />
     <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="14.0.25123.0" />
     <build:Item Name="ProjectGUID" Value="{CCE42D11-7218-4D06-A14C-1FCCC9C9CC36}" />

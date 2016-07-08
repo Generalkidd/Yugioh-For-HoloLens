@@ -10,6 +10,15 @@ using Windows.UI.Notifications;
 
 namespace YuGhiOhBattleHandler
 {
+
+    internal enum Zone
+    {
+        Hand,
+        Graveyard,
+        Monster,
+        SpellTrap
+    }
+
     /// <summary>
     /// A class that only one person should have access to which allows a user to make moves and see
     /// their own cards. The network manager should assign a private id to each player class and give
@@ -52,19 +61,38 @@ namespace YuGhiOhBattleHandler
         /// </summary>
         private List<MonsterCard> faceDownCardsInMonsterZone=new List<MonsterCard>();
 
+        /// <summary>
+        /// Where monsters/spells/traps go when they die.
+        /// </summary>
+        private List<Object> graveYard = new List<object>();
+
+        /// <summary>
+        /// Should only be called by the Game class after RequestNormalSummon is called. The Game class checks whether this function is allowable.
+        /// </summary>
+        /// <param name="toPlay">The card which is to be summoned</param>
         internal void addFaceDownToMonsterZone(Object toPlay)
         {
             faceDownCardsInMonsterZone.Add(toPlay as MonsterCard);
             m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInAttackMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInAttackMode() + 1);
             hand.Remove(toPlay);
+            m_meReadOnly.setCardsInHand(m_meReadOnly.getCardsInHand() - 1);
             (toPlay as MonsterCard).changeIsPlayed();
         }
 
+        /// <summary>
+        /// This is how the Front End grabs the data to print it to the screen. The Opponent should not be able to access this function although it is public
+        /// because they should never have a handle to the their opponent's Player class.
+        /// </summary>
+        /// <returns>A list of the face down monsters that have been summoned and are in this players monster zone.</returns>
         public IList<MonsterCard> getFaceDownCardsInMonsterZone()
         {
             return faceDownCardsInMonsterZone;
         }
 
+        /// <summary>
+        /// This is how the Front End grabs the data to print it to the screen. The Opponent should be able to access this function through ReadOnlyPlayer.getFaceUpMonsters().
+        /// </summary>
+        /// <returns>A list of the face up monsters that have been summoned and are in this players monster zone.</returns>
         public IList<MonsterCard> getFaceUpMonstersInMonsterZone()
         {
             return m_meReadOnly.getFaceUpMonstersInMonsterZone();
@@ -76,10 +104,32 @@ namespace YuGhiOhBattleHandler
         private List<SpellAndTrapCard> faceDownCardsInSpellAndTrapZone=new List<SpellAndTrapCard>();
 
         /// <summary>
+        /// This is how the Front End grabs the data to print it to the screen. The Opponent should not be able to access this function although it is public
+        /// because they should never have a handle to the their opponent's Player class.
+        /// </summary>
+        /// <returns>A list of the face down spells and traps that have been placed in this players spell and trap zone.</returns>
+        public IList<SpellAndTrapCard> getFaceDownCardsInSpellAndTrapZone()
+        {
+            return faceDownCardsInSpellAndTrapZone;
+        }
+
+        /// <summary>
+        /// This is how the Front End grabs the data to print it to the screen. The Opponent should be able to access this function through ReadOnlyPlayer.getFaceUpSpellsAndTraps().
+        /// </summary>
+        /// <returns>A list of the face up spells and traps that have been placed in this players spell and trap zone.</returns>
+        public IList<SpellAndTrapCard> getFaceUpCardsInSpellAndTrapZone()
+        {
+            return m_meReadOnly.getFaceUpSpellsAndTraps();
+        }
+
+        /// <summary>
         /// Says whether or not the decks have already been set.
         /// </summary>
         private bool hasDecks = false;
 
+        /// <summary>
+        /// Game this player is currently in. Should be set by the Game Class itself.
+        /// </summary>
         private Game myCurrentGame;
 
 
@@ -91,6 +141,9 @@ namespace YuGhiOhBattleHandler
 
         }
 
+        /// <summary>
+        /// Posts a Windows 10 Toast Notification saying "Its Your Turn!" Called when someone ends their turn.
+        /// </summary>
         internal void NotifyOfYourTurn()
         {
             // template to load for showing Toast Notification
@@ -111,6 +164,9 @@ namespace YuGhiOhBattleHandler
             ToastNotificationManager.CreateToastNotifier().Show(toast);
         }
 
+        /// <summary>
+        /// Posts a Windows 10 Toast Notification saying "Its Your Opponent's Turn!" Called when someone ends their turn.
+        /// </summary>
         internal void NotifyOfOppTurn()
         {
             // template to load for showing Toast Notification
@@ -131,11 +187,68 @@ namespace YuGhiOhBattleHandler
             ToastNotificationManager.CreateToastNotifier().Show(toast);
         }
 
+        internal void SendToGraveYard(Object c, Zone z)
+        {
+            if (z == Zone.Hand)
+            {
+                if (hand.Contains(c))
+                {
+                    hand.Remove(c);
+                    m_meReadOnly.setCardsInHand(m_meReadOnly.getCardsInHand() - 1);
+                }
+            }
+            else if(z==Zone.Monster)
+            {
+                if(faceDownCardsInMonsterZone.Contains(c as MonsterCard))
+                {
+                    faceDownCardsInMonsterZone.Remove(c as MonsterCard);
+                    if ((c as MonsterCard).getBattlePosition() == Mode.Attack)
+                    {
+                        m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInAttackMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInAttackMode() - 1);
+                    }
+                    else if((c as MonsterCard).getBattlePosition() == Mode.Defense)
+                    {
+                        m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInDefenseMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInDefenseMode() - 1);
+                    }
+                }
+                else if(m_meReadOnly.getFaceUpMonstersInMonsterZone().Contains(c as MonsterCard))
+                {
+                    IList<MonsterCard> toRemoveFrom = m_meReadOnly.getFaceUpMonstersInMonsterZone();
+                    toRemoveFrom.Remove(c as MonsterCard);
+                    m_meReadOnly.setFaceUpMonstersInMonsterZone(toRemoveFrom);
+                }
+            }
+            else if(z==Zone.SpellTrap)
+            {
+                if (faceDownCardsInSpellAndTrapZone.Contains(c as SpellAndTrapCard))
+                {
+                    faceDownCardsInSpellAndTrapZone.Remove(c as SpellAndTrapCard);
+                    m_meReadOnly.setNumberOfFaceDownSpellsAndTraps(m_meReadOnly.getNumberOfFaceDownSpellsAndTraps() - 1);
+                }
+                else if (m_meReadOnly.getFaceUpSpellsAndTraps().Contains(c as SpellAndTrapCard))
+                {
+                    IList<SpellAndTrapCard> toRemoveFrom = m_meReadOnly.getFaceUpSpellsAndTraps();
+                    toRemoveFrom.Remove(c as SpellAndTrapCard);
+                    m_meReadOnly.setFaceUpSpellsAndTraps(toRemoveFrom);
+                }
+            }
+            graveYard.Add(c);
+
+        }
+
+        /// <summary>
+        /// Gets a safe handle to the opponent to access their Face Up Cards, Number of FaceDown Cards, Etc.
+        /// </summary>
+        /// <returns>A ReadOnlyPlayer instance of the opponent</returns>
         public ReadOnlyPlayer getOpponent()
         {
             return myCurrentGame.otherPlayer(id);
         }
 
+        /// <summary>
+        /// Tell the game and opponent you are done for this turn. Should be called after you attack, summon, etc.
+        /// </summary>
+        /// <returns>"" if successfully ended turn. Error string if failed.</returns>
         public string EndTurn()
         {
             Game.Result r = myCurrentGame.RequestEndTurn(id);
@@ -147,6 +260,16 @@ namespace YuGhiOhBattleHandler
             {
                 return r.ToString();
             }
+        }
+
+        public int getLifePoints()
+        {
+            return m_meReadOnly.getLifePoints();
+        }
+
+        internal void setLifePoints(int points)
+        {
+            m_meReadOnly.setLifePoints(points);
         }
 
         /// <summary>
@@ -171,11 +294,19 @@ namespace YuGhiOhBattleHandler
             myCurrentGame = g;
         }
 
+        /// <summary>
+        /// Not sure why the user would need to access the current game, so this may be turned to internal for safety reasons.
+        /// </summary>
+        /// <returns>the game this user is currently in</returns>
         public Game getCurrentGame()
         {
             return myCurrentGame;
         }
 
+        /// <summary>
+        /// Did you forget your name? Sure you can grab it.
+        /// </summary>
+        /// <returns>this users name</returns>
         public string getUsername()
         {
             return m_meReadOnly.getUserName();
@@ -191,12 +322,21 @@ namespace YuGhiOhBattleHandler
         }
 
 
-
+        /// <summary>
+        /// This is how the Front End grabs the data to print it to the screen. Although it is public, the Opponent should not be able to access this function because they won't have a handle to their
+        /// Opponent's Player Class.
+        /// </summary>
+        /// <returns>A List of Cards playable by this user.</returns>
         public IList<Object> getHand()
         {
             return hand;
         }
 
+        /// <summary>
+        /// A request to normal summon the monster is given to the game class. If allowable, it will be summoned.
+        /// </summary>
+        /// <param name="monsterToSummon">A MonsterCard to play.</param>
+        /// <returns>"" if successful. Error string if failed.</returns>
         public string NormalSummon(Object monsterToSummon)
         {
             if (monsterToSummon is MonsterCard && hand.Contains(monsterToSummon))
@@ -214,6 +354,133 @@ namespace YuGhiOhBattleHandler
             else
             {
                 return "Either Card is not a monster or the card is not in your hand!";
+            }
+        }
+
+        /// <summary>
+        /// A request to cast spell or set trap is given to the game class. If allowable, it will be used.
+        /// </summary>
+        /// <param name="spellOrTrapToPlay">A SpellAndTrapCard to play.</param>
+        /// <returns>"" if successful. Error string if failed.</returns>
+        public string CastSpellOrTrap(Object spellOrTrapToPlay)
+        {
+            if (spellOrTrapToPlay is SpellAndTrapCard && hand.Contains(spellOrTrapToPlay))
+            {
+                SpellAndTrapCard stc = spellOrTrapToPlay as SpellAndTrapCard;
+                Game.Result amIAllowedToSummon;
+                if (stc.getName().Equals("Dark Hole"))
+                {
+                    amIAllowedToSummon = myCurrentGame.RequestDarkHole(id);
+                    if(amIAllowedToSummon==Game.Result.Success)
+                    {
+                        SendToGraveYard(spellOrTrapToPlay, Zone.Hand);
+                    }
+                }
+                else if(stc.getName().Equals("Red Medicine"))
+                {
+                    amIAllowedToSummon = myCurrentGame.RequestRedMedicine(id);
+                    if (amIAllowedToSummon == Game.Result.Success)
+                    {
+                        SendToGraveYard(spellOrTrapToPlay, Zone.Hand);
+                    }
+                }
+                else if (stc.getName().Equals("Sparks"))
+                {
+                    amIAllowedToSummon = myCurrentGame.RequestSparks(id);
+                    if (amIAllowedToSummon == Game.Result.Success)
+                    {
+                        SendToGraveYard(spellOrTrapToPlay, Zone.Hand);
+                    }
+                }
+                else if (stc.getName().Equals("Fissure"))
+                {
+                    amIAllowedToSummon = myCurrentGame.RequestFissure(id);
+                    if (amIAllowedToSummon == Game.Result.Success)
+                    {
+                        SendToGraveYard(spellOrTrapToPlay, Zone.Hand);
+                    }
+                }
+                else if(stc.getName().Equals("Trap Hole"))
+                {
+                    amIAllowedToSummon = myCurrentGame.RequestTrapHole(id);
+                    if (amIAllowedToSummon == Game.Result.Success)
+                    {
+                        faceDownCardsInSpellAndTrapZone.Add(spellOrTrapToPlay as SpellAndTrapCard);
+                        m_meReadOnly.setNumberOfFaceDownSpellsAndTraps(faceDownCardsInSpellAndTrapZone.Count);
+                        hand.Remove(spellOrTrapToPlay);
+                        m_meReadOnly.setCardsInHand(m_meReadOnly.getCardsInHand() - 1);
+                    }
+                }
+                else
+                {
+                    amIAllowedToSummon = Game.Result.InvalidMove;
+                }
+                if (amIAllowedToSummon.ToString().Equals("Success"))
+                {
+                    return "";
+                }
+                else
+                {
+                    return amIAllowedToSummon.ToString();
+                }
+            }
+            else
+            {
+                return "Either Card is not a monster or the card is not in your hand!";
+            }
+        }
+
+        public string TryEquip(Object EquipableCard, string nameOfCardToEquipTo)
+        {
+            bool found = false;
+            if(hand.Contains(EquipableCard))
+            {
+                for(int i=0; i<faceDownCardsInMonsterZone.Count && !found; i++)
+                {
+                    if(faceDownCardsInMonsterZone[i].getName().Equals(nameOfCardToEquipTo))
+                    {
+                        MonsterCard equippingTo = faceDownCardsInMonsterZone[i];
+                        found = true;
+                        Game.Result r=myCurrentGame.RequestEquip(id, EquipableCard, ref equippingTo);
+                        if (r == Game.Result.Success)
+                        {
+                            faceDownCardsInMonsterZone[i] = equippingTo;
+                            SendToGraveYard(EquipableCard, Zone.Hand);
+                            return "";
+                        }
+                        else
+                        {
+                            return r.ToString();
+                        }
+                        
+                    }
+                }
+                IList<MonsterCard> faceUpMonsters = m_meReadOnly.getFaceUpMonstersInMonsterZone();
+                for (int i = 0; i < faceUpMonsters.Count && !found; i++)
+                {
+                    if (faceUpMonsters[i].getName().Equals(nameOfCardToEquipTo))
+                    {
+                        found = true;
+                        MonsterCard equippingTo = faceUpMonsters[i];
+                        Game.Result r = myCurrentGame.RequestEquip(id, EquipableCard, ref equippingTo);
+                        if (r == Game.Result.Success)
+                        {
+                            faceUpMonsters[i] = equippingTo;
+                            m_meReadOnly.setFaceUpMonstersInMonsterZone(faceUpMonsters);
+                            SendToGraveYard(EquipableCard, Zone.Hand);
+                            return "";
+                        }
+                        else
+                        {
+                            return r.ToString();
+                        }
+                    }
+                }
+                return "Failed to find card";
+            }
+            else
+            {
+                return "Equipable Card not in hand anymore.";
             }
         }
 
@@ -251,6 +518,7 @@ namespace YuGhiOhBattleHandler
             {
                 Object cardOnTopOfDeck = m_mainDeck.drawTopCard();
                 hand.Add(cardOnTopOfDeck);
+                m_meReadOnly.setCardsInHand(m_meReadOnly.getCardsInHand() + 1);
             }
         }
 
@@ -261,10 +529,12 @@ namespace YuGhiOhBattleHandler
         {
             Object cardOnTopOfDeck = m_mainDeck.drawTopCard();
             hand.Add(cardOnTopOfDeck);
+            m_meReadOnly.setCardsInHand(m_meReadOnly.getCardsInHand() + 1);
         }
 
-        
-
+        /// <summary>
+        /// Shuffle Main Deck, Side Deck, and Extra Deck. Called at the beginning of the game.
+        /// </summary>
         internal void shuffleAllDecks()
         {
             shuffleMainDeck();

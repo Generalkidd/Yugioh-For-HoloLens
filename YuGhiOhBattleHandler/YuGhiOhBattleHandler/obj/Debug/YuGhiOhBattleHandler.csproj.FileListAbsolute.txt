@@ -18,7 +18,6 @@ C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOh
 C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\qualifiers.txt
 C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Seth\Documents\Visual Studio 2015\Projects\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\MultipleQualifiersPerDimensionFound.txt
-C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\YuGhiOhBattleHandler.csprojResolveAssemblyReference.cache
 C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\YuGhiOhBattleHandler.winmd
 C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\YuGhiOhBattleHandler.winmdobj
 C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\YuGhiOhBattleHandler.compile.pdb
@@ -58,3 +57,4 @@ C:\Users\stephenc\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGh
 C:\Users\stephenc\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\qualifiers.txt
 C:\Users\stephenc\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\qualifiers.txt.intermediate
 C:\Users\stephenc\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\obj\Debug\YuGhiOhBattleHandler.csprojResolveAssemblyReference.cache

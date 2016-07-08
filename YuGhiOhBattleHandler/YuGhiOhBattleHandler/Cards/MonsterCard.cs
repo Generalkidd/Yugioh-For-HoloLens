@@ -36,7 +36,7 @@ namespace YuGhiOhBattleHandler
         private Mode m_Mode;
 
 
-        internal MonsterCard(string cardName, int cardLevel, CardAttributeOrType attributeOrType, string cardType,int attackPoints, int defensePoints, string cardDescription, long cardNumber, bool isPendulum, bool isXyz, bool isSynchro, bool isSynchroTuner, bool isFusion, bool isRitual, BitmapImage bi)
+        internal MonsterCard(string cardName, int cardLevel, CardAttributeOrType attributeOrType, string cardType, int attackPoints, int defensePoints, string cardDescription, long cardNumber, bool isPendulum, bool isXyz, bool isSynchro, bool isSynchroTuner, bool isFusion, bool isRitual, BitmapImage bi)
         {
             c.setCardName(cardName);
             m_type = cardType;
@@ -60,9 +60,19 @@ namespace YuGhiOhBattleHandler
             return m_attackPoints;
         }
 
+        internal void setAttackPoints(int toSet)
+        {
+            m_attackPoints = toSet;
+        }
+
         public int getDefensePoints()
         {
             return m_defensePoints;
+        }
+
+        internal void setDefensePoints(int toSet)
+        {
+            m_defensePoints = toSet;
         }
 
         public string getName()
@@ -95,6 +105,11 @@ namespace YuGhiOhBattleHandler
             return m_isPlayed;
         }
 
+        internal string getYuGhiOhType()
+        {
+            return m_type;
+        }
+           
         internal void ChangeBattlePosition()
         {
             if (m_Mode == Mode.Attack)

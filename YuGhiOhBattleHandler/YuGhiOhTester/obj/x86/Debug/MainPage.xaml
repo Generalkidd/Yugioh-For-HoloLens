@@ -10,8 +10,12 @@
     Height="1000">
     <StackPanel Margin="0,0,0,0" >
         <StackPanel BorderThickness="2" BorderBrush="Red">
-            <TextBlock x:ConnectionId='97' Height="20" x:Name="OpponentUsernameBlock" Text="No User"/>
-            <ProgressBar x:ConnectionId='98' HorizontalAlignment="Left" x:Name="OpponentLifepointsBar" Value="100" Width="500" Height="30"/>
+            <TextBlock x:ConnectionId='98' Height="20" x:Name="OpponentUsernameBlock" Text="No User"/>
+            <StackPanel Orientation="Horizontal">
+                <ProgressBar x:ConnectionId='155' HorizontalAlignment="Left" x:Name="OpponentLifepointsBar" Value="8000" Maximum="8000" Width="500" Height="30"/>
+                <TextBlock Text="Lifepoints=" />
+                <TextBlock x:ConnectionId='156' x:Name="OppLifePointsText" Text="8000"/>
+            </StackPanel>
             <StackPanel x:ConnectionId='99' BorderThickness="2" BorderBrush="DarkRed" x:Name="OppSpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
                 <StackPanel x:ConnectionId='131' BorderThickness="2" BorderBrush="DarkRed" Margin="20,0,0,0" Width="140" Height="140" x:Name="OppSpellOneZone">
                     <TextBlock x:ConnectionId='152' Height="20" x:Name="OppSpellOneNameBlock" Text="No Spell" />
@@ -85,123 +89,127 @@
         </StackPanel>
         <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
             <StackPanel>
-                <StackPanel x:ConnectionId='1' BorderThickness="2" BorderBrush="DarkBlue" x:Name="MySpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
-                    <StackPanel x:ConnectionId='73' BorderThickness="2" BorderBrush="DarkBlue" Margin="20,0,0,0" Width="140" Height="140" x:Name="MySpellOneZone">
-                        <TextBlock x:ConnectionId='94' Height="20" x:Name="MySpellOneNameBlock" Text="No Spell" />
-                        <Image x:ConnectionId='95' Height="70" x:Name="MySpellOneImage" />
-                        <TextBlock x:ConnectionId='96' Height="20" x:Name="MySpellOneDescBlock" Text="No Descrip" />
+                <StackPanel x:ConnectionId='1' BorderThickness="2" BorderBrush="DarkBlue" Background="DarkBlue"                                         x:Name="MySpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
+                    <StackPanel x:ConnectionId='74' BorderThickness="2" BorderBrush="DarkBlue" Margin="20,0,0,0" Width="140" Height="140" x:Name="MySpellOneZone">
+                        <TextBlock x:ConnectionId='95' Height="20" x:Name="MySpellOneNameBlock" Text="No Spell" />
+                        <Image x:ConnectionId='96' Height="70" x:Name="MySpellOneImage" />
+                        <TextBlock x:ConnectionId='97' Height="20" x:Name="MySpellOneDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='74' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellTwoZone">
-                        <TextBlock x:ConnectionId='91' Height="20" x:Name="MySpellTwoNameBlock" Text="No Spell" />
-                        <Image x:ConnectionId='92' Height="70" x:Name="MySpellTwoImage" />
-                        <TextBlock x:ConnectionId='93' Height="20" x:Name="MySpellTwoDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='75' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellTwoZone">
+                        <TextBlock x:ConnectionId='92' Height="20" x:Name="MySpellTwoNameBlock" Text="No Spell" />
+                        <Image x:ConnectionId='93' Height="70" x:Name="MySpellTwoImage" />
+                        <TextBlock x:ConnectionId='94' Height="20" x:Name="MySpellTwoDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='75' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellThreeZone">
-                        <TextBlock x:ConnectionId='88' Height="20" x:Name="MySpellThreeNameBlock" Text="No Spell" />
-                        <Image x:ConnectionId='89' Height="70" x:Name="MySpellThreeImage" />
-                        <TextBlock x:ConnectionId='90' Height="20" x:Name="MySpellThreeDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='76' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellThreeZone">
+                        <TextBlock x:ConnectionId='89' Height="20" x:Name="MySpellThreeNameBlock" Text="No Spell" />
+                        <Image x:ConnectionId='90' Height="70" x:Name="MySpellThreeImage" />
+                        <TextBlock x:ConnectionId='91' Height="20" x:Name="MySpellThreeDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='76' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellFourZone">
-                        <TextBlock x:ConnectionId='85' Height="20" x:Name="MySpellFourNameBlock" Text="No Spell" />
-                        <Image x:ConnectionId='86' Height="70" x:Name="MySpellFourImage" />
-                        <TextBlock x:ConnectionId='87' Height="20" x:Name="MySpellFourDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='77' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellFourZone">
+                        <TextBlock x:ConnectionId='86' Height="20" x:Name="MySpellFourNameBlock" Text="No Spell" />
+                        <Image x:ConnectionId='87' Height="70" x:Name="MySpellFourImage" />
+                        <TextBlock x:ConnectionId='88' Height="20" x:Name="MySpellFourDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='77' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellFiveZone">
-                        <TextBlock x:ConnectionId='82' Height="20" x:Name="MySpellFiveNameBlock" Text="No Spell" />
-                        <Image x:ConnectionId='83' Height="70" x:Name="MySpellFiveImage" />
-                        <TextBlock x:ConnectionId='84' Height="20" x:Name="MySpellFiveDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='78' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellFiveZone">
+                        <TextBlock x:ConnectionId='83' Height="20" x:Name="MySpellFiveNameBlock" Text="No Spell" />
+                        <Image x:ConnectionId='84' Height="70" x:Name="MySpellFiveImage" />
+                        <TextBlock x:ConnectionId='85' Height="20" x:Name="MySpellFiveDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='78' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellSixZone">
-                        <TextBlock x:ConnectionId='79' Height="20" x:Name="MySpellSixNameBlock" Text="No Spell" />
-                        <Image x:ConnectionId='80' Height="70" x:Name="MySpellSixImage" />
-                        <TextBlock x:ConnectionId='81' Height="20" x:Name="MySpellSixDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='79' Margin="20,0,0,0" BorderThickness="2" BorderBrush="DarkBlue" Width="140" Height="140" x:Name="MySpellSixZone">
+                        <TextBlock x:ConnectionId='80' Height="20" x:Name="MySpellSixNameBlock" Text="No Spell" />
+                        <Image x:ConnectionId='81' Height="70" x:Name="MySpellSixImage" />
+                        <TextBlock x:ConnectionId='82' Height="20" x:Name="MySpellSixDescBlock" Text="No Descrip" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel x:ConnectionId='2' x:Name="MyMonsterZonePanel"                                    BorderThickness="2" Background="LightBlue" BorderBrush="LightBlue" MinHeight="50" Orientation="Horizontal">
-                    <StackPanel x:ConnectionId='43' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterOneZone">
-                        <TextBlock x:ConnectionId='69' Height="20" x:Name="MyMonsterOneNameBlock" Text="No Monster" />
-                        <Image x:ConnectionId='70' Height="70" x:Name="MyMonsterOneImage" />
-                        <TextBlock x:ConnectionId='71' Height="20" x:Name="MyMonsterOneAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='72' Height="20" x:Name="MyMonsterOneDefensePoints" Text="No DEF" />
+                    <StackPanel x:ConnectionId='44' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue"                                  x:Name="MyMonsterOneZone">
+                        <TextBlock x:ConnectionId='70' Height="20" x:Name="MyMonsterOneNameBlock" Text="No Monster" />
+                        <Image x:ConnectionId='71' Height="70" x:Name="MyMonsterOneImage" />
+                        <TextBlock x:ConnectionId='72' Height="20" x:Name="MyMonsterOneAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='73' Height="20" x:Name="MyMonsterOneDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='44' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterTwoZone">
-                        <TextBlock x:ConnectionId='65' Height="20" x:Name="MyMonsterTwoNameBlock" Text="No Monster" />
-                        <Image x:ConnectionId='66' Height="70" x:Name="MyMonsterTwoImage" />
-                        <TextBlock x:ConnectionId='67' Height="20" x:Name="MyMonsterTwoAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='68' Height="20" x:Name="MyMonsterTwoDefensePoints" Text="No DEF" />
+                    <StackPanel x:ConnectionId='45' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue"                                  x:Name="MyMonsterTwoZone">
+                        <TextBlock x:ConnectionId='66' Height="20" x:Name="MyMonsterTwoNameBlock" Text="No Monster" />
+                        <Image x:ConnectionId='67' Height="70" x:Name="MyMonsterTwoImage" />
+                        <TextBlock x:ConnectionId='68' Height="20" x:Name="MyMonsterTwoAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='69' Height="20" x:Name="MyMonsterTwoDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='45' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterThreeZone">
-                        <TextBlock x:ConnectionId='61' Height="20" x:Name="MyMonsterThreeNameBlock" Text="No Monster" />
-                        <Image x:ConnectionId='62' Height="70" x:Name="MyMonsterThreeImage" />
-                        <TextBlock x:ConnectionId='63' Height="20" x:Name="MyMonsterThreeAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='64' Height="20" x:Name="MyMonsterThreeDefensePoints" Text="No DEF" />
+                    <StackPanel x:ConnectionId='46' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue"                                    x:Name="MyMonsterThreeZone">
+                        <TextBlock x:ConnectionId='62' Height="20" x:Name="MyMonsterThreeNameBlock" Text="No Monster" />
+                        <Image x:ConnectionId='63' Height="70" x:Name="MyMonsterThreeImage" />
+                        <TextBlock x:ConnectionId='64' Height="20" x:Name="MyMonsterThreeAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='65' Height="20" x:Name="MyMonsterThreeDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='46' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterFourZone">
-                        <TextBlock x:ConnectionId='57' Height="20" x:Name="MyMonsterFourNameBlock" Text="No Monster" />
-                        <Image x:ConnectionId='58' Height="70" x:Name="MyMonsterFourImage" />
-                        <TextBlock x:ConnectionId='59' Height="20" x:Name="MyMonsterFourAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='60' Height="20" x:Name="MyMonsterFourDefensePoints" Text="No DEF" />
+                    <StackPanel x:ConnectionId='47' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue"                                   x:Name="MyMonsterFourZone">
+                        <TextBlock x:ConnectionId='58' Height="20" x:Name="MyMonsterFourNameBlock" Text="No Monster" />
+                        <Image x:ConnectionId='59' Height="70" x:Name="MyMonsterFourImage" />
+                        <TextBlock x:ConnectionId='60' Height="20" x:Name="MyMonsterFourAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='61' Height="20" x:Name="MyMonsterFourDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='47' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterFiveZone">
-                        <TextBlock x:ConnectionId='53' Height="20" x:Name="MyMonsterFiveNameBlock" Text="No Monster" />
-                        <Image x:ConnectionId='54' Height="70" x:Name="MyMonsterFiveImage" />
-                        <TextBlock x:ConnectionId='55' Height="20" x:Name="MyMonsterFiveAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='56' Height="20" x:Name="MyMonsterFiveDefensePoints" Text="No DEF" />
+                    <StackPanel x:ConnectionId='48' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue"                                   x:Name="MyMonsterFiveZone">
+                        <TextBlock x:ConnectionId='54' Height="20" x:Name="MyMonsterFiveNameBlock" Text="No Monster" />
+                        <Image x:ConnectionId='55' Height="70" x:Name="MyMonsterFiveImage" />
+                        <TextBlock x:ConnectionId='56' Height="20" x:Name="MyMonsterFiveAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='57' Height="20" x:Name="MyMonsterFiveDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='48' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterSixZone">
-                        <TextBlock x:ConnectionId='49' Height="20" x:Name="MyMonsterSixNameBlock" Text="No Monster" />
-                        <Image x:ConnectionId='50' Height="70" x:Name="MyMonsterSixImage" />
-                        <TextBlock x:ConnectionId='51' Height="20" x:Name="MyMonsterSixAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='52' Height="20" x:Name="MyMonsterSixDefensePoints" Text="No DEF" />
+                    <StackPanel x:ConnectionId='49' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue"                                  x:Name="MyMonsterSixZone">
+                        <TextBlock x:ConnectionId='50' Height="20" x:Name="MyMonsterSixNameBlock" Text="No Monster" />
+                        <Image x:ConnectionId='51' Height="70" x:Name="MyMonsterSixImage" />
+                        <TextBlock x:ConnectionId='52' Height="20" x:Name="MyMonsterSixAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='53' Height="20" x:Name="MyMonsterSixDefensePoints" Text="No DEF" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel x:ConnectionId='3' x:Name="MyHandPanel" BorderThickness="2" BorderBrush="Purple" MinHeight="50" Orientation="Horizontal">
-                    <StackPanel x:ConnectionId='7' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                               x:Name="MyHandOneZone">
-                        <TextBlock x:ConnectionId='38' Height="20" x:Name="MyHandOneNameBlock" Text="No Card" />
-                        <Image x:ConnectionId='39' Height="70" x:Name="MyHandOneImage" />
-                        <TextBlock x:ConnectionId='40' Height="20" x:Name="MyHandOneAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='41' Height="20" x:Name="MyHandOneDefensePoints" Text="No DEF" />
-                        <TextBlock x:ConnectionId='42' Height="20" x:Name="MyHandOneDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='8' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                               x:Name="MyHandOneZone">
+                        <TextBlock x:ConnectionId='39' Height="20" x:Name="MyHandOneNameBlock" Text="No Card" />
+                        <Image x:ConnectionId='40' Height="70" x:Name="MyHandOneImage" />
+                        <TextBlock x:ConnectionId='41' Height="20" x:Name="MyHandOneAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='42' Height="20" x:Name="MyHandOneDefensePoints" Text="No DEF" />
+                        <TextBlock x:ConnectionId='43' Height="20" x:Name="MyHandOneDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='8' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                               x:Name="MyHandTwoZone">
-                        <TextBlock x:ConnectionId='33' Height="20" x:Name="MyHandTwoNameBlock" Text="No Card" />
-                        <Image x:ConnectionId='34' Height="70" x:Name="MyHandTwoImage" />
-                        <TextBlock x:ConnectionId='35' Height="20" x:Name="MyHandTwoAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='36' Height="20" x:Name="MyHandTwoDefensePoints" Text="No DEF" />
-                        <TextBlock x:ConnectionId='37' Height="20" x:Name="MyHandTwoDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='9' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                               x:Name="MyHandTwoZone">
+                        <TextBlock x:ConnectionId='34' Height="20" x:Name="MyHandTwoNameBlock" Text="No Card" />
+                        <Image x:ConnectionId='35' Height="70" x:Name="MyHandTwoImage" />
+                        <TextBlock x:ConnectionId='36' Height="20" x:Name="MyHandTwoAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='37' Height="20" x:Name="MyHandTwoDefensePoints" Text="No DEF" />
+                        <TextBlock x:ConnectionId='38' Height="20" x:Name="MyHandTwoDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='9' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                                 x:Name="MyHandThreeZone">
-                        <TextBlock x:ConnectionId='28' Height="20" x:Name="MyHandThreeNameBlock" Text="No Card" />
-                        <Image x:ConnectionId='29' Height="70" x:Name="MyHandThreeImage" />
-                        <TextBlock x:ConnectionId='30' Height="20" x:Name="MyHandThreeAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='31' Height="20" x:Name="MyHandThreeDefensePoints" Text="No DEF" />
-                        <TextBlock x:ConnectionId='32' Height="20" x:Name="MyHandThreeDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='10' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                                 x:Name="MyHandThreeZone">
+                        <TextBlock x:ConnectionId='29' Height="20" x:Name="MyHandThreeNameBlock" Text="No Card" />
+                        <Image x:ConnectionId='30' Height="70" x:Name="MyHandThreeImage" />
+                        <TextBlock x:ConnectionId='31' Height="20" x:Name="MyHandThreeAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='32' Height="20" x:Name="MyHandThreeDefensePoints" Text="No DEF" />
+                        <TextBlock x:ConnectionId='33' Height="20" x:Name="MyHandThreeDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='10' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                                x:Name="MyHandFourZone">
-                        <TextBlock x:ConnectionId='23' Height="20" x:Name="MyHandFourNameBlock" Text="No Card" />
-                        <Image x:ConnectionId='24' Height="70" x:Name="MyHandFourImage" />
-                        <TextBlock x:ConnectionId='25' Height="20" x:Name="MyHandFourAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='26' Height="20" x:Name="MyHandFourDefensePoints" Text="No DEF" />
-                        <TextBlock x:ConnectionId='27' Height="20" x:Name="MyHandFourDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='11' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                                x:Name="MyHandFourZone">
+                        <TextBlock x:ConnectionId='24' Height="20" x:Name="MyHandFourNameBlock" Text="No Card" />
+                        <Image x:ConnectionId='25' Height="70" x:Name="MyHandFourImage" />
+                        <TextBlock x:ConnectionId='26' Height="20" x:Name="MyHandFourAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='27' Height="20" x:Name="MyHandFourDefensePoints" Text="No DEF" />
+                        <TextBlock x:ConnectionId='28' Height="20" x:Name="MyHandFourDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='11' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                                x:Name="MyHandFiveZone">
-                        <TextBlock x:ConnectionId='18' Height="20" x:Name="MyHandFiveNameBlock" Text="No Card" />
-                        <Image x:ConnectionId='19' Height="70" x:Name="MyHandFiveImage" />
-                        <TextBlock x:ConnectionId='20' Height="20" x:Name="MyHandFiveAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='21' Height="20" x:Name="MyHandFiveDefensePoints" Text="No DEF" />
-                        <TextBlock x:ConnectionId='22' Height="20" x:Name="MyHandFiveDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='12' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                                x:Name="MyHandFiveZone">
+                        <TextBlock x:ConnectionId='19' Height="20" x:Name="MyHandFiveNameBlock" Text="No Card" />
+                        <Image x:ConnectionId='20' Height="70" x:Name="MyHandFiveImage" />
+                        <TextBlock x:ConnectionId='21' Height="20" x:Name="MyHandFiveAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='22' Height="20" x:Name="MyHandFiveDefensePoints" Text="No DEF" />
+                        <TextBlock x:ConnectionId='23' Height="20" x:Name="MyHandFiveDescBlock" Text="No Descrip" />
                     </StackPanel>
-                    <StackPanel x:ConnectionId='12' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                               x:Name="MyHandSixZone">
-                        <TextBlock x:ConnectionId='13' Height="20" x:Name="MyHandSixNameBlock" Text="No Card" />
-                        <Image x:ConnectionId='14' Height="70" x:Name="MyHandSixImage" />
-                        <TextBlock x:ConnectionId='15' Height="20" x:Name="MyHandSixAttackPoints" Text="No ATK" />
-                        <TextBlock x:ConnectionId='16' Height="20" x:Name="MyHandSixDefensePoints" Text="No DEF" />
-                        <TextBlock x:ConnectionId='17' Height="20" x:Name="MyHandSixDescBlock" Text="No Descrip" />
+                    <StackPanel x:ConnectionId='13' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Purple"                               x:Name="MyHandSixZone">
+                        <TextBlock x:ConnectionId='14' Height="20" x:Name="MyHandSixNameBlock" Text="No Card" />
+                        <Image x:ConnectionId='15' Height="70" x:Name="MyHandSixImage" />
+                        <TextBlock x:ConnectionId='16' Height="20" x:Name="MyHandSixAttackPoints" Text="No ATK" />
+                        <TextBlock x:ConnectionId='17' Height="20" x:Name="MyHandSixDefensePoints" Text="No DEF" />
+                        <TextBlock x:ConnectionId='18' Height="20" x:Name="MyHandSixDescBlock" Text="No Descrip" />
                     </StackPanel>
                 </StackPanel>
                 <TextBlock x:ConnectionId='4' Height="20" x:Name="MyUserName"  Text="No User"/>
-                <ProgressBar x:ConnectionId='5' x:Name="MyLifePointBar" HorizontalAlignment="Left" Value="100" Width="500" Height="30" />
-                <Button x:ConnectionId='6' x:Name="EndTurnBtn" Content="End Turn"                            />
+                <StackPanel Orientation="Horizontal">
+                    <ProgressBar x:ConnectionId='6' x:Name="MyLifePointBar" HorizontalAlignment="Left" Value="8000" Maximum="8000" Width="500" Height="30" />
+                    <TextBlock Text="Lifepoints=" />
+                    <TextBlock x:ConnectionId='7' x:Name="MyLifePointsText" Text="8000"/>
+                </StackPanel>
+                <Button x:ConnectionId='5' x:Name="EndTurnBtn" Content="End Turn"                            />
             </StackPanel>
         </StackPanel>
     </StackPanel>

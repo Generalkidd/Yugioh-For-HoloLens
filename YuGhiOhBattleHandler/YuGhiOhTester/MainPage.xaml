@@ -11,7 +11,11 @@
     <StackPanel Margin="0,0,0,0" >
         <StackPanel BorderThickness="2" BorderBrush="Red">
             <TextBlock Height="20" x:Name="OpponentUsernameBlock" Text="No User"/>
-            <ProgressBar HorizontalAlignment="Left" x:Name="OpponentLifepointsBar" Value="100" Width="500" Height="30"/>
+            <StackPanel Orientation="Horizontal">
+                <ProgressBar HorizontalAlignment="Left" x:Name="OpponentLifepointsBar" Value="8000" Maximum="8000" Width="500" Height="30"/>
+                <TextBlock Text="Lifepoints=" />
+                <TextBlock x:Name="OppLifePointsText" Text="8000"/>
+            </StackPanel>
             <StackPanel BorderThickness="2" BorderBrush="DarkRed" x:Name="OppSpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
                 <StackPanel BorderThickness="2" BorderBrush="DarkRed" Margin="20,0,0,0" Width="140" Height="140" x:Name="OppSpellOneZone">
                     <TextBlock Height="20" x:Name="OppSpellOneNameBlock" Text="No Spell" />
@@ -85,7 +89,7 @@
         </StackPanel>
         <StackPanel Margin="0,20,0,0" Orientation="Horizontal">
             <StackPanel>
-                <StackPanel BorderThickness="2" BorderBrush="DarkBlue" x:Name="MySpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
+                <StackPanel BorderThickness="2" BorderBrush="DarkBlue" Background="DarkBlue" Tapped="MySpellAndTrapZonePanel_Tapped" x:Name="MySpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
                     <StackPanel BorderThickness="2" BorderBrush="DarkBlue" Margin="20,0,0,0" Width="140" Height="140" x:Name="MySpellOneZone">
                         <TextBlock Height="20" x:Name="MySpellOneNameBlock" Text="No Spell" />
                         <Image Height="70" x:Name="MySpellOneImage" />
@@ -118,37 +122,37 @@
                     </StackPanel>
                 </StackPanel>
                 <StackPanel x:Name="MyMonsterZonePanel" Tapped="MyMonsterZonePanel_Tapped" BorderThickness="2" Background="LightBlue" BorderBrush="LightBlue" MinHeight="50" Orientation="Horizontal">
-                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterOneZone">
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" Tapped="MyMonsterOneZone_Tapped" x:Name="MyMonsterOneZone">
                         <TextBlock Height="20" x:Name="MyMonsterOneNameBlock" Text="No Monster" />
                         <Image Height="70" x:Name="MyMonsterOneImage" />
                         <TextBlock Height="20" x:Name="MyMonsterOneAttackPoints" Text="No ATK" />
                         <TextBlock Height="20" x:Name="MyMonsterOneDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterTwoZone">
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" Tapped="MyMonsterTwoZone_Tapped" x:Name="MyMonsterTwoZone">
                         <TextBlock Height="20" x:Name="MyMonsterTwoNameBlock" Text="No Monster" />
                         <Image Height="70" x:Name="MyMonsterTwoImage" />
                         <TextBlock Height="20" x:Name="MyMonsterTwoAttackPoints" Text="No ATK" />
                         <TextBlock Height="20" x:Name="MyMonsterTwoDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterThreeZone">
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" Tapped="MyMonsterThreeZone_Tapped" x:Name="MyMonsterThreeZone">
                         <TextBlock Height="20" x:Name="MyMonsterThreeNameBlock" Text="No Monster" />
                         <Image Height="70" x:Name="MyMonsterThreeImage" />
                         <TextBlock Height="20" x:Name="MyMonsterThreeAttackPoints" Text="No ATK" />
                         <TextBlock Height="20" x:Name="MyMonsterThreeDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterFourZone">
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" Tapped="MyMonsterFourZone_Tapped" x:Name="MyMonsterFourZone">
                         <TextBlock Height="20" x:Name="MyMonsterFourNameBlock" Text="No Monster" />
                         <Image Height="70" x:Name="MyMonsterFourImage" />
                         <TextBlock Height="20" x:Name="MyMonsterFourAttackPoints" Text="No ATK" />
                         <TextBlock Height="20" x:Name="MyMonsterFourDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterFiveZone">
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" Tapped="MyMonsterFiveZone_Tapped" x:Name="MyMonsterFiveZone">
                         <TextBlock Height="20" x:Name="MyMonsterFiveNameBlock" Text="No Monster" />
                         <Image Height="70" x:Name="MyMonsterFiveImage" />
                         <TextBlock Height="20" x:Name="MyMonsterFiveAttackPoints" Text="No ATK" />
                         <TextBlock Height="20" x:Name="MyMonsterFiveDefensePoints" Text="No DEF" />
                     </StackPanel>
-                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" x:Name="MyMonsterSixZone">
+                    <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="LightBlue" Tapped="MyMonsterSixZone_Tapped" x:Name="MyMonsterSixZone">
                         <TextBlock Height="20" x:Name="MyMonsterSixNameBlock" Text="No Monster" />
                         <Image Height="70" x:Name="MyMonsterSixImage" />
                         <TextBlock Height="20" x:Name="MyMonsterSixAttackPoints" Text="No ATK" />
@@ -200,7 +204,11 @@
                     </StackPanel>
                 </StackPanel>
                 <TextBlock Height="20" x:Name="MyUserName"  Text="No User"/>
-                <ProgressBar x:Name="MyLifePointBar" HorizontalAlignment="Left" Value="100" Width="500" Height="30" />
+                <StackPanel Orientation="Horizontal">
+                    <ProgressBar x:Name="MyLifePointBar" HorizontalAlignment="Left" Value="8000" Maximum="8000" Width="500" Height="30" />
+                    <TextBlock Text="Lifepoints=" />
+                    <TextBlock x:Name="MyLifePointsText" Text="8000"/>
+                </StackPanel>
                 <Button x:Name="EndTurnBtn" Content="End Turn" Tapped="EndTurnBtn_Tapped" />
             </StackPanel>
         </StackPanel>

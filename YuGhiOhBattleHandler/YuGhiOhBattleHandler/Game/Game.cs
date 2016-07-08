@@ -13,6 +13,8 @@ namespace YuGhiOhBattleHandler
         private int gameID;
         private int playerWhosTurnItIs;
         private bool playerHasNormalSummonedThisTurn;
+        private bool playerOneTrapHoleEnabled = false;
+        private bool playerTwoTrapHoleEnabled = false;
 
         /// <summary>
         /// We can grab the otherPlayer's data using our own username, but we won't be able to do actions with it.
@@ -62,7 +64,8 @@ namespace YuGhiOhBattleHandler
             NotYourTurn,
             AlreadyNormalSummonedThisTurn,
             AlreadyPlayedMaxNumberOfMonsters,
-            InvalidMove
+            InvalidMove,
+            IneligibleMonsterType
         }
 
         internal Result RequestNormalSummon(int idOfAttacker, Object cardToSummon, int numberOfMonstersAlreadyPlayed)
@@ -123,6 +126,7 @@ namespace YuGhiOhBattleHandler
                 playerWhosTurnItIs = 2;
                 playerHasNormalSummonedThisTurn = false;
                 player2.NotifyOfYourTurn();
+                player2.drawCard();
                 player1.NotifyOfOppTurn();
                 return Result.Success;
             }
@@ -135,6 +139,7 @@ namespace YuGhiOhBattleHandler
                 playerWhosTurnItIs = 1;
                 playerHasNormalSummonedThisTurn = false;
                 player1.NotifyOfYourTurn();
+                player1.drawCard();
                 player2.NotifyOfOppTurn();
                 return Result.Success;
             }
@@ -176,6 +181,364 @@ namespace YuGhiOhBattleHandler
             player2.shuffleAllDecks();
             player1.draw5Cards();
             player2.draw5Cards();
+        }
+
+        internal Result RequestDarkHole(int id)
+        {
+            if (player1.id == id && playerWhosTurnItIs == 1)
+            {
+                IList<MonsterCard> faceDownMonsters = player1.getFaceDownCardsInMonsterZone();
+                IList<MonsterCard> faceUpMonsters = player1.getFaceUpMonstersInMonsterZone();
+                while(faceDownMonsters.Count>0)
+                { 
+                    player1.SendToGraveYard(faceDownMonsters[0],Zone.Monster);
+                    faceDownMonsters = player1.getFaceDownCardsInMonsterZone();
+                }
+                while(faceUpMonsters.Count>0)
+                {
+                    player1.SendToGraveYard(faceUpMonsters[0],Zone.Monster);
+                    faceUpMonsters = player1.getFaceUpMonstersInMonsterZone();
+                }
+                faceDownMonsters = player2.getFaceDownCardsInMonsterZone();
+                faceUpMonsters = player2.getFaceUpMonstersInMonsterZone();
+                while (faceDownMonsters.Count > 0)
+                {
+                    player2.SendToGraveYard(faceDownMonsters[0], Zone.Monster);
+                    faceDownMonsters = player2.getFaceDownCardsInMonsterZone();
+                }
+                while (faceUpMonsters.Count > 0)
+                {
+                    player2.SendToGraveYard(faceUpMonsters[0], Zone.Monster);
+                    faceUpMonsters = player2.getFaceUpMonstersInMonsterZone();
+                }
+                return Result.Success;
+            }
+            else if (player1.id == id && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 2)
+            {
+                IList<MonsterCard> faceDownMonsters = player1.getFaceDownCardsInMonsterZone();
+                IList<MonsterCard> faceUpMonsters = player1.getFaceUpMonstersInMonsterZone();
+                while (faceDownMonsters.Count > 0)
+                {
+                    player1.SendToGraveYard(faceDownMonsters[0], Zone.Monster);
+                    faceDownMonsters = player1.getFaceDownCardsInMonsterZone();
+                }
+                while (faceUpMonsters.Count > 0)
+                {
+                    player1.SendToGraveYard(faceUpMonsters[0], Zone.Monster);
+                    faceUpMonsters = player1.getFaceUpMonstersInMonsterZone();
+                }
+                faceDownMonsters = player2.getFaceDownCardsInMonsterZone();
+                faceUpMonsters = player2.getFaceUpMonstersInMonsterZone();
+                while (faceDownMonsters.Count > 0)
+                {
+                    player2.SendToGraveYard(faceDownMonsters[0], Zone.Monster);
+                    faceDownMonsters = player2.getFaceDownCardsInMonsterZone();
+                }
+                while (faceUpMonsters.Count > 0)
+                {
+                    player2.SendToGraveYard(faceUpMonsters[0], Zone.Monster);
+                    faceUpMonsters = player2.getFaceUpMonstersInMonsterZone();
+                }
+                return Result.Success;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestRedMedicine(int id)
+        {
+            if (player1.id == id && playerWhosTurnItIs == 1)
+            {
+                player1.setLifePoints(player1.getLifePoints() + 500);
+                return Result.Success;
+            }
+            else if (player1.id == id && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 2)
+            {
+                player2.setLifePoints(player2.getLifePoints() + 500);
+                return Result.Success;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestSparks(int id)
+        {
+            if (player1.id == id && playerWhosTurnItIs == 1)
+            {
+                player2.setLifePoints(player2.getLifePoints() - 500);
+                return Result.Success;
+            }
+            else if (player1.id == id && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 2)
+            {
+                player1.setLifePoints(player1.getLifePoints() - 500);
+                return Result.Success;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestFissure(int id)
+        {
+            if (player1.id == id && playerWhosTurnItIs == 1)
+            {
+                int lowestAttack = int.MaxValue;
+                MonsterCard toDestroy=null;
+                IList<MonsterCard> faceUpMonsters = player2.getFaceUpMonstersInMonsterZone();
+                foreach (MonsterCard c in faceUpMonsters)
+                {
+                    if(c.getAttackPoints()<lowestAttack)
+                    {
+                        lowestAttack = c.getAttackPoints();
+                        toDestroy = c;
+                    }
+                }
+                if(toDestroy!=null)
+                {
+                    player2.SendToGraveYard(toDestroy, Zone.Monster);
+                }
+                return Result.Success;
+            }
+            else if (player1.id == id && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 2)
+            {
+                int lowestAttack = int.MaxValue;
+                MonsterCard toDestroy = null;
+                IList<MonsterCard> faceUpMonsters = player1.getFaceUpMonstersInMonsterZone();
+                foreach (MonsterCard c in faceUpMonsters)
+                {
+                    if (c.getAttackPoints() < lowestAttack)
+                    {
+                        lowestAttack = c.getAttackPoints();
+                        toDestroy = c;
+                    }
+                }
+                if (toDestroy != null)
+                {
+                    player1.SendToGraveYard(toDestroy, Zone.Monster);
+                }
+                return Result.Success;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestTrapHole(int id)
+        {
+            if (player1.id == id && playerWhosTurnItIs == 1)
+            {
+                playerOneTrapHoleEnabled = true;
+                return Result.Success;
+            }
+            else if (player1.id == id && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 2)
+            {
+                playerTwoTrapHoleEnabled = true;
+                return Result.Success;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestEquip(int id, object equipableCard, ref MonsterCard monsterCard)
+        {
+            if (player1.id == id && playerWhosTurnItIs == 1 && equipableCard is SpellAndTrapCard)
+            {
+                SpellAndTrapCard stc = equipableCard as SpellAndTrapCard;
+                if(stc.getName()== "Legendary Sword")
+                {
+                    if(monsterCard.getYuGhiOhType().ToUpper().Contains("WARRIOR"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if(stc.getName() == "Beast Fangs")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("BEAST"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.getName() == "Violet Crystal")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("ZOMBIE"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.getName() == "Book of Secret Arts")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("SPELLCASTER"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.getName() == "Power of Kaishin")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("AQUA"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else
+                {
+                    return Result.InvalidMove;
+                }
+                return Result.Success;
+            }
+            else if (player1.id == id && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 2)
+            {
+                SpellAndTrapCard stc = equipableCard as SpellAndTrapCard;
+                if (stc.getName() == "Legendary Sword")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("WARRIOR"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.getName() == "Beast Fangs")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("BEAST"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.getName() == "Violet Crystal")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("ZOMBIE"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.getName() == "Book of Secret Arts")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("SPELLCASTER"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.getName() == "Power of Kaishin")
+                {
+                    if (monsterCard.getYuGhiOhType().ToUpper().Contains("AQUA"))
+                    {
+                        monsterCard.setAttackPoints(monsterCard.getAttackPoints() + 300);
+                        monsterCard.setDefensePoints(monsterCard.getDefensePoints() + 300);
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else
+                {
+                    return Result.InvalidMove;
+                }
+                return Result.Success;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
         }
     }
 }

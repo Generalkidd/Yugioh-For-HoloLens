@@ -681,6 +681,7 @@ namespace YuGhiOhTester
                     if (result == "")
                     {
                         disEngageCurrentlySelected();
+                        clearMyMonsterCardsOnGUI();
                         placeMyMonsterCardsOnGUI();
                         clearHandOnGUI();
                         List<Object> hand = me.getHand() as List<Object>;
@@ -732,6 +733,7 @@ namespace YuGhiOhTester
             //Update GUI
             if (result == "")
             {
+                clearOppMonsterCardsOnGUI();
                 placeOppMonsterCardsOnGUI();
             }
             else
@@ -755,6 +757,19 @@ namespace YuGhiOhTester
             }
 
             p2.EndTurn();
+
+            //Update GUI
+            clearMyMonsterCardsOnGUI();
+            clearMySpellAndTrapCardsOnGUI();
+            placeMyMonsterCardsOnGUI();
+            placeMySpellAndTrapCardsOnGUI();
+            clearHandOnGUI();
+            List<Object> hand = me.getHand() as List<Object>;
+            for (int i = 0; i < hand.Count; i++)
+            {
+                placeHandCardOnGUI(hand[i], i);
+            }
+            collapseUnused();
         }
 
         private void placeOppMonsterCardsOnGUI()
@@ -955,6 +970,589 @@ namespace YuGhiOhTester
                     OppMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     OppMonsterSixNameBlock.Text = c.getName();
                     OppMonsterSixImage.Source = c.getImage();
+                }
+            }
+        }
+
+        private void MySpellAndTrapZonePanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard != null)
+            {
+                if (myCurrentlySelectedCard is SpellAndTrapCard)
+                {
+                    string result = me.CastSpellOrTrap(myCurrentlySelectedCard);
+                    if (result == "")
+                    {
+                        disEngageCurrentlySelected();
+                        clearMySpellAndTrapCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        clearHandOnGUI();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                        collapseUnused();
+                        updateLifePoints();
+                    }
+                    else
+                    {
+                        // template to load for showing Toast Notification
+                        var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                 "<visual>" +
+                                                   "<binding template =\"ToastGeneric\">" +
+                                                     "<text>Can't Summon Monster</text>" +
+                                                     "<text>" +
+                                                       result +
+                                                     "</text>" +
+                                                   "</binding>" +
+                                                 "</visual>" +
+                                               "</toast>";
+                        // load the template as XML document
+                        var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                        xmlDocument.LoadXml(xmlToastTemplate);
+                        ToastNotification toast = new ToastNotification(xmlDocument);
+                        ToastNotificationManager.CreateToastNotifier().Show(toast);
+                    }
+                }
+            }
+        }
+
+        private void clearOppMonsterCardsOnGUI()
+        {
+            OppMonsterOneAttackPoints.Visibility = Visibility.Collapsed;
+            OppMonsterOneDefensePoints.Visibility = Visibility.Collapsed;
+            OppMonsterOneAttackPoints.Text = "";
+            OppMonsterOneDefensePoints.Text = "";
+            OppMonsterOneNameBlock.Text = "";
+            OppMonsterOneImage.Source = null;
+            //OppMonsterDescBlock.Visibility = Visibility.Collapsed;
+
+            OppMonsterTwoAttackPoints.Visibility = Visibility.Collapsed;
+            OppMonsterTwoDefensePoints.Visibility = Visibility.Collapsed;
+            OppMonsterTwoAttackPoints.Text = "";
+            OppMonsterTwoDefensePoints.Text = "";
+            OppMonsterTwoNameBlock.Text = "";
+            OppMonsterTwoImage.Source = null;
+            //OppMonsterTwoDescBlock.Visibility = Visibility.Collapsed;
+
+            OppMonsterThreeAttackPoints.Visibility = Visibility.Collapsed;
+            OppMonsterThreeDefensePoints.Visibility = Visibility.Collapsed;
+            OppMonsterThreeAttackPoints.Text = "";
+            OppMonsterThreeDefensePoints.Text = "";
+            OppMonsterThreeNameBlock.Text = "";
+            OppMonsterThreeImage.Source = null;
+            //OppMonsterThreeDescBlock.Visibility = Visibility.Collapsed;
+
+            OppMonsterFourAttackPoints.Visibility = Visibility.Collapsed;
+            OppMonsterFourDefensePoints.Visibility = Visibility.Collapsed;
+            OppMonsterFourAttackPoints.Text = "";
+            OppMonsterFourDefensePoints.Text = "";
+            OppMonsterFourNameBlock.Text = "";
+            OppMonsterFourImage.Source = null;
+            //OppMonsterFourDescBlock.Visibility = Visibility.Collapsed;
+
+            OppMonsterFiveAttackPoints.Visibility = Visibility.Collapsed;
+            OppMonsterFiveDefensePoints.Visibility = Visibility.Collapsed;
+            OppMonsterFiveAttackPoints.Text = "";
+            OppMonsterFiveDefensePoints.Text = "";
+            OppMonsterFiveNameBlock.Text = "";
+            OppMonsterFiveImage.Source = null;
+            //OppMonsterFiveDescBlock.Visibility = Visibility.Collapsed;
+
+            OppMonsterSixAttackPoints.Visibility = Visibility.Collapsed;
+            OppMonsterSixDefensePoints.Visibility = Visibility.Collapsed;
+            OppMonsterSixAttackPoints.Text = "";
+            OppMonsterSixDefensePoints.Text = "";
+            OppMonsterSixNameBlock.Text = "";
+            OppMonsterSixImage.Source = null;
+            //OppMonsterSixDescBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private void clearMyMonsterCardsOnGUI()
+        {
+            MyMonsterOneAttackPoints.Visibility = Visibility.Collapsed;
+            MyMonsterOneDefensePoints.Visibility = Visibility.Collapsed;
+            MyMonsterOneAttackPoints.Text = "";
+            MyMonsterOneDefensePoints.Text = "";
+            MyMonsterOneNameBlock.Text = "";
+            MyMonsterOneImage.Source = null;
+            //OppMonsterDescBlock.Visibility = Visibility.Collapsed;
+
+            MyMonsterTwoAttackPoints.Visibility = Visibility.Collapsed;
+            MyMonsterTwoDefensePoints.Visibility = Visibility.Collapsed;
+            MyMonsterTwoAttackPoints.Text = "";
+            MyMonsterTwoDefensePoints.Text = "";
+            MyMonsterTwoNameBlock.Text = "";
+            MyMonsterTwoImage.Source = null;
+            //OppMonsterTwoDescBlock.Visibility = Visibility.Collapsed;
+
+            MyMonsterThreeAttackPoints.Visibility = Visibility.Collapsed;
+            MyMonsterThreeDefensePoints.Visibility = Visibility.Collapsed;
+            MyMonsterThreeAttackPoints.Text = "";
+            MyMonsterThreeDefensePoints.Text = "";
+            MyMonsterThreeNameBlock.Text = "";
+            MyMonsterThreeImage.Source = null;
+            //OppMonsterThreeDescBlock.Visibility = Visibility.Collapsed;
+
+            MyMonsterFourAttackPoints.Visibility = Visibility.Collapsed;
+            MyMonsterFourDefensePoints.Visibility = Visibility.Collapsed;
+            MyMonsterFourAttackPoints.Text = "";
+            MyMonsterFourDefensePoints.Text = "";
+            MyMonsterFourNameBlock.Text = "";
+            MyMonsterFourImage.Source = null;
+            //OppMonsterFourDescBlock.Visibility = Visibility.Collapsed;
+
+            MyMonsterFiveAttackPoints.Visibility = Visibility.Collapsed;
+            MyMonsterFiveDefensePoints.Visibility = Visibility.Collapsed;
+            MyMonsterFiveAttackPoints.Text = "";
+            MyMonsterFiveDefensePoints.Text = "";
+            MyMonsterFiveNameBlock.Text = "";
+            MyMonsterFiveImage.Source = null;
+            //OppMonsterFiveDescBlock.Visibility = Visibility.Collapsed;
+
+            MyMonsterSixAttackPoints.Visibility = Visibility.Collapsed;
+            MyMonsterSixDefensePoints.Visibility = Visibility.Collapsed;
+            MyMonsterSixAttackPoints.Text = "";
+            MyMonsterSixDefensePoints.Text = "";
+            MyMonsterSixNameBlock.Text = "";
+            MyMonsterSixImage.Source = null;
+            //OppMonsterSixDescBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private void clearMySpellAndTrapCardsOnGUI()
+        {
+            //MySpellOneAttackPoints.Visibility = Visibility.Collapsed;
+            //MySpellOneDefensePoints.Visibility = Visibility.Collapsed;
+            //MySpellOneAttackPoints.Text = "";
+            //MySpellOneDefensePoints.Text = "";
+            MySpellOneNameBlock.Text = "";
+            MySpellOneImage.Source = null;
+            MySpellOneDescBlock.Visibility = Visibility.Collapsed;
+
+            //MySpellTwoAttackPoints.Visibility = Visibility.Collapsed;
+            //MySpellTwoDefensePoints.Visibility = Visibility.Collapsed;
+            //MySpellTwoAttackPoints.Text = "";
+            //MySpellTwoDefensePoints.Text = "";
+            MySpellTwoNameBlock.Text = "";
+            MySpellTwoImage.Source = null;
+            MySpellTwoDescBlock.Visibility = Visibility.Collapsed;
+
+            //MySpellThreeAttackPoints.Visibility = Visibility.Collapsed;
+            //MySpellThreeDefensePoints.Visibility = Visibility.Collapsed;
+            //MySpellThreeAttackPoints.Text = "";
+            //MySpellThreeDefensePoints.Text = "";
+            MySpellThreeNameBlock.Text = "";
+            MySpellThreeImage.Source = null;
+            MySpellThreeDescBlock.Visibility = Visibility.Collapsed;
+
+            //MySpellFourAttackPoints.Visibility = Visibility.Collapsed;
+            //MySpellFourDefensePoints.Visibility = Visibility.Collapsed;
+            //MySpellFourAttackPoints.Text = "";
+            //MySpellFourDefensePoints.Text = "";
+            MySpellFourNameBlock.Text = "";
+            MySpellFourImage.Source = null;
+            MySpellFourDescBlock.Visibility = Visibility.Collapsed;
+
+            //MySpellFiveAttackPoints.Visibility = Visibility.Collapsed;
+            //MySpellFiveDefensePoints.Visibility = Visibility.Collapsed;
+            //MySpellFiveAttackPoints.Text = "";
+            //MySpellFiveDefensePoints.Text = "";
+            MySpellFiveNameBlock.Text = "";
+            MySpellFiveImage.Source = null;
+            MySpellFiveDescBlock.Visibility = Visibility.Collapsed;
+
+            //MySpellSixAttackPoints.Visibility = Visibility.Collapsed;
+            //MySpellSixDefensePoints.Visibility = Visibility.Collapsed;
+            //MySpellSixAttackPoints.Text = "";
+            //MySpellSixDefensePoints.Text = "";
+            MySpellSixNameBlock.Text = "";
+            MySpellSixImage.Source = null;
+            MySpellSixDescBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private void updateLifePoints()
+        {
+            int myLifePoints = me.getLifePoints();
+            int oppLifePoints = me.getOpponent().getLifePoints();
+            if(myLifePoints>8000)
+            {
+                MyLifePointBar.Maximum = myLifePoints;
+                MyLifePointBar.Value = myLifePoints;
+                MyLifePointsText.Text = myLifePoints + "";
+            }
+            else
+            {
+                MyLifePointBar.Value = myLifePoints;
+                MyLifePointsText.Text = myLifePoints + "";
+            }
+            if (oppLifePoints > 8000)
+            {
+                OpponentLifepointsBar.Maximum = oppLifePoints;
+                OpponentLifepointsBar.Value = oppLifePoints;
+                OppLifePointsText.Text = oppLifePoints + "";
+            }
+            else
+            {
+                OpponentLifepointsBar.Value = oppLifePoints;
+                OppLifePointsText.Text = oppLifePoints + "";
+            }
+        }
+
+        private void placeMySpellAndTrapCardsOnGUI()
+        {
+            List<SpellAndTrapCard> faceDownCards = me.getFaceDownCardsInSpellAndTrapZone() as List<SpellAndTrapCard>;
+            List<SpellAndTrapCard> faceUpCards = me.getFaceUpCardsInSpellAndTrapZone() as List<SpellAndTrapCard>;
+            for (int i = 0; i < faceDownCards.Count; i++)
+            {
+                if (i == 0)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellOneZone.Visibility = Visibility.Visible;
+                    MySpellOneDescBlock.Visibility = Visibility.Visible;
+                    MySpellOneDescBlock.Text = c.getDescription();
+                    MySpellOneNameBlock.Text = c.getName() +  "FDown";
+                    MySpellOneImage.Source = c.getImage();
+                }
+                else if (i == 1)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellTwoZone.Visibility = Visibility.Visible;
+                    MySpellTwoDescBlock.Visibility = Visibility.Visible;
+                    MySpellTwoDescBlock.Text = c.getDescription();
+                    MySpellTwoNameBlock.Text = c.getName() + "FDown";
+                    MySpellTwoImage.Source = c.getImage();
+                }
+                else if (i == 2)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellThreeZone.Visibility = Visibility.Visible;
+                    MySpellThreeDescBlock.Visibility = Visibility.Visible;
+                    MySpellThreeDescBlock.Text = c.getDescription();
+                    MySpellThreeNameBlock.Text = c.getName() + "FDown";
+                    MySpellThreeImage.Source = c.getImage();
+                }
+                else if (i == 3)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellFourZone.Visibility = Visibility.Visible;
+                    MySpellFourDescBlock.Visibility = Visibility.Visible;
+                    MySpellFourDescBlock.Text = c.getDescription();
+                    MySpellFourNameBlock.Text = c.getName() + "FDown";
+                    MySpellFourImage.Source = c.getImage();
+                }
+                else if (i == 4)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellFiveZone.Visibility = Visibility.Visible;
+                    MySpellFiveDescBlock.Visibility = Visibility.Visible;
+                    MySpellFiveDescBlock.Text = c.getDescription();
+                    MySpellFiveNameBlock.Text = c.getName() + "FDown";
+                    MySpellFiveImage.Source = c.getImage();
+                }
+                else if (i == 5)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellSixZone.Visibility = Visibility.Visible;
+                    MySpellSixDescBlock.Visibility = Visibility.Visible;
+                    MySpellSixDescBlock.Text = c.getDescription();
+                    MySpellSixNameBlock.Text = c.getName() + "FDown";
+                    MySpellSixImage.Source = c.getImage();
+                }
+            }
+            for (int i = 0; i < faceUpCards.Count; i++)
+            {
+                if (i + faceDownCards.Count == 0)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellOneZone.Visibility = Visibility.Visible;
+                    MySpellOneDescBlock.Visibility = Visibility.Visible;
+                    MySpellOneDescBlock.Text = c.getDescription();
+                    MySpellOneNameBlock.Text = c.getName() + "FUp";
+                    MySpellOneImage.Source = c.getImage();
+                }
+                else if (i + faceDownCards.Count == 1)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellTwoZone.Visibility = Visibility.Visible;
+                    MySpellTwoDescBlock.Visibility = Visibility.Visible;
+                    MySpellTwoDescBlock.Text = c.getDescription();
+                    MySpellTwoNameBlock.Text = c.getName() + "FUp";
+                    MySpellTwoImage.Source = c.getImage();
+                }
+                else if (i + faceDownCards.Count == 2)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellThreeZone.Visibility = Visibility.Visible;
+                    MySpellThreeDescBlock.Visibility = Visibility.Visible;
+                    MySpellThreeDescBlock.Text = c.getDescription();
+                    MySpellThreeNameBlock.Text = c.getName() + "FUp";
+                    MySpellThreeImage.Source = c.getImage();
+                }
+                else if (i + faceDownCards.Count == 3)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellFourZone.Visibility = Visibility.Visible;
+                    MySpellFourDescBlock.Visibility = Visibility.Visible;
+                    MySpellFourDescBlock.Text = c.getDescription();
+                    MySpellFourNameBlock.Text = c.getName() + "FUp";
+                    MySpellFourImage.Source = c.getImage();
+                }
+                else if (i + faceDownCards.Count == 4)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellFiveZone.Visibility = Visibility.Visible;
+                    MySpellFiveDescBlock.Visibility = Visibility.Visible;
+                    MySpellFiveDescBlock.Text = c.getDescription();
+                    MySpellFiveNameBlock.Text = c.getName() + "FUp";
+                    MySpellFiveImage.Source = c.getImage();
+                }
+                else if (i + faceDownCards.Count == 5)
+                {
+                    SpellAndTrapCard c = faceDownCards[i];
+                    MySpellSixZone.Visibility = Visibility.Visible;
+                    MySpellSixDescBlock.Visibility = Visibility.Visible;
+                    MySpellSixDescBlock.Text = c.getDescription();
+                    MySpellSixNameBlock.Text = c.getName() + "FUp";
+                    MySpellSixImage.Source = c.getImage();
+                }
+            }
+        }
+
+        private void MyMonsterOneZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if(myCurrentlySelectedCard is SpellAndTrapCard)
+            {
+                string result = me.TryEquip(myCurrentlySelectedCard, MyMonsterOneNameBlock.Text);
+                if(result=="")
+                {
+                    clearMyMonsterCardsOnGUI();
+                    placeMyMonsterCardsOnGUI();
+                    clearHandOnGUI();
+                    List<Object> hand = me.getHand() as List<Object>;
+                    for (int i = 0; i < hand.Count; i++)
+                    {
+                        placeHandCardOnGUI(hand[i], i);
+                    }
+                    collapseUnused();
+                }
+                else
+                {
+                    // template to load for showing Toast Notification
+                    var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                             "<visual>" +
+                                               "<binding template =\"ToastGeneric\">" +
+                                                 "<text>Can't Equip to Monster</text>" +
+                                                 "<text>" +
+                                                   result +
+                                                 "</text>" +
+                                               "</binding>" +
+                                             "</visual>" +
+                                           "</toast>";
+                    // load the template as XML document
+                    var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                    xmlDocument.LoadXml(xmlToastTemplate);
+                    ToastNotification toast = new ToastNotification(xmlDocument);
+                    ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
+        }
+
+        private void MyMonsterTwoZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is SpellAndTrapCard)
+            {
+                string result = me.TryEquip(myCurrentlySelectedCard, MyMonsterTwoNameBlock.Text);
+                if (result == "")
+                {
+                    clearMyMonsterCardsOnGUI();
+                    placeMyMonsterCardsOnGUI();
+                    clearHandOnGUI();
+                    List<Object> hand = me.getHand() as List<Object>;
+                    for (int i = 0; i < hand.Count; i++)
+                    {
+                        placeHandCardOnGUI(hand[i], i);
+                    }
+                    collapseUnused();
+                }
+                else
+                {
+                    // template to load for showing Toast Notification
+                    var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                             "<visual>" +
+                                               "<binding template =\"ToastGeneric\">" +
+                                                 "<text>Can't Equip to Monster</text>" +
+                                                 "<text>" +
+                                                   result +
+                                                 "</text>" +
+                                               "</binding>" +
+                                             "</visual>" +
+                                           "</toast>";
+                    // load the template as XML document
+                    var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                    xmlDocument.LoadXml(xmlToastTemplate);
+                    ToastNotification toast = new ToastNotification(xmlDocument);
+                    ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
+        }
+
+        private void MyMonsterThreeZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is SpellAndTrapCard)
+            {
+                string result = me.TryEquip(myCurrentlySelectedCard, MyMonsterThreeNameBlock.Text);
+                if (result == "")
+                {
+                    clearMyMonsterCardsOnGUI();
+                    placeMyMonsterCardsOnGUI();
+                    clearHandOnGUI();
+                    List<Object> hand = me.getHand() as List<Object>;
+                    for (int i = 0; i < hand.Count; i++)
+                    {
+                        placeHandCardOnGUI(hand[i], i);
+                    }
+                    collapseUnused();
+                }
+                else
+                {
+                    // template to load for showing Toast Notification
+                    var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                             "<visual>" +
+                                               "<binding template =\"ToastGeneric\">" +
+                                                 "<text>Can't Equip To Monster</text>" +
+                                                 "<text>" +
+                                                   result +
+                                                 "</text>" +
+                                               "</binding>" +
+                                             "</visual>" +
+                                           "</toast>";
+                    // load the template as XML document
+                    var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                    xmlDocument.LoadXml(xmlToastTemplate);
+                    ToastNotification toast = new ToastNotification(xmlDocument);
+                    ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
+        }
+
+        private void MyMonsterFourZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is SpellAndTrapCard)
+            {
+                string result = me.TryEquip(myCurrentlySelectedCard, MyMonsterFourNameBlock.Text);
+                if (result == "")
+                {
+                    clearMyMonsterCardsOnGUI();
+                    placeMyMonsterCardsOnGUI();
+                    clearHandOnGUI();
+                    List<Object> hand = me.getHand() as List<Object>;
+                    for (int i = 0; i < hand.Count; i++)
+                    {
+                        placeHandCardOnGUI(hand[i], i);
+                    }
+                    collapseUnused();
+                }
+                else
+                {
+                    // template to load for showing Toast Notification
+                    var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                             "<visual>" +
+                                               "<binding template =\"ToastGeneric\">" +
+                                                 "<text>Can't Equip To Monster</text>" +
+                                                 "<text>" +
+                                                   result +
+                                                 "</text>" +
+                                               "</binding>" +
+                                             "</visual>" +
+                                           "</toast>";
+                    // load the template as XML document
+                    var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                    xmlDocument.LoadXml(xmlToastTemplate);
+                    ToastNotification toast = new ToastNotification(xmlDocument);
+                    ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
+        }
+
+        private void MyMonsterFiveZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is SpellAndTrapCard)
+            {
+                string result = me.TryEquip(myCurrentlySelectedCard, MyMonsterFiveNameBlock.Text);
+                if (result == "")
+                {
+                    clearMyMonsterCardsOnGUI();
+                    placeMyMonsterCardsOnGUI();
+                    clearHandOnGUI();
+                    List<Object> hand = me.getHand() as List<Object>;
+                    for (int i = 0; i < hand.Count; i++)
+                    {
+                        placeHandCardOnGUI(hand[i], i);
+                    }
+                    collapseUnused();
+                }
+                else
+                {
+                    // template to load for showing Toast Notification
+                    var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                             "<visual>" +
+                                               "<binding template =\"ToastGeneric\">" +
+                                                 "<text>Can't Equip To Monster</text>" +
+                                                 "<text>" +
+                                                   result +
+                                                 "</text>" +
+                                               "</binding>" +
+                                             "</visual>" +
+                                           "</toast>";
+                    // load the template as XML document
+                    var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                    xmlDocument.LoadXml(xmlToastTemplate);
+                    ToastNotification toast = new ToastNotification(xmlDocument);
+                    ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
+        }
+
+        private void MyMonsterSixZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is SpellAndTrapCard)
+            {
+                string result = me.TryEquip(myCurrentlySelectedCard, MyMonsterSixNameBlock.Text);
+                if (result == "")
+                {
+                    clearMyMonsterCardsOnGUI();
+                    placeMyMonsterCardsOnGUI();
+                    clearHandOnGUI();
+                    List<Object> hand = me.getHand() as List<Object>;
+                    for (int i = 0; i < hand.Count; i++)
+                    {
+                        placeHandCardOnGUI(hand[i], i);
+                    }
+                    collapseUnused();
+                }
+                else
+                {
+                    // template to load for showing Toast Notification
+                    var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                             "<visual>" +
+                                               "<binding template =\"ToastGeneric\">" +
+                                                 "<text>Can't Equip To Monster</text>" +
+                                                 "<text>" +
+                                                   result +
+                                                 "</text>" +
+                                               "</binding>" +
+                                             "</visual>" +
+                                           "</toast>";
+                    // load the template as XML document
+                    var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                    xmlDocument.LoadXml(xmlToastTemplate);
+                    ToastNotification toast = new ToastNotification(xmlDocument);
+                    ToastNotificationManager.CreateToastNotifier().Show(toast);
                 }
             }
         }

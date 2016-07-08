@@ -60,7 +60,7 @@ namespace YuGhiOhBattleHandler
         /// <summary>
         /// The more cards the opponent has the more chances they have to beat you.
         /// </summary>
-        private int numberOfCardsInHand = 5;
+        private int numberOfCardsInHand = 0;
 
         /// <summary>
         /// The more cards the opponent has the more chances they have to beat you.
@@ -165,6 +165,28 @@ namespace YuGhiOhBattleHandler
         internal void setFaceUpSpellsAndTraps(IList<SpellAndTrapCard> toSet)
         {
             faceUpSpellsAndTraps = toSet as List<SpellAndTrapCard>;
+        }
+
+        /// <summary>
+        /// The number of cards in the Spell and Trap zone which are face down and not readable by everyone
+        /// </summary>
+        private int faceDownSpellsAndTraps = 0;
+
+        /// <summary>
+        /// The number of cards in the Spell and Trap zone which are face down and not readable by everyone
+        /// </summary>
+        public int getNumberOfFaceDownSpellsAndTraps()
+        {
+            return faceDownSpellsAndTraps;
+        }
+
+        /// <summary>
+        /// Function not visible to the public on purpose. Only the innards of this
+        /// this code should be able to set this property. This is done by the Game class.
+        /// </summary>
+        internal void setNumberOfFaceDownSpellsAndTraps(int toSet)
+        {
+            faceDownSpellsAndTraps = toSet;
         }
 
         /// <summary>
