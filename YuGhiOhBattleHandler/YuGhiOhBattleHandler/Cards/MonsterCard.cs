@@ -55,6 +55,11 @@ namespace YuGhiOhBattleHandler
             c.setBitmapImage(bi);
         }
 
+        internal int getLevel()
+        {
+            return m_level;
+        }
+
         public int getAttackPoints()
         {
             return m_attackPoints;

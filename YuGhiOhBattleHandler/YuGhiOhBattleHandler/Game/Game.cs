@@ -12,6 +12,7 @@ namespace YuGhiOhBattleHandler
         private Player player2;
         private int gameID;
         private int playerWhosTurnItIs;
+        private int sacrifices = 0;
         private bool playerHasNormalSummonedThisTurn;
         private bool playerOneTrapHoleEnabled = false;
         private bool playerTwoTrapHoleEnabled = false;
@@ -65,12 +66,13 @@ namespace YuGhiOhBattleHandler
             AlreadyNormalSummonedThisTurn,
             AlreadyPlayedMaxNumberOfMonsters,
             InvalidMove,
-            IneligibleMonsterType
+            IneligibleMonsterType,
+            NeedMoreSacrifices
         }
 
         internal Result RequestNormalSummon(int idOfAttacker, Object cardToSummon, int numberOfMonstersAlreadyPlayed)
         {
-            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1 && !playerHasNormalSummonedThisTurn && numberOfMonstersAlreadyPlayed<6)
+            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1 && !playerHasNormalSummonedThisTurn && numberOfMonstersAlreadyPlayed<6 && ((4+sacrifices)>=(cardToSummon as MonsterCard).getLevel()))
             {
                 player1.addFaceDownToMonsterZone(cardToSummon);
                 playerHasNormalSummonedThisTurn = true;
@@ -84,11 +86,15 @@ namespace YuGhiOhBattleHandler
             {
                 return Result.AlreadyPlayedMaxNumberOfMonsters;
             }
+            else if(((4 + sacrifices) >= (cardToSummon as MonsterCard).getLevel()))
+            {
+                return Result.NeedMoreSacrifices;
+            }
             else if(player1.id==idOfAttacker)
             {
                 return Result.AlreadyNormalSummonedThisTurn;
             }
-            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2 && !playerHasNormalSummonedThisTurn && numberOfMonstersAlreadyPlayed<6)
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2 && !playerHasNormalSummonedThisTurn)
             {
                 player2.addFaceDownToMonsterZone(cardToSummon);
                 playerHasNormalSummonedThisTurn = true;

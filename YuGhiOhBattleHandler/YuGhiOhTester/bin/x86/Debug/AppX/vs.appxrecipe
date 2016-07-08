@@ -22,13 +22,13 @@
     <AppXManifest Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2016-07-08T01:53:57.123</Modified>
+      <Modified>2016-07-08T02:24:51.347</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\YuGhiOhTester.exe">
       <PackagePath>entrypoint\YuGhiOhTester.exe</PackagePath>
-      <Modified>2016-07-08T01:53:56.798</Modified>
+      <Modified>2016-07-08T02:24:46.206</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seth\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -444,7 +444,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\bin\Debug\YuGhiOhBattleHandler.winmd">
       <PackagePath>YuGhiOhBattleHandler.winmd</PackagePath>
-      <Modified>2016-07-08T01:45:43.001</Modified>
+      <Modified>2016-07-08T02:24:43.973</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
@@ -486,7 +486,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\YuGhiOhTester.xr.xml">
       <PackagePath>YuGhiOhTester.xr.xml</PackagePath>
-      <Modified>2016-07-07T20:50:59.563</Modified>
+      <Modified>2016-07-08T01:56:44.645</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -494,11 +494,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2016-07-08T01:45:46.542</Modified>
+      <Modified>2016-07-08T02:24:47.501</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\bin\x86\Debug\Core\YuGhiOhTester.exe">
       <PackagePath>YuGhiOhTester.exe</PackagePath>
-      <Modified>2016-07-08T01:53:57.117</Modified>
+      <Modified>2016-07-08T02:24:51.336</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
