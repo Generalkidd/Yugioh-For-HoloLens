@@ -79,6 +79,34 @@ namespace YuGhiOhBattleHandler
             (toPlay as MonsterCard).changeIsPlayed();
         }
 
+        internal void switchFaceDownToFaceUp(MonsterCard toSwitch)
+        {
+            if(faceDownCardsInMonsterZone.Contains(toSwitch))
+            {
+                faceDownCardsInMonsterZone.Remove(toSwitch);
+                toSwitch.setCanAttack(false);
+                IList<MonsterCard> toSet = m_meReadOnly.getFaceUpMonstersInMonsterZone();
+                toSet.Add(toSwitch);
+                m_meReadOnly.setFaceUpMonstersInMonsterZone(toSet);
+                if (toSwitch.getBattlePosition() == Mode.Attack)
+                {
+                    m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInAttackMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInAttackMode() - 1);
+                }
+                else
+                {
+                    m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInDefenseMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInDefenseMode() - 1);
+                }
+            }
+            else if(m_meReadOnly.getFaceUpMonstersInMonsterZone().Contains(toSwitch))
+            {
+                IList<MonsterCard> toSet = m_meReadOnly.getFaceUpMonstersInMonsterZone();
+                int index = toSet.IndexOf(toSwitch);
+                toSwitch.setCanAttack(false);
+                toSet[index] = toSwitch;
+                m_meReadOnly.setFaceUpMonstersInMonsterZone(toSet);
+            }
+        }
+
         /// <summary>
         /// This is how the Front End grabs the data to print it to the screen. The Opponent should not be able to access this function although it is public
         /// because they should never have a handle to the their opponent's Player class.
@@ -484,6 +512,45 @@ namespace YuGhiOhBattleHandler
             }
         }
 
+        public string AttackLifePoints(MonsterCard attackingCard)
+        {
+            Game.Result r = myCurrentGame.RequestAttackLifePoints(id, attackingCard);
+            if (r.Equals(Game.Result.Success))
+            {
+                return "";
+            }
+            else
+            {
+                return r.ToString();
+            }
+        }
+        
+        public string AttackFaceDownOpponent(MonsterCard attackingCard, Mode faceDownCardsMode)
+        {
+            Game.Result r= myCurrentGame.RequestAttackOnFaceDownCard(id, attackingCard, faceDownCardsMode);
+            if(r.Equals(Game.Result.Success))
+            {
+                return "";
+            }
+            else
+            {
+                return r.ToString();
+            }
+        }
+
+        public string AttackFaceUpOpponent(MonsterCard attackingCard, MonsterCard defendingCard)
+        {
+            Game.Result r =myCurrentGame.RequestAttack(id, attackingCard, defendingCard);
+            if (r.Equals(Game.Result.Success))
+            {
+                return "";
+            }
+            else
+            {
+                return r.ToString();
+            }
+        }
+
         /// <summary>
         /// Set the usable decks for the duel(s). Only callable by innards of this code. The Game will
         /// assign decks based on what was selected in the deck creator.
@@ -542,6 +609,20 @@ namespace YuGhiOhBattleHandler
             ShuffleExtraDeck();
         }
 
+        internal void allowMonstersToAttack()
+        {
+            for(int i=0; i<faceDownCardsInMonsterZone.Count; i++)
+            {
+                faceDownCardsInMonsterZone[i].setCanAttack(true);
+            }
+            List<MonsterCard> faceUp = m_meReadOnly.getFaceUpMonstersInMonsterZone() as List<MonsterCard>;
+            for(int i=0; i<faceUp.Count; i++)
+            {
+                faceUp[i].setCanAttack(true);
+            }
+            m_meReadOnly.setFaceUpMonstersInMonsterZone(faceUp);
+        }
+
         internal void ShuffleExtraDeck()
         {
             m_extraDeck.ShuffleDeck();
@@ -557,6 +638,9 @@ namespace YuGhiOhBattleHandler
             m_mainDeck.ShuffleDeck();
         }
 
-      
+        public object getField()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

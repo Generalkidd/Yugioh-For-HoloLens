@@ -14,6 +14,11 @@ namespace YuGhiOhBattleHandler
         Defense
     }
 
+    public enum Face
+    {
+        Up,
+        Down
+    }
 
     /// <summary>
     /// Monster Cards are used to battle and defeat your opponent. Battles 
@@ -34,7 +39,8 @@ namespace YuGhiOhBattleHandler
         private bool m_isRitual;
         private bool m_isPlayed;
         private Mode m_Mode;
-
+        private Face facePosition;
+        private bool canAttack;
 
         internal MonsterCard(string cardName, int cardLevel, CardAttributeOrType attributeOrType, string cardType, int attackPoints, int defensePoints, string cardDescription, long cardNumber, bool isPendulum, bool isXyz, bool isSynchro, bool isSynchroTuner, bool isFusion, bool isRitual, BitmapImage bi)
         {
@@ -52,10 +58,22 @@ namespace YuGhiOhBattleHandler
             m_isSynchroTuner = isSynchroTuner;
             m_isPlayed = false;
             m_Mode = Mode.Attack;
+            facePosition = Face.Down;
             c.setBitmapImage(bi);
+            canAttack = false;
         }
 
-        internal int getLevel()
+        public bool CanAttack()
+        {
+            return canAttack;
+        }
+
+        internal void setCanAttack(bool toSet)
+        {
+            canAttack = toSet;
+        }
+
+        public int getLevel()
         {
             return m_level;
         }
@@ -78,6 +96,11 @@ namespace YuGhiOhBattleHandler
         internal void setDefensePoints(int toSet)
         {
             m_defensePoints = toSet;
+        }
+
+        internal void FlipFaceUp()
+        {
+            facePosition = Face.Up;
         }
 
         public string getName()
@@ -114,7 +137,7 @@ namespace YuGhiOhBattleHandler
         {
             return m_type;
         }
-           
+
         internal void ChangeBattlePosition()
         {
             if (m_Mode == Mode.Attack)
@@ -125,16 +148,6 @@ namespace YuGhiOhBattleHandler
             {
                 m_Mode = Mode.Attack;
             }
-        }
-
-        public bool Battle(Player user, Player opponent, int indexOfOpponentsMonsterToBattle)
-        {
-            return true;
-        }
-
-        public void Play(Player user, Player opponent, Mode mode)
-        {
-
         }
     }
 }

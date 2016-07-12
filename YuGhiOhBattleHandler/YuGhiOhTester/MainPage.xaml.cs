@@ -21,6 +21,14 @@ using YuGhiOhBattleHandler;
 
 namespace YuGhiOhTester
 {
+
+    public enum CurrentlySelectedCardType
+    {
+        Hand,
+        Monster,
+        None
+    }
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -31,7 +39,7 @@ namespace YuGhiOhTester
         private Object myCurrentlySelectedCard;
         private StackPanel myCurrentlySelectedStackPanel;
         private BitmapImage cardBack;
-
+        private CurrentlySelectedCardType currentlySelectedCardType;
         //Normally both Player1 and Player 2 would not be stored by the users.
         private Player p1;
         private Player p2;
@@ -500,14 +508,19 @@ namespace YuGhiOhTester
         {
             if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
             {
-                if (myCurrentlySelectedStackPanel != null)
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType==CurrentlySelectedCardType.Hand)
                 {
                     myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if(myCurrentlySelectedCard != null && currentlySelectedCardType==CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
                 }
                 StackPanel s = sender as StackPanel;
                 s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
                 myCurrentlySelectedCard = me.getHand()[0];
                 myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Hand;
             }
             else
             {
@@ -519,14 +532,19 @@ namespace YuGhiOhTester
         {
             if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
             {
-                if (myCurrentlySelectedStackPanel != null)
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
                 {
                     myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
                 }
                 StackPanel s = sender as StackPanel;
                 s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
                 myCurrentlySelectedCard = me.getHand()[1];
                 myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Hand;
             }
             else
             {
@@ -538,14 +556,19 @@ namespace YuGhiOhTester
         {
             if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
             {
-                if (myCurrentlySelectedStackPanel != null)
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
                 {
                     myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
                 }
                 StackPanel s = sender as StackPanel;
                 s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
                 myCurrentlySelectedCard = me.getHand()[2];
                 myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Hand;
             }
             else
             {
@@ -557,14 +580,19 @@ namespace YuGhiOhTester
         {
             if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
             {
-                if (myCurrentlySelectedStackPanel != null)
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
                 {
                     myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
                 }
                 StackPanel s = sender as StackPanel;
                 s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
                 myCurrentlySelectedCard = me.getHand()[3];
                 myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Hand;
             }
             else
             {
@@ -576,14 +604,19 @@ namespace YuGhiOhTester
         {
             if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
             {
-                if (myCurrentlySelectedStackPanel != null)
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
                 {
                     myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
                 }
                 StackPanel s = sender as StackPanel;
                 s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
                 myCurrentlySelectedCard = me.getHand()[4];
                 myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Hand;
             }
             else
             {
@@ -595,14 +628,19 @@ namespace YuGhiOhTester
         {
             if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
             {
-                if (myCurrentlySelectedStackPanel != null)
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
                 {
                     myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
                 }
                 StackPanel s = sender as StackPanel;
                 s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
                 myCurrentlySelectedCard = me.getHand()[5];
                 myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Hand;
             }
             else
             {
@@ -618,6 +656,7 @@ namespace YuGhiOhTester
             }
             myCurrentlySelectedStackPanel = null;
             myCurrentlySelectedCard = null;
+            currentlySelectedCardType = CurrentlySelectedCardType.None;
         }
 
         private void clearHandOnGUI()
@@ -673,7 +712,7 @@ namespace YuGhiOhTester
 
         private void MyMonsterZonePanel_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if (myCurrentlySelectedCard != null)
+            if (myCurrentlySelectedCard != null && currentlySelectedCardType != CurrentlySelectedCardType.Monster)
             {
                 if (myCurrentlySelectedCard is MonsterCard)
                 {
@@ -722,7 +761,7 @@ namespace YuGhiOhTester
             Object toPlay = null;
             for (int i = 0; i < player2Hand.Count; i++)
             {
-                if (player2Hand[i] is MonsterCard)
+                if (player2Hand[i] is MonsterCard && (player2Hand[i] as MonsterCard).getLevel() <= 4)
                 {
                     toPlay = player2Hand[i];
                     break;
@@ -1360,6 +1399,37 @@ namespace YuGhiOhTester
                     ToastNotificationManager.CreateToastNotifier().Show(toast);
                 }
             }
+            else
+            {
+                if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+                {
+                    if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                    }
+                    else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                    }
+                    StackPanel s = sender as StackPanel;
+                    s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                    myCurrentlySelectedCard = getField()[0];
+                    myCurrentlySelectedStackPanel = s;
+                    currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                }
+                else
+                {
+                    disEngageCurrentlySelected();
+                }
+            }
+        }
+
+        private List<MonsterCard> getField()
+        {
+            List<MonsterCard> faceDownCards = me.getFaceDownCardsInMonsterZone() as List<MonsterCard>;
+            List<MonsterCard> faceUpCards = me.getFaceUpMonstersInMonsterZone() as List<MonsterCard>;
+            List<MonsterCard> toReturn = faceDownCards.Concat(faceUpCards).ToList<MonsterCard>();
+            return toReturn;
         }
 
         private void MyMonsterTwoZone_Tapped(object sender, TappedRoutedEventArgs e)
@@ -1397,6 +1467,29 @@ namespace YuGhiOhTester
                     xmlDocument.LoadXml(xmlToastTemplate);
                     ToastNotification toast = new ToastNotification(xmlDocument);
                     ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
+            else
+            {
+                if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+                {
+                    if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                    }
+                    else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                    }
+                    StackPanel s = sender as StackPanel;
+                    s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                    myCurrentlySelectedCard = getField()[1];
+                    myCurrentlySelectedStackPanel = s;
+                    currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                }
+                else
+                {
+                    disEngageCurrentlySelected();
                 }
             }
         }
@@ -1438,6 +1531,29 @@ namespace YuGhiOhTester
                     ToastNotificationManager.CreateToastNotifier().Show(toast);
                 }
             }
+            else
+            {
+                if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+                {
+                    if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                    }
+                    else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                    }
+                    StackPanel s = sender as StackPanel;
+                    s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                    myCurrentlySelectedCard = getField()[2];
+                    myCurrentlySelectedStackPanel = s;
+                    currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                }
+                else
+                {
+                    disEngageCurrentlySelected();
+                }
+            }
         }
 
         private void MyMonsterFourZone_Tapped(object sender, TappedRoutedEventArgs e)
@@ -1475,6 +1591,29 @@ namespace YuGhiOhTester
                     xmlDocument.LoadXml(xmlToastTemplate);
                     ToastNotification toast = new ToastNotification(xmlDocument);
                     ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
+            else
+            {
+                if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+                {
+                    if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                    }
+                    else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                    }
+                    StackPanel s = sender as StackPanel;
+                    s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                    myCurrentlySelectedCard = getField()[3];
+                    myCurrentlySelectedStackPanel = s;
+                    currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                }
+                else
+                {
+                    disEngageCurrentlySelected();
                 }
             }
         }
@@ -1516,6 +1655,29 @@ namespace YuGhiOhTester
                     ToastNotificationManager.CreateToastNotifier().Show(toast);
                 }
             }
+            else
+            {
+                if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+                {
+                    if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                    }
+                    else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                    }
+                    StackPanel s = sender as StackPanel;
+                    s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                    myCurrentlySelectedCard = getField()[4];
+                    myCurrentlySelectedStackPanel = s;
+                    currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                }
+                else
+                {
+                    disEngageCurrentlySelected();
+                }
+            }
         }
 
         private void MyMonsterSixZone_Tapped(object sender, TappedRoutedEventArgs e)
@@ -1553,6 +1715,1258 @@ namespace YuGhiOhTester
                     xmlDocument.LoadXml(xmlToastTemplate);
                     ToastNotification toast = new ToastNotification(xmlDocument);
                     ToastNotificationManager.CreateToastNotifier().Show(toast);
+                }
+            }
+            else
+            {
+                if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+                {
+                    if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                    }
+                    else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                    {
+                        myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                    }
+                    StackPanel s = sender as StackPanel;
+                    s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                    myCurrentlySelectedCard = getField()[5];
+                    myCurrentlySelectedStackPanel = s;
+                    currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                }
+                else
+                {
+                    disEngageCurrentlySelected();
+                }
+            }
+        }
+
+        private void OppMonsterZonePanel_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is MonsterCard)
+            {
+                if (OppMonsterOneZone.Visibility == Visibility.Collapsed && OppMonsterTwoZone.Visibility == Visibility.Collapsed && OppMonsterThreeZone.Visibility == Visibility.Collapsed && OppMonsterFourZone.Visibility == Visibility.Collapsed && OppMonsterFiveZone.Visibility == Visibility.Collapsed && OppMonsterSixZone.Visibility == Visibility.Collapsed)
+                {
+                    string result=me.AttackLifePoints(myCurrentlySelectedCard as MonsterCard);
+                    if(result=="")
+                    {
+                        clearHandOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        clearMySpellAndTrapCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        updateLifePoints();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                    }
+                    else
+                    {
+                        // template to load for showing Toast Notification
+                        var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                 "<visual>" +
+                                                   "<binding template =\"ToastGeneric\">" +
+                                                     "<text>Can't Attack LifePoints</text>" +
+                                                     "<text>" +
+                                                       result +
+                                                     "</text>" +
+                                                   "</binding>" +
+                                                 "</visual>" +
+                                               "</toast>";
+                        // load the template as XML document
+                        var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                        xmlDocument.LoadXml(xmlToastTemplate);
+                        ToastNotification toast = new ToastNotification(xmlDocument);
+                        ToastNotificationManager.CreateToastNotifier().Show(toast);
+                        clearHandOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        clearMySpellAndTrapCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        updateLifePoints();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void OppMonsterOneZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is MonsterCard)
+            {
+                if (OppMonsterOneNameBlock.Text.Contains("?"))
+                {
+                    if (OppMonsterOneAttackPoints.Text.Contains("ATKMode"))
+                    {
+                        string result=me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Attack);
+                        if(result=="")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Defense);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    IList<MonsterCard> oppMonsters=me.getOpponent().getFaceUpMonstersInMonsterZone();
+                    MonsterCard toAttack = null;
+                    for(int i=0; i<oppMonsters.Count; i++)
+                    {
+                        if(OppMonsterOneNameBlock.Text.Equals(oppMonsters[i].getName()))
+                        {
+                            toAttack = oppMonsters[i];
+                            break;
+                        }
+                    }
+                    if(toAttack!=null)
+                    {
+                        string result = me.AttackFaceUpOpponent(myCurrentlySelectedCard as MonsterCard, toAttack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        clearHandOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        clearMySpellAndTrapCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        updateLifePoints();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void OppMonsterTwoZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is MonsterCard)
+            {
+                if (OppMonsterTwoNameBlock.Text.Contains("?"))
+                {
+                    if (OppMonsterTwoAttackPoints.Text.Contains("ATKMode"))
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Attack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Defense);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    IList<MonsterCard> oppMonsters = me.getOpponent().getFaceUpMonstersInMonsterZone();
+                    MonsterCard toAttack = null;
+                    for (int i = 0; i < oppMonsters.Count; i++)
+                    {
+                        if (OppMonsterTwoNameBlock.Text.Equals(oppMonsters[i].getName()))
+                        {
+                            toAttack = oppMonsters[i];
+                            break;
+                        }
+                    }
+                    if (toAttack != null)
+                    {
+                        string result = me.AttackFaceUpOpponent(myCurrentlySelectedCard as MonsterCard, toAttack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        clearHandOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        clearMySpellAndTrapCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        updateLifePoints();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void OppMonsterThreeZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is MonsterCard)
+            {
+                if (OppMonsterThreeNameBlock.Text.Contains("?"))
+                {
+                    if (OppMonsterThreeAttackPoints.Text.Contains("ATKMode"))
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Attack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Defense);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    IList<MonsterCard> oppMonsters = me.getOpponent().getFaceUpMonstersInMonsterZone();
+                    MonsterCard toAttack = null;
+                    for (int i = 0; i < oppMonsters.Count; i++)
+                    {
+                        if (OppMonsterThreeNameBlock.Text.Equals(oppMonsters[i].getName()))
+                        {
+                            toAttack = oppMonsters[i];
+                            break;
+                        }
+                    }
+                    if (toAttack != null)
+                    {
+                        string result = me.AttackFaceUpOpponent(myCurrentlySelectedCard as MonsterCard, toAttack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        clearHandOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        clearMySpellAndTrapCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        updateLifePoints();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void OppMonsterFourZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is MonsterCard)
+            {
+                if (OppMonsterFourNameBlock.Text.Contains("?"))
+                {
+                    if (OppMonsterFourAttackPoints.Text.Contains("ATKMode"))
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Attack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Defense);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    IList<MonsterCard> oppMonsters = me.getOpponent().getFaceUpMonstersInMonsterZone();
+                    MonsterCard toAttack = null;
+                    for (int i = 0; i < oppMonsters.Count; i++)
+                    {
+                        if (OppMonsterFourNameBlock.Text.Equals(oppMonsters[i].getName()))
+                        {
+                            toAttack = oppMonsters[i];
+                            break;
+                        }
+                    }
+                    if (toAttack != null)
+                    {
+                        string result = me.AttackFaceUpOpponent(myCurrentlySelectedCard as MonsterCard, toAttack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        clearHandOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        clearMySpellAndTrapCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        updateLifePoints();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void OppMonsterFiveZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is MonsterCard)
+            {
+                if (OppMonsterFiveNameBlock.Text.Contains("?"))
+                {
+                    if (OppMonsterFiveAttackPoints.Text.Contains("ATKMode"))
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Attack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Defense);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    IList<MonsterCard> oppMonsters = me.getOpponent().getFaceUpMonstersInMonsterZone();
+                    MonsterCard toAttack = null;
+                    for (int i = 0; i < oppMonsters.Count; i++)
+                    {
+                        if (OppMonsterFiveNameBlock.Text.Equals(oppMonsters[i].getName()))
+                        {
+                            toAttack = oppMonsters[i];
+                            break;
+                        }
+                    }
+                    if (toAttack != null)
+                    {
+                        string result = me.AttackFaceUpOpponent(myCurrentlySelectedCard as MonsterCard, toAttack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        clearHandOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        clearMySpellAndTrapCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        updateLifePoints();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void OppMonsterSixZone_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedCard is MonsterCard)
+            {
+                if (OppMonsterSixNameBlock.Text.Contains("?"))
+                {
+                    if (OppMonsterSixAttackPoints.Text.Contains("ATKMode"))
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Attack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Defense);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    IList<MonsterCard> oppMonsters = me.getOpponent().getFaceUpMonstersInMonsterZone();
+                    MonsterCard toAttack = null;
+                    for (int i = 0; i < oppMonsters.Count; i++)
+                    {
+                        if (OppMonsterSixNameBlock.Text.Equals(oppMonsters[i].getName()))
+                        {
+                            toAttack = oppMonsters[i];
+                            break;
+                        }
+                    }
+                    if (toAttack != null)
+                    {
+                        string result = me.AttackFaceUpOpponent(myCurrentlySelectedCard as MonsterCard, toAttack);
+                        if (result == "")
+                        {
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                        else
+                        {
+                            // template to load for showing Toast Notification
+                            var xmlToastTemplate = "<toast launch=\"app-defined-string\">" +
+                                                     "<visual>" +
+                                                       "<binding template =\"ToastGeneric\">" +
+                                                         "<text>Can't Attack Monster</text>" +
+                                                         "<text>" +
+                                                           result +
+                                                         "</text>" +
+                                                       "</binding>" +
+                                                     "</visual>" +
+                                                   "</toast>";
+                            // load the template as XML document
+                            var xmlDocument = new Windows.Data.Xml.Dom.XmlDocument();
+                            xmlDocument.LoadXml(xmlToastTemplate);
+                            ToastNotification toast = new ToastNotification(xmlDocument);
+                            ToastNotificationManager.CreateToastNotifier().Show(toast);
+                            clearHandOnGUI();
+                            clearMyMonsterCardsOnGUI();
+                            clearMySpellAndTrapCardsOnGUI();
+                            clearOppMonsterCardsOnGUI();
+                            placeMyMonsterCardsOnGUI();
+                            placeMySpellAndTrapCardsOnGUI();
+                            placeOppMonsterCardsOnGUI();
+                            updateLifePoints();
+                            List<Object> hand = me.getHand() as List<Object>;
+                            for (int i = 0; i < hand.Count; i++)
+                            {
+                                placeHandCardOnGUI(hand[i], i);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        clearHandOnGUI();
+                        clearMyMonsterCardsOnGUI();
+                        clearMySpellAndTrapCardsOnGUI();
+                        clearOppMonsterCardsOnGUI();
+                        placeMyMonsterCardsOnGUI();
+                        placeMySpellAndTrapCardsOnGUI();
+                        placeOppMonsterCardsOnGUI();
+                        updateLifePoints();
+                        List<Object> hand = me.getHand() as List<Object>;
+                        for (int i = 0; i < hand.Count; i++)
+                        {
+                            placeHandCardOnGUI(hand[i], i);
+                        }
+                    }
                 }
             }
         }

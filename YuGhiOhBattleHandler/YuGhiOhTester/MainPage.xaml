@@ -16,7 +16,7 @@
                 <TextBlock Text="Lifepoints=" />
                 <TextBlock x:Name="OppLifePointsText" Text="8000"/>
             </StackPanel>
-            <StackPanel BorderThickness="2" BorderBrush="DarkRed" x:Name="OppSpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
+            <StackPanel BorderThickness="2" BorderBrush="DarkRed"  x:Name="OppSpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
                 <StackPanel BorderThickness="2" BorderBrush="DarkRed" Margin="20,0,0,0" Width="140" Height="140" x:Name="OppSpellOneZone">
                     <TextBlock Height="20" x:Name="OppSpellOneNameBlock" Text="No Spell" />
                     <Image Height="70" x:Name="OppSpellOneImage" />
@@ -48,38 +48,38 @@
                     <TextBlock Height="20" x:Name="OppSpellSixDescBlock" Text="No Descrip" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:Name="OppMonsterZonePanel" BorderThickness="2" BorderBrush="Tomato" MinHeight="50" Orientation="Horizontal">
-                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterOneZone">
+            <StackPanel x:Name="OppMonsterZonePanel" Tapped="OppMonsterZonePanel_Tapped" Background="Tomato" BorderThickness="2" BorderBrush="Tomato" MinHeight="50" Orientation="Horizontal">
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" Tapped="OppMonsterOneZone_Tapped" x:Name="OppMonsterOneZone">
                     <TextBlock Height="20" x:Name="OppMonsterOneNameBlock" Text="No Monster" />
                     <Image Height="70" x:Name="OppMonsterOneImage" />
                     <TextBlock Height="20" x:Name="OppMonsterOneAttackPoints" Text="No ATK" />
                     <TextBlock Height="20" x:Name="OppMonsterOneDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterTwoZone">
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" Tapped="OppMonsterTwoZone_Tapped" x:Name="OppMonsterTwoZone">
                     <TextBlock Height="20" x:Name="OppMonsterTwoNameBlock" Text="No Monster" />
                     <Image Height="70" x:Name="OppMonsterTwoImage" />
                     <TextBlock Height="20" x:Name="OppMonsterTwoAttackPoints" Text="No ATK" />
                     <TextBlock Height="20" x:Name="OppMonsterTwoDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterThreeZone">
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" Tapped="OppMonsterThreeZone_Tapped" x:Name="OppMonsterThreeZone">
                     <TextBlock Height="20" x:Name="OppMonsterThreeNameBlock" Text="No Monster" />
                     <Image Height="70" x:Name="OppMonsterThreeImage" />
                     <TextBlock Height="20" x:Name="OppMonsterThreeAttackPoints" Text="No ATK" />
                     <TextBlock Height="20" x:Name="OppMonsterThreeDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterFourZone">
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" Tapped="OppMonsterFourZone_Tapped" x:Name="OppMonsterFourZone">
                     <TextBlock Height="20" x:Name="OppMonsterFourNameBlock" Text="No Monster" />
                     <Image Height="70" x:Name="OppMonsterFourImage" />
                     <TextBlock Height="20" x:Name="OppMonsterFourAttackPoints" Text="No ATK" />
                     <TextBlock Height="20" x:Name="OppMonsterFourDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterFiveZone">
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" Tapped="OppMonsterFiveZone_Tapped" x:Name="OppMonsterFiveZone">
                     <TextBlock Height="20" x:Name="OppMonsterFiveNameBlock" Text="No Monster" />
                     <Image Height="70" x:Name="OppMonsterFiveImage" />
                     <TextBlock Height="20" x:Name="OppMonsterFiveAttackPoints" Text="No ATK" />
                     <TextBlock Height="20" x:Name="OppMonsterFiveDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterSixZone">
+                <StackPanel Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" Tapped="OppMonsterSixZone_Tapped" x:Name="OppMonsterSixZone">
                     <TextBlock Height="20" x:Name="OppMonsterSixNameBlock" Text="No Monster" />
                     <Image Height="70" x:Name="OppMonsterSixImage" />
                     <TextBlock Height="20" x:Name="OppMonsterSixAttackPoints" Text="No ATK" />

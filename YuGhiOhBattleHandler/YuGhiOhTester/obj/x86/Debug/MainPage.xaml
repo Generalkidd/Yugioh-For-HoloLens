@@ -16,7 +16,7 @@
                 <TextBlock Text="Lifepoints=" />
                 <TextBlock x:ConnectionId='156' x:Name="OppLifePointsText" Text="8000"/>
             </StackPanel>
-            <StackPanel x:ConnectionId='99' BorderThickness="2" BorderBrush="DarkRed" x:Name="OppSpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
+            <StackPanel x:ConnectionId='99' BorderThickness="2" BorderBrush="DarkRed"  x:Name="OppSpellAndTrapZonePanel" MinHeight="50" Orientation="Horizontal">
                 <StackPanel x:ConnectionId='131' BorderThickness="2" BorderBrush="DarkRed" Margin="20,0,0,0" Width="140" Height="140" x:Name="OppSpellOneZone">
                     <TextBlock x:ConnectionId='152' Height="20" x:Name="OppSpellOneNameBlock" Text="No Spell" />
                     <Image x:ConnectionId='153' Height="70" x:Name="OppSpellOneImage" />
@@ -48,38 +48,38 @@
                     <TextBlock x:ConnectionId='139' Height="20" x:Name="OppSpellSixDescBlock" Text="No Descrip" />
                 </StackPanel>
             </StackPanel>
-            <StackPanel x:ConnectionId='100' x:Name="OppMonsterZonePanel" BorderThickness="2" BorderBrush="Tomato" MinHeight="50" Orientation="Horizontal">
-                <StackPanel x:ConnectionId='101' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterOneZone">
+            <StackPanel x:ConnectionId='100' x:Name="OppMonsterZonePanel"                                     Background="Tomato" BorderThickness="2" BorderBrush="Tomato" MinHeight="50" Orientation="Horizontal">
+                <StackPanel x:ConnectionId='101' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato"                                   x:Name="OppMonsterOneZone">
                     <TextBlock x:ConnectionId='127' Height="20" x:Name="OppMonsterOneNameBlock" Text="No Monster" />
                     <Image x:ConnectionId='128' Height="70" x:Name="OppMonsterOneImage" />
                     <TextBlock x:ConnectionId='129' Height="20" x:Name="OppMonsterOneAttackPoints" Text="No ATK" />
                     <TextBlock x:ConnectionId='130' Height="20" x:Name="OppMonsterOneDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel x:ConnectionId='102' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterTwoZone">
+                <StackPanel x:ConnectionId='102' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato"                                   x:Name="OppMonsterTwoZone">
                     <TextBlock x:ConnectionId='123' Height="20" x:Name="OppMonsterTwoNameBlock" Text="No Monster" />
                     <Image x:ConnectionId='124' Height="70" x:Name="OppMonsterTwoImage" />
                     <TextBlock x:ConnectionId='125' Height="20" x:Name="OppMonsterTwoAttackPoints" Text="No ATK" />
                     <TextBlock x:ConnectionId='126' Height="20" x:Name="OppMonsterTwoDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel x:ConnectionId='103' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterThreeZone">
+                <StackPanel x:ConnectionId='103' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato"                                     x:Name="OppMonsterThreeZone">
                     <TextBlock x:ConnectionId='119' Height="20" x:Name="OppMonsterThreeNameBlock" Text="No Monster" />
                     <Image x:ConnectionId='120' Height="70" x:Name="OppMonsterThreeImage" />
                     <TextBlock x:ConnectionId='121' Height="20" x:Name="OppMonsterThreeAttackPoints" Text="No ATK" />
                     <TextBlock x:ConnectionId='122' Height="20" x:Name="OppMonsterThreeDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel x:ConnectionId='104' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterFourZone">
+                <StackPanel x:ConnectionId='104' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato"                                    x:Name="OppMonsterFourZone">
                     <TextBlock x:ConnectionId='115' Height="20" x:Name="OppMonsterFourNameBlock" Text="No Monster" />
                     <Image x:ConnectionId='116' Height="70" x:Name="OppMonsterFourImage" />
                     <TextBlock x:ConnectionId='117' Height="20" x:Name="OppMonsterFourAttackPoints" Text="No ATK" />
                     <TextBlock x:ConnectionId='118' Height="20" x:Name="OppMonsterFourDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel x:ConnectionId='105' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterFiveZone">
+                <StackPanel x:ConnectionId='105' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato"                                    x:Name="OppMonsterFiveZone">
                     <TextBlock x:ConnectionId='111' Height="20" x:Name="OppMonsterFiveNameBlock" Text="No Monster" />
                     <Image x:ConnectionId='112' Height="70" x:Name="OppMonsterFiveImage" />
                     <TextBlock x:ConnectionId='113' Height="20" x:Name="OppMonsterFiveAttackPoints" Text="No ATK" />
                     <TextBlock x:ConnectionId='114' Height="20" x:Name="OppMonsterFiveDefensePoints" Text="No DEF" />
                 </StackPanel>
-                <StackPanel x:ConnectionId='106' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato" x:Name="OppMonsterSixZone">
+                <StackPanel x:ConnectionId='106' Margin="20,0,0,0" Width="140" Height="140" BorderThickness="2" BorderBrush="Tomato"                                   x:Name="OppMonsterSixZone">
                     <TextBlock x:ConnectionId='107' Height="20" x:Name="OppMonsterSixNameBlock" Text="No Monster" />
                     <Image x:ConnectionId='108' Height="70" x:Name="OppMonsterSixImage" />
                     <TextBlock x:ConnectionId='109' Height="20" x:Name="OppMonsterSixAttackPoints" Text="No ATK" />
