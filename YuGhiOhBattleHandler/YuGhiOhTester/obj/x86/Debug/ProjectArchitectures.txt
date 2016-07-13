@@ -1,2 +1,0 @@
-C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhBattleHandler\YuGhiOhBattleHandler.csproj;neutral
-C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGhiOhBattleHandler\YuGhiOhTester\YuGhiOhTester.csproj;x86
