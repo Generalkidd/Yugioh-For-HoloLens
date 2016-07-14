@@ -3088,6 +3088,16 @@ Amount of compression. The value roughly corresponds to the ratio between the re
         <para>Build assetBundle without any special option.</para>
       </summary>
     </member>
+    <member name="F:UnityEditor.BuildAssetBundleOptions.OmitClassVersions">
+      <summary>
+        <para>Do not include class version numbers when writing out an AssetBundle.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.BuildAssetBundleOptions.StrictMode">
+      <summary>
+        <para>Do not allow the build to succeed if any errors are reporting during it.</para>
+      </summary>
+    </member>
     <member name="F:UnityEditor.BuildAssetBundleOptions.UncompressedAssetBundle">
       <summary>
         <para>Don't compress the data when creating the asset bundle.</para>
@@ -3156,6 +3166,11 @@ Amount of compression. The value roughly corresponds to the ratio between the re
     <member name="F:UnityEditor.BuildOptions.ShowBuiltPlayer">
       <summary>
         <para>Show the built player.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEditor.BuildOptions.StrictMode">
+      <summary>
+        <para>Do not allow the build to succeed if any errors are reporting during it.</para>
       </summary>
     </member>
     <member name="F:UnityEditor.BuildOptions.SymlinkLibraries">
@@ -12019,6 +12034,12 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
         <para>GameObject utility functions.</para>
       </summary>
     </member>
+    <member name="M:UnityEditor.GameObjectUtility.Align(UnityEngine.GameObject)">
+      <summary>
+        <para>Resets a GameObject local position, rotation and scale.</para>
+      </summary>
+      <param name="child">The GameObject to position.</param>
+    </member>
     <member name="M:UnityEditor.GameObjectUtility.AreStaticEditorFlagsSet(UnityEngine.GameObject,UnityEditor.StaticEditorFlags)">
       <summary>
         <para>Returns true if the passed in StaticEditorFlags are set on the GameObject specified.</para>
@@ -12099,6 +12120,13 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
       <returns>
         <para>Unique name for a new GameObject.</para>
       </returns>
+    </member>
+    <member name="M:UnityEditor.GameObjectUtility.SetLayerRecursively(UnityEngine.GameObject,System.Int32)">
+      <summary>
+        <para>Recursively sets the layer of a GameObject and its children.</para>
+      </summary>
+      <param name="go">The GameObject recursively visited.</param>
+      <param name="layer">The layer to set.</param>
     </member>
     <member name="M:UnityEditor.GameObjectUtility.SetNavMeshArea(UnityEngine.GameObject,System.Int32)">
       <summary>
@@ -16236,6 +16264,11 @@ To force a reload of the mask, simply set  ModelImporterClipAnimation.maskSource
         <para>Enable GPU skinning on capable platforms.</para>
       </summary>
     </member>
+    <member name="P:UnityEditor.PlayerSettings.graphicsJobs">
+      <summary>
+        <para>Enable graphics jobs (multi threaded rendering).</para>
+      </summary>
+    </member>
     <member name="P:UnityEditor.PlayerSettings.iPhoneBundleIdentifier">
       <summary>
         <para>The bundle identifier of the iPhone application.</para>
@@ -17891,6 +17924,11 @@ For more information - https:msdn.microsoft.comlibrarywindowsappshh779671https:m
         <para>Xbox One Specific Player Settings.</para>
       </summary>
     </member>
+    <member name="P:UnityEditor.PlayerSettings.XboxOne.monoLoggingLevel">
+      <summary>
+        <para>This option controls the mono trace log in XboxOne builds. This is a very verbose and expensive tool that can be used to help with debugging a potential mono issue.</para>
+      </summary>
+    </member>
     <member name="M:UnityEditor.PlayerSettings.XboxOne.AddAllowedProductId(System.String)">
       <summary>
         <para>Add a ProductId to the list of products that can load the content package created from your project.  This setting is only available for content packages.</para>
@@ -18633,11 +18671,6 @@ For more information - https:msdn.microsoft.comlibrarywindowsappshh779671https:m
     <member name="F:UnityEditor.Rendering.PlatformShaderSettings.reflectionProbeBoxProjection">
       <summary>
         <para>Allows you to specify whether Reflection Probes Box Projection should be used.</para>
-      </summary>
-    </member>
-    <member name="F:UnityEditor.Rendering.PlatformShaderSettings.singlePassStereoRendering">
-      <summary>
-        <para>Allows you to specify whether shaders support single-pass stereo rendering.</para>
       </summary>
     </member>
     <member name="F:UnityEditor.Rendering.PlatformShaderSettings.standardShaderQuality">
