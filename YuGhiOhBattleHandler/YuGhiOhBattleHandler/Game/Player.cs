@@ -72,11 +72,15 @@ namespace YuGhiOhBattleHandler
         /// <param name="toPlay">The card which is to be summoned</param>
         internal void addFaceDownToMonsterZone(Object toPlay)
         {
+            if((toPlay as MonsterCard).getBattlePosition()==Mode.Attack)
+            {
+                (toPlay as MonsterCard).ChangeBattlePosition();
+            }
             faceDownCardsInMonsterZone.Add(toPlay as MonsterCard);
-            m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInAttackMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInAttackMode() + 1);
+            m_meReadOnly.setNumberOfFaceDownCardsInMonsterZone(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZone() + 1);
             hand.Remove(toPlay);
             m_meReadOnly.setCardsInHand(m_meReadOnly.getCardsInHand() - 1);
-            (toPlay as MonsterCard).changeIsPlayed();
+            
         }
 
         internal void switchFaceDownToFaceUp(MonsterCard toSwitch)
@@ -88,14 +92,8 @@ namespace YuGhiOhBattleHandler
                 IList<MonsterCard> toSet = m_meReadOnly.getFaceUpMonstersInMonsterZone();
                 toSet.Add(toSwitch);
                 m_meReadOnly.setFaceUpMonstersInMonsterZone(toSet);
-                if (toSwitch.getBattlePosition() == Mode.Attack)
-                {
-                    m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInAttackMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInAttackMode() - 1);
-                }
-                else
-                {
-                    m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInDefenseMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInDefenseMode() - 1);
-                }
+                m_meReadOnly.setNumberOfFaceDownCardsInMonsterZone(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZone() - 1);
+               
             }
             else if(m_meReadOnly.getFaceUpMonstersInMonsterZone().Contains(toSwitch))
             {
@@ -230,14 +228,7 @@ namespace YuGhiOhBattleHandler
                 if(faceDownCardsInMonsterZone.Contains(c as MonsterCard))
                 {
                     faceDownCardsInMonsterZone.Remove(c as MonsterCard);
-                    if ((c as MonsterCard).getBattlePosition() == Mode.Attack)
-                    {
-                        m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInAttackMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInAttackMode() - 1);
-                    }
-                    else if((c as MonsterCard).getBattlePosition() == Mode.Defense)
-                    {
-                        m_meReadOnly.setNumberOfFaceDownCardsInMonsterZoneInDefenseMode(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZoneInDefenseMode() - 1);
-                    }
+                    m_meReadOnly.setNumberOfFaceDownCardsInMonsterZone(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZone() - 1);
                 }
                 else if(m_meReadOnly.getFaceUpMonstersInMonsterZone().Contains(c as MonsterCard))
                 {
@@ -512,6 +503,46 @@ namespace YuGhiOhBattleHandler
             }
         }
 
+        /// <summary>
+        /// Called by the Game class to actually change the mode of the card (to attack mode or defense mode).
+        /// </summary>
+        /// <param name="toChangeModeOf">to change to attack mode or defense mode</param>
+        internal void GameChangeModeOfCard(MonsterCard toChangeModeOf)
+        {
+            if(faceDownCardsInMonsterZone.Contains(toChangeModeOf))
+            {
+                int index = faceDownCardsInMonsterZone.IndexOf(toChangeModeOf);
+                toChangeModeOf.ChangeBattlePosition();
+                faceDownCardsInMonsterZone[index] = toChangeModeOf;
+            }
+            else if(m_meReadOnly.getFaceUpMonstersInMonsterZone().Contains(toChangeModeOf))
+            {
+                IList<MonsterCard> faceUps = m_meReadOnly.getFaceUpMonstersInMonsterZone();
+                int index = faceUps.IndexOf(toChangeModeOf);
+                toChangeModeOf.ChangeBattlePosition();
+                faceUps[index] = toChangeModeOf;
+                m_meReadOnly.setFaceUpMonstersInMonsterZone(faceUps);
+            }
+        }
+
+        /// <summary>
+        /// Asks the game to change the mode of the card (to attack mode or defense mode).
+        /// </summary>
+        /// <param name="toChangeModeOf">to change to attack mode or defense mode</param>
+        /// <returns>"" if successful. Error message if Error</returns>
+        public string ChangeModeOfCard(MonsterCard toChangeModeOf)
+        {
+            Game.Result r = myCurrentGame.RequestChangeModeOfCard(id, toChangeModeOf);
+            if (r.Equals(Game.Result.Success))
+            {
+                return "";
+            }
+            else
+            {
+                return r.ToString();
+            }
+        }
+
         public string AttackLifePoints(MonsterCard attackingCard)
         {
             Game.Result r = myCurrentGame.RequestAttackLifePoints(id, attackingCard);
@@ -628,6 +659,19 @@ namespace YuGhiOhBattleHandler
             m_extraDeck.ShuffleDeck();
         }
 
+        public string Sacrifice(MonsterCard toSacrifice)
+        {
+            Game.Result r = myCurrentGame.RequestSacrifice(id, toSacrifice);
+            if (r.Equals(Game.Result.Success))
+            {
+                return "";
+            }
+            else
+            {
+                return r.ToString();
+            }
+        }
+
         private void shuffleSideDeck()
         {
             m_sideDeck.ShuffleDeck();
@@ -636,11 +680,6 @@ namespace YuGhiOhBattleHandler
         private void shuffleMainDeck()
         {
             m_mainDeck.ShuffleDeck();
-        }
-
-        public object getField()
-        {
-            throw new NotImplementedException();
         }
     }
 }

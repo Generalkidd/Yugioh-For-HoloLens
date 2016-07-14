@@ -92,121 +92,241 @@ namespace YuGhiOhTester
             {
                 MyHandOneZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MyHandOneZone.Visibility = Visibility.Visible;
+            }
             if (MyHandTwoImage.Source == null)
             {
                 MyHandTwoZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MyHandTwoZone.Visibility = Visibility.Visible;
             }
             if (MyHandThreeImage.Source == null)
             {
                 MyHandThreeZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MyHandThreeZone.Visibility = Visibility.Visible;
+            }
             if (MyHandFourImage.Source == null)
             {
                 MyHandFourZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MyHandFourZone.Visibility = Visibility.Visible;
             }
             if (MyHandFiveImage.Source == null)
             {
                 MyHandFiveZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MyHandFiveZone.Visibility = Visibility.Visible;
+            }
             if (MyHandSixImage.Source == null)
             {
                 MyHandSixZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MyHandSixZone.Visibility = Visibility.Visible;
             }
             if (MyMonsterOneImage.Source == null)
             {
                 MyMonsterOneZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MyMonsterOneZone.Visibility = Visibility.Visible;
+            }
             if (MyMonsterTwoImage.Source == null)
             {
                 MyMonsterTwoZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MyMonsterTwoZone.Visibility = Visibility.Visible;
             }
             if (MyMonsterThreeImage.Source == null)
             {
                 MyMonsterThreeZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MyMonsterThreeZone.Visibility = Visibility.Visible;
+            }
             if (MyMonsterFourImage.Source == null)
             {
                 MyMonsterFourZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MyMonsterFourZone.Visibility = Visibility.Visible;
             }
             if (MyMonsterFiveImage.Source == null)
             {
                 MyMonsterFiveZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MyMonsterFiveZone.Visibility = Visibility.Visible;
+            }
             if (MyMonsterSixImage.Source == null)
             {
                 MyMonsterSixZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MyMonsterSixZone.Visibility = Visibility.Visible;
             }
             if (MySpellOneImage.Source == null)
             {
                 MySpellOneZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MySpellOneZone.Visibility = Visibility.Visible;
+            }
             if (MySpellTwoImage.Source == null)
             {
                 MySpellTwoZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MySpellTwoZone.Visibility = Visibility.Visible;
             }
             if (MySpellThreeImage.Source == null)
             {
                 MySpellThreeZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MySpellThreeZone.Visibility = Visibility.Visible;
+            }
             if (MySpellFourImage.Source == null)
             {
                 MySpellFourZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MySpellFourZone.Visibility = Visibility.Visible;
             }
             if (MySpellFiveImage.Source == null)
             {
                 MySpellFiveZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                MySpellFiveZone.Visibility = Visibility.Visible;
+            }
             if (MySpellSixImage.Source == null)
             {
                 MySpellSixZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                MySpellSixZone.Visibility = Visibility.Visible;
             }
             if (OppMonsterOneImage.Source == null)
             {
                 OppMonsterOneZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                OppMonsterOneZone.Visibility = Visibility.Visible;
+            }
             if (OppMonsterTwoImage.Source == null)
             {
                 OppMonsterTwoZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                OppMonsterTwoZone.Visibility = Visibility.Visible;
             }
             if (OppMonsterThreeImage.Source == null)
             {
                 OppMonsterThreeZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                OppMonsterThreeZone.Visibility = Visibility.Visible;
+            }
             if (OppMonsterFourImage.Source == null)
             {
                 OppMonsterFourZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                OppMonsterFourZone.Visibility = Visibility.Visible;
             }
             if (OppMonsterFiveImage.Source == null)
             {
                 OppMonsterFiveZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                OppMonsterFiveZone.Visibility = Visibility.Visible;
+            }
             if (OppMonsterSixImage.Source == null)
             {
                 OppMonsterSixZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                OppMonsterSixZone.Visibility = Visibility.Visible;
             }
             if (OppSpellOneImage.Source == null)
             {
                 OppSpellOneZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                OppSpellOneZone.Visibility = Visibility.Visible;
+            }
             if (OppSpellTwoImage.Source == null)
             {
                 OppSpellTwoZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                OppSpellTwoZone.Visibility = Visibility.Visible;
             }
             if (OppSpellThreeImage.Source == null)
             {
                 OppSpellThreeZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                OppSpellThreeZone.Visibility = Visibility.Visible;
+            }
             if (OppSpellFourImage.Source == null)
             {
                 OppSpellFourZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                OppSpellFourZone.Visibility = Visibility.Visible;
             }
             if (OppSpellFiveImage.Source == null)
             {
                 OppSpellFiveZone.Visibility = Visibility.Collapsed;
             }
+            else
+            {
+                OppSpellFiveZone.Visibility = Visibility.Visible;
+            }
             if (OppSpellSixImage.Source == null)
             {
                 OppSpellSixZone.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                OppSpellSixZone.Visibility = Visibility.Visible;
             }
 
         }
@@ -223,7 +343,7 @@ namespace YuGhiOhTester
                     MyMonsterOneZone.Visibility = Visibility.Visible;
                     MyMonsterOneAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterOneDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + " "+ c.getBattlePosition().ToString();
                     MyMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
                     MyMonsterOneNameBlock.Text = c.getName();
                     MyMonsterOneImage.Source = c.getImage();
@@ -234,7 +354,7 @@ namespace YuGhiOhTester
                     MyMonsterTwoZone.Visibility = Visibility.Visible;
                     MyMonsterTwoAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterTwoDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
                     MyMonsterTwoNameBlock.Text = c.getName();
                     MyMonsterTwoImage.Source = c.getImage();
@@ -245,7 +365,7 @@ namespace YuGhiOhTester
                     MyMonsterThreeZone.Visibility = Visibility.Visible;
                     MyMonsterThreeAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterThreeDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
                     MyMonsterThreeNameBlock.Text = c.getName();
                     MyMonsterThreeImage.Source = c.getImage();
@@ -256,7 +376,7 @@ namespace YuGhiOhTester
                     MyMonsterFourZone.Visibility = Visibility.Visible;
                     MyMonsterFourAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFourDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
                     MyMonsterFourNameBlock.Text = c.getName();
                     MyMonsterFourImage.Source = c.getImage();
@@ -267,7 +387,7 @@ namespace YuGhiOhTester
                     MyMonsterFiveZone.Visibility = Visibility.Visible;
                     MyMonsterFiveAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFiveDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
                     MyMonsterFiveNameBlock.Text = c.getName();
                     MyMonsterFiveImage.Source = c.getImage();
@@ -278,7 +398,7 @@ namespace YuGhiOhTester
                     MyMonsterSixZone.Visibility = Visibility.Visible;
                     MyMonsterSixAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterSixDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
                     MyMonsterSixNameBlock.Text = c.getName();
                     MyMonsterSixImage.Source = c.getImage();
@@ -292,7 +412,7 @@ namespace YuGhiOhTester
                     MyMonsterOneZone.Visibility = Visibility.Visible;
                     MyMonsterOneAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterOneDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterOneNameBlock.Text = c.getName();
                     MyMonsterOneImage.Source = c.getImage();
@@ -303,7 +423,7 @@ namespace YuGhiOhTester
                     MyMonsterTwoZone.Visibility = Visibility.Visible;
                     MyMonsterTwoAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterTwoDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterTwoNameBlock.Text = c.getName();
                     MyMonsterTwoImage.Source = c.getImage();
@@ -314,7 +434,7 @@ namespace YuGhiOhTester
                     MyMonsterThreeZone.Visibility = Visibility.Visible;
                     MyMonsterThreeAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterThreeDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterThreeNameBlock.Text = c.getName();
                     MyMonsterThreeImage.Source = c.getImage();
@@ -325,7 +445,7 @@ namespace YuGhiOhTester
                     MyMonsterFourZone.Visibility = Visibility.Visible;
                     MyMonsterFourAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFourDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterFourNameBlock.Text = c.getName();
                     MyMonsterFourImage.Source = c.getImage();
@@ -336,7 +456,7 @@ namespace YuGhiOhTester
                     MyMonsterFiveZone.Visibility = Visibility.Visible;
                     MyMonsterFiveAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFiveDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterFiveNameBlock.Text = c.getName();
                     MyMonsterFiveImage.Source = c.getImage();
@@ -347,7 +467,7 @@ namespace YuGhiOhTester
                     MyMonsterSixZone.Visibility = Visibility.Visible;
                     MyMonsterSixAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterSixDefensePoints.Visibility = Visibility.Visible;
-                    MyMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    MyMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     MyMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     MyMonsterSixNameBlock.Text = c.getName();
                     MyMonsterSixImage.Source = c.getImage();
@@ -508,11 +628,11 @@ namespace YuGhiOhTester
         {
             if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
             {
-                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType==CurrentlySelectedCardType.Hand)
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
                 {
                     myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
                 }
-                else if(myCurrentlySelectedCard != null && currentlySelectedCardType==CurrentlySelectedCardType.Monster)
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
                 {
                     myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
                 }
@@ -813,75 +933,11 @@ namespace YuGhiOhTester
 
         private void placeOppMonsterCardsOnGUI()
         {
-            int faceDownCardsAttackMode = me.getOpponent().getNumberOfFaceDownCardsInMonsterZoneInAttackMode();
-            int faceDownCardsDefMode = me.getOpponent().getNumberOfFaceDownCardsInMonsterZoneInDefenseMode();
+            int faceDownCards = me.getOpponent().getNumberOfFaceDownCardsInMonsterZone();
             List<MonsterCard> faceUpCards = me.getOpponent().getFaceUpMonstersInMonsterZone() as List<MonsterCard>;
-            for (int i = 0; i < faceDownCardsAttackMode; i++)
+            for (int i = 0; i < faceDownCards; i++)
             {
                 if (i == 0)
-                {
-                    OppMonsterOneZone.Visibility = Visibility.Visible;
-                    OppMonsterOneAttackPoints.Visibility = Visibility.Visible;
-                    OppMonsterOneDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterOneAttackPoints.Text = "ATK: ? ATKMode";
-                    OppMonsterOneDefensePoints.Text = "DEF: ? FDown";
-                    OppMonsterOneNameBlock.Text = "?";
-                    OppMonsterOneImage.Source = cardBack;
-                }
-                else if (i == 1)
-                {
-                    OppMonsterTwoZone.Visibility = Visibility.Visible;
-                    OppMonsterTwoAttackPoints.Visibility = Visibility.Visible;
-                    OppMonsterTwoDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterTwoAttackPoints.Text = "ATK: ? ATKMode";
-                    OppMonsterTwoDefensePoints.Text = "DEF: ? FDown";
-                    OppMonsterTwoNameBlock.Text = "?";
-                    OppMonsterTwoImage.Source = cardBack;
-                }
-                else if (i == 2)
-                {
-                    OppMonsterThreeZone.Visibility = Visibility.Visible;
-                    OppMonsterThreeAttackPoints.Visibility = Visibility.Visible;
-                    OppMonsterThreeDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterThreeAttackPoints.Text = "ATK: ? ATKMode";
-                    OppMonsterThreeDefensePoints.Text = "DEF: ? FDown";
-                    OppMonsterThreeNameBlock.Text = "?";
-                    OppMonsterThreeImage.Source = cardBack;
-                }
-                else if (i == 3)
-                {
-                    OppMonsterFourZone.Visibility = Visibility.Visible;
-                    OppMonsterFourAttackPoints.Visibility = Visibility.Visible;
-                    OppMonsterFourDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterFourAttackPoints.Text = "ATK: ? ATKMode";
-                    OppMonsterFourDefensePoints.Text = "DEF: ? FDown";
-                    OppMonsterFourNameBlock.Text = "?";
-                    OppMonsterFourImage.Source = cardBack;
-                }
-                else if (i == 4)
-                {
-                    OppMonsterFiveZone.Visibility = Visibility.Visible;
-                    OppMonsterFiveAttackPoints.Visibility = Visibility.Visible;
-                    OppMonsterFiveDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterFiveAttackPoints.Text = "ATK: ? ATKMode";
-                    OppMonsterFiveDefensePoints.Text = "DEF: ? FDown";
-                    OppMonsterFiveNameBlock.Text = "?";
-                    OppMonsterFiveImage.Source = cardBack;
-                }
-                else if (i == 5)
-                {
-                    OppMonsterSixZone.Visibility = Visibility.Visible;
-                    OppMonsterSixAttackPoints.Visibility = Visibility.Visible;
-                    OppMonsterSixDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterSixAttackPoints.Text = "ATK: ? ATKMode";
-                    OppMonsterSixDefensePoints.Text = "DEF: ? FDown";
-                    OppMonsterSixNameBlock.Text = "?";
-                    OppMonsterSixImage.Source = cardBack;
-                }
-            }
-            for (int i = 0; i < faceDownCardsDefMode; i++)
-            {
-                if (i+faceDownCardsAttackMode == 0)
                 {
                     OppMonsterOneZone.Visibility = Visibility.Visible;
                     OppMonsterOneAttackPoints.Visibility = Visibility.Visible;
@@ -891,7 +947,7 @@ namespace YuGhiOhTester
                     OppMonsterOneNameBlock.Text = "?";
                     OppMonsterOneImage.Source = cardBack;
                 }
-                else if (i+faceDownCardsAttackMode == 1)
+                else if (i == 1)
                 {
                     OppMonsterTwoZone.Visibility = Visibility.Visible;
                     OppMonsterTwoAttackPoints.Visibility = Visibility.Visible;
@@ -901,7 +957,7 @@ namespace YuGhiOhTester
                     OppMonsterTwoNameBlock.Text = "?";
                     OppMonsterTwoImage.Source = cardBack;
                 }
-                else if (i+faceDownCardsAttackMode == 2)
+                else if (i == 2)
                 {
                     OppMonsterThreeZone.Visibility = Visibility.Visible;
                     OppMonsterThreeAttackPoints.Visibility = Visibility.Visible;
@@ -911,7 +967,7 @@ namespace YuGhiOhTester
                     OppMonsterThreeNameBlock.Text = "?";
                     OppMonsterThreeImage.Source = cardBack;
                 }
-                else if (i+faceDownCardsAttackMode == 3)
+                else if (i == 3)
                 {
                     OppMonsterFourZone.Visibility = Visibility.Visible;
                     OppMonsterFourAttackPoints.Visibility = Visibility.Visible;
@@ -921,7 +977,7 @@ namespace YuGhiOhTester
                     OppMonsterFourNameBlock.Text = "?";
                     OppMonsterFourImage.Source = cardBack;
                 }
-                else if (i+faceDownCardsAttackMode == 4)
+                else if (i == 4)
                 {
                     OppMonsterFiveZone.Visibility = Visibility.Visible;
                     OppMonsterFiveAttackPoints.Visibility = Visibility.Visible;
@@ -931,7 +987,7 @@ namespace YuGhiOhTester
                     OppMonsterFiveNameBlock.Text = "?";
                     OppMonsterFiveImage.Source = cardBack;
                 }
-                else if (i+faceDownCardsAttackMode == 5)
+                else if (i == 5)
                 {
                     OppMonsterSixZone.Visibility = Visibility.Visible;
                     OppMonsterSixAttackPoints.Visibility = Visibility.Visible;
@@ -944,68 +1000,68 @@ namespace YuGhiOhTester
             }
             for (int i = 0; i < faceUpCards.Count; i++)
             {
-                if (i + faceDownCardsAttackMode+faceDownCardsDefMode == 0)
+                if (i + faceDownCards == 0)
                 {
                     MonsterCard c = faceUpCards[i];
                     OppMonsterOneZone.Visibility = Visibility.Visible;
                     OppMonsterOneAttackPoints.Visibility = Visibility.Visible;
                     OppMonsterOneDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + " "+ c.getBattlePosition().ToString();
                     OppMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     OppMonsterOneNameBlock.Text = c.getName();
                     OppMonsterOneImage.Source = c.getImage();
                 }
-                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 1)
+                else if (i + faceDownCards == 1)
                 {
                     MonsterCard c = faceUpCards[i];
                     OppMonsterTwoZone.Visibility = Visibility.Visible;
                     OppMonsterTwoAttackPoints.Visibility = Visibility.Visible;
                     OppMonsterTwoDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     OppMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     OppMonsterTwoNameBlock.Text = c.getName();
                     OppMonsterTwoImage.Source = c.getImage();
                 }
-                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 2)
+                else if (i + faceDownCards == 2)
                 {
                     MonsterCard c = faceUpCards[i];
                     OppMonsterThreeZone.Visibility = Visibility.Visible;
                     OppMonsterThreeAttackPoints.Visibility = Visibility.Visible;
                     OppMonsterThreeDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     OppMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     OppMonsterThreeNameBlock.Text = c.getName();
                     OppMonsterThreeImage.Source = c.getImage();
                 }
-                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 3)
+                else if (i + faceDownCards == 3)
                 {
                     MonsterCard c = faceUpCards[i];
                     OppMonsterFourZone.Visibility = Visibility.Visible;
                     OppMonsterFourAttackPoints.Visibility = Visibility.Visible;
                     OppMonsterFourDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     OppMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     OppMonsterFourNameBlock.Text = c.getName();
                     OppMonsterFourImage.Source = c.getImage();
                 }
-                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 4)
+                else if (i + faceDownCards == 4)
                 {
                     MonsterCard c = faceUpCards[i];
                     OppMonsterFiveZone.Visibility = Visibility.Visible;
                     OppMonsterFiveAttackPoints.Visibility = Visibility.Visible;
                     OppMonsterFiveDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     OppMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     OppMonsterFiveNameBlock.Text = c.getName();
                     OppMonsterFiveImage.Source = c.getImage();
                 }
-                else if (i + faceDownCardsAttackMode + faceDownCardsDefMode == 5)
+                else if (i + faceDownCards == 5)
                 {
                     MonsterCard c = faceUpCards[i];
                     OppMonsterSixZone.Visibility = Visibility.Visible;
                     OppMonsterSixAttackPoints.Visibility = Visibility.Visible;
                     OppMonsterSixDefensePoints.Visibility = Visibility.Visible;
-                    OppMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + "";
+                    OppMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
                     OppMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
                     OppMonsterSixNameBlock.Text = c.getName();
                     OppMonsterSixImage.Source = c.getImage();
@@ -1218,7 +1274,7 @@ namespace YuGhiOhTester
         {
             int myLifePoints = me.getLifePoints();
             int oppLifePoints = me.getOpponent().getLifePoints();
-            if(myLifePoints>8000)
+            if (myLifePoints > 8000)
             {
                 MyLifePointBar.Maximum = myLifePoints;
                 MyLifePointBar.Value = myLifePoints;
@@ -1254,7 +1310,7 @@ namespace YuGhiOhTester
                     MySpellOneZone.Visibility = Visibility.Visible;
                     MySpellOneDescBlock.Visibility = Visibility.Visible;
                     MySpellOneDescBlock.Text = c.getDescription();
-                    MySpellOneNameBlock.Text = c.getName() +  "FDown";
+                    MySpellOneNameBlock.Text = c.getName() + "FDown";
                     MySpellOneImage.Source = c.getImage();
                 }
                 else if (i == 1)
@@ -1364,10 +1420,10 @@ namespace YuGhiOhTester
 
         private void MyMonsterOneZone_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            if(myCurrentlySelectedCard is SpellAndTrapCard)
+            if (myCurrentlySelectedCard is SpellAndTrapCard)
             {
                 string result = me.TryEquip(myCurrentlySelectedCard, MyMonsterOneNameBlock.Text);
-                if(result=="")
+                if (result == "")
                 {
                     clearMyMonsterCardsOnGUI();
                     placeMyMonsterCardsOnGUI();
@@ -1748,8 +1804,8 @@ namespace YuGhiOhTester
             {
                 if (OppMonsterOneZone.Visibility == Visibility.Collapsed && OppMonsterTwoZone.Visibility == Visibility.Collapsed && OppMonsterThreeZone.Visibility == Visibility.Collapsed && OppMonsterFourZone.Visibility == Visibility.Collapsed && OppMonsterFiveZone.Visibility == Visibility.Collapsed && OppMonsterSixZone.Visibility == Visibility.Collapsed)
                 {
-                    string result=me.AttackLifePoints(myCurrentlySelectedCard as MonsterCard);
-                    if(result=="")
+                    string result = me.AttackLifePoints(myCurrentlySelectedCard as MonsterCard);
+                    if (result == "")
                     {
                         clearHandOnGUI();
                         clearMyMonsterCardsOnGUI();
@@ -1764,6 +1820,7 @@ namespace YuGhiOhTester
                         {
                             placeHandCardOnGUI(hand[i], i);
                         }
+                        collapseUnused();
                     }
                     else
                     {
@@ -1796,6 +1853,7 @@ namespace YuGhiOhTester
                         {
                             placeHandCardOnGUI(hand[i], i);
                         }
+                        collapseUnused();
                     }
                 }
             }
@@ -1809,8 +1867,8 @@ namespace YuGhiOhTester
                 {
                     if (OppMonsterOneAttackPoints.Text.Contains("ATKMode"))
                     {
-                        string result=me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Attack);
-                        if(result=="")
+                        string result = me.AttackFaceDownOpponent(myCurrentlySelectedCard as MonsterCard, Mode.Attack);
+                        if (result == "")
                         {
                             clearHandOnGUI();
                             clearMyMonsterCardsOnGUI();
@@ -1825,6 +1883,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -1857,6 +1916,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -1877,6 +1937,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -1909,22 +1970,23 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                 }
                 else
                 {
-                    IList<MonsterCard> oppMonsters=me.getOpponent().getFaceUpMonstersInMonsterZone();
+                    IList<MonsterCard> oppMonsters = me.getOpponent().getFaceUpMonstersInMonsterZone();
                     MonsterCard toAttack = null;
-                    for(int i=0; i<oppMonsters.Count; i++)
+                    for (int i = 0; i < oppMonsters.Count; i++)
                     {
-                        if(OppMonsterOneNameBlock.Text.Equals(oppMonsters[i].getName()))
+                        if (OppMonsterOneNameBlock.Text.Equals(oppMonsters[i].getName()))
                         {
                             toAttack = oppMonsters[i];
                             break;
                         }
                     }
-                    if(toAttack!=null)
+                    if (toAttack != null)
                     {
                         string result = me.AttackFaceUpOpponent(myCurrentlySelectedCard as MonsterCard, toAttack);
                         if (result == "")
@@ -1942,6 +2004,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -1974,6 +2037,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -1991,6 +2055,7 @@ namespace YuGhiOhTester
                         {
                             placeHandCardOnGUI(hand[i], i);
                         }
+                        collapseUnused();
                     }
                 }
             }
@@ -2020,6 +2085,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2052,6 +2118,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2072,6 +2139,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2104,6 +2172,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                 }
@@ -2137,6 +2206,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2169,6 +2239,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2186,6 +2257,7 @@ namespace YuGhiOhTester
                         {
                             placeHandCardOnGUI(hand[i], i);
                         }
+                        collapseUnused();
                     }
                 }
             }
@@ -2215,6 +2287,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2247,6 +2320,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2267,6 +2341,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2299,6 +2374,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                 }
@@ -2332,6 +2408,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2364,6 +2441,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2381,6 +2459,7 @@ namespace YuGhiOhTester
                         {
                             placeHandCardOnGUI(hand[i], i);
                         }
+                        collapseUnused();
                     }
                 }
             }
@@ -2410,6 +2489,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2442,6 +2522,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2462,6 +2543,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2494,6 +2576,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                 }
@@ -2527,6 +2610,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2559,6 +2643,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2576,6 +2661,7 @@ namespace YuGhiOhTester
                         {
                             placeHandCardOnGUI(hand[i], i);
                         }
+                        collapseUnused();
                     }
                 }
             }
@@ -2605,6 +2691,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2637,6 +2724,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2657,6 +2745,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2689,6 +2778,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                 }
@@ -2722,6 +2812,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2754,6 +2845,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2771,6 +2863,7 @@ namespace YuGhiOhTester
                         {
                             placeHandCardOnGUI(hand[i], i);
                         }
+                        collapseUnused();
                     }
                 }
             }
@@ -2800,6 +2893,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2832,6 +2926,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2852,6 +2947,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2884,6 +2980,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                 }
@@ -2917,6 +3014,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                         else
                         {
@@ -2949,6 +3047,7 @@ namespace YuGhiOhTester
                             {
                                 placeHandCardOnGUI(hand[i], i);
                             }
+                            collapseUnused();
                         }
                     }
                     else
@@ -2966,8 +3065,175 @@ namespace YuGhiOhTester
                         {
                             placeHandCardOnGUI(hand[i], i);
                         }
+                        collapseUnused();
                     }
                 }
+            }
+        }
+
+        private void MyMonsterOneZone_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+
+            if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+            {
+                myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+            }
+            else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+            {
+                myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+            }
+            StackPanel s = sender as StackPanel;
+            s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+            myCurrentlySelectedCard = getField()[0];
+            myCurrentlySelectedStackPanel = s;
+            currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+            me.ChangeModeOfCard(myCurrentlySelectedCard as MonsterCard);
+            clearMyMonsterCardsOnGUI();
+            placeMyMonsterCardsOnGUI();
+        }
+
+        private void MyMonsterTwoZone_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+            {
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                }
+                StackPanel s = sender as StackPanel;
+                s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                myCurrentlySelectedCard = getField()[1];
+                myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                me.ChangeModeOfCard(myCurrentlySelectedCard as MonsterCard);
+                clearMyMonsterCardsOnGUI();
+                placeMyMonsterCardsOnGUI();
+            }
+            else
+            {
+                disEngageCurrentlySelected();
+            }
+        }
+
+        private void MyMonsterThreeZone_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+            {
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                }
+                StackPanel s = sender as StackPanel;
+                s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                myCurrentlySelectedCard = getField()[2];
+                myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                me.ChangeModeOfCard(myCurrentlySelectedCard as MonsterCard);
+                clearMyMonsterCardsOnGUI();
+                placeMyMonsterCardsOnGUI();
+            }
+            else
+            {
+                disEngageCurrentlySelected();
+            }
+        }
+
+        private void MyMonsterFourZone_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+            {
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                }
+                StackPanel s = sender as StackPanel;
+                s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                myCurrentlySelectedCard = getField()[3];
+                myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                me.ChangeModeOfCard(myCurrentlySelectedCard as MonsterCard);
+                clearMyMonsterCardsOnGUI();
+                placeMyMonsterCardsOnGUI();
+            }
+            else
+            {
+                disEngageCurrentlySelected();
+            }
+        }
+
+        private void MyMonsterFiveZone_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+            {
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                }
+                StackPanel s = sender as StackPanel;
+                s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                myCurrentlySelectedCard = getField()[4];
+                myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                me.ChangeModeOfCard(myCurrentlySelectedCard as MonsterCard);
+                clearMyMonsterCardsOnGUI();
+                placeMyMonsterCardsOnGUI();
+            }
+            else
+            {
+                disEngageCurrentlySelected();
+            }
+        }
+
+        private void MyMonsterSixZone_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            if (myCurrentlySelectedStackPanel == null || (myCurrentlySelectedStackPanel != (sender as StackPanel)))
+            {
+                if (myCurrentlySelectedStackPanel != null && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 128, 0, 128));
+                }
+                else if (myCurrentlySelectedCard != null && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+                {
+                    myCurrentlySelectedStackPanel.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 239, 244, 255));
+                }
+                StackPanel s = sender as StackPanel;
+                s.BorderBrush = new SolidColorBrush(Windows.UI.Color.FromArgb(255, 0, 255, 0));
+                myCurrentlySelectedCard = getField()[5];
+                myCurrentlySelectedStackPanel = s;
+                currentlySelectedCardType = CurrentlySelectedCardType.Monster;
+                me.ChangeModeOfCard(myCurrentlySelectedCard as MonsterCard);
+                clearMyMonsterCardsOnGUI();
+                placeMyMonsterCardsOnGUI();
+            }
+            else
+            {
+                disEngageCurrentlySelected();
+            }
+        }
+
+        private void SacrificeBtn_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            if(currentlySelectedCardType==CurrentlySelectedCardType.Monster)
+            {
+                me.Sacrifice(myCurrentlySelectedCard as MonsterCard);
+                clearMyMonsterCardsOnGUI();
+                placeMyMonsterCardsOnGUI();
             }
         }
     }

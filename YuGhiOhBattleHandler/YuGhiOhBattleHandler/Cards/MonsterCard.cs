@@ -37,7 +37,7 @@ namespace YuGhiOhBattleHandler
         private bool m_isSynchroTuner;
         private bool m_isFusion;
         private bool m_isRitual;
-        private bool m_isPlayed;
+        private bool m_isFlipped;
         private Mode m_Mode;
         private Face facePosition;
         private bool canAttack;
@@ -56,7 +56,7 @@ namespace YuGhiOhBattleHandler
             m_isXyz = isXyz;
             m_isSynchro = isSynchro;
             m_isSynchroTuner = isSynchroTuner;
-            m_isPlayed = false;
+            m_isFlipped = false;
             m_Mode = Mode.Attack;
             facePosition = Face.Down;
             c.setBitmapImage(bi);
@@ -123,14 +123,14 @@ namespace YuGhiOhBattleHandler
             return m_Mode;
         }
 
-        internal void changeIsPlayed()
+        internal void changeIsFlipped()
         {
-            m_isPlayed = !m_isPlayed;
+            m_isFlipped = !m_isFlipped;
         }
 
-        public bool getIsPlayed()
+        public bool getIsFlipped()
         {
-            return m_isPlayed;
+            return m_isFlipped;
         }
 
         internal string getYuGhiOhType()
@@ -146,6 +146,7 @@ namespace YuGhiOhBattleHandler
             }
             else
             {
+                facePosition = Face.Up;
                 m_Mode = Mode.Attack;
             }
         }
