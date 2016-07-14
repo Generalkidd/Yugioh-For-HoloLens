@@ -344,7 +344,7 @@ namespace YuGhiOhTester
                     MyMonsterOneAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterOneDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + " "+ c.getBattlePosition().ToString();
-                    MyMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " "+ c.getFace();
                     MyMonsterOneNameBlock.Text = c.getName();
                     MyMonsterOneImage.Source = c.getImage();
                 }
@@ -355,7 +355,7 @@ namespace YuGhiOhTester
                     MyMonsterTwoAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterTwoDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() +  " " + c.getFace();
                     MyMonsterTwoNameBlock.Text = c.getName();
                     MyMonsterTwoImage.Source = c.getImage();
                 }
@@ -366,7 +366,7 @@ namespace YuGhiOhTester
                     MyMonsterThreeAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterThreeDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterThreeNameBlock.Text = c.getName();
                     MyMonsterThreeImage.Source = c.getImage();
                 }
@@ -377,7 +377,7 @@ namespace YuGhiOhTester
                     MyMonsterFourAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFourDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterFourNameBlock.Text = c.getName();
                     MyMonsterFourImage.Source = c.getImage();
                 }
@@ -388,7 +388,7 @@ namespace YuGhiOhTester
                     MyMonsterFiveAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFiveDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterFiveNameBlock.Text = c.getName();
                     MyMonsterFiveImage.Source = c.getImage();
                 }
@@ -399,7 +399,7 @@ namespace YuGhiOhTester
                     MyMonsterSixAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterSixDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FDown";
+                    MyMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterSixNameBlock.Text = c.getName();
                     MyMonsterSixImage.Source = c.getImage();
                 }
@@ -413,7 +413,7 @@ namespace YuGhiOhTester
                     MyMonsterOneAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterOneDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterOneAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    MyMonsterOneDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterOneNameBlock.Text = c.getName();
                     MyMonsterOneImage.Source = c.getImage();
                 }
@@ -424,7 +424,7 @@ namespace YuGhiOhTester
                     MyMonsterTwoAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterTwoDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterTwoAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    MyMonsterTwoDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterTwoNameBlock.Text = c.getName();
                     MyMonsterTwoImage.Source = c.getImage();
                 }
@@ -435,7 +435,7 @@ namespace YuGhiOhTester
                     MyMonsterThreeAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterThreeDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterThreeAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    MyMonsterThreeDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterThreeNameBlock.Text = c.getName();
                     MyMonsterThreeImage.Source = c.getImage();
                 }
@@ -446,7 +446,7 @@ namespace YuGhiOhTester
                     MyMonsterFourAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFourDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterFourAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    MyMonsterFourDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterFourNameBlock.Text = c.getName();
                     MyMonsterFourImage.Source = c.getImage();
                 }
@@ -457,7 +457,7 @@ namespace YuGhiOhTester
                     MyMonsterFiveAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterFiveDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterFiveAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    MyMonsterFiveDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterFiveNameBlock.Text = c.getName();
                     MyMonsterFiveImage.Source = c.getImage();
                 }
@@ -468,7 +468,7 @@ namespace YuGhiOhTester
                     MyMonsterSixAttackPoints.Visibility = Visibility.Visible;
                     MyMonsterSixDefensePoints.Visibility = Visibility.Visible;
                     MyMonsterSixAttackPoints.Text = "ATK: " + c.getAttackPoints() + " " + c.getBattlePosition().ToString();
-                    MyMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " FUp";
+                    MyMonsterSixDefensePoints.Text = "DEF: " + c.getDefensePoints() + " " + c.getFace();
                     MyMonsterSixNameBlock.Text = c.getName();
                     MyMonsterSixImage.Source = c.getImage();
                 }

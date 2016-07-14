@@ -258,6 +258,7 @@ namespace YuGhiOhBattleHandler
                                     player1.SendToGraveYard(attackingCard as object, Zone.Monster);
                                     player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
                                 }
+                                player1.switchCanAttack(attackingCard);
                                 return Result.Success;
                             }
                             else
@@ -276,6 +277,7 @@ namespace YuGhiOhBattleHandler
                                     int toTakeOffLifePoints = defendingWith - attackingWith;
                                     player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
                                 }
+                                player1.switchCanAttack(attackingCard);
                                 return Result.Success;
                             }
                         }
@@ -306,7 +308,7 @@ namespace YuGhiOhBattleHandler
                                         player1.SendToGraveYard(attackingCard as object, Zone.Monster);
                                         player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
                                     }
-                                   
+                                    player1.switchCanAttack(attackingCard);
                                     return Result.Success;
                                 }
                                 else
@@ -325,6 +327,7 @@ namespace YuGhiOhBattleHandler
                                         int toTakeOffLifePoints = defendingWith - attackingWith;
                                         player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
                                     }
+                                    player1.switchCanAttack(attackingCard);
                                     return Result.Success;
                                 }
                             }
@@ -553,61 +556,68 @@ namespace YuGhiOhBattleHandler
 
         internal Result RequestChangeModeOfCard(int idOfAttacker, MonsterCard toChangeModeOf)
         {
-            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
+            if (toChangeModeOf.CanAttack())
             {
-                if (playerTwoTrapHoleEnabled && !toChangeModeOf.getIsFlipped() && toChangeModeOf.getAttackPoints() > 999)
+                if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
                 {
-                    player1.SendToGraveYard(toChangeModeOf, Zone.Monster);
-                    IList<SpellAndTrapCard> spellsAndTrapsP2 = player2.getFaceDownCardsInSpellAndTrapZone();
-                    for (int i = 0; i < spellsAndTrapsP2.Count; i++)
+                    if (playerTwoTrapHoleEnabled && !toChangeModeOf.getIsFlipped() && toChangeModeOf.getAttackPoints() > 999)
                     {
-                        if (spellsAndTrapsP2[i].getName().ToUpper() == "TRAP HOLE")
+                        player1.SendToGraveYard(toChangeModeOf, Zone.Monster);
+                        IList<SpellAndTrapCard> spellsAndTrapsP2 = player2.getFaceDownCardsInSpellAndTrapZone();
+                        for (int i = 0; i < spellsAndTrapsP2.Count; i++)
                         {
-                            SpellAndTrapCard stc = spellsAndTrapsP2[i];
-                            player2.SendToGraveYard(stc, Zone.SpellTrap);
-                            break;
+                            if (spellsAndTrapsP2[i].getName().ToUpper() == "TRAP HOLE")
+                            {
+                                SpellAndTrapCard stc = spellsAndTrapsP2[i];
+                                player2.SendToGraveYard(stc, Zone.SpellTrap);
+                                break;
+                            }
                         }
                     }
+                    else
+                    {
+                        player1.GameChangeModeOfCard(toChangeModeOf);
+                    }
+                    return Result.Success;
+                }
+                else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
+                {
+                    return Result.NotYourTurn;
+                }
+                else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
+                {
+                    if (playerOneTrapHoleEnabled && !toChangeModeOf.getIsFlipped() && toChangeModeOf.getAttackPoints() > 999)
+                    {
+                        player2.SendToGraveYard(toChangeModeOf, Zone.Monster);
+                        IList<SpellAndTrapCard> spellsAndTrapsP1 = player1.getFaceDownCardsInSpellAndTrapZone();
+                        for (int i = 0; i < spellsAndTrapsP1.Count; i++)
+                        {
+                            if (spellsAndTrapsP1[i].getName().ToUpper() == "TRAP HOLE")
+                            {
+                                SpellAndTrapCard stc = spellsAndTrapsP1[i];
+                                player1.SendToGraveYard(stc, Zone.SpellTrap);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        player2.GameChangeModeOfCard(toChangeModeOf);
+                    }
+                    return Result.Success;
+                }
+                else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
+                {
+                    return Result.NotYourTurn;
                 }
                 else
                 {
-                    player1.GameChangeModeOfCard(toChangeModeOf);
+                    return Result.InvalidMove;
                 }
-                return Result.Success;
-            }
-            else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
-            {
-                return Result.NotYourTurn;
-            }
-            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
-            {
-                if (playerOneTrapHoleEnabled && !toChangeModeOf.getIsFlipped() && toChangeModeOf.getAttackPoints() > 999)
-                {
-                    player2.SendToGraveYard(toChangeModeOf, Zone.Monster);
-                    IList<SpellAndTrapCard> spellsAndTrapsP1 = player1.getFaceDownCardsInSpellAndTrapZone();
-                    for (int i = 0; i < spellsAndTrapsP1.Count; i++)
-                    {
-                        if (spellsAndTrapsP1[i].getName().ToUpper() == "TRAP HOLE")
-                        {
-                            SpellAndTrapCard stc = spellsAndTrapsP1[i];
-                            player1.SendToGraveYard(stc, Zone.SpellTrap);
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    player2.GameChangeModeOfCard(toChangeModeOf);
-                }
-                return Result.Success;
-            }
-            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
-            {
-                return Result.NotYourTurn;
             }
             else
             {
-                return Result.InvalidMove;
+                return Result.CantAttackBcAlreadyAttackedOrFirstTurnPlayed;
             }
         }
 

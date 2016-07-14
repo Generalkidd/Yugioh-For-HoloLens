@@ -138,6 +138,11 @@ namespace YuGhiOhBattleHandler
             return m_type;
         }
 
+        public Face getFace()
+        {
+            return facePosition;
+        }
+
         internal void ChangeBattlePosition()
         {
             if (m_Mode == Mode.Attack)

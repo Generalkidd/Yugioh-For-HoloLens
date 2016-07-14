@@ -88,21 +88,20 @@ namespace YuGhiOhBattleHandler
             if(faceDownCardsInMonsterZone.Contains(toSwitch))
             {
                 faceDownCardsInMonsterZone.Remove(toSwitch);
-                toSwitch.setCanAttack(false);
                 IList<MonsterCard> toSet = m_meReadOnly.getFaceUpMonstersInMonsterZone();
                 toSet.Add(toSwitch);
                 m_meReadOnly.setFaceUpMonstersInMonsterZone(toSet);
                 m_meReadOnly.setNumberOfFaceDownCardsInMonsterZone(m_meReadOnly.getNumberOfFaceDownCardsInMonsterZone() - 1);
-               
             }
-            else if(m_meReadOnly.getFaceUpMonstersInMonsterZone().Contains(toSwitch))
-            {
-                IList<MonsterCard> toSet = m_meReadOnly.getFaceUpMonstersInMonsterZone();
-                int index = toSet.IndexOf(toSwitch);
-                toSwitch.setCanAttack(false);
-                toSet[index] = toSwitch;
-                m_meReadOnly.setFaceUpMonstersInMonsterZone(toSet);
-            }
+        }
+
+        internal void switchCanAttack(MonsterCard toSwitch)
+        {
+            IList<MonsterCard> toSet = m_meReadOnly.getFaceUpMonstersInMonsterZone();
+            int index=toSet.IndexOf(toSwitch);
+            toSwitch.setCanAttack(false);
+            toSet[index] = toSwitch;
+            m_meReadOnly.setFaceUpMonstersInMonsterZone(toSet);
         }
 
         /// <summary>
