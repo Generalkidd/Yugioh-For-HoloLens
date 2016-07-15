@@ -6,3 +6,4 @@ C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data/UnityExtensions/Unity/N
 C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Runtime/UnityEngine.HoloLens.dll
 C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data/UnityExtensions/Unity/UnityVR/Runtime/UnityEngine.VR.dll
 C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data/Managed/UnityEditor.dll
+C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data\Managed/Mono.Cecil.dll

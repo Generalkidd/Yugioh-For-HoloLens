@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.0b24-HTP</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -67,8 +69,24 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>Library\UnityAssemblies\Mono.Cecil.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BattleHandler\Cards\AttributeOrTypeEnum.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Cards\Card.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Cards\IconEnum.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Cards\ModeAndFaceEnums.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Cards\MonsterCard.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Cards\ResultEnum.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Cards\SpellAndTrapCard.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Decks\MainDeck.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Game\Game.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Game\MainDeckBuilder.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Game\Player.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Game\ReadOnlyPlayer.cs" />
+    <Compile Include="Assets\Scripts\BattleHandler\Game\ZoneEnum.cs" />
     <Compile Include="Assets\Scripts\Card.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\GazeGestureManager.cs" />
@@ -91,6 +109,49 @@
     <None Include="Assets\Resources\Other Resources\DebugNormals.shader" />
     <None Include="Assets\Resources\Other Resources\Occlusion.shader" />
     <None Include="Assets\Resources\Other Resources\Wireframe.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\ArchfiendMarmotofNefariousness.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\ArchfiendMirror.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\BeastFangs.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\BookofSecretArts.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\CandleofFate.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\CardBack.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\CurtainoftheDarkOnes.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\DarkGray.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\DarkHole.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\DarkMagician.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Eyearmor.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\FiendsHand.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Firegrass.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\FireReaper.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Fissure.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\GaiaTheFierceKnight.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Haniwa.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Hitodenchak.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\HitotsuMeGiant.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\HourglassofLife.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\KagemushaoftheBlueFlame.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Kurama.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\LaLaLiOon.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\LegendarySword.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\MammothGraveyard.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Meotoko.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Nemuriko.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\PetitAngel.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\PetitDragon.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\PowerofKaishin.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\RedMedicine.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\SectarianofSecrets.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\SilverFang.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Sparks.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\TheDrdek.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\TheFuriousSeaKing.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\ThunderKid.jpg" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\Tomozaurus.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\TrapHole.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\VioletCrystal.png" />
+    <Content Include="Assets\Scripts\BattleHandler\CardImages\WingedCleaver.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
