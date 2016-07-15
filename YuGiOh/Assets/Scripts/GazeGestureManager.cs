@@ -4,7 +4,6 @@ using UnityEngine.VR.WSA.Input;
 public class GazeGestureManager : MonoBehaviour
 {
     public static GazeGestureManager Instance { get; private set; }
-    public int currrentSpeed = 30;
 
     private Vector3 moveDirection = Vector3.zero;
 
