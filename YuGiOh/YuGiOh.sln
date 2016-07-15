@@ -1,7 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{F7F0C948-AC71-72A5-9D4A-DB37DFDA9FFF}") = "YuGiOh", "Assembly-CSharp.csproj", "{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}"
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.CSharp", "YuGiOh.CSharp.csproj", "{9C1BB5AF-AFE7-4518-A62D-A80848938A85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
