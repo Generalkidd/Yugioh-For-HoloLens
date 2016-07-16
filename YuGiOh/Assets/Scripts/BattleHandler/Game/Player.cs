@@ -33,7 +33,7 @@ namespace Assets.Scripts.BattleHandler.Game
         /// <summary>
         /// The cards eligible to be played.
         /// </summary>
-        public List<Card> Hand
+        public List<Cards.Card> Hand
         {
             get; internal set;
         }
@@ -49,7 +49,7 @@ namespace Assets.Scripts.BattleHandler.Game
         /// <summary>
         /// Where monsters/spells/traps go when they die.
         /// </summary>
-        public List<Card> GraveYard
+        public List<Cards.Card> GraveYard
         {
             get; internal set;
         }
@@ -84,7 +84,7 @@ namespace Assets.Scripts.BattleHandler.Game
             }
             FaceDownCardsInMonsterZone.Add(toPlay as MonsterCard);
             MeReadOnly.NumberOfFaceDownCardsInMonsterZone = MeReadOnly.NumberOfFaceDownCardsInMonsterZone + 1;
-            Hand.Remove(toPlay as Card);
+            Hand.Remove(toPlay as Cards.Card);
             MeReadOnly.NumberOfCardsInHand = MeReadOnly.NumberOfCardsInHand - 1;
         }
 
@@ -113,9 +113,9 @@ namespace Assets.Scripts.BattleHandler.Game
         {
             if (z == Zone.Hand)
             {
-                if (Hand.Contains(c as Card))
+                if (Hand.Contains(c as Cards.Card))
                 {
-                    Hand.Remove(c as Card);
+                    Hand.Remove(c as Cards.Card);
                     MeReadOnly.NumberOfCardsInHand=MeReadOnly.NumberOfCardsInHand - 1;
                 }
             }
@@ -147,7 +147,7 @@ namespace Assets.Scripts.BattleHandler.Game
                     MeReadOnly.FaceUpTraps=toRemoveFrom;
                 }
             }
-            GraveYard.Add(c as Card);
+            GraveYard.Add(c as Cards.Card);
         }
 
         /// <summary>
@@ -198,6 +198,7 @@ namespace Assets.Scripts.BattleHandler.Game
             id = userId;
             MeReadOnly = new ReadOnlyPlayer();
             MeReadOnly.UserName=userName;
+            Hand = new List<Cards.Card>();
         }
 
 
@@ -208,7 +209,7 @@ namespace Assets.Scripts.BattleHandler.Game
         /// <returns>"" if successful. Error string if failed.</returns>
         public string NormalSummon(Object monsterToSummon)
         {
-            if (monsterToSummon is MonsterCard && Hand.Contains(monsterToSummon as Card))
+            if (monsterToSummon is MonsterCard && Hand.Contains(monsterToSummon as Cards.Card))
             {
                 Result amIAllowedToSummon = MyCurrentGame.RequestNormalSummon(id, monsterToSummon, FaceDownCardsInMonsterZone.Count + MeReadOnly.FaceUpMonsters.Count);
                 if (amIAllowedToSummon.ToString().Equals("Success"))
@@ -233,7 +234,7 @@ namespace Assets.Scripts.BattleHandler.Game
         /// <returns>"" if successful. Error string if failed.</returns>
         public string CastSpellOrTrap(Object spellOrTrapToPlay)
         {
-            if (spellOrTrapToPlay is SpellAndTrapCard && Hand.Contains(spellOrTrapToPlay as Card))
+            if (spellOrTrapToPlay is SpellAndTrapCard && Hand.Contains(spellOrTrapToPlay as Cards.Card))
             {
                 SpellAndTrapCard stc = spellOrTrapToPlay as SpellAndTrapCard;
                 Result amIAllowedToSummon;
@@ -276,7 +277,7 @@ namespace Assets.Scripts.BattleHandler.Game
                     {
                         FaceDownTraps.Add(spellOrTrapToPlay as SpellAndTrapCard);
                         MeReadOnly.NumberOfFaceDownTraps=FaceDownTraps.Count;
-                        Hand.Remove(spellOrTrapToPlay as Card);
+                        Hand.Remove(spellOrTrapToPlay as Cards.Card);
                         MeReadOnly.NumberOfCardsInHand--;
                     }
                 }
@@ -302,7 +303,7 @@ namespace Assets.Scripts.BattleHandler.Game
         public string TryEquip(Object EquipableCard, string nameOfCardToEquipTo)
         {
             bool found = false;
-            if (Hand.Contains(EquipableCard as Card))
+            if (Hand.Contains(EquipableCard as Cards.Card))
             {
                 for (int i = 0; i < FaceDownCardsInMonsterZone.Count && !found; i++)
                 {
@@ -452,8 +453,8 @@ namespace Assets.Scripts.BattleHandler.Game
         {
             for (int i = 0; i < 5; i++)
             {
-                Object cardOnTopOfDeck = MainDeck.drawTopCard();
-                Hand.Add(cardOnTopOfDeck as Card);
+                Cards.Card cardOnTopOfDeck = MainDeck.drawTopCard();
+                Hand.Add(cardOnTopOfDeck);
                 MeReadOnly.NumberOfCardsInHand=MeReadOnly.NumberOfCardsInHand + 1;
             }
         }
@@ -463,8 +464,8 @@ namespace Assets.Scripts.BattleHandler.Game
         /// </summary>
         internal void drawCard()
         {
-            Object cardOnTopOfDeck = MainDeck.drawTopCard();
-            Hand.Add(cardOnTopOfDeck as Card);
+            Cards.Card cardOnTopOfDeck = MainDeck.drawTopCard();
+            Hand.Add(cardOnTopOfDeck as Cards.Card);
             MeReadOnly.NumberOfCardsInHand=MeReadOnly.NumberOfCardsInHand + 1;
         }
 

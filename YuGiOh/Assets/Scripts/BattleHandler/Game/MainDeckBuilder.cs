@@ -11,8 +11,8 @@ namespace Assets.Scripts.BattleHandler.Game
 {
     public class MainDeckBuilder
     {
-        private List<object> currentlySelectedDeck = new List<object>();
-        private List<object> allPossibleCards = new List<object>();
+        private List<Cards.Card> currentlySelectedDeck = new List<Cards.Card>();
+        private List<Cards.Card> allPossibleCards = new List<Cards.Card>();
 
         public MainDeckBuilder()
         {
@@ -25,7 +25,7 @@ namespace Assets.Scripts.BattleHandler.Game
         }
 
 
-        public List<object> getRandomDeck()
+        public List<Assets.Scripts.BattleHandler.Cards.Card> getRandomDeck()
         {
             currentlySelectedDeck = allPossibleCards;
             return currentlySelectedDeck;
@@ -37,11 +37,7 @@ namespace Assets.Scripts.BattleHandler.Game
             try
             {
                 TextAsset database = Resources.Load("CardMaster") as TextAsset;
-                string allLines = "";
-                using (StreamReader sr = new StreamReader(database.text))
-                {
-                    allLines = sr.ReadToEnd();
-                }
+                string allLines = database.text;
                 string[] splitIntoIndividualLines = allLines.Split('\n');
                 for (int i = 1; i < splitIntoIndividualLines.Length; i++)
                 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.BattleHandler.Cards
 {
@@ -12,7 +13,7 @@ namespace Assets.Scripts.BattleHandler.Cards
             get; internal set;
         }
 
-        internal SpellAndTrapCard(string cardName, CardAttributeOrType attributeOrType, Icon ico, string cardDescription, long cardNumber, Object bi)
+        internal SpellAndTrapCard(string cardName, CardAttributeOrType attributeOrType, Icon ico, string cardDescription, long cardNumber, Texture bi)
         {
             CardName=cardName;
             Icon = ico;

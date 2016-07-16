@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.BattleHandler.Cards
 {
@@ -72,7 +73,7 @@ namespace Assets.Scripts.BattleHandler.Cards
             get; internal set;
         }
 
-        internal MonsterCard(string cardName, int cardLevel, CardAttributeOrType attributeOrType, string cardType, int attackPoints, int defensePoints, string cardDescription, long cardNumber, bool isPendulum, bool isXyz, bool isSynchro, bool isSynchroTuner, bool isFusion, bool isRitual, Object bi)
+        internal MonsterCard(string cardName, int cardLevel, CardAttributeOrType attributeOrType, string cardType, int attackPoints, int defensePoints, string cardDescription, long cardNumber, bool isPendulum, bool isXyz, bool isSynchro, bool isSynchroTuner, bool isFusion, bool isRitual, Texture bi)
         {
             CardName=cardName;
             Type = cardType;

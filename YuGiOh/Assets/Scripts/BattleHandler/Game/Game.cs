@@ -104,7 +104,7 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
-        public void RequestSetPlayer1Deck(List<Card> mainDeck)
+        public void RequestSetPlayer1Deck(List<Cards.Card> mainDeck)
         {
             MainDeck deck = new MainDeck();
             deck.CardsInDeck = mainDeck;
@@ -608,7 +608,7 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
-        public void RequestSetPlayer2Deck(List<Card> mainDeck)
+        public void RequestSetPlayer2Deck(List<Cards.Card> mainDeck)
         {
             MainDeck deck = new MainDeck();
             deck.CardsInDeck = mainDeck;

@@ -8,7 +8,7 @@ namespace Assets.Scripts.BattleHandler.Decks
     public class MainDeck
     {
         private static Random _random=new Random();
-        public List<Card> CardsInDeck
+        public List<Cards.Card> CardsInDeck
         {
             get; internal set;
         }
@@ -22,18 +22,18 @@ namespace Assets.Scripts.BattleHandler.Decks
         /// Returns the top card and discards it from the deck.
         /// </summary>
         /// <returns></returns>
-        internal Card drawTopCard()
+        internal Cards.Card drawTopCard()
         {
-            Card toReturn = CardsInDeck[0];
+            Cards.Card toReturn = CardsInDeck[0];
             CardsInDeck.RemoveAt(0);
             return toReturn;
         }
 
         internal void ShuffleDeck()
         {
-            Card[] toShuffle = CardsInDeck.ToArray();
-            Shuffle<Card>(toShuffle);
-            CardsInDeck = toShuffle.ToList<Card>();
+            Cards.Card[] toShuffle = CardsInDeck.ToArray();
+            Shuffle<Cards.Card>(toShuffle);
+            CardsInDeck = toShuffle.ToList<Cards.Card>();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Assets.Scripts.BattleHandler.Decks
 
         public MainDeck()
         {
-            CardsInDeck = new List<Card>();
+            CardsInDeck = new List<Cards.Card>();
         }
 
     }

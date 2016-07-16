@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.BattleHandler.Cards
 {
@@ -26,7 +27,7 @@ namespace Assets.Scripts.BattleHandler.Cards
             get; internal set;
         }
 
-        public Object CardImage
+        public Texture CardImage
         {
             get; internal set;
         }
