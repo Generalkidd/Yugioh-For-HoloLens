@@ -1,7 +1,10 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.CSharp", "YuGiOh.CSharp.csproj", "{9C1BB5AF-AFE7-4518-A62D-A80848938A85}"
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YugiohAPI", "..\YugiohAPI\YugiohAPI.csproj", "{32C18DF9-E6CC-4791-9768-B36CA4904FED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,12 +12,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32C18DF9-E6CC-4791-9768-B36CA4904FED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32C18DF9-E6CC-4791-9768-B36CA4904FED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32C18DF9-E6CC-4791-9768-B36CA4904FED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32C18DF9-E6CC-4791-9768-B36CA4904FED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
