@@ -57,9 +57,9 @@ namespace Assets.Scripts.BattleHandler.Game
                         }
                         else if (split[3] == "Equip")
                         {
-                            string s = split[0];
-                            string s1 = split[6];
-                            string s2 = split[7];
+                            //string s = split[0];
+                            //string s1 = split[6];
+                            //string s2 = split[7];
                             c = new SpellAndTrapCard(split[0], CardAttributeOrType.Spell, Icon.Equip, split[6], long.Parse(split[7]), bi);
 
                         }

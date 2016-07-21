@@ -4,15 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.BattleHandler.Game
 {
-    public class Player
+    public class Player:MonoBehaviour
     {
         /// <summary>
         /// A variable which makes each player unique and accessible only by one user.
         /// </summary>
-        internal readonly int id;
+        internal int id;
 
         /// <summary>
         /// Stores the safe part of a player which should be accessible to both duelers.
@@ -76,7 +77,7 @@ namespace Assets.Scripts.BattleHandler.Game
         /// Should only be called by the Game class after RequestNormalSummon is called. The Game class checks whether this function is allowable.
         /// </summary>
         /// <param name="toPlay">The card which is to be summoned</param>
-        internal void addFaceDownToMonsterZone(Object toPlay)
+        internal void addFaceDownToMonsterZone(System.Object toPlay)
         {
             if ((toPlay as MonsterCard).Mode == Mode.Attack)
             {
@@ -109,7 +110,7 @@ namespace Assets.Scripts.BattleHandler.Game
             MeReadOnly.FaceUpMonsters=toSet;
         }
 
-        internal void SendToGraveYard(Object c, Zone z)
+        internal void SendToGraveYard(System.Object c, Zone z)
         {
             if (z == Zone.Hand)
             {
@@ -201,13 +202,22 @@ namespace Assets.Scripts.BattleHandler.Game
             Hand = new List<Cards.Card>();
         }
 
+        public static Player MakePlayer(GameObject toAddTo, int userId, string userName)
+        {
+            Player myPlayer = toAddTo.AddComponent<Player>();
+            myPlayer.id = userId;
+            myPlayer.MeReadOnly = new ReadOnlyPlayer();
+            myPlayer.MeReadOnly.UserName = userName;
+            myPlayer.Hand = new List<Cards.Card>();
+            return myPlayer;
+        }
 
         /// <summary>
         /// A request to normal summon the monster is given to the game class. If allowable, it will be summoned.
         /// </summary>
         /// <param name="monsterToSummon">A MonsterCard to play.</param>
         /// <returns>"" if successful. Error string if failed.</returns>
-        public string NormalSummon(Object monsterToSummon)
+        public string NormalSummon(System.Object monsterToSummon)
         {
             if (monsterToSummon is MonsterCard && Hand.Contains(monsterToSummon as Cards.Card))
             {
@@ -232,7 +242,7 @@ namespace Assets.Scripts.BattleHandler.Game
         /// </summary>
         /// <param name="spellOrTrapToPlay">A SpellAndTrapCard to play.</param>
         /// <returns>"" if successful. Error string if failed.</returns>
-        public string CastSpellOrTrap(Object spellOrTrapToPlay)
+        public string CastSpellOrTrap(System.Object spellOrTrapToPlay)
         {
             if (spellOrTrapToPlay is SpellAndTrapCard && Hand.Contains(spellOrTrapToPlay as Cards.Card))
             {
@@ -300,7 +310,7 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
-        public string TryEquip(Object EquipableCard, string nameOfCardToEquipTo)
+        public string TryEquip(System.Object EquipableCard, string nameOfCardToEquipTo)
         {
             bool found = false;
             if (Hand.Contains(EquipableCard as Cards.Card))

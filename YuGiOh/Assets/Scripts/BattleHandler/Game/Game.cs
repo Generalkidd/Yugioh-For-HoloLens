@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Assets.Scripts.BattleHandler.Game
 {
@@ -60,7 +61,7 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
-        internal Result RequestNormalSummon(int idOfAttacker, Object cardToSummon, int numberOfMonstersAlreadyPlayed)
+        internal Result RequestNormalSummon(int idOfAttacker, object cardToSummon, int numberOfMonstersAlreadyPlayed)
         {
             if (player1.id == idOfAttacker && playerWhosTurnItIs == 1 && !playerHasNormalSummonedThisTurn && numberOfMonstersAlreadyPlayed < 6 && ((4 + sacrifices) >= (cardToSummon as MonsterCard).Level))
             {
@@ -630,7 +631,23 @@ namespace Assets.Scripts.BattleHandler.Game
             player2.MyCurrentGame=this;
         }
 
-        public void StartGame()
+        internal void setCurrentGame()
+        {
+            player1.MyCurrentGame = this;
+            player2.MyCurrentGame = this;
+        }
+
+        internal void MakeGame(Player p_player1, Player p_player2, int id)
+        {
+            //Game myGame = toAddTo.AddComponent<Game>();
+            player1 = p_player1;
+            player2 = p_player2;
+            gameID = id;
+            playerWhosTurnItIs = 1;
+            playerHasNormalSummonedThisTurn = false;
+        }
+
+        internal void StartGame()
         {
             player1.shuffleAllDecks();
             player2.shuffleAllDecks();

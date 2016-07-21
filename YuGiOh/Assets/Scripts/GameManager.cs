@@ -7,77 +7,23 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
-    List<Assets.Scripts.BattleHandler.Cards.Card> hand = new List<Assets.Scripts.BattleHandler.Cards.Card>();
-    Texture CardBackTexture;
-    System.Random rand = new System.Random();
-
     long frameCounter = long.MaxValue;
+    static Player me;
+    static Texture CardBackTexture;
+    List<Assets.Scripts.BattleHandler.Cards.Card> hand = new List<Assets.Scripts.BattleHandler.Cards.Card>();
 
-    //In multiplayer we would not store both players
-    Player p1;
-    Player p2;
-    Player me;
-
-    private float x = -1f;
-    // Use this for initialization
-    void Start()
+    public static GameManager MakeManager(GameObject toAddTo, Player pMe, Texture CardBack)
     {
-        //Old Code
-        /*
-	    foreach(GameObject c in GameObject.FindGameObjectsWithTag("Card"))
-        {
-            deck.Add(c);
-        }
-
-        System.Random rand = new System.Random();
-        deck = deck.OrderBy(item => rand.Next()).ToList();
-
-        for(int i = 0; i < 6; i++)
-        {
-            hand.Add(deck[i]);
-            
-            GameObject card;
-            card = (GameObject)Instantiate(hand[i], new Vector3(x, 0, 3f), new Quaternion(0, 180, 0, 0));
-            x += 0.5f;
-        }
-
-        for(int i = 0; i < 6; i++)
-        {
-            //deck.RemoveAt(i);
-        }*/
-
-        //Here is where code should go to build personal Decks. For now we make a random deck (first 40 cards in database).
-        //Both players will use the same deck for this test app.
-        MainDeckBuilder mdb = new MainDeckBuilder();
-        List<Assets.Scripts.BattleHandler.Cards.Card> randomDeck = mdb.getRandomDeck();
-
-        //Initialize Card Back
-        CardBackTexture = mdb.getCardBack() as Texture;
-
-        //Build the players just like a Network Manager would do.
-        int random1 = rand.Next();
-        int random2 = rand.Next();
-        int randomGameId = rand.Next();
-        p1 = new Player(random1, "SethRocks!");
-        p2 = new Player(random2, "BobSucks!");
-
-        //Now the network manager would give a handle to the users and to the game.
-        //Since this is just for testing we will control both players from this one class.
-        Game g = new Game(p1, p2, randomGameId);
-        g.RequestSetPlayer1Deck(randomDeck);
-        g.RequestSetPlayer2Deck(randomDeck);
-        g.StartGame();
-        //Normally only the game and corresponding player will be able to use the get hand function
-        //because they will be the only entities which have a handle to the player
-        me = p1;
-        hand = me.Hand;
+        GameManager myManager = toAddTo.AddComponent<GameManager>();
+        me = pMe;
+        CardBackTexture = CardBack;
+        return myManager;
     }
 
-	
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update () {
         //Update every 1400 frames
-        if (frameCounter > 1400)
+        if (frameCounter > 5000)
         {
             placeMyHandCardsOnGUI();
             placeMyMonsterCardOnGUI();
@@ -258,11 +204,5 @@ public class GameManager : MonoBehaviour
                 planeBack.transform.parent = spawnPoint.transform;
             }
         }
-    }
-
-    void OnReset()
-    {
-        hand.Clear();
-        Start();
     }
 }
