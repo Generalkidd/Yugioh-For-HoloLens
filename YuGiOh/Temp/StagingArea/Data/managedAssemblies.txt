@@ -1,5 +1,0 @@
-Assembly-CSharp.dll
-UnityEngine.UI.dll
-UnityEngine.HoloLens.dll
-UnityEngine.Networking.dll
-UnityEngine.VR.dll
