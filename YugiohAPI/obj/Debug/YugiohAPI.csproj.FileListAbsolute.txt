@@ -1,0 +1,5 @@
+E:\Dropbox\C#\Yugioh-For-HoloLens\YugiohAPI\bin\Debug\YugiohAPI.dll
+E:\Dropbox\C#\Yugioh-For-HoloLens\YugiohAPI\bin\Debug\YugiohAPI.pdb
+E:\Dropbox\C#\Yugioh-For-HoloLens\YugiohAPI\obj\Debug\YugiohAPI.csprojResolveAssemblyReference.cache
+E:\Dropbox\C#\Yugioh-For-HoloLens\YugiohAPI\obj\Debug\YugiohAPI.dll
+E:\Dropbox\C#\Yugioh-For-HoloLens\YugiohAPI\obj\Debug\YugiohAPI.pdb
