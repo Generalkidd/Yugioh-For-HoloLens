@@ -79,48 +79,27 @@ namespace YuGhiOhBattleHandler
             numberOfCardsInHand = toSet;
         }
 
-        /// <summary>
-        /// The number of facedown monster cards played by opponent currently in AttackMode
-        /// </summary>
-        private int numberOfFaceDownCardsInMonsterZoneInAttackMode = 0;
-
-        /// <summary>
-        /// The number of monster cards played by opponent currently in AttackMode
-        /// </summary>
-        public int getNumberOfFaceDownCardsInMonsterZoneInAttackMode()
-        {
-            return numberOfFaceDownCardsInMonsterZoneInAttackMode;
-        }
-
-        /// <summary>
-        /// Function not visible to the public on purpose. Only the innards of this
-        /// this code should be able to set this property. This is done by the Game class.
-        /// </summary>
-        internal void setNumberOfFaceDownCardsInMonsterZoneInAttackMode(int toSet)
-        {
-            numberOfFaceDownCardsInMonsterZoneInAttackMode = toSet;
-        }
 
         /// <summary>
         /// The number of facedown monster cards played by opponent currently in DefenseMode
         /// </summary>
-        private int numberOfFaceDownCardsInMonsterZoneInDefenseMode = 0;
+        private int numberOfFaceDownCardsInMonsterZone = 0;
 
         /// <summary>
         /// The number of monster cards played by opponent currently in DefenseMode
         /// </summary>
-        public int getNumberOfFaceDownCardsInMonsterZoneInDefenseMode()
+        public int getNumberOfFaceDownCardsInMonsterZone()
         {
-            return numberOfFaceDownCardsInMonsterZoneInDefenseMode;
+            return numberOfFaceDownCardsInMonsterZone;
         }
 
         /// <summary>
         /// Function not visible to the public on purpose. Only the innards of this
         /// this code should be able to set this property. This is done by the Game class.
         /// </summary>
-        internal void setNumberOfFaceDownCardsInMonsterZoneInDefenseMode(int toSet)
+        internal void setNumberOfFaceDownCardsInMonsterZone(int toSet)
         {
-            numberOfFaceDownCardsInMonsterZoneInDefenseMode = toSet;
+            numberOfFaceDownCardsInMonsterZone = toSet;
         }
 
         /// <summary>

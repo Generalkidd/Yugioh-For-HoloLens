@@ -138,6 +138,7 @@ namespace YuGhiOhBattleHandler
                 player2.drawCard();
                 player2.allowMonstersToAttack();
                 player1.NotifyOfOppTurn();
+                sacrifices = 0;
                 return Result.Success;
             }
             else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
@@ -152,6 +153,7 @@ namespace YuGhiOhBattleHandler
                 player1.drawCard();
                 player1.allowMonstersToAttack();
                 player2.NotifyOfOppTurn();
+                sacrifices = 0;
                 return Result.Success;
             }
             else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
@@ -230,7 +232,9 @@ namespace YuGhiOhBattleHandler
                 {
                     if(attackingCard.CanAttack())
                     {
-                        if(attackingCard.getBattlePosition()==Mode.Attack)
+                        player1.switchFaceDownToFaceUp(attackingCard);
+                        player2.switchFaceDownToFaceUp(defendingCard);
+                        if (attackingCard.getBattlePosition()==Mode.Attack)
                         {
                             int attackingWith = attackingCard.getAttackPoints();
                             int defendingWith = 0;
@@ -254,8 +258,7 @@ namespace YuGhiOhBattleHandler
                                     player1.SendToGraveYard(attackingCard as object, Zone.Monster);
                                     player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
                                 }
-                                player1.switchFaceDownToFaceUp(attackingCard);
-                                player2.switchFaceDownToFaceUp(defendingCard);
+                                player1.switchCanAttack(attackingCard);
                                 return Result.Success;
                             }
                             else
@@ -274,59 +277,63 @@ namespace YuGhiOhBattleHandler
                                     int toTakeOffLifePoints = defendingWith - attackingWith;
                                     player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
                                 }
-                                player1.switchFaceDownToFaceUp(attackingCard);
-                                player2.switchFaceDownToFaceUp(defendingCard);
+                                player1.switchCanAttack(attackingCard);
                                 return Result.Success;
                             }
                         }
                         else
                         {
-                            attackingCard.ChangeBattlePosition();
-                            int attackingWith = attackingCard.getAttackPoints();
-                            int defendingWith = 0;
-                            if (defendingCard.getBattlePosition() == Mode.Attack)
+                            RequestChangeModeOfCard(idOfAttacker, attackingCard);
+                            if (player1.getFaceUpMonstersInMonsterZone().Contains(attackingCard))
                             {
-                                defendingWith = defendingCard.getAttackPoints();
-                                if (attackingWith > defendingWith)
+                                int attackingWith = attackingCard.getAttackPoints();
+                                int defendingWith = 0;
+                                if (defendingCard.getBattlePosition() == Mode.Attack)
                                 {
-                                    int toTakeOffLifePoints = attackingWith - defendingWith;
-                                    player2.SendToGraveYard(defendingCard as object, Zone.Monster);
-                                    player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
-                                }
-                                else if (attackingWith == defendingWith)
-                                {
-                                    player1.SendToGraveYard(attackingCard as object, Zone.Monster);
-                                    player2.SendToGraveYard(defendingCard as object, Zone.Monster);
+                                    defendingWith = defendingCard.getAttackPoints();
+                                    if (attackingWith > defendingWith)
+                                    {
+                                        int toTakeOffLifePoints = attackingWith - defendingWith;
+                                        player2.SendToGraveYard(defendingCard as object, Zone.Monster);
+                                        player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
+                                    }
+                                    else if (attackingWith == defendingWith)
+                                    {
+                                        player1.SendToGraveYard(attackingCard as object, Zone.Monster);
+                                        player2.SendToGraveYard(defendingCard as object, Zone.Monster);
+                                    }
+                                    else
+                                    {
+                                        int toTakeOffLifePoints = defendingWith - attackingWith;
+                                        player1.SendToGraveYard(attackingCard as object, Zone.Monster);
+                                        player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                    }
+                                    player1.switchCanAttack(attackingCard);
+                                    return Result.Success;
                                 }
                                 else
                                 {
-                                    int toTakeOffLifePoints = defendingWith - attackingWith;
-                                    player1.SendToGraveYard(attackingCard as object, Zone.Monster);
-                                    player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                    defendingWith = defendingCard.getDefensePoints();
+                                    if (attackingWith > defendingWith)
+                                    {
+                                        player2.SendToGraveYard(defendingCard as object, Zone.Monster);
+                                    }
+                                    else if (attackingWith == defendingWith)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        int toTakeOffLifePoints = defendingWith - attackingWith;
+                                        player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                    }
+                                    player1.switchCanAttack(attackingCard);
+                                    return Result.Success;
                                 }
-                                player1.switchFaceDownToFaceUp(attackingCard);
-                                player2.switchFaceDownToFaceUp(defendingCard);
-                                return Result.Success;
                             }
                             else
                             {
-                                defendingWith = defendingCard.getDefensePoints();
-                                if (attackingWith > defendingWith)
-                                {
-                                    player2.SendToGraveYard(defendingCard as object, Zone.Monster);
-                                }
-                                else if (attackingWith == defendingWith)
-                                {
-
-                                }
-                                else
-                                {
-                                    int toTakeOffLifePoints = defendingWith - attackingWith;
-                                    player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
-                                }
-                                player1.switchFaceDownToFaceUp(attackingCard);
-                                player2.switchFaceDownToFaceUp(defendingCard);
-                                return Result.Success;
+                                return Result.OneOrMoreCardsAreNoLongerOnField;
                             }
                         }
                     }
@@ -401,52 +408,59 @@ namespace YuGhiOhBattleHandler
                         }
                         else
                         {
-                            attackingCard.ChangeBattlePosition();
-                            int attackingWith = attackingCard.getAttackPoints();
-                            int defendingWith = 0;
-                            if (defendingCard.getBattlePosition() == Mode.Attack)
+                            RequestChangeModeOfCard(idOfAttacker, attackingCard);
+                            if (player1.getFaceUpMonstersInMonsterZone().Contains(attackingCard))
                             {
-                                defendingWith = defendingCard.getAttackPoints();
-                                if (attackingWith > defendingWith)
+                                int attackingWith = attackingCard.getAttackPoints();
+                                int defendingWith = 0;
+                                if (defendingCard.getBattlePosition() == Mode.Attack)
                                 {
-                                    int toTakeOffLifePoints = attackingWith - defendingWith;
-                                    player1.SendToGraveYard(defendingCard as object, Zone.Monster);
-                                    player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
-                                }
-                                else if (attackingWith == defendingWith)
-                                {
-                                    player2.SendToGraveYard(attackingCard as object, Zone.Monster);
-                                    player1.SendToGraveYard(defendingCard as object, Zone.Monster);
+                                    defendingWith = defendingCard.getAttackPoints();
+                                    if (attackingWith > defendingWith)
+                                    {
+                                        int toTakeOffLifePoints = attackingWith - defendingWith;
+                                        player1.SendToGraveYard(defendingCard as object, Zone.Monster);
+                                        player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                    }
+                                    else if (attackingWith == defendingWith)
+                                    {
+                                        player2.SendToGraveYard(attackingCard as object, Zone.Monster);
+                                        player1.SendToGraveYard(defendingCard as object, Zone.Monster);
+                                    }
+                                    else
+                                    {
+                                        int toTakeOffLifePoints = defendingWith - attackingWith;
+                                        player2.SendToGraveYard(attackingCard as object, Zone.Monster);
+                                        player2.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                    }
+                                    player2.switchFaceDownToFaceUp(attackingCard);
+                                    player1.switchFaceDownToFaceUp(defendingCard);
+                                    return Result.Success;
                                 }
                                 else
                                 {
-                                    int toTakeOffLifePoints = defendingWith - attackingWith;
-                                    player2.SendToGraveYard(attackingCard as object, Zone.Monster);
-                                    player2.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                    defendingWith = defendingCard.getDefensePoints();
+                                    if (attackingWith > defendingWith)
+                                    {
+                                        player1.SendToGraveYard(defendingCard as object, Zone.Monster);
+                                    }
+                                    else if (attackingWith == defendingWith)
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        int toTakeOffLifePoints = defendingWith - attackingWith;
+                                        player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
+                                    }
+                                    player2.switchFaceDownToFaceUp(attackingCard);
+                                    player1.switchFaceDownToFaceUp(defendingCard);
+                                    return Result.Success;
                                 }
-                                player2.switchFaceDownToFaceUp(attackingCard);
-                                player1.switchFaceDownToFaceUp(defendingCard);
-                                return Result.Success;
                             }
                             else
                             {
-                                defendingWith = defendingCard.getDefensePoints();
-                                if (attackingWith > defendingWith)
-                                {
-                                    player1.SendToGraveYard(defendingCard as object, Zone.Monster);
-                                }
-                                else if (attackingWith == defendingWith)
-                                {
-
-                                }
-                                else
-                                {
-                                    int toTakeOffLifePoints = defendingWith - attackingWith;
-                                    player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
-                                }
-                                player2.switchFaceDownToFaceUp(attackingCard);
-                                player1.switchFaceDownToFaceUp(defendingCard);
-                                return Result.Success;
+                                return Result.OneOrMoreCardsAreNoLongerOnField;
                             }
                         }
                     }
@@ -537,6 +551,73 @@ namespace YuGhiOhBattleHandler
             else
             {
                 return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestChangeModeOfCard(int idOfAttacker, MonsterCard toChangeModeOf)
+        {
+            if (toChangeModeOf.CanAttack())
+            {
+                if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
+                {
+                    if (playerTwoTrapHoleEnabled && !toChangeModeOf.getIsFlipped() && toChangeModeOf.getAttackPoints() > 999)
+                    {
+                        player1.SendToGraveYard(toChangeModeOf, Zone.Monster);
+                        IList<SpellAndTrapCard> spellsAndTrapsP2 = player2.getFaceDownCardsInSpellAndTrapZone();
+                        for (int i = 0; i < spellsAndTrapsP2.Count; i++)
+                        {
+                            if (spellsAndTrapsP2[i].getName().ToUpper() == "TRAP HOLE")
+                            {
+                                SpellAndTrapCard stc = spellsAndTrapsP2[i];
+                                player2.SendToGraveYard(stc, Zone.SpellTrap);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        player1.GameChangeModeOfCard(toChangeModeOf);
+                    }
+                    return Result.Success;
+                }
+                else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
+                {
+                    return Result.NotYourTurn;
+                }
+                else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
+                {
+                    if (playerOneTrapHoleEnabled && !toChangeModeOf.getIsFlipped() && toChangeModeOf.getAttackPoints() > 999)
+                    {
+                        player2.SendToGraveYard(toChangeModeOf, Zone.Monster);
+                        IList<SpellAndTrapCard> spellsAndTrapsP1 = player1.getFaceDownCardsInSpellAndTrapZone();
+                        for (int i = 0; i < spellsAndTrapsP1.Count; i++)
+                        {
+                            if (spellsAndTrapsP1[i].getName().ToUpper() == "TRAP HOLE")
+                            {
+                                SpellAndTrapCard stc = spellsAndTrapsP1[i];
+                                player1.SendToGraveYard(stc, Zone.SpellTrap);
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        player2.GameChangeModeOfCard(toChangeModeOf);
+                    }
+                    return Result.Success;
+                }
+                else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
+                {
+                    return Result.NotYourTurn;
+                }
+                else
+                {
+                    return Result.InvalidMove;
+                }
+            }
+            else
+            {
+                return Result.CantAttackBcAlreadyAttackedOrFirstTurnPlayed;
             }
         }
 
@@ -633,6 +714,48 @@ namespace YuGhiOhBattleHandler
                 return Result.Success;
             }
             else if (player2.id == id && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestSacrifice(int idOfAttacker, MonsterCard toSacrifice)
+        {
+            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                player1.SendToGraveYard(toSacrifice, Zone.Monster);
+                if(sacrifices==0)
+                {
+                    sacrifices = 2;
+                }
+                else
+                {
+                    sacrifices = 10;
+                }
+                return Result.Success;
+            }
+            else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                player2.SendToGraveYard(toSacrifice, Zone.Monster);
+                if (sacrifices == 0)
+                {
+                    sacrifices = 2;
+                }
+                else
+                {
+                    sacrifices = 10;
+                }
+                return Result.Success;
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
             {
                 return Result.NotYourTurn;
             }

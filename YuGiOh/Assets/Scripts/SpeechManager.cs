@@ -27,6 +27,36 @@ public class SpeechManager : MonoBehaviour
             }
         });
 
+        keywords.Add("Play Card", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the OnDrop method on just the focused object.
+                focusObject.SendMessage("OnSelect");
+            }
+        });
+
+        keywords.Add("Set", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the OnDrop method on just the focused object.
+                focusObject.SendMessage("OnSet");
+            }
+        });
+
+        keywords.Add("Attack", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the OnDrop method on just the focused object.
+                focusObject.SendMessage("OnAttack");
+            }
+        });
+
         // Tell the KeywordRecognizer about our keywords.
         keywordRecognizer = new KeywordRecognizer(keywords.Keys.ToArray());
 

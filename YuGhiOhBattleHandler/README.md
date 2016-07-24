@@ -10,6 +10,8 @@ To use, reference the component by importing the project or finding the compiled
 construct a Game Class and use game.StartGame(). Then players can call functions like NormalSummon() to do
 core actions. The game class will keep track of what is played, lifepoints, etc.
 
+This is complete for the first 40 cards. We are working on making this into a PCL, too.
+
 
 
 #TestApp
@@ -27,9 +29,8 @@ Then My Hand (notice cards load and are selectable (turn green)
 Then My Username
 Then My Lifepoints bar.
 
-So far, you can click on a monster in your hand (it will turn green) and then click on the Monster Zone (light blue)
-and it will summon the monster. If you try to summon another, a toast notification will be given saying you already
-summoned this turn.
-
-You can then end your turn and player2 (acting by computer) will play the first monster in its hand. No battling is built
-yet just summoning.
+All battling should be present. Please note any bugs. Click on a monster in your hand (it will highlight green). If
+it is a monster, you can then click on the monster zone to summon it (1 per turn). Then end your turn with the end
+turn button. The opponent will summon a monster and it will be your turn again. Double click on a monster to change
+it from attack to defense mode. Click on a monster and then on an opponents monster to attack it. Use spells by
+clicking on your hand and then clicking on the spell and trap zone.
