@@ -9,6 +9,6 @@ namespace YugiohAPI.Model.Player
 	public class Player
 	{
 		public string Name { get; set; }
-		public Deck Deck { get; set; }
+
 	}
 }

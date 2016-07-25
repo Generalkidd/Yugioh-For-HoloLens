@@ -2,7 +2,7 @@
 
 namespace YugiohAPI.Model.Cards
 {
-	public class SpellCard
+	public class SpellCard : Card
 	{
 		public SpellType Type { get; set; }
 	}

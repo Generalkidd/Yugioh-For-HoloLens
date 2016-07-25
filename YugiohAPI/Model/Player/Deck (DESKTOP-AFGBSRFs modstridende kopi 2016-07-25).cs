@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using YugiohAPI.Model.Cards;
 
 namespace YugiohAPI.Model.Player
 {
-	public class Player
+	public class Deck
 	{
-		public string Name { get; set; }
-		public Deck Deck { get; set; }
+		public List<Card> Cards { get; set; }
 	}
 }

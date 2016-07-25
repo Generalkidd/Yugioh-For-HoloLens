@@ -14,6 +14,12 @@ namespace YugiohAPI.Managers
 
 		public int CardCount { get { return Cards.Count; } private set { } }
 
+		public CardPileManager(List<Card> cards)
+		{
+			Cards = cards;
+			Shuffle();
+		}
+
 		public virtual void Shuffle()
 		{
 			int n = Cards.Count;

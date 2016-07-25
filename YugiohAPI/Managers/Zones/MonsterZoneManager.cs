@@ -1,4 +1,4 @@
-﻿namespace YugiohAPI.Managers
+﻿namespace YugiohAPI.Managers.Zones
 {
 	public class MonsterZoneManager
 	{

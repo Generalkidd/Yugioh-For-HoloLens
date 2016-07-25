@@ -1,6 +1,8 @@
-﻿namespace YugiohAPI.Model.Cards
+﻿using YugiohAPI.Model.Cards.Enums;
+
+namespace YugiohAPI.Model.Cards
 {
-	public class TrapCard
+	public class TrapCard : Card
 	{
 		public TrapType Type { get; set; }
 	}
