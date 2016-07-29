@@ -82,6 +82,7 @@ public class GameManager : MonoBehaviour
                 plane.transform.position = spawnPoint.transform.position;
                 plane.GetComponent<Renderer>().material.mainTexture = hand[0].CardImage;
                 plane.transform.parent = spawnPoint.transform;
+                plane.AddComponent<BoxCollider>();
                 GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 planeBack.transform.Rotate(90, 0, 0);
                 planeBack.transform.position = spawnPoint.transform.position;
@@ -105,6 +106,7 @@ public class GameManager : MonoBehaviour
                 plane.transform.localScale = scale;
                 plane.GetComponent<Renderer>().material.mainTexture = hand[1].CardImage;
                 plane.transform.parent = spawnPoint.transform;
+                plane.AddComponent<BoxCollider>();
                 GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 planeBack.transform.Rotate(90, 0, 0);
                 planeBack.transform.localScale = scale;
@@ -128,6 +130,7 @@ public class GameManager : MonoBehaviour
                 plane.transform.localScale = scale;
                 plane.GetComponent<Renderer>().material.mainTexture = hand[2].CardImage;
                 plane.transform.parent = spawnPoint.transform;
+                plane.AddComponent<BoxCollider>();
                 GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 planeBack.transform.Rotate(90, 0, 0);
                 planeBack.transform.position = spawnPoint.transform.position;
@@ -151,6 +154,7 @@ public class GameManager : MonoBehaviour
                 plane.transform.localScale = scale;
                 plane.GetComponent<Renderer>().material.mainTexture = hand[3].CardImage;
                 plane.transform.parent = spawnPoint.transform;
+                plane.AddComponent<BoxCollider>();
                 GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 planeBack.transform.Rotate(90, 0, 0);
                 planeBack.transform.position = spawnPoint.transform.position;
@@ -174,6 +178,7 @@ public class GameManager : MonoBehaviour
                 plane.transform.localScale = scale;
                 plane.GetComponent<Renderer>().material.mainTexture = hand[4].CardImage;
                 plane.transform.parent = spawnPoint.transform;
+                plane.AddComponent<BoxCollider>();
                 GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 planeBack.transform.Rotate(90, 0, 0);
                 planeBack.transform.position = spawnPoint.transform.position;
@@ -197,6 +202,7 @@ public class GameManager : MonoBehaviour
                 plane.transform.localScale = scale;
                 plane.GetComponent<Renderer>().material.mainTexture = hand[5].CardImage;
                 plane.transform.parent = spawnPoint.transform;
+                plane.AddComponent<BoxCollider>();
                 GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 planeBack.transform.Rotate(90, 0, 0);
                 planeBack.transform.position = spawnPoint.transform.position;

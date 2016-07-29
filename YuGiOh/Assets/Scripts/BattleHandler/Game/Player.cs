@@ -482,9 +482,9 @@ namespace Assets.Scripts.BattleHandler.Game
         /// <summary>
         /// Shuffle Main Deck, Side Deck, and Extra Deck. Called at the beginning of the game.
         /// </summary>
-        internal void shuffleAllDecks()
+        internal void shuffleAllDecks(int randomSeed)
         {
-            shuffleMainDeck();
+            shuffleMainDeck(randomSeed);
             //shuffleSideDeck();
             //ShuffleExtraDeck();
         }
@@ -516,9 +516,9 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
     
-        private void shuffleMainDeck()
+        private void shuffleMainDeck(int randomSeed)
         {
-            MainDeck.ShuffleDeck();
+            MainDeck.ShuffleDeck(randomSeed);
         }
 
     }

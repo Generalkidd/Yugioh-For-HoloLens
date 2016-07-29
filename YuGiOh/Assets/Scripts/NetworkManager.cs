@@ -22,6 +22,8 @@ public class NetworkManager : MonoBehaviour
     bool hasMadeGameManager = false;
     Game g;
     bool gameCreated = false;
+    bool multiplayerSelected = false;
+    int gameSeed = -1;
 
     // Use this for initialization
     void Start()
@@ -30,6 +32,16 @@ public class NetworkManager : MonoBehaviour
         chatMessages = new List<string>();
     }
 
+
+    public void OnMultiplayer()
+    {
+        multiplayerSelected = true;
+    }
+
+    public void OnChat(string message)
+    {
+        AddChatMessage(message);
+    }
 
     void OnDestroy()
     {
@@ -108,7 +120,7 @@ public class NetworkManager : MonoBehaviour
              password = GUILayout.TextField(password, options);
              GUILayout.EndHorizontal(); */
 
-            if (GUILayout.Button("Multiplayer"))
+            if (GUILayout.Button("Multiplayer") || multiplayerSelected)
             {
                 connecting = true;
                 Connect();
@@ -191,18 +203,15 @@ public class NetworkManager : MonoBehaviour
     void OnPhotonRandomJoinFailed()
     {
         Debug.Log("onFailedJoinRandom");
-        PhotonNetwork.CreateRoom(null);
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 2;
+        PhotonNetwork.CreateRoom(null,roomOptions,null);
     }
 
-    /*
-    [PunRPC]
-    void UpdateGame_RPC()
-    {
-        g = PhotonNetwork.room.customProperties["game"] as Game;
-    }*/
+   
 
     [PunRPC]
-    void SendGame_RPC()
+    void SendGame_RPC(int randomGameSeed)
     {
         try
         {
@@ -222,9 +231,8 @@ public class NetworkManager : MonoBehaviour
                     Debug.Log("Loaded CardBack Texture.");
 
                     //Build the players.
-                    int randomGameId = rand.Next();
-                    Debug.Log("Assigning gameId=" + randomGameId);
-
+                    gameSeed = randomGameSeed;
+                    
                     GameObject p1Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     GameObject p2Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     p1 = Player.MakePlayer(p1Object, PhotonNetwork.playerList[0].ID, PhotonNetwork.playerList[0].name);
@@ -232,7 +240,7 @@ public class NetworkManager : MonoBehaviour
                     Debug.Log("Instantiated 2 players on the network and assigned their names/ids");
 
                     //Now the network manager gives a handle to the users and to the game.
-                    g = new Game(p1, p2, randomGameId);
+                    g = new Game(p1, p2, gameSeed);
                     g.RequestSetPlayer1Deck(randomDeck);
                     g.RequestSetPlayer2Deck(randomDeck);
                     g.setCurrentGame();
@@ -293,12 +301,12 @@ public class NetworkManager : MonoBehaviour
                 g.StartGame();
                 Debug.Log("Instantiated a game on the network and started it.");
                 gameCreated = true;
+                GetComponent<PhotonView>().RPC("SendGame_RPC", PhotonTargets.All, randomGameId);
             }
             catch (Exception e)
             {
                 Debug.Log("Failed to create game: " + e.Message);
-            }
-            GetComponent<PhotonView>().RPC("SendGame_RPC", PhotonTargets.All);
+            }   
         }
     }
 

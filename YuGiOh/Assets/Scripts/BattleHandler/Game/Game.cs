@@ -649,8 +649,8 @@ namespace Assets.Scripts.BattleHandler.Game
 
         internal void StartGame()
         {
-            player1.shuffleAllDecks();
-            player2.shuffleAllDecks();
+            player1.shuffleAllDecks(gameID);
+            player2.shuffleAllDecks(gameID);
             player1.draw5Cards();
             player2.draw5Cards();
         }

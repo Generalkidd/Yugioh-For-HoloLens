@@ -7,7 +7,7 @@ namespace Assets.Scripts.BattleHandler.Decks
 {
     public class MainDeck
     {
-        private static Random _random=new Random();
+        private static Random _random;
         public List<Cards.Card> CardsInDeck
         {
             get; internal set;
@@ -29,8 +29,9 @@ namespace Assets.Scripts.BattleHandler.Decks
             return toReturn;
         }
 
-        internal void ShuffleDeck()
+        internal void ShuffleDeck(int randomSeed)
         {
+            _random = new Random(randomSeed);
             Cards.Card[] toShuffle = CardsInDeck.ToArray();
             Shuffle<Cards.Card>(toShuffle);
             CardsInDeck = toShuffle.ToList<Cards.Card>();
