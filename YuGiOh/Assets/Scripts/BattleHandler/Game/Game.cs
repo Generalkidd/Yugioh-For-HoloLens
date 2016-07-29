@@ -120,6 +120,13 @@ namespace Assets.Scripts.BattleHandler.Game
         {
             if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
             {
+                for(int i=0; i<player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                {
+                    if(player1.MeReadOnly.FaceUpMonsters[i].CardName== "The Wicked Worm Beast")
+                    {
+                        player1.SendToHand(player1.MeReadOnly.FaceUpMonsters[i], Zone.Monster);
+                    }
+                }
                 playerWhosTurnItIs = 2;
                 playerHasNormalSummonedThisTurn = false;
                 //player2.NotifyOfYourTurn();
@@ -135,6 +142,13 @@ namespace Assets.Scripts.BattleHandler.Game
             }
             else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
             {
+                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                {
+                    if (player2.MeReadOnly.FaceUpMonsters[i].CardName == "The Wicked Worm Beast")
+                    {
+                        player2.SendToHand(player1.MeReadOnly.FaceUpMonsters[i], Zone.Monster);
+                    }
+                }
                 playerWhosTurnItIs = 1;
                 playerHasNormalSummonedThisTurn = false;
                 //player1.NotifyOfYourTurn();

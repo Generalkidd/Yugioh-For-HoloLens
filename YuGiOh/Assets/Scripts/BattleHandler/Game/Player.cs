@@ -110,6 +110,46 @@ namespace Assets.Scripts.BattleHandler.Game
             MeReadOnly.FaceUpMonsters=toSet;
         }
 
+        internal void SendToHand(System.Object c, Zone z)
+        {
+            if (z == Zone.Graveyard)
+            {
+                if (GraveYard.Contains(c as Cards.Card))
+                {
+                    GraveYard.Remove(c as Cards.Card);
+                }
+            }
+            else if (z == Zone.Monster)
+            {
+                if (FaceDownCardsInMonsterZone.Contains(c as MonsterCard))
+                {
+                    FaceDownCardsInMonsterZone.Remove(c as MonsterCard);
+                    MeReadOnly.NumberOfFaceDownCardsInMonsterZone = MeReadOnly.NumberOfFaceDownCardsInMonsterZone - 1;
+                }
+                else if (MeReadOnly.FaceUpMonsters.Contains(c as MonsterCard))
+                {
+                    List<MonsterCard> toRemoveFrom = MeReadOnly.FaceUpMonsters;
+                    toRemoveFrom.Remove(c as MonsterCard);
+                    MeReadOnly.FaceUpMonsters = toRemoveFrom;
+                }
+            }
+            else if (z == Zone.SpellTrap)
+            {
+                if (FaceDownTraps.Contains(c as SpellAndTrapCard))
+                {
+                    FaceDownTraps.Remove(c as SpellAndTrapCard);
+                    MeReadOnly.NumberOfFaceDownTraps--;
+                }
+                else if (MeReadOnly.FaceUpTraps.Contains(c as SpellAndTrapCard))
+                {
+                    List<SpellAndTrapCard> toRemoveFrom = MeReadOnly.FaceUpTraps;
+                    toRemoveFrom.Remove(c as SpellAndTrapCard);
+                    MeReadOnly.FaceUpTraps = toRemoveFrom;
+                }
+            }
+            Hand.Add(c as Cards.Card);
+        }
+
         internal void SendToGraveYard(System.Object c, Zone z)
         {
             if (z == Zone.Hand)

@@ -1,4 +1,4 @@
-﻿Name,Level,Attribute,Type,Attack,Defense,Description,Card Number,isPendulum,isXyz,isSynchro,isSynchroTuner,isFusion,isRitual,CardImage,Rarity,Edition
+Name,Level,Attribute,Type,Attack,Defense,Description,Card Number,isPendulum,isXyz,isSynchro,isSynchroTuner,isFusion,isRitual,CardImage,Rarity,Edition
 Hitotsu-Me Giant,4,Earth,Beast-Warrior,1200,1000,A one-eyed behemoth with thick powerful arms made for delivering punishing blows,76184692,N,N,N,N,N,N,HitotsuMeGiant.png,Common,1
 Dark Magician,7,Dark,Spellcaster,2500,2100,The ultimate wizard in terms of attack and defense,46986414,N,N,N,N,N,N,DarkMagician.png,Ultra Rare,1
 Gaia The Fierce Knight,7,Earth,Warrior,2300,2100,A knight whose horse travels faster than the wind. His battle-charge is a force to be reckoned with.,6368038,N,N,N,N,N,N,GaiaTheFierceKnight.png,Ultra Rare,1
@@ -39,3 +39,13 @@ Red Medicine,0,Spell,Normal,0,0,Increase your Life Points by 500 points.,3819969
 Sparks,0,Spell,Normal,0,0,Inflict 200 points of damage to your opponent's Life Points.,76103675,N,N,N,N,N,N,Sparks.png,Common,1
 Fissure,0,Spell,Normal,0,0,Destroy the 1 face-up monster your opponent controls that has the lowest ATK (your choice if tied).,66788016,N,N,N,N,N,N,Fissure.png,Super Rare,1
 Trap Hole,0,Trap,Normal,0,0,When your opponent Normal or Flip Summons 1 monster with 1000 or more ATK: Target that monster; destroy that target.,4206964,N,N,N,N,N,N,TrapHole.png,Super Rare,1
+Blue-Eyes White Dragon,8,Light,Dragon,3000,2500,"This legendary dragon is a powerful engine of destruction. Virtually invincible, very few have faced this awesome creature and lived to tell the tale.",89631139,N,N,N,N,N,N,Blue-Eyes_White_Dragon.png,Ultra Rare,1
+Ryu-Kishin,3,Dark,Fiend,1000,500,A very elusive creature that looks like a harmless statue until it attacks.,15303296,N,N,N,N,N,N,RyuKishin-SDK-NA-C-1E.png,Common,1
+The Wicked Worm Beast,3,Earth,Beast/Effect,1400,700,This face-up card on the field is returned to the owner's hand during the End Phase of your turn.,6285791,N,N,N,N,N,N,TheWickedWormBeast-GLD4-EN-C-LE.png,Common,1
+Battle Ox,4,Earth,Beast-Warrior,1700,1000,"A monster with tremendous power, it destroys enemies with a swing of its axe.",5053103,N,N,N,N,N,N,BattleOx-YSKR-EN-C-1E.png,Common,1
+Koumori Dragon,4,Dark,Dragon,1500,1200,"A vicious, fire-breathing dragon whose wicked flame corrupts the souls of its victims.",67724379,N,N,N,N,N,N,KoumoriDragon.jpg,Common,1
+Judge Man,6,Earth,Warrior,2200,1500,This club-wielding warrior battles to the end and will never surrender.,30113682,N,N,N,N,N,N,JudgeMan-DPKB-EN-C-1E.png,Common,1
+Rogue Doll,4,Light,Spellcaster,1600,1000,"A deadly doll gifted with mystical power, it is particularly powerful when attacking against dark forces.",91939608,N,N,N,N,N,N,RogueDoll-SKE-EN-C-1E.jpg,Common,1
+Kojikocy,4,Earth,Warrior,1500,1200,A man-hunter with powerful arms that can crush boulders.,1184620,N,N,N,N,N,N,Kojikocy-DB1-EN-C-UE.jpg,Common,1
+Uraby,4,Earth,Dinosaur,1500,800,"Fast on its feet, this dinosaur rips enemies to shreds with its sharp claws.",1784619,N,N,N,N,N,N,Uraby.jpg,Common,1
+Gyakutenno Megami,6,Light,Fairy,1800,2000,This fairy uses her mystical power to protect the weak and provide spiritual support.,31122090,N,N,N,N,N,N,Gyakutenno-Megami_15057.jpg,Ultra Rare,1
