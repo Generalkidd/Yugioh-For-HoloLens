@@ -809,6 +809,32 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
+        internal Result RequestOokazi(int id)
+        {
+            if (player1.id == id && playerWhosTurnItIs == 1)
+            {
+                player2.setLifePoints(player2.getLifePoints() - 800);
+                return Result.Success;
+            }
+            else if (player1.id == id && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 2)
+            {
+                player1.setLifePoints(player1.getLifePoints() - 800);
+                return Result.Success;
+            }
+            else if (player2.id == id && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
         internal Result RequestSparks(int id)
         {
             if (player1.id == id && playerWhosTurnItIs == 1)
@@ -980,6 +1006,30 @@ namespace Assets.Scripts.BattleHandler.Game
                         return Result.IneligibleMonsterType;
                     }
                 }
+                else if(stc.CardName == "Dark Energy")
+                {
+                    if (monsterCard.Type.ToUpper().Contains("FIEND"))
+                    {
+                        monsterCard.AttackPoints += 300;
+                        monsterCard.DefensePoints += 300;
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if(stc.CardName == "Invigoration")
+                {
+                    if (monsterCard.Attribute==CardAttributeOrType.Earth)
+                    {
+                        monsterCard.AttackPoints += 400;
+                        monsterCard.DefensePoints -= 200;
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
                 else
                 {
                     return Result.InvalidMove;
@@ -1047,6 +1097,30 @@ namespace Assets.Scripts.BattleHandler.Game
                     {
                         monsterCard.AttackPoints+= 300;
                         monsterCard.DefensePoints += 300;
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.CardName == "Dark Energy")
+                {
+                    if (monsterCard.Type.ToUpper().Contains("FIEND"))
+                    {
+                        monsterCard.AttackPoints += 300;
+                        monsterCard.DefensePoints += 300;
+                    }
+                    else
+                    {
+                        return Result.IneligibleMonsterType;
+                    }
+                }
+                else if (stc.CardName == "Invigoration")
+                {
+                    if (monsterCard.Attribute == CardAttributeOrType.Earth)
+                    {
+                        monsterCard.AttackPoints += 400;
+                        monsterCard.DefensePoints -= 200;
                     }
                     else
                     {

@@ -49,3 +49,14 @@ Rogue Doll,4,Light,Spellcaster,1600,1000,"A deadly doll gifted with mystical pow
 Kojikocy,4,Earth,Warrior,1500,1200,A man-hunter with powerful arms that can crush boulders.,1184620,N,N,N,N,N,N,Kojikocy-DB1-EN-C-UE.jpg,Common,1
 Uraby,4,Earth,Dinosaur,1500,800,"Fast on its feet, this dinosaur rips enemies to shreds with its sharp claws.",1784619,N,N,N,N,N,N,Uraby.jpg,Common,1
 Gyakutenno Megami,6,Light,Fairy,1800,2000,This fairy uses her mystical power to protect the weak and provide spiritual support.,31122090,N,N,N,N,N,N,Gyakutenno-Megami_15057.jpg,Ultra Rare,1
+Mystic Horseman,4,Earth,Beast,1300,1550,"Half man and half horse, this monster is known for its extreme speed.",68516705,N,N,N,N,N,N,mysticHorseman.jpg,Common,1
+Terra The Terrible,4,Dark,Fiend,1200,1300,"Known as a swamp dweller, this creature is a minion of the dark forces.",63308047,N,N,N,N,N,N,TerratheTerrible-LOB-NA-C-1E.jpg,Common,1
+Dark Titan of Terror,4,Dark,Fiend,1300,1100,"A fiend said to dwell in the world of dreams, it attacks enemies in their sleep.",89494469,N,N,N,N,N,N,DarkTitanofTerror-SDK-NA-C-UE.png,Common,1
+Dark Assailant,4,Dark,Zombie,1200,1200,"Armed with the Psycho Sword, this sinister assassin rules the bad land.",41949033,N,N,N,N,N,N,DarkAssailant-SDK-NA-C-UE.png,Common,1
+Master & Expert,4,Earth,Beast,1200,1000,A deadly duo consisting of a beast master and its loyal servant.,75499502,N,N,N,N,N,N,MasterExpert-SDK-NA-C-UE.png,Common,1
+Unknown Warrior of Fiend,3,Dark,Warrior,1000,500,The speed of this warrior creates an intense vacuum that can slice through a monster's hide.,97360116,N,N,N,N,N,N,UnknownWarriorofFiend-SDK-NA-C-UE.png,Common,1
+Mystic Clown,4,Dark,Fiend,1500,1000,Nothing can stop the mad attack of this powerful creature.,47060154,N,N,N,N,N,N,MysticClown.jpg,Common,1
+Ogre of the Black Shadow,4,Earth,Beast-Warrior,1200,1400,An ogre possessed by the powers of the dark. Few can withstand its rapid charge.,45121025,N,N,N,N,N,N,OgreoftheBlackShadow-SDK-NA-C-UE.png,Common,1
+Dark Energy,0,Spell,Equip,0,0,Increase the ATK and DEF of a Fiend-Type monster equipped with this card by 300 points.,4614116,N,N,N,N,N,N,DarkEnergy.jpg,Common,1
+Invigoration,0,Spell,Equip,0,0,An EARTH monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.,98374133,N,N,N,N,N,N,InvigorationSDK-EN-C.jpg,Common,1
+Ookazi,0,Spell,Normal,0,0,Inflict 800 damage to your opponent.,19523799,N,N,N,N,N,N,Ookazi.png,Common,1
