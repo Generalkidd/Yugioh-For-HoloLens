@@ -60,3 +60,13 @@ Ogre of the Black Shadow,4,Earth,Beast-Warrior,1200,1400,An ogre possessed by th
 Dark Energy,0,Spell,Equip,0,0,Increase the ATK and DEF of a Fiend-Type monster equipped with this card by 300 points.,4614116,N,N,N,N,N,N,DarkEnergy.jpg,Common,1
 Invigoration,0,Spell,Equip,0,0,An EARTH monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.,98374133,N,N,N,N,N,N,InvigorationSDK-EN-C.jpg,Common,1
 Ookazi,0,Spell,Normal,0,0,Inflict 800 damage to your opponent.,19523799,N,N,N,N,N,N,Ookazi.png,Common,1
+Ryu-Kishin Powered,4,Dark,Fiend,1600,1200,A gargoyle enhanced by the powers of darkness. Very sharp talons make it a worthy opponent.,24611934,N,N,N,N,N,N,RyuKishinPowered-DB2-EN-C-UE.jpg,Common,1
+Swordstalker,6,Dark,Warrior,2000,1600,A monster formed by the vengeful souls of those who passed away in battle.,50005633,N,N,N,N,N,N,Swordstalker-DPKB-EN-C-1E.png,Common,1
+La Jinn the Mystical Genie of the Lamp,4,Dark,Fiend,1800,1000,A genie of the lamp that is at the beck and call of its master.,97590747,N,N,N,N,N,N,LaJinntheMysticalGenieoftheLamp-YSKR-EN-C-1E.png,Rare,1
+Rude Kaiser,5,Earth,Beast-Warrior,1800,1600,"With an axe in each hand, this monster delivers heavy damage.",26378150,N,N,N,N,N,N,RudeKaiser-LCJW-EN-C-1E.png,Common,1
+Destroyer Golem,4,Earth,Rock,1500,1000,A golem with a massive right hand for crushing its victims.,73481154,N,N,N,N,N,N,destroyerGolem.jpg,Common,1
+Skull Red Bird,4,Wind,Winged Beast,1550,1200,This monster swoops down and attacks with a rain of knives stored in its wings.,10202894,N,N,N,N,N,N,SkullRedBird-LOB-NA-C-1E.jpg,Common,1
+D. Human,4,Earth,Warrior,1300,1100,"Gifted with the power of dragons, this warrior wields a sword created from a dragon's fang.",81057959,N,N,N,N,N,N,DHuman-SDK-NA-C-UE.png,Common,1
+Pale Beast,4,Earth,Beast,1500,1200,"With skin tinged a bluish-white, this strange creature is a fearsome sight to behold.",21263083,N,N,N,N,N,N,PaleBeast.jpg,Common,1
+Two-Pronged Attack,0,Trap,Normal,0,0,Select and destroy 2 of your monsters and 1 of your opponent's monsters.,83887306,N,N,N,N,N,N,two-prongedattack.jpg,Common,1
+De-Spell,0,Spell,Normal,0,0,"Select 1 Spell Card on the field and destroy it. If the selected card is Set, pick up and see the card. If it is a Spell Card, it is destroyed. If it is a Trap Card, return it to its original position.",19159413,N,N,N,N,N,N,DeSpell-SKE-EN-C-1E.jpg,Common,1

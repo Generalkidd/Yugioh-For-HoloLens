@@ -23,6 +23,11 @@ namespace Assets.Scripts.BattleHandler.Game
             get; internal set;
         }
 
+        internal GameManager myGm
+        {
+            get; set;
+        }
+
         /// <summary>
         /// The 40-60 cards the player is dueling with.
         /// </summary>
@@ -165,12 +170,22 @@ namespace Assets.Scripts.BattleHandler.Game
                 if (FaceDownCardsInMonsterZone.Contains(c as MonsterCard))
                 {
                     FaceDownCardsInMonsterZone.Remove(c as MonsterCard);
+                    SpellAndTrapCard attachedTo = (c as MonsterCard).EquippedTo;
+                    if(attachedTo!=null)
+                    {
+                        SendToGraveYard(attachedTo, Zone.SpellTrap);
+                    }
                     MeReadOnly.NumberOfFaceDownCardsInMonsterZone=MeReadOnly.NumberOfFaceDownCardsInMonsterZone - 1;
                 }
                 else if (MeReadOnly.FaceUpMonsters.Contains(c as MonsterCard))
                 {
                     List<MonsterCard> toRemoveFrom = MeReadOnly.FaceUpMonsters;
                     toRemoveFrom.Remove(c as MonsterCard);
+                    SpellAndTrapCard attachedTo = (c as MonsterCard).EquippedTo;
+                    if (attachedTo != null)
+                    {
+                        SendToGraveYard(attachedTo, Zone.SpellTrap);
+                    }
                     MeReadOnly.FaceUpMonsters=toRemoveFrom;
                 }
             }
@@ -331,6 +346,44 @@ namespace Assets.Scripts.BattleHandler.Game
                         MeReadOnly.NumberOfCardsInHand--;
                     }
                 }
+                else if(stc.CardName.Equals("Two-Pronged Attack"))
+                {
+                    MonsterCard myOne = myGm.PromptForOneOfMyMonstersOnField();
+                    MonsterCard myTwo = myGm.PromptForOneOfMyMonstersOnField();
+                    MonsterCard possibleTheirsCard = null;
+                    int possibleTheirsIndex = -1;
+                    myGm.PromptForOneOfOpponentsMonstersOnField(out possibleTheirsCard, out possibleTheirsIndex);
+                    if(myOne!=myTwo && myOne!=null && myTwo!=null && possibleTheirsCard!=null)
+                    {
+                        amIAllowedToSummon = MyCurrentGame.RequestTwoProngedAttack(id, myOne, myTwo, possibleTheirsCard);
+                        if(amIAllowedToSummon==Result.Success)
+                        {
+                            SendToGraveYard(spellOrTrapToPlay, Zone.Hand);
+                        }
+                    }
+                    else
+                    {
+                        amIAllowedToSummon = Result.InvalidMove;
+                    }
+                }
+                else if(stc.CardName.Equals("De-Spell"))
+                {
+                    SpellAndTrapCard possibleTheirsCard = null;
+                    int possibleTheirsIndex = -1;
+                    myGm.PromptForOneOfOpponentsSpellsOrTrapsOnField(out possibleTheirsCard,out possibleTheirsIndex);
+                    if (possibleTheirsCard != null)
+                    {
+                        amIAllowedToSummon = MyCurrentGame.RequestDeSpell(id, possibleTheirsCard);
+                    }
+                    else if(possibleTheirsIndex!=-1)
+                    {
+                        amIAllowedToSummon = MyCurrentGame.RequestDeSpell(id, possibleTheirsIndex);
+                    }
+                    else
+                    {
+                        amIAllowedToSummon = Result.InvalidMove;
+                    }
+                }
                 else
                 {
                     amIAllowedToSummon = Result.InvalidMove;
@@ -361,11 +414,22 @@ namespace Assets.Scripts.BattleHandler.Game
                     {
                         MonsterCard equippingTo = FaceDownCardsInMonsterZone[i];
                         found = true;
-                        Result r = MyCurrentGame.RequestEquip(id, EquipableCard, ref equippingTo);
+                        SpellAndTrapCard stc;
+                        if(EquipableCard is SpellAndTrapCard)
+                        {
+                            stc = EquipableCard as SpellAndTrapCard;
+                        }
+                        else
+                        {
+                            return "Not a spell and trap card";
+                        }
+                        Result r = MyCurrentGame.RequestEquip(id, ref stc, ref equippingTo);
                         if (r == Result.Success)
                         {
                             FaceDownCardsInMonsterZone[i] = equippingTo;
-                            SendToGraveYard(EquipableCard, Zone.Hand);
+                            MeReadOnly.FaceUpTraps.Add(stc);
+                            Hand.Remove(EquipableCard as SpellAndTrapCard);
+                            //SendToGraveYard(EquipableCard, Zone.Hand);
                             return "";
                         }
                         else
@@ -382,12 +446,22 @@ namespace Assets.Scripts.BattleHandler.Game
                     {
                         found = true;
                         MonsterCard equippingTo = faceUpMonsters[i];
-                        Result r = MyCurrentGame.RequestEquip(id, EquipableCard, ref equippingTo);
+                        SpellAndTrapCard stc;
+                        if (EquipableCard is SpellAndTrapCard)
+                        {
+                            stc = EquipableCard as SpellAndTrapCard;
+                        }
+                        else
+                        {
+                            return "Not a spell and trap card";
+                        }
+                        Result r = MyCurrentGame.RequestEquip(id, ref stc, ref equippingTo);
                         if (r == Result.Success)
                         {
                             faceUpMonsters[i] = equippingTo;
                             MeReadOnly.FaceUpMonsters=faceUpMonsters;
-                            SendToGraveYard(EquipableCard, Zone.Hand);
+                            MeReadOnly.FaceUpTraps.Add(stc);
+                            Hand.Remove(EquipableCard as SpellAndTrapCard);
                             return "";
                         }
                         else

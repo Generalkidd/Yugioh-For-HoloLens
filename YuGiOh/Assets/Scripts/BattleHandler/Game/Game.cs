@@ -741,6 +741,1719 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
+
+        internal Result RequestDeSpell(int idOfAttacker, int indexOfOppFaceDownCardToDestroy)
+        {
+            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                if (player2.FaceDownTraps.Count > indexOfOppFaceDownCardToDestroy)
+                {
+                    SpellAndTrapCard toDestroy = player2.FaceDownTraps[indexOfOppFaceDownCardToDestroy];
+                    if (toDestroy.Attribute == CardAttributeOrType.Spell)
+                    {
+                        if (toDestroy.EquippedTo != null)
+                        {
+                            if (toDestroy.CardName == "Legendary Sword")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Beast Fangs")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Violet Crystal")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Book of Secret Arts")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Power of Kaishin")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Dark Energy")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Invigoration")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        player2.SendToGraveYard(toDestroy, Zone.SpellTrap);
+                    }
+                    return Result.Success;
+                }
+                else
+                {
+                    return Result.OneOrMoreCardsAreNoLongerOnField;
+                }
+            }
+            else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                if (player1.FaceDownTraps.Count > indexOfOppFaceDownCardToDestroy)
+                {
+                    SpellAndTrapCard toDestroy = player1.FaceDownTraps[indexOfOppFaceDownCardToDestroy];
+                    if (toDestroy.Attribute == CardAttributeOrType.Spell)
+                    {
+                        if (toDestroy.EquippedTo != null)
+                        {
+                            if (toDestroy.CardName == "Legendary Sword")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Beast Fangs")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Violet Crystal")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Book of Secret Arts")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Power of Kaishin")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Dark Energy")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Invigoration")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        player1.SendToGraveYard(toDestroy, Zone.SpellTrap);
+                    }
+                    return Result.Success;
+                }
+                else
+                {
+                    return Result.OneOrMoreCardsAreNoLongerOnField;
+                }
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestDeSpell(int idOfAttacker, SpellAndTrapCard toDestroy)
+        {
+            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                if(player1.FaceDownTraps.Contains(toDestroy))
+                {
+                    if(toDestroy.Attribute==CardAttributeOrType.Spell)
+                    {
+                        if(toDestroy.EquippedTo!=null)
+                        {
+                            if (toDestroy.CardName == "Legendary Sword")
+                            {
+                                for(int i=0;i<player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if(player1.FaceDownCardsInMonsterZone[i]==toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Beast Fangs")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Violet Crystal")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Book of Secret Arts")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Power of Kaishin")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Dark Energy")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Invigoration")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        player1.SendToGraveYard(toDestroy, Zone.SpellTrap);
+                    }
+                    return Result.Success;
+                }
+                else if(player1.MeReadOnly.FaceUpTraps.Contains(toDestroy))
+                {
+                    if (toDestroy.Attribute == CardAttributeOrType.Spell)
+                    {
+                        if (toDestroy.EquippedTo != null)
+                        {
+                            if (toDestroy.CardName == "Legendary Sword")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Beast Fangs")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Violet Crystal")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Book of Secret Arts")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Power of Kaishin")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Dark Energy")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Invigoration")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        player1.SendToGraveYard(toDestroy, Zone.SpellTrap);
+                    }
+                    return Result.Success;
+                }
+                else if(player2.MeReadOnly.FaceUpTraps.Contains(toDestroy))
+                {
+                    if(toDestroy.Attribute==CardAttributeOrType.Spell)
+                    {
+                        if (toDestroy.EquippedTo != null)
+                        {
+                            if (toDestroy.CardName == "Legendary Sword")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Beast Fangs")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Violet Crystal")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Book of Secret Arts")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Power of Kaishin")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Dark Energy")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Invigoration")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        player2.SendToGraveYard(toDestroy, Zone.SpellTrap);
+                    }
+                    return Result.Success;
+                }
+                else
+                {
+                    return Result.OneOrMoreCardsAreNoLongerOnField;
+                }
+            }
+            else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                if (player2.FaceDownTraps.Contains(toDestroy))
+                {
+                    if (toDestroy.Attribute == CardAttributeOrType.Spell)
+                    {
+                        if (toDestroy.EquippedTo != null)
+                        {
+                            if (toDestroy.CardName == "Legendary Sword")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Beast Fangs")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Violet Crystal")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Book of Secret Arts")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Power of Kaishin")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Dark Energy")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Invigoration")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        player2.SendToGraveYard(toDestroy, Zone.SpellTrap);
+                    }
+                    return Result.Success;
+                }
+                else if (player1.MeReadOnly.FaceUpTraps.Contains(toDestroy))
+                {
+                    if (toDestroy.Attribute == CardAttributeOrType.Spell)
+                    {
+                        if (toDestroy.EquippedTo != null)
+                        {
+                            if (toDestroy.CardName == "Legendary Sword")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Beast Fangs")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Violet Crystal")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Book of Secret Arts")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Power of Kaishin")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Dark Energy")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Invigoration")
+                            {
+                                for (int i = 0; i < player1.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player1.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player1.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player1.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player1.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player1.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player1.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        player1.SendToGraveYard(toDestroy, Zone.SpellTrap);
+                    }
+                    return Result.Success;
+                }
+                else if (player2.MeReadOnly.FaceUpTraps.Contains(toDestroy))
+                {
+                    if (toDestroy.Attribute == CardAttributeOrType.Spell)
+                    {
+                        if (toDestroy.EquippedTo != null)
+                        {
+                            if (toDestroy.CardName == "Legendary Sword")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Beast Fangs")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Violet Crystal")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Book of Secret Arts")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Power of Kaishin")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Dark Energy")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints -= 300;
+                                        mc.AttackPoints -= 300;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                            else if (toDestroy.CardName == "Invigoration")
+                            {
+                                for (int i = 0; i < player2.FaceDownCardsInMonsterZone.Count; i++)
+                                {
+                                    if (player2.FaceDownCardsInMonsterZone[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.FaceDownCardsInMonsterZone[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player2.FaceDownCardsInMonsterZone[i] = mc;
+                                        break;
+                                    }
+                                }
+                                for (int i = 0; i < player2.MeReadOnly.FaceUpMonsters.Count; i++)
+                                {
+                                    if (player2.MeReadOnly.FaceUpMonsters[i] == toDestroy.EquippedTo)
+                                    {
+                                        MonsterCard mc = player2.MeReadOnly.FaceUpMonsters[i];
+                                        mc.DefensePoints += 200;
+                                        mc.AttackPoints -= 400;
+                                        mc.EquippedTo = null;
+                                        player2.MeReadOnly.FaceUpMonsters[i] = mc;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        player2.SendToGraveYard(toDestroy, Zone.SpellTrap);
+                    }
+                    return Result.Success;
+                }
+                else
+                {
+                    return Result.OneOrMoreCardsAreNoLongerOnField;
+                }
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
+        internal Result RequestTwoProngedAttack(int idOfAttacker, MonsterCard mineToDestroy1, MonsterCard mineToDestroy2, MonsterCard theirsToDestroy)
+        {
+            if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                if (player1.FaceDownCardsInMonsterZone.Contains(mineToDestroy1) || player1.MeReadOnly.FaceUpMonsters.Contains(mineToDestroy1))
+                {
+                    if (player1.FaceDownCardsInMonsterZone.Contains(mineToDestroy2) || player1.MeReadOnly.FaceUpMonsters.Contains(mineToDestroy2))
+                    {
+                        if (player2.MeReadOnly.FaceUpMonsters.Contains(theirsToDestroy))
+                        {
+                            player1.SendToGraveYard(mineToDestroy1, Zone.Monster);
+                            player1.SendToGraveYard(mineToDestroy2, Zone.Monster);
+                            player2.SendToGraveYard(theirsToDestroy, Zone.Monster);
+                            return Result.Success;
+                        }
+                    }
+                }
+                return Result.OneOrMoreCardsAreNoLongerOnField;
+            }
+            else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                return Result.NotYourTurn;
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
+            {
+                if (player2.FaceDownCardsInMonsterZone.Contains(mineToDestroy1) || player2.MeReadOnly.FaceUpMonsters.Contains(mineToDestroy1))
+                {
+                    if (player2.FaceDownCardsInMonsterZone.Contains(mineToDestroy2) || player2.MeReadOnly.FaceUpMonsters.Contains(mineToDestroy2))
+                    {
+                        if (player1.MeReadOnly.FaceUpMonsters.Contains(theirsToDestroy))
+                        {
+                            player2.SendToGraveYard(mineToDestroy1, Zone.Monster);
+                            player2.SendToGraveYard(mineToDestroy2, Zone.Monster);
+                            player1.SendToGraveYard(theirsToDestroy, Zone.Monster);
+                            return Result.Success;
+                        }
+                    }
+                }
+                return Result.OneOrMoreCardsAreNoLongerOnField;
+            }
+            else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
+            {
+                return Result.NotYourTurn;
+            }
+            else
+            {
+                return Result.InvalidMove;
+            }
+        }
+
         internal Result RequestSacrifice(int idOfAttacker, MonsterCard toSacrifice)
         {
             if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
@@ -941,15 +2654,16 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
-        internal Result RequestEquip(int id, object equipableCard, ref MonsterCard monsterCard)
+        internal Result RequestEquip(int id, ref SpellAndTrapCard stc, ref MonsterCard monsterCard)
         {
-            if (player1.id == id && playerWhosTurnItIs == 1 && equipableCard is SpellAndTrapCard)
+            if (player1.id == id && playerWhosTurnItIs == 1)
             {
-                SpellAndTrapCard stc = equipableCard as SpellAndTrapCard;
                 if (stc.CardName == "Legendary Sword")
                 {
                     if (monsterCard.Type.ToUpper().Contains("WARRIOR"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints=monsterCard.AttackPoints + 300;
                         monsterCard.DefensePoints=monsterCard.DefensePoints + 300;
                     }
@@ -962,6 +2676,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("BEAST"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints+= 300;
                         monsterCard.DefensePoints += 300;
                     }
@@ -974,6 +2690,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("ZOMBIE"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints+=300;
                         monsterCard.DefensePoints+= 300;
                     }
@@ -986,6 +2704,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("SPELLCASTER"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints+= 300;
                         monsterCard.DefensePoints+=300;
                     }
@@ -998,6 +2718,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("AQUA"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints+= 300;
                         monsterCard.DefensePoints+= 300;
                     }
@@ -1010,6 +2732,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("FIEND"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints += 300;
                         monsterCard.DefensePoints += 300;
                     }
@@ -1022,6 +2746,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Attribute==CardAttributeOrType.Earth)
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints += 400;
                         monsterCard.DefensePoints -= 200;
                     }
@@ -1042,11 +2768,12 @@ namespace Assets.Scripts.BattleHandler.Game
             }
             else if (player2.id == id && playerWhosTurnItIs == 2)
             {
-                SpellAndTrapCard stc = equipableCard as SpellAndTrapCard;
                 if (stc.CardName == "Legendary Sword")
                 {
                     if (monsterCard.Type.ToUpper().Contains("WARRIOR"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints+= 300;
                         monsterCard.DefensePoints+= 300;
                     }
@@ -1059,6 +2786,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("BEAST"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints+= 300;
                         monsterCard.DefensePoints+= 300;
                     }
@@ -1071,6 +2800,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("ZOMBIE"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints += 300;
                         monsterCard.DefensePoints += 300;
                     }
@@ -1083,6 +2814,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("SPELLCASTER"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints+= 300;
                         monsterCard.DefensePoints+= 300;
                     }
@@ -1095,6 +2828,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("AQUA"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints+= 300;
                         monsterCard.DefensePoints += 300;
                     }
@@ -1107,6 +2842,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Type.ToUpper().Contains("FIEND"))
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints += 300;
                         monsterCard.DefensePoints += 300;
                     }
@@ -1119,6 +2856,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (monsterCard.Attribute == CardAttributeOrType.Earth)
                     {
+                        stc.EquippedTo = monsterCard;
+                        monsterCard.EquippedTo = stc;
                         monsterCard.AttackPoints += 400;
                         monsterCard.DefensePoints -= 200;
                     }

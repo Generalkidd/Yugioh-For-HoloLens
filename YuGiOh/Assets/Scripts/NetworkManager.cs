@@ -314,19 +314,6 @@ public class NetworkManager : MonoBehaviour
     {
         AddChatMessage(PhotonNetwork.player.name + " has joined.");
         wasSignedIn = true;
-        /*
-        Debug.Log("SpawnMyPlayer");
-        spawnSpots = GameObject.FindGameObjectsWithTag("Chair");
-        Debug.Log(spawnSpots.Length);
-        Debug.Log(spawnSpots[0].transform.position);
-        var pos = spawnSpots[UnityEngine.Random.Range(0, spawnSpots.Length)];
-        var rotate = Quaternion.Euler(0, 90, 0);
-        GameObject myPlayerGO = (GameObject)PhotonNetwork.Instantiate("boystudent", new Vector3(pos.transform.position.x + 39, (float)pos.transform.position.y + 2, pos.transform.position.z - 43), rotate, 0);
-        myPlayerGO.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = true;
-        myPlayerGO.transform.FindChild("Camera").gameObject.SetActive(true);
-        */
-        //Tutoring otherScript = tutor.GetComponent<Tutoring>();
-        //otherScript.setMasterChatter(this);
     }
 
     // Update is called once per frame
@@ -358,7 +345,7 @@ public class NetworkManager : MonoBehaviour
                     Instantiate(field);
                     Debug.Log("Found Game GameObject, Loading game manager");
                     GameObject gObject = Resources.Load("GameManagerPrefab") as GameObject;
-                    GameManager gm = GameManager.MakeManager(gObject, g.myPlayer(PhotonNetwork.player.ID), CardBackTexture);
+                    GameManager gm = GameManager.MakeManager(gObject, g.myPlayer(PhotonNetwork.player.ID), CardBackTexture, this);
                     Instantiate(gObject);
                     hasMadeGameManager = true;
                     Debug.Log("Created GameManager.Ready to Rock and Roll on the Network.");

@@ -4,19 +4,23 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.BattleHandler.Game;
 using System;
+using Assets.Scripts.BattleHandler.Cards;
 
 public class GameManager : MonoBehaviour
 {
     long frameCounter = long.MaxValue;
     static Player me;
     static Texture CardBackTexture;
+    static NetworkManager netManager;
+
     List<Assets.Scripts.BattleHandler.Cards.Card> hand = new List<Assets.Scripts.BattleHandler.Cards.Card>();
 
-    public static GameManager MakeManager(GameObject toAddTo, Player pMe, Texture CardBack)
+    public static GameManager MakeManager(GameObject toAddTo, Player pMe, Texture CardBack, NetworkManager networkManager)
     {
         GameManager myManager = toAddTo.AddComponent<GameManager>();
         me = pMe;
         CardBackTexture = CardBack;
+        netManager = networkManager;
         return myManager;
     }
 
@@ -35,6 +39,36 @@ public class GameManager : MonoBehaviour
         }
         frameCounter++;
 	}
+
+    ///Returns a monster card air tapped by user from his/her monster zone.
+    public MonsterCard PromptForOneOfMyMonstersOnField()
+    {
+        //TODO CODE
+        return null;
+    }
+
+    ///<summary>
+    ///Returns either a face up monster card air tapped by user from his/her opponent's monster zone
+    ///OR the index of a face down monster card air tapped by user from his/her opponent's monster zone
+    ///</summary>
+    public void PromptForOneOfOpponentsMonstersOnField(out MonsterCard faceUpMonster, out int faceDownMonsterIndex)
+    {
+        //TODO CODE
+        faceUpMonster = null;
+        faceDownMonsterIndex = -1;
+    }
+
+    ///<summary>
+    ///Returns either a face up Spell/Trap card air tapped by user from his/her opponent's Spell/Trap zone
+    ///OR the index of a face down Spell/Trap card air tapped by user from his/her opponent's Spell/Trap zone
+    ///</summary>
+    public void PromptForOneOfOpponentsSpellsOrTrapsOnField(out SpellAndTrapCard faceUpSpellOrTrap, out int faceDownSpellOrTrapIndex)
+    {
+        //TODO CODE
+        faceUpSpellOrTrap = null;
+        faceDownSpellOrTrapIndex = -1;
+    }
+
 
     private void placeOpponentsHandOnGUI()
     {
@@ -64,6 +98,7 @@ public class GameManager : MonoBehaviour
     private void placeMyHandCardsOnGUI()
     {
         hand = me.Hand;
+        me.myGm = this;
         for(int i=0; i<hand.Count; i++)
         {
             if(i==0)

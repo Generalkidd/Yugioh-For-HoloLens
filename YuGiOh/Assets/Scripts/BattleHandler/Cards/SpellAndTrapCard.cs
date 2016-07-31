@@ -13,6 +13,11 @@ namespace Assets.Scripts.BattleHandler.Cards
             get; internal set;
         }
 
+        public MonsterCard EquippedTo
+        {
+            get; internal set;
+        }
+
         internal SpellAndTrapCard(string cardName, CardAttributeOrType attributeOrType, Icon ico, string cardDescription, long cardNumber, Texture bi)
         {
             CardName=cardName;
