@@ -17,5 +17,8 @@ public class Online : MonoBehaviour {
     void OnSelect()
     {
         SceneManager.LoadScene(2);
+        GameObject camera = Camera.main.gameObject;
+        NetworkManager nm=camera.AddComponent<NetworkManager>();
+        nm.Connect();
     }
 }

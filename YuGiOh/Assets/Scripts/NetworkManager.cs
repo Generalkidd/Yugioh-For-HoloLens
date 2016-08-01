@@ -85,7 +85,7 @@ public class NetworkManager : MonoBehaviour
         chatMessages.Add(m);
     }
 
-    void Connect()
+    public void Connect()
     {
         Debug.Log("Connect");
         PhotonNetwork.ConnectUsingSettings("1.0.0");
