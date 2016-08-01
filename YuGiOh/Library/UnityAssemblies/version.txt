@@ -1,6 +1,6 @@
 5.4.0b24-HTP:2.2.0.0
-StandaloneWindows
-C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data/Managed/UnityEngine.dll
+WSAPlayer
+C:\Program Files\Unity HoloLens 5.4.0b24-HTP\Editor\Data\PlaybackEngines\MetroSupport/Tools/UnityEngine.dll
 C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
 C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
 C:/Program Files/Unity HoloLens 5.4.0b24-HTP/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Runtime/UnityEngine.HoloLens.dll
