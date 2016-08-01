@@ -4,15 +4,17 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     Vector3 originalPosition;
-    public string CardName = "";
-    public string CardType = "";
-    private Vector3 spawnPos = new Vector3(6.5f, -1.5f, 6.5f);
-    public int attack = 0;
-    public int defense = 0;
-    public int level = 0;
-    public bool godCard = false;
-    public Quaternion rotation = new Quaternion(0f, 90f, 0f, 0f);
-    
+    internal string CardName = "";
+    internal string CardType = "";
+    //private Vector3 spawnPos = new Vector3(6.5f, -1.5f, 6.5f);
+    internal int attack = 0;
+    internal int defense = 0;
+    internal int level = 0;
+    internal bool godCard = false;
+    internal Quaternion rotation = new Quaternion(0f, 90f, 0f, 0f);
+    static internal GameManager myGameManager;
+    internal GameManager.CurrentlySelectedCardType myZone;
+
     // Use this for initialization
     void Start()
     {
@@ -20,6 +22,28 @@ public class Card : MonoBehaviour
         originalPosition = this.transform.localPosition;
     }
 
+    internal void setGameManager(GameManager gm)
+    {
+        Debug.Log("Setting game manager to: " + gm);
+        myGameManager = gm;
+        Debug.Log("Set game manager:" + myGameManager);
+    }
+
+    void OnSelect()
+    {
+        Debug.Log(myGameManager);
+        Debug.Log(myZone);
+        myGameManager.setSelectedCard(this, myZone);
+    }
+
+    void OnMouseDown()
+    {
+        Debug.Log(myGameManager);
+        Debug.Log(myZone);
+        myGameManager.setSelectedCard(this, myZone);
+    }
+    //OldCode
+    /*
     // Called by GazeGestureManager when the user performs a Select gesture
     IEnumerator OnSelect()
     {
@@ -88,7 +112,7 @@ public class Card : MonoBehaviour
         //}
 
     }
-
+    */
     // Called by SpeechManager when the user says the "Reset world" command
     void OnReset()
     {

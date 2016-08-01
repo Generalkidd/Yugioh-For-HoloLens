@@ -12,8 +12,18 @@ public class GameManager : MonoBehaviour
     static Player me;
     static Texture CardBackTexture;
     static NetworkManager netManager;
-
+    static Card currentlySelectedCard;
     List<Assets.Scripts.BattleHandler.Cards.Card> hand = new List<Assets.Scripts.BattleHandler.Cards.Card>();
+    private CurrentlySelectedCardType currentlySelectedCardType=CurrentlySelectedCardType.None;
+    private Assets.Scripts.BattleHandler.Cards.Card myCurrentlySelectedCard;
+    private Card myCurrentlySelectedCardObject;
+
+    public enum CurrentlySelectedCardType
+    {
+        Hand,
+        Monster,
+        None
+    }
 
     public static GameManager MakeManager(GameObject toAddTo, Player pMe, Texture CardBack, NetworkManager networkManager)
     {
@@ -24,9 +34,20 @@ public class GameManager : MonoBehaviour
         return myManager;
     }
 
+    void Start()
+    {
+        placeMyHandCardsOnGUI();
+        placeMyMonsterCardOnGUI();
+        placeMyTrapsOnGUI();
+        placeOpponentsMonstersOnGUI();
+        placeOpponentsTrapsOnGUI();
+        placeOpponentsHandOnGUI();
+    }
+
     // Update is called once per frame
     void Update () {
-        //Update every 1400 frames
+        /*
+        //Update every 5000 frames
         if (frameCounter > 5000)
         {
             placeMyHandCardsOnGUI();
@@ -37,7 +58,7 @@ public class GameManager : MonoBehaviour
             placeOpponentsHandOnGUI();
             frameCounter = 0;
         }
-        frameCounter++;
+        frameCounter++; */
 	}
 
     ///Returns a monster card air tapped by user from his/her monster zone.
@@ -95,6 +116,22 @@ public class GameManager : MonoBehaviour
        // throw new NotImplementedException();
     }
 
+    public void setSelectedCard(Card toSelect, CurrentlySelectedCardType toSelectType)
+    {
+        //Return Old Selected Cards to Normal Positions
+        if (currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+        {
+            myCurrentlySelectedCardObject.gameObject.transform.position = new Vector3(myCurrentlySelectedCardObject.gameObject.transform.position.x, myCurrentlySelectedCardObject.gameObject.transform.position.y -.3f, myCurrentlySelectedCardObject.gameObject.transform.position.z);
+        }
+
+        //Lift Newly Selected Cards On GUI so User knows it is selected
+        toSelect.gameObject.transform.position = new Vector3(toSelect.gameObject.transform.position.x, toSelect.gameObject.transform.position.y+.3f, toSelect.gameObject.transform.position.z);
+        myCurrentlySelectedCardObject = toSelect;
+        currentlySelectedCardType = toSelectType;
+        Transform parent = toSelect.gameObject.transform.parent;
+        Debug.Log(parent);
+    }
+
     private void placeMyHandCardsOnGUI()
     {
         hand = me.Hand;
@@ -122,12 +159,16 @@ public class GameManager : MonoBehaviour
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
                     card.level = (me.Hand[i] as MonsterCard).Level;
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
                 else if(me.Hand[i] is SpellAndTrapCard)
                 {
                     card.CardType = "Spell";
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
@@ -168,12 +209,16 @@ public class GameManager : MonoBehaviour
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
                     card.level = (me.Hand[i] as MonsterCard).Level;
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
                     card.CardType = "Spell";
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
@@ -199,12 +244,16 @@ public class GameManager : MonoBehaviour
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
                     card.level = (me.Hand[i] as MonsterCard).Level;
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
                     card.CardType = "Spell";
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
@@ -230,12 +279,16 @@ public class GameManager : MonoBehaviour
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
                     card.level = (me.Hand[i] as MonsterCard).Level;
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
                     card.CardType = "Spell";
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
@@ -261,12 +314,16 @@ public class GameManager : MonoBehaviour
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
                     card.level = (me.Hand[i] as MonsterCard).Level;
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
                     card.CardType = "Spell";
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
@@ -292,12 +349,16 @@ public class GameManager : MonoBehaviour
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
                     card.level = (me.Hand[i] as MonsterCard).Level;
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
                     card.CardType = "Spell";
+                    card.setGameManager(this);
+                    card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
