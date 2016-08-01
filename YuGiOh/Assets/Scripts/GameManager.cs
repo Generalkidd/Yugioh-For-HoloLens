@@ -110,6 +110,28 @@ public class GameManager : MonoBehaviour
                 children.ForEach(child => Destroy(child));
 
                 //Add The new Card
+                GameObject cardGO = Resources.Load("Card") as GameObject;
+                GameObject myCardGO = Instantiate(cardGO);
+                myCardGO.transform.parent = spawnPoint.transform;
+                myCardGO.transform.position = spawnPoint.transform.position;
+                Debug.Log("Found Card GameObject, Loading specific Card");
+                Card card = cardGO.GetComponent<Card>();
+                if(me.Hand[i] is MonsterCard)
+                {
+                    card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
+                    card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
+                    card.CardType = "Monster";
+                    card.level = (me.Hand[i] as MonsterCard).Level;
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
+                else if(me.Hand[i] is SpellAndTrapCard)
+                {
+                    card.CardType = "Spell";
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
+                /*
                 GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 plane.transform.Rotate(90, 180, 0);
                 Vector3 scale = new Vector3(0.035f, 0.05f, 0.05f);
@@ -123,7 +145,7 @@ public class GameManager : MonoBehaviour
                 planeBack.transform.position = spawnPoint.transform.position;
                 planeBack.transform.localScale = scale;
                 planeBack.GetComponent<Renderer>().material.mainTexture = CardBackTexture;
-                planeBack.transform.parent = spawnPoint.transform;
+                planeBack.transform.parent = spawnPoint.transform;*/
             }
             else if(i==1)
             {
@@ -134,20 +156,27 @@ public class GameManager : MonoBehaviour
                 children.ForEach(child => Destroy(child));
 
                 //Add The new Card
-                GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                plane.transform.Rotate(90, 180, 0);
-                plane.transform.position = spawnPoint.transform.position;
-                Vector3 scale = new Vector3(0.035f, 0.05f, 0.05f);
-                plane.transform.localScale = scale;
-                plane.GetComponent<Renderer>().material.mainTexture = hand[1].CardImage;
-                plane.transform.parent = spawnPoint.transform;
-                plane.AddComponent<BoxCollider>();
-                GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                planeBack.transform.Rotate(90, 0, 0);
-                planeBack.transform.localScale = scale;
-                planeBack.transform.position = spawnPoint.transform.position;
-                planeBack.GetComponent<Renderer>().material.mainTexture = CardBackTexture;
-                planeBack.transform.parent = spawnPoint.transform;
+                GameObject cardGO = Resources.Load("Card") as GameObject;
+                GameObject myCardGO = Instantiate(cardGO);
+                myCardGO.transform.parent = spawnPoint.transform;
+                myCardGO.transform.position = spawnPoint.transform.position;
+                Debug.Log("Found Card GameObject, Loading specific Card");
+                Card card = cardGO.GetComponent<Card>();
+                if (me.Hand[i] is MonsterCard)
+                {
+                    card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
+                    card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
+                    card.CardType = "Monster";
+                    card.level = (me.Hand[i] as MonsterCard).Level;
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
+                else if (me.Hand[i] is SpellAndTrapCard)
+                {
+                    card.CardType = "Spell";
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
             }
             else if (i == 2)
             {
@@ -158,20 +187,27 @@ public class GameManager : MonoBehaviour
                 children.ForEach(child => Destroy(child));
 
                 //Add The new Card
-                GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                plane.transform.Rotate(90, 180, 0);
-                plane.transform.position = spawnPoint.transform.position;
-                Vector3 scale = new Vector3(0.035f, 0.05f, 0.05f);
-                plane.transform.localScale = scale;
-                plane.GetComponent<Renderer>().material.mainTexture = hand[2].CardImage;
-                plane.transform.parent = spawnPoint.transform;
-                plane.AddComponent<BoxCollider>();
-                GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                planeBack.transform.Rotate(90, 0, 0);
-                planeBack.transform.position = spawnPoint.transform.position;
-                planeBack.transform.localScale = scale;
-                planeBack.GetComponent<Renderer>().material.mainTexture = CardBackTexture;
-                planeBack.transform.parent = spawnPoint.transform;
+                GameObject cardGO = Resources.Load("Card") as GameObject;
+                GameObject myCardGO = Instantiate(cardGO);
+                myCardGO.transform.parent = spawnPoint.transform;
+                myCardGO.transform.position = spawnPoint.transform.position;
+                Debug.Log("Found Card GameObject, Loading specific Card");
+                Card card = cardGO.GetComponent<Card>();
+                if (me.Hand[i] is MonsterCard)
+                {
+                    card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
+                    card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
+                    card.CardType = "Monster";
+                    card.level = (me.Hand[i] as MonsterCard).Level;
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
+                else if (me.Hand[i] is SpellAndTrapCard)
+                {
+                    card.CardType = "Spell";
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
             }
             else if (i == 3)
             {
@@ -182,20 +218,27 @@ public class GameManager : MonoBehaviour
                 children.ForEach(child => Destroy(child));
 
                 //Add The new Card
-                GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                plane.transform.Rotate(90, 180, 0);
-                plane.transform.position = spawnPoint.transform.position;
-                Vector3 scale = new Vector3(0.035f, 0.05f, 0.05f);
-                plane.transform.localScale = scale;
-                plane.GetComponent<Renderer>().material.mainTexture = hand[3].CardImage;
-                plane.transform.parent = spawnPoint.transform;
-                plane.AddComponent<BoxCollider>();
-                GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                planeBack.transform.Rotate(90, 0, 0);
-                planeBack.transform.position = spawnPoint.transform.position;
-                planeBack.GetComponent<Renderer>().material.mainTexture = CardBackTexture;
-                planeBack.transform.parent = spawnPoint.transform;
-                planeBack.transform.localScale = scale;
+                GameObject cardGO = Resources.Load("Card") as GameObject;
+                GameObject myCardGO = Instantiate(cardGO);
+                myCardGO.transform.parent = spawnPoint.transform;
+                myCardGO.transform.position = spawnPoint.transform.position;
+                Debug.Log("Found Card GameObject, Loading specific Card");
+                Card card = cardGO.GetComponent<Card>();
+                if (me.Hand[i] is MonsterCard)
+                {
+                    card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
+                    card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
+                    card.CardType = "Monster";
+                    card.level = (me.Hand[i] as MonsterCard).Level;
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
+                else if (me.Hand[i] is SpellAndTrapCard)
+                {
+                    card.CardType = "Spell";
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
             }
             else if (i == 4)
             {
@@ -206,20 +249,27 @@ public class GameManager : MonoBehaviour
                 children.ForEach(child => Destroy(child));
 
                 //Add The new Card
-                GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                plane.transform.Rotate(90, 180, 0);
-                plane.transform.position = spawnPoint.transform.position;
-                Vector3 scale = new Vector3(0.035f, 0.05f, 0.05f);
-                plane.transform.localScale = scale;
-                plane.GetComponent<Renderer>().material.mainTexture = hand[4].CardImage;
-                plane.transform.parent = spawnPoint.transform;
-                plane.AddComponent<BoxCollider>();
-                GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                planeBack.transform.Rotate(90, 0, 0);
-                planeBack.transform.position = spawnPoint.transform.position;
-                planeBack.transform.localScale = scale;
-                planeBack.GetComponent<Renderer>().material.mainTexture = CardBackTexture;
-                planeBack.transform.parent = spawnPoint.transform;
+                GameObject cardGO = Resources.Load("Card") as GameObject;
+                GameObject myCardGO = Instantiate(cardGO);
+                myCardGO.transform.parent = spawnPoint.transform;
+                myCardGO.transform.position = spawnPoint.transform.position;
+                Debug.Log("Found Card GameObject, Loading specific Card");
+                Card card = cardGO.GetComponent<Card>();
+                if (me.Hand[i] is MonsterCard)
+                {
+                    card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
+                    card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
+                    card.CardType = "Monster";
+                    card.level = (me.Hand[i] as MonsterCard).Level;
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
+                else if (me.Hand[i] is SpellAndTrapCard)
+                {
+                    card.CardType = "Spell";
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
             }
             else if (i == 5)
             {
@@ -230,19 +280,27 @@ public class GameManager : MonoBehaviour
                 children.ForEach(child => Destroy(child));
 
                 //Add The new Card
-                GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                plane.transform.Rotate(90, 180, 0);
-                plane.transform.position = spawnPoint.transform.position;
-                Vector3 scale = new Vector3(0.035f, 0.05f, 0.05f);
-                plane.transform.localScale = scale;
-                plane.GetComponent<Renderer>().material.mainTexture = hand[5].CardImage;
-                plane.transform.parent = spawnPoint.transform;
-                plane.AddComponent<BoxCollider>();
-                GameObject planeBack = GameObject.CreatePrimitive(PrimitiveType.Plane);
-                planeBack.transform.Rotate(90, 0, 0);
-                planeBack.transform.position = spawnPoint.transform.position;
-                planeBack.GetComponent<Renderer>().material.mainTexture = CardBackTexture;
-                planeBack.transform.parent = spawnPoint.transform;
+                GameObject cardGO = Resources.Load("Card") as GameObject;
+                GameObject myCardGO = Instantiate(cardGO);
+                myCardGO.transform.parent = spawnPoint.transform;
+                myCardGO.transform.position = spawnPoint.transform.position;
+                Debug.Log("Found Card GameObject, Loading specific Card");
+                Card card = cardGO.GetComponent<Card>();
+                if (me.Hand[i] is MonsterCard)
+                {
+                    card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
+                    card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
+                    card.CardType = "Monster";
+                    card.level = (me.Hand[i] as MonsterCard).Level;
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
+                else if (me.Hand[i] is SpellAndTrapCard)
+                {
+                    card.CardType = "Spell";
+                    myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
+                    myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+                }
             }
         }
     }
