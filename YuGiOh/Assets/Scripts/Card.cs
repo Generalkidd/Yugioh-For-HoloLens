@@ -113,8 +113,8 @@ public class Card : MonoBehaviour
 
     }
     */
-    // Called by SpeechManager when the user says the "Reset world" command
-    void OnReset()
+    // Called by SpeechManager when the user says the "Discard" command
+    void OnDiscard()
     {
         Destroy(this.gameObject);
     }

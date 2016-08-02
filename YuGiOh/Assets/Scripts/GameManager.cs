@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
     private CurrentlySelectedCardType currentlySelectedCardType=CurrentlySelectedCardType.None;
     private Assets.Scripts.BattleHandler.Cards.Card myCurrentlySelectedCard;
     private Card myCurrentlySelectedCardObject;
+    internal Quaternion rotation = new Quaternion(0f, 90f, 0f, 0f);
 
     public enum CurrentlySelectedCardType
     {
@@ -130,6 +131,30 @@ public class GameManager : MonoBehaviour
         currentlySelectedCardType = toSelectType;
         Transform parent = toSelect.gameObject.transform.parent;
         Debug.Log(parent);
+    }
+
+    void OnSummon()
+    {
+        string tmp = me.NormalSummon(currentlySelectedCard);
+        if(tmp == "")
+        {
+            GameObject monster = Instantiate((Resources.Load(currentlySelectedCard.name) as UnityEngine.Object), new Vector3(this.transform.position.x, 1.5f, 10f), rotation) as GameObject;
+        }
+    }
+
+    void OnSet()
+    {
+        
+    }
+
+    void OnAttack()
+    {
+        
+    }
+
+    void OnEndTurn()
+    {
+        me.EndTurn();
     }
 
     private void placeMyHandCardsOnGUI()

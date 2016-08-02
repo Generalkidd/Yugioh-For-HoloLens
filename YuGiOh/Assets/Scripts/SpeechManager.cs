@@ -11,10 +11,10 @@ public class SpeechManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        keywords.Add("Reset", () =>
+        keywords.Add("Discard", () =>
         {
             // Call the OnReset method on every descendant object.
-            this.BroadcastMessage("OnReset");
+            this.BroadcastMessage("OnDiscard");
         });
 
         keywords.Add("Summon", () =>
@@ -23,17 +23,7 @@ public class SpeechManager : MonoBehaviour
             if (focusObject != null)
             {
                 // Call the OnDrop method on just the focused object.
-                focusObject.SendMessage("OnSelect");
-            }
-        });
-
-        keywords.Add("Play Card", () =>
-        {
-            var focusObject = GazeGestureManager.Instance.FocusedObject;
-            if (focusObject != null)
-            {
-                // Call the OnDrop method on just the focused object.
-                focusObject.SendMessage("OnSelect");
+                focusObject.SendMessage("OnSummon");
             }
         });
 
@@ -45,6 +35,31 @@ public class SpeechManager : MonoBehaviour
                 // Call the OnDrop method on just the focused object.
                 focusObject.SendMessage("OnSet");
             }
+        });
+
+        keywords.Add("Play Card", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the OnDrop method on just the focused object.
+                focusObject.SendMessage("OnSummon");
+            }
+        });
+
+        keywords.Add("Set", () =>
+        {
+            var focusObject = GazeGestureManager.Instance.FocusedObject;
+            if (focusObject != null)
+            {
+                // Call the OnDrop method on just the focused object.
+                focusObject.SendMessage("OnSet");
+            }
+        });
+
+        keyworks.Add("End Turn", () =>
+        {
+            SendMessage("OnEndTurn");
         });
 
         keywords.Add("Attack", () =>
