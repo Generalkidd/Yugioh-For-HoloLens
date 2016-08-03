@@ -2094,7 +2094,7 @@ Units is normalized time.</para>
       </summary>
       <param name="path">Filesystem path for the asset.</param>
       <returns>
-        <para>GUID</para>
+        <para>GUID.</para>
       </returns>
     </member>
     <member name="M:UnityEditor.AssetDatabase.ClearLabels(UnityEngine.Object)">
@@ -2508,7 +2508,7 @@ Units is normalized time.</para>
       <param name="assetPath">Path of the asset to load.</param>
       <param name="type">Data type of the asset.</param>
       <returns>
-        <para>The asset matching the parameters</para>
+        <para>The asset matching the parameters.</para>
       </returns>
     </member>
     <member name="M:UnityEditor.AssetDatabase.LoadMainAssetAtPath(System.String)">
@@ -4509,7 +4509,7 @@ Each time an object is (or a group of objects are) created, renamed, parented, u
     </member>
     <member name="M:UnityEditor.EditorApplication.SaveCurrentSceneIfUserWantsTo">
       <summary>
-        <para>Ask the user if he wants to save the open scene.</para>
+        <para>Ask the user if they want to save the open scene.</para>
       </summary>
     </member>
     <member name="M:UnityEditor.EditorApplication.SaveScene">
@@ -5985,7 +5985,7 @@ Each time an object is (or a group of objects are) created, renamed, parented, u
     </member>
     <member name="M:UnityEditor.EditorGUI.LongField(UnityEngine.Rect,System.Int64)">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="position">Rectangle on the screen to use for the long field.</param>
       <param name="label">Optional label to display in front of the long field.</param>
@@ -5997,7 +5997,7 @@ Each time an object is (or a group of objects are) created, renamed, parented, u
     </member>
     <member name="M:UnityEditor.EditorGUI.LongField(UnityEngine.Rect,System.String,System.Int64)">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="position">Rectangle on the screen to use for the long field.</param>
       <param name="label">Optional label to display in front of the long field.</param>
@@ -6009,19 +6009,7 @@ Each time an object is (or a group of objects are) created, renamed, parented, u
     </member>
     <member name="M:UnityEditor.EditorGUI.LongField(UnityEngine.Rect,UnityEngine.GUIContent,System.Int64)">
       <summary>
-        <para>Make a text field for entering integers.</para>
-      </summary>
-      <param name="position">Rectangle on the screen to use for the long field.</param>
-      <param name="label">Optional label to display in front of the long field.</param>
-      <param name="value">The value to edit.</param>
-      <param name="style">Optional GUIStyle.</param>
-      <returns>
-        <para>The value entered by the user.</para>
-      </returns>
-    </member>
-    <member name="M:UnityEditor.EditorGUI.LongField">
-      <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="position">Rectangle on the screen to use for the long field.</param>
       <param name="label">Optional label to display in front of the long field.</param>
@@ -6033,7 +6021,7 @@ Each time an object is (or a group of objects are) created, renamed, parented, u
     </member>
     <member name="M:UnityEditor.EditorGUI.LongField(UnityEngine.Rect,System.String,System.Int64,UnityEngine.GUIStyle)">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="position">Rectangle on the screen to use for the long field.</param>
       <param name="label">Optional label to display in front of the long field.</param>
@@ -6045,7 +6033,7 @@ Each time an object is (or a group of objects are) created, renamed, parented, u
     </member>
     <member name="M:UnityEditor.EditorGUI.LongField(UnityEngine.Rect,UnityEngine.GUIContent,System.Int64,UnityEngine.GUIStyle)">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="position">Rectangle on the screen to use for the long field.</param>
       <param name="label">Optional label to display in front of the long field.</param>
@@ -8869,7 +8857,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.LongField(System.Int64,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="label">Optional label to display in front of the long field.</param>
       <param name="value">The value to edit.</param>
@@ -8883,7 +8871,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.LongField(System.Int64,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="label">Optional label to display in front of the long field.</param>
       <param name="value">The value to edit.</param>
@@ -8897,7 +8885,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.LongField(System.String,System.Int64,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="label">Optional label to display in front of the long field.</param>
       <param name="value">The value to edit.</param>
@@ -8911,7 +8899,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.LongField(System.String,System.Int64,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="label">Optional label to display in front of the long field.</param>
       <param name="value">The value to edit.</param>
@@ -8925,7 +8913,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.LongField(UnityEngine.GUIContent,System.Int64,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="label">Optional label to display in front of the long field.</param>
       <param name="value">The value to edit.</param>
@@ -8939,7 +8927,7 @@ GUILayout.MaxHeight, GUILayout.ExpandWidth, GUILayout.ExpandHeight.</param>
     </member>
     <member name="M:UnityEditor.EditorGUILayout.LongField(UnityEngine.GUIContent,System.Int64,UnityEngine.GUIStyle,UnityEngine.GUILayoutOption[])">
       <summary>
-        <para>Make a text field for entering integers.</para>
+        <para>Make a text field for entering long integers.</para>
       </summary>
       <param name="label">Optional label to display in front of the long field.</param>
       <param name="value">The value to edit.</param>
@@ -12478,8 +12466,8 @@ Note: Use HandleUtility.GetHandleSize where you might want to have constant scre
       </summary>
       <param name="startPosition">The start point of the bezier line.</param>
       <param name="endPosition">The end point of the bezier line.</param>
-      <param name="startTangent">The start tangent of the bezier line.</param>
-      <param name="endTangent">The end tangent of the bezier line.</param>
+      <param name="startTangent">The second control point of the bezier line.</param>
+      <param name="endTangent">The third control point of the bezier line.</param>
       <param name="color">The color to use for the bezier line.</param>
       <param name="texture">The texture to use for drawing the bezier line.</param>
       <param name="width">The width of the bezier line.</param>
@@ -14254,16 +14242,16 @@ See Also: MaterialLightmapFlags.</para>
         <para>Draw a range slider for a range shader property.</para>
       </summary>
       <param name="label">Label for the property.</param>
-      <param name="prop"></param>
-      <param name="position"></param>
+      <param name="prop">The property to edit.</param>
+      <param name="position">Position and size of the range slider control.</param>
     </member>
     <member name="M:UnityEditor.MaterialEditor.RangeProperty(UnityEngine.Rect,UnityEditor.MaterialProperty,System.String)">
       <summary>
         <para>Draw a range slider for a range shader property.</para>
       </summary>
       <param name="label">Label for the property.</param>
-      <param name="prop"></param>
-      <param name="position"></param>
+      <param name="prop">The property to edit.</param>
+      <param name="position">Position and size of the range slider control.</param>
     </member>
     <member name="M:UnityEditor.MaterialEditor.RegisterPropertyChangeUndo(System.String)">
       <summary>
@@ -18291,7 +18279,7 @@ For more information - https:msdn.microsoft.comlibrarywindowsappshh779671https:m
     </member>
     <member name="T:UnityEditor.PrefabType">
       <summary>
-        <para>The type of a prefab object as returned by EditorUtility.GetPrefabType.</para>
+        <para>The type of a prefab object as returned by PrefabUtility.GetPrefabType.</para>
       </summary>
     </member>
     <member name="F:UnityEditor.PrefabType.DisconnectedModelPrefabInstance">
@@ -18859,7 +18847,7 @@ For more information - https:msdn.microsoft.comlibrarywindowsappshh779671https:m
     </member>
     <member name="M:UnityEditor.SceneManagement.EditorSceneManager.SaveModifiedScenesIfUserWantsTo(UnityEngine.SceneManagement.Scene[])">
       <summary>
-        <para>Ask the user if he wants to save any of the modfied input scenes.</para>
+        <para>Ask the user if they want to save any of the modfied input scenes.</para>
       </summary>
       <param name="scenes">Scenes that should be saved if they are modified.</param>
     </member>
@@ -20626,14 +20614,13 @@ Values match the ProceduralMaterial::ProceduralLoadingBehavior enum.</param>
       <summary>
         <para>Set the import settings for the input ProceduralMaterial for the input platform.</para>
       </summary>
-      <param name="materialName">The name of the Procedural Material.</param>
+      <param name="material">The name of the Procedural Material.</param>
       <param name="platform">The name of the platform (can be empty).</param>
       <param name="maxTextureWidth">The maximum texture width for this Procedural Material.</param>
       <param name="maxTextureHeight">The maximum texture height for this Procedural Material.</param>
       <param name="textureFormat">The texture format (0=Compressed, 1=RAW) for this Procedural Material.</param>
       <param name="loadBehavior">The load behavior for this Procedural Material.
 Values match the ProceduralMaterial::ProceduralLoadingBehavior enum.</param>
-      <param name="material"></param>
     </member>
     <member name="M:UnityEditor.SubstanceImporter.SetTextureAlphaSource(UnityEngine.ProceduralMaterial,System.String,UnityEngine.ProceduralOutputType)">
       <summary>

@@ -8,6 +8,18 @@ namespace Assets.Scripts.BattleHandler.Game
 {
     public class ReadOnlyPlayer
     {
+
+        internal ReadOnlyPlayer()
+        {
+            FaceUpMonsters = new List<MonsterCard>();
+            FaceUpTraps = new List<SpellAndTrapCard>();
+            LifePoints = 8000;
+            NumberOfCardsInHand = 0;
+            NumberOfFaceDownCardsInMonsterZone = 0;
+            NumberOfFaceDownTraps = 0;
+            AbleToDraw = true;
+        }
+
         public string UserName
         {
             get; internal set;

@@ -296,7 +296,7 @@
     </member>
     <member name="F:UnityEngine.EventSystems.EventTrigger.delegates">
       <summary>
-        <para>All the functions registered in this EventTrigger.</para>
+        <para>All the functions registered in this EventTrigger (deprecated).</para>
       </summary>
     </member>
     <member name="P:UnityEngine.EventSystems.EventTrigger.triggers">
@@ -311,7 +311,7 @@
     </member>
     <member name="F:UnityEngine.EventSystems.EventTrigger.Entry.callback">
       <summary>
-        <para>The desired UnityEvent to be Invoked.</para>
+        <para>The desired TriggerEvent to be Invoked.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.EventSystems.EventTrigger.Entry.eventID">
@@ -321,105 +321,105 @@
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnBeginDrag(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IBeginDragHandler.OnBeginDrag.</para>
+        <para>Called before a drag is started.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnCancel(UnityEngine.EventSystems.BaseEventData)">
       <summary>
-        <para>See ICancelHandler.OnCancel.</para>
+        <para>Called by the EventSystem when a Cancel event occurs.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnDeselect(UnityEngine.EventSystems.BaseEventData)">
       <summary>
-        <para>See IDeselectHandler.OnDeselect.</para>
+        <para>Called by the EventSystem when a new object is being selected.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnDrag(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IDragHandler.OnDrag.</para>
+        <para>Called by the EventSystem every time the pointer is moved during dragging.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnDrop(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IDropHandler.OnDrop.</para>
+        <para>Called by the EventSystem when an object accepts a drop.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnEndDrag(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See See IBeginDragHandler.OnEndDrag.</para>
+        <para>Called by the EventSystem once dragging ends.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnInitializePotentialDrag(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>Called by a BaseInputModule when a drag has been found but before it is valid to begin the drag.</para>
+        <para>Called by the EventSystem when a drag has been found, but before it is valid to begin the drag.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnMove(UnityEngine.EventSystems.AxisEventData)">
       <summary>
-        <para>See IMoveHandler.OnMove.</para>
+        <para>Called by the EventSystem when a Move event occurs.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnPointerClick(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IPointerClickHandler.OnPointerClick.</para>
+        <para>Called by the EventSystem when a Click event occurs.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnPointerDown(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IPointerDownHandler.OnPointerDown.</para>
+        <para>Called by the EventSystem when a PointerDown event occurs.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnPointerEnter(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IPointerEnterHandler.OnPointerEnter.</para>
+        <para>Called by the EventSystem when the pointer enters the object associated with this EventTrigger.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnPointerExit(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IPointerExitHandler.OnPointerExit.</para>
+        <para>Called by the EventSystem when the pointer exits the object associated with this EventTrigger.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnPointerUp(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IPointerUpHandler.OnPointerUp.</para>
+        <para>Called by the EventSystem when a PointerUp event occurs.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnScroll(UnityEngine.EventSystems.PointerEventData)">
       <summary>
-        <para>See IScrollHandler.OnScroll.</para>
+        <para>Called by the EventSystem when a Scroll event occurs.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnSelect(UnityEngine.EventSystems.BaseEventData)">
       <summary>
-        <para>See ISelectHandler.OnSelect.</para>
+        <para>Called by the EventSystem when a Select event occurs.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnSubmit(UnityEngine.EventSystems.BaseEventData)">
       <summary>
-        <para>See ISubmitHandler.OnSubmit.</para>
+        <para>Called by the EventSystem when a Submit event occurs.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="M:UnityEngine.EventSystems.EventTrigger.OnUpdateSelected(UnityEngine.EventSystems.BaseEventData)">
       <summary>
-        <para>See IUpdateSelectedHandler.OnUpdateSelected.</para>
+        <para>Called by the EventSystem when the object associated with this EventTrigger is updated.</para>
       </summary>
-      <param name="eventData"></param>
+      <param name="eventData">Current event data.</param>
     </member>
     <member name="T:UnityEngine.EventSystems.EventTrigger.TriggerEvent">
       <summary>
@@ -646,7 +646,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.ExecuteEvents.GetEventHandler(UnityEngine.GameObject)">
       <summary>
-        <para>Starting the hierarchy (starting at root) for a GameObject that can handle &lt;T&gt;</para>
+        <para>Traverse the object hierarchy starting at root, and return the GameObject which implements the event handler of type &lt;T&gt;.</para>
       </summary>
       <param name="root">Root GameObject.</param>
       <returns>
@@ -895,7 +895,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.IUpdateSelectedHandler.OnUpdateSelected(UnityEngine.EventSystems.BaseEventData)">
       <summary>
-        <para></para>
+        <para>Called by the EventSystem when the object associated with this EventTrigger is updated.</para>
       </summary>
       <param name="eventData">Current event data.</param>
     </member>
@@ -1203,7 +1203,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.PointerInputModule.GetPointerData(System.Int32,UnityEngine.EventSystems.PointerEventData&amp;,System.Boolean)">
       <summary>
-        <para>Seach the cache for currently active pointers, return true if found.</para>
+        <para>Search the cache for currently active pointers, return true if found.</para>
       </summary>
       <param name="id">Touch ID.</param>
       <param name="data">Found data.</param>
@@ -1551,7 +1551,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.UIBehaviour.OnDidApplyAnimationProperties">
       <summary>
-        <para>See MonoBehaviour.OnDidApplyAnimationProperties.</para>
+        <para>See UI.LayoutGroup.OnDidApplyAnimationProperties.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.EventSystems.UIBehaviour.OnDisable">
@@ -1566,7 +1566,7 @@
     </member>
     <member name="M:UnityEngine.EventSystems.UIBehaviour.OnRectTransformDimensionsChange">
       <summary>
-        <para>See MonoBehaviour.OnRectTransformDimensionsChange.</para>
+        <para>This callback is called if an associated RectTransform has its dimensions changed. The call is also made to all child rect transforms, even if the child transform itself doesn't change - as it could have, depending on its anchoring.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.EventSystems.UIBehaviour.OnTransformParentChanged">
@@ -2711,7 +2711,7 @@ If you have modified the list of options, you should call this method afterwards
     </member>
     <member name="M:UnityEngine.UI.Graphic.Raycast(UnityEngine.Vector2,UnityEngine.Camera)">
       <summary>
-        <para>When a GraphicRaycaster is raycasting into the scene it will first filter the elments using their RectTransform rect and then it will use this function to determine the elements hit by the raycast.</para>
+        <para>When a GraphicRaycaster is raycasting into the scene it does two things. First it filters the elements using their RectTransform rect. Then it uses this Raycast function to determine the elements hit by the raycast.</para>
       </summary>
       <param name="sp">Screen point.</param>
       <param name="eventCamera">Camera.</param>
@@ -3238,6 +3238,11 @@ Used if the native representation has been destroyed.</para>
         <para>The alpha threshold specifies the minimum alpha a pixel must have for the event to considered a "hit" on the Image.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.UI.Image.defaultETC1GraphicMaterial">
+      <summary>
+        <para>Cache of the default Cavas ETC1 + alpha material.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.UI.Image.eventAlphaThreshold">
       <summary>
         <para>The alpha threshold specifies the minimum alpha a pixel must have for the event to considered a "hit" on the Image.</para>
@@ -3293,6 +3298,11 @@ Used if the native representation has been destroyed.</para>
         <para>The image's texture. (ReadOnly).</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.UI.Image.material">
+      <summary>
+        <para>The material used by this Image. If a material is specified it is used, otherwise the default material is used.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.UI.Image.minHeight">
       <summary>
         <para>See ILayoutElement.minHeight.</para>
@@ -3330,7 +3340,7 @@ Used if the native representation has been destroyed.</para>
     </member>
     <member name="P:UnityEngine.UI.Image.type">
       <summary>
-        <para>How the Image is draw.</para>
+        <para>How to display the image.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.UI.Image.CalculateLayoutInputHorizontal">
@@ -3507,22 +3517,22 @@ Used if the native representation has been destroyed.</para>
     </member>
     <member name="F:UnityEngine.UI.Image.Type.Filled">
       <summary>
-        <para>Display portion of the Image.</para>
+        <para>Displays only a portion of the Image.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.UI.Image.Type.Simple">
       <summary>
-        <para>Displayes the full Image.</para>
+        <para>Displays the full Image.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.UI.Image.Type.Sliced">
       <summary>
-        <para>Displays the Image as a 9-sliced Image.</para>
+        <para>Displays the Image as a 9-sliced graphic.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.UI.Image.Type.Tiled">
       <summary>
-        <para>Displays the Image Tiling the central part of the Sprite.</para>
+        <para>Displays a sliced Sprite with its resizable sections tiled instead of stretched.</para>
       </summary>
     </member>
     <member name="?:UnityEngine.UI.IMask">

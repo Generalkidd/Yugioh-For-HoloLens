@@ -22,6 +22,16 @@ public class Card : MonoBehaviour
         originalPosition = this.transform.localPosition;
     }
 
+    internal void setCardName(string toSet)
+    {
+        CardName = toSet;
+    }
+
+    internal string getCardName()
+    {
+        return CardName;
+    }
+
     internal void setGameManager(GameManager gm)
     {
         Debug.Log("Setting game manager to: " + gm);

@@ -41,7 +41,6 @@ GameObject:
   - 65: {fileID: 65000013422751402}
   - 23: {fileID: 23000010800681864}
   - 114: {fileID: 114000011136270146}
-  - 114: {fileID: 114000011039016680}
   m_Layer: 0
   m_Name: Card
   m_TagString: Card
@@ -172,24 +171,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114000011039016680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011674988012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7477e7851cb3b744c9ab32d0529e4c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CardName: 
-  CardType: 
-  attack: 0
-  defense: 0
-  level: 0
-  godCard: 0
-  rotation: {x: 0, y: 25, z: 0, w: 0}
 --- !u!114 &114000011136270146
 MonoBehaviour:
   m_ObjectHideFlags: 1

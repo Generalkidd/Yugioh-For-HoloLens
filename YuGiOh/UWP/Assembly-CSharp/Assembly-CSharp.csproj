@@ -12,7 +12,7 @@
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -130,7 +130,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:/Users/stephenc/Documents/GitHub/Yugioh-For-HoloLens/YuGiOh/Assets\..\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj">
+    <ProjectReference Include="C:/Users/Seth/Documents/GitHub/Yugioh-For-HoloLens/YuGiOh/Assets\..\UWP\Assembly-CSharp-firstpass\Assembly-CSharp-firstpass.csproj">
       <Project>{194d914d-0664-444e-b663-4d0f1c80af68}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>

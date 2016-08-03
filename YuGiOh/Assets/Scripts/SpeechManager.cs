@@ -57,7 +57,7 @@ public class SpeechManager : MonoBehaviour
             }
         });
 
-        keyworks.Add("End Turn", () =>
+        keywords.Add("End Turn", () =>
         {
             SendMessage("OnEndTurn");
         });

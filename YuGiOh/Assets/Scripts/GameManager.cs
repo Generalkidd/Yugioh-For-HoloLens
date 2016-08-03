@@ -125,20 +125,79 @@ public class GameManager : MonoBehaviour
             myCurrentlySelectedCardObject.gameObject.transform.position = new Vector3(myCurrentlySelectedCardObject.gameObject.transform.position.x, myCurrentlySelectedCardObject.gameObject.transform.position.y -.3f, myCurrentlySelectedCardObject.gameObject.transform.position.z);
         }
 
-        //Lift Newly Selected Cards On GUI so User knows it is selected
-        toSelect.gameObject.transform.position = new Vector3(toSelect.gameObject.transform.position.x, toSelect.gameObject.transform.position.y+.3f, toSelect.gameObject.transform.position.z);
-        myCurrentlySelectedCardObject = toSelect;
-        currentlySelectedCardType = toSelectType;
-        Transform parent = toSelect.gameObject.transform.parent;
-        Debug.Log(parent);
+        //If the same card is hit twice
+        if (myCurrentlySelectedCardObject == toSelect)
+        {
+            Debug.Log("Same card has been clicked twice. Summoning...");
+            //Summon It
+            OnSummon();
+            //Reset
+            myCurrentlySelectedCardObject = null;
+            setCurrentlySelectedCard(null);
+            currentlySelectedCardType = CurrentlySelectedCardType.None;
+        }
+        else
+        {
+            //Lift Newly Selected Cards On GUI so User knows it is selected
+            toSelect.gameObject.transform.position = new Vector3(toSelect.gameObject.transform.position.x, toSelect.gameObject.transform.position.y + .3f, toSelect.gameObject.transform.position.z);
+            myCurrentlySelectedCardObject = toSelect;
+            currentlySelectedCardType = toSelectType;
+            if (toSelectType == CurrentlySelectedCardType.Hand)
+            {
+                foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.Hand)
+                {
+                    Debug.Log("Checking " + c.CardName+ " against object"+toSelect.getCardName());
+                    if (c.CardName == toSelect.getCardName())
+                    {
+                        setCurrentlySelectedCard(c);
+                    }
+                }
+            }
+            else if(toSelectType==CurrentlySelectedCardType.Monster)
+            {
+                foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.FaceDownCardsInMonsterZone)
+                {
+                    Debug.Log("Checking " + c.CardName + " against object" + toSelect.getCardName());
+                    if (c.CardName == toSelect.getCardName())
+                    {
+                        setCurrentlySelectedCard(c);
+                    }
+                }
+                foreach(Assets.Scripts.BattleHandler.Cards.Card c in me.MeReadOnly.FaceUpMonsters)
+                {
+                    Debug.Log("Checking " + c.CardName + " against object" + toSelect.getCardName());
+                    if (c.CardName==toSelect.getCardName())
+                    {
+                        setCurrentlySelectedCard(c);
+                    }
+                }
+            }
+        }
+    }
+
+    Assets.Scripts.BattleHandler.Cards.Card getCurrentlySelectedCard()
+    {
+        return myCurrentlySelectedCard;
+    }
+
+    void setCurrentlySelectedCard(Assets.Scripts.BattleHandler.Cards.Card toSet)
+    {
+        Debug.Log("Setting currently selected card to "+toSet);
+        myCurrentlySelectedCard = toSet;
+        Debug.Log("Set currently selected card to " + toSet);
     }
 
     void OnSummon()
     {
-        string tmp = me.NormalSummon(currentlySelectedCard);
-        if(tmp == "")
+        Debug.Log("Trying to summon: " + getCurrentlySelectedCard());
+        string tmp = me.NormalSummon(getCurrentlySelectedCard());
+        Debug.Log("Tried to normal summon with result= "+tmp);
+        if (tmp == "")
         {
+            Debug.Log("Trying to instantiate monster");
             GameObject monster = Instantiate((Resources.Load(currentlySelectedCard.name) as UnityEngine.Object), new Vector3(this.transform.position.x, 1.5f, 10f), rotation) as GameObject;
+            placeMyHandCardsOnGUI();
+            placeMyMonsterCardOnGUI();
         }
     }
 
@@ -161,9 +220,9 @@ public class GameManager : MonoBehaviour
     {
         hand = me.Hand;
         me.myGm = this;
-        for(int i=0; i<hand.Count; i++)
+        for (int i = 0; i < hand.Count; i++)
         {
-            if(i==0)
+            if (i == 0)
             {
                 GameObject spawnPoint = GameObject.Find("Player1Hand1");
                 //Destroy the Old Card
@@ -177,9 +236,11 @@ public class GameManager : MonoBehaviour
                 myCardGO.transform.parent = spawnPoint.transform;
                 myCardGO.transform.position = spawnPoint.transform.position;
                 Debug.Log("Found Card GameObject, Loading specific Card");
-                Card card = cardGO.GetComponent<Card>();
-                if(me.Hand[i] is MonsterCard)
+                Card card = myCardGO.AddComponent<Card>();
+                if (me.Hand[i] is MonsterCard)
                 {
+                    Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
@@ -189,8 +250,9 @@ public class GameManager : MonoBehaviour
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
-                else if(me.Hand[i] is SpellAndTrapCard)
+                else if (me.Hand[i] is SpellAndTrapCard)
                 {
+                    card.setCardName((me.Hand[i] as SpellAndTrapCard).CardName);
                     card.CardType = "Spell";
                     card.setGameManager(this);
                     card.myZone = CurrentlySelectedCardType.Hand;
@@ -213,7 +275,7 @@ public class GameManager : MonoBehaviour
                 planeBack.GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 planeBack.transform.parent = spawnPoint.transform;*/
             }
-            else if(i==1)
+            else if (i == 1)
             {
                 GameObject spawnPoint = GameObject.Find("Player1Hand2");
                 //Destroy the Old Card
@@ -227,9 +289,11 @@ public class GameManager : MonoBehaviour
                 myCardGO.transform.parent = spawnPoint.transform;
                 myCardGO.transform.position = spawnPoint.transform.position;
                 Debug.Log("Found Card GameObject, Loading specific Card");
-                Card card = cardGO.GetComponent<Card>();
+                Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
+                    Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
@@ -241,6 +305,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
+                    card.setCardName((me.Hand[i] as SpellAndTrapCard).CardName);
                     card.CardType = "Spell";
                     card.setGameManager(this);
                     card.myZone = CurrentlySelectedCardType.Hand;
@@ -262,9 +327,11 @@ public class GameManager : MonoBehaviour
                 myCardGO.transform.parent = spawnPoint.transform;
                 myCardGO.transform.position = spawnPoint.transform.position;
                 Debug.Log("Found Card GameObject, Loading specific Card");
-                Card card = cardGO.GetComponent<Card>();
+                Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
+                    Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
@@ -276,6 +343,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
+                    card.setCardName((me.Hand[i] as SpellAndTrapCard).CardName);
                     card.CardType = "Spell";
                     card.setGameManager(this);
                     card.myZone = CurrentlySelectedCardType.Hand;
@@ -297,9 +365,11 @@ public class GameManager : MonoBehaviour
                 myCardGO.transform.parent = spawnPoint.transform;
                 myCardGO.transform.position = spawnPoint.transform.position;
                 Debug.Log("Found Card GameObject, Loading specific Card");
-                Card card = cardGO.GetComponent<Card>();
+                Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
+                    Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
@@ -311,6 +381,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
+                    card.setCardName((me.Hand[i] as SpellAndTrapCard).CardName);
                     card.CardType = "Spell";
                     card.setGameManager(this);
                     card.myZone = CurrentlySelectedCardType.Hand;
@@ -332,9 +403,11 @@ public class GameManager : MonoBehaviour
                 myCardGO.transform.parent = spawnPoint.transform;
                 myCardGO.transform.position = spawnPoint.transform.position;
                 Debug.Log("Found Card GameObject, Loading specific Card");
-                Card card = cardGO.GetComponent<Card>();
+                Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
+                    Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
@@ -346,6 +419,7 @@ public class GameManager : MonoBehaviour
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
+                    card.setCardName((me.Hand[i] as SpellAndTrapCard).CardName);
                     card.CardType = "Spell";
                     card.setGameManager(this);
                     card.myZone = CurrentlySelectedCardType.Hand;
@@ -367,9 +441,11 @@ public class GameManager : MonoBehaviour
                 myCardGO.transform.parent = spawnPoint.transform;
                 myCardGO.transform.position = spawnPoint.transform.position;
                 Debug.Log("Found Card GameObject, Loading specific Card");
-                Card card = cardGO.GetComponent<Card>();
+                Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
+                    Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
                     card.CardType = "Monster";
@@ -381,12 +457,68 @@ public class GameManager : MonoBehaviour
                 }
                 else if (me.Hand[i] is SpellAndTrapCard)
                 {
+                    card.setCardName((me.Hand[i] as SpellAndTrapCard).CardName);
                     card.CardType = "Spell";
                     card.setGameManager(this);
                     card.myZone = CurrentlySelectedCardType.Hand;
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
+            }
+        }
+        for (int i = hand.Count; i < 6; i++)
+        {
+            if (i == 0)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Hand1");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+            }
+            else if (i == 1)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Hand2");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 2)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Hand3");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+            }
+            else if (i == 3)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Hand4");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 4)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Hand5");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 5)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Hand6");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
             }
         }
     }

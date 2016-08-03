@@ -645,7 +645,7 @@
     </member>
     <member name="P:UnityEngine.Networking.NetworkBehaviour.playerControllerId">
       <summary>
-        <para>The id of the player associated with thei behaviour.</para>
+        <para>The id of the player associated with the behaviour.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Networking.NetworkBehaviour.ClearAllDirtyBits">
@@ -3418,7 +3418,7 @@ All of the player objects in the game are disabled when the host is lost. Then, 
       <summary>
         <para>This sends an array of bytes to a specific player.</para>
       </summary>
-      <param name="player">The player to send he bytes to.</param>
+      <param name="player">The player to send the bytes to.</param>
       <param name="buffer">Array of bytes to send.</param>
       <param name="numBytes">Size of array.</param>
       <param name="channelId">Transport layer channel id to send bytes on.</param>
@@ -4386,11 +4386,335 @@ All of the player objects in the game are disabled when the host is lost. Then, 
         <para>Copy of data used by the writer.</para>
       </returns>
     </member>
-    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.GameObject)">
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Char)">
       <summary>
-        <para>This writes a reference to a GameObject with a NetworkIdentity component to the stream. The object should have been spawned for clients to know about it.</para>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
       </summary>
       <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Byte)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.SByte)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Int16)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.UInt16)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Int32)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.UInt32)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Int64)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.UInt64)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Single)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Double)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Decimal)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.String)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Boolean)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Byte[],System.Int32)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(System.Byte[],System.Int32,System.Int32)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Vector2)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Vector3)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Vector4)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Color)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Color32)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.GameObject)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Quaternion)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Rect)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Plane)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Ray)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Matrix4x4)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Networking.MessageBase)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Networking.NetworkHash128)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Networking.NetworkIdentity)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Networking.NetworkInstanceId)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Networking.NetworkSceneId)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.NetworkWriter.Write(UnityEngine.Transform)">
+      <summary>
+        <para>This writes a reference to an object, value, buffer or network message, together with a NetworkIdentity component to the stream.</para>
+      </summary>
+      <param name="value">The object to write.</param>
+      <param name="buffer">The byte buffer to write.</param>
+      <param name="count">The number of bytes in the byte buffer to write.</param>
+      <param name="offset">The byte buffer array element to start writing from.</param>
+      <param name="msg">The network message to write.</param>
     </member>
     <member name="M:UnityEngine.Networking.NetworkWriter.WriteBytesAndSize(System.Byte[],System.Int32)">
       <summary>
@@ -4489,7 +4813,7 @@ All of the player objects in the game are disabled when the host is lost. Then, 
     </member>
     <member name="T:UnityEngine.Networking.SyncEventAttribute">
       <summary>
-        <para>This is an attribute that can be put on events in NetworkBehaviour classes to allow them to be invoked on client when the event is called on the sserver.</para>
+        <para>This is an attribute that can be put on events in NetworkBehaviour classes to allow them to be invoked on the client when the event is called on the server.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Networking.SyncEventAttribute.channel">
@@ -4518,6 +4842,24 @@ All of the player objects in the game are disabled when the host is lost. Then, 
         <para>Same as List:Clear() but the list is cleared on clients.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.Networking.SyncList_1.Contains(T)">
+      <summary>
+        <para>Determines whether the list contains item item.</para>
+      </summary>
+      <param name="item">Item to search for.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.SyncList_1.CopyTo(T[],System.Int32)">
+      <summary>
+        <para>Copies the elements of the SyncList&lt;T&gt; to an Array, starting at a particular Array index.</para>
+      </summary>
+      <param name="array">Array to copy elements to.</param>
+      <param name="index">The zero-based index in array at which copying begins.</param>
+    </member>
+    <member name="P:UnityEngine.Networking.SyncList_1.Count">
+      <summary>
+        <para>Returns the number of elements in this SyncList&lt;T&gt;.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.Networking.SyncList_1.DeserializeItem(UnityEngine.Networking.NetworkReader)">
       <summary>
         <para>This method is used when deserializing SyncList items from a stream.</para>
@@ -4533,6 +4875,11 @@ All of the player objects in the game are disabled when the host is lost. Then, 
       </summary>
       <param name="index">Index of item to dirty.</param>
     </member>
+    <member name="M:UnityEngine.Networking.SyncList_1.GetEnumerator">
+      <summary>
+        <para>Returns an enumerator that iterates through the SyncList&lt;T&gt;.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.Networking.SyncList_1.HandleMsg">
       <summary>
         <para>Internal function used for remote list operations.</para>
@@ -4540,6 +4887,12 @@ All of the player objects in the game are disabled when the host is lost. Then, 
       <param name="op">List operation.</param>
       <param name="itemIndex">The index of the item being operated on.</param>
       <param name="item">The item being operated on.</param>
+    </member>
+    <member name="M:UnityEngine.Networking.SyncList_1.IndexOf(T)">
+      <summary>
+        <para>Determines the index of a specific item in the SyncList&lt;T&gt;.</para>
+      </summary>
+      <param name="item">The item to return the index for.</param>
     </member>
     <member name="M:UnityEngine.Networking.SyncList_1.InitializeBehaviour(UnityEngine.Networking.NetworkBehaviour,System.Int32)">
       <summary>
@@ -4554,6 +4907,11 @@ All of the player objects in the game are disabled when the host is lost. Then, 
       </summary>
       <param name="index">Where to insert the item.</param>
       <param name="item">Item to insert.</param>
+    </member>
+    <member name="P:UnityEngine.Networking.SyncList_1.IsReadOnly">
+      <summary>
+        <para>Reports whether the SyncList&lt;T&gt; is read-only.</para>
+      </summary>
     </member>
     <member name="T:UnityEngine.Networking.SyncList`1.Operation">
       <summary>
@@ -4691,8 +5049,7 @@ All of the player objects in the game are disabled when the host is lost. Then, 
     </member>
     <member name="T:UnityEngine.Networking.SyncVarAttribute">
       <summary>
-        <para>[SyncVar] is an attribute that can be put on member variables of UNeBehaviour classes. These variables will have their values sychronized from the server to clients in the game that are in the ready state.
-</para>
+        <para>[SyncVar] is an attribute that can be put on member variables of UNeBehaviour classes. These variables will have their values sychronized from the server to clients in the game that are in the ready state.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Networking.SyncVarAttribute.hook">

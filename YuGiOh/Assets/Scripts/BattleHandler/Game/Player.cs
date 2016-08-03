@@ -255,6 +255,9 @@ namespace Assets.Scripts.BattleHandler.Game
             MeReadOnly = new ReadOnlyPlayer();
             MeReadOnly.UserName=userName;
             Hand = new List<Cards.Card>();
+            GraveYard = new List<Cards.Card>();
+            FaceDownTraps = new List<SpellAndTrapCard>();
+            FaceDownCardsInMonsterZone = new List<MonsterCard>();
         }
 
         public static Player MakePlayer(GameObject toAddTo, int userId, string userName)
@@ -264,6 +267,9 @@ namespace Assets.Scripts.BattleHandler.Game
             myPlayer.MeReadOnly = new ReadOnlyPlayer();
             myPlayer.MeReadOnly.UserName = userName;
             myPlayer.Hand = new List<Cards.Card>();
+            myPlayer.GraveYard = new List<Cards.Card>();
+            myPlayer.FaceDownTraps = new List<SpellAndTrapCard>();
+            myPlayer.FaceDownCardsInMonsterZone = new List<MonsterCard>();
             return myPlayer;
         }
 
@@ -274,8 +280,15 @@ namespace Assets.Scripts.BattleHandler.Game
         /// <returns>"" if successful. Error string if failed.</returns>
         public string NormalSummon(System.Object monsterToSummon)
         {
+
             if (monsterToSummon is MonsterCard && Hand.Contains(monsterToSummon as Cards.Card))
             {
+                Debug.Log("ID=" + id);
+                Debug.Log("game=" + MyCurrentGame);
+                Debug.Log("MeReadOnly=" + MeReadOnly);
+                Debug.Log("MonsterToSummon=" + monsterToSummon);
+                Debug.Log("FacedownCards=" + FaceDownCardsInMonsterZone.Count);
+                Debug.Log("FaceUpMonster=" + MeReadOnly.FaceUpMonsters.Count);
                 Result amIAllowedToSummon = MyCurrentGame.RequestNormalSummon(id, monsterToSummon, FaceDownCardsInMonsterZone.Count + MeReadOnly.FaceUpMonsters.Count);
                 if (amIAllowedToSummon.ToString().Equals("Success"))
                 {
@@ -286,9 +299,13 @@ namespace Assets.Scripts.BattleHandler.Game
                     return amIAllowedToSummon.ToString();
                 }
             }
+            else if(!(monsterToSummon is MonsterCard))
+            {
+                return "Card is not MonsterCard";
+            }
             else
             {
-                return "Either Card is not a monster or the card is not in your hand!";
+                return "Card is no longer in your hand!---"+(monsterToSummon as Cards.Card).CardName;
             }
         }
 

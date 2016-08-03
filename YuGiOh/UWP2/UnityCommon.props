@@ -1,0 +1,8 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <UnityInstallationDir>C:\Program Files\Unity HoloLens\Editor</UnityInstallationDir>
+        <UnityWSAPlayerDir>C:\Program Files\Unity HoloLens\Editor\Data\PlaybackEngines\MetroSupport</UnityWSAPlayerDir>
+        <UnityWSAToolsDir>$(SolutionDir)Unity\Tools</UnityWSAToolsDir>
+        <UnityProjectDir>C:\Users\Seth\Documents\GitHub\Yugioh-For-HoloLens\YuGiOh</UnityProjectDir>
+    </PropertyGroup>
+</Project>
