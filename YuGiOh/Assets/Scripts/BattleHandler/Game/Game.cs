@@ -71,6 +71,7 @@ namespace Assets.Scripts.BattleHandler.Game
             }
             else if (player1.id == idOfAttacker && playerWhosTurnItIs == 2)
             {
+                Debug.Log("You are player 1 and it is player 2s turn");
                 return Result.NotYourTurn;
             }
             else if (!(numberOfMonstersAlreadyPlayed < 6))
@@ -93,6 +94,7 @@ namespace Assets.Scripts.BattleHandler.Game
             }
             else if (player2.id == idOfAttacker && playerWhosTurnItIs == 1)
             {
+                Debug.Log("You are player 2 and it is player 1s turn");
                 return Result.NotYourTurn;
             }
             else if (player2.id == idOfAttacker)

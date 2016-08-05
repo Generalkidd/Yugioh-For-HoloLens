@@ -1010,9 +1010,9 @@
       <summary>
         <para>Sets the value of one element in a primitive array.</para>
       </summary>
-      <param name="array"></param>
-      <param name="index"></param>
-      <param name="val"></param>
+      <param name="array">The array of native booleans.</param>
+      <param name="index">Index of the array element to set.</param>
+      <param name="val">The value to set - for 'true' use 1, for 'false' use 0.</param>
     </member>
     <member name="M:UnityEngine.AndroidJNI.SetBooleanField(System.IntPtr,System.IntPtr,System.Boolean)">
       <summary>
@@ -1926,7 +1926,7 @@ If relativePath is empty it refers to the game object the animation clip is atta
       <summary>
         <para>Creates an animation curve from arbitrary number of keyframes.</para>
       </summary>
-      <param name="keys"></param>
+      <param name="keys">An array of Keyframes used to define the curve.</param>
     </member>
     <member name="M:UnityEngine.AnimationCurve.#ctor">
       <summary>
@@ -2942,7 +2942,7 @@ If relativePath is empty it refers to the game object the animation clip is atta
     </member>
     <member name="M:UnityEngine.Animator.StringToHash(System.String)">
       <summary>
-        <para>Generates an parameter id from a string.</para>
+        <para>Generates a parameter id from a string.</para>
       </summary>
       <param name="name">The string to convert to Id.</param>
     </member>
@@ -5026,9 +5026,9 @@ Note: Every time you call the method with tolerance specified, a new instance of
       <summary>
         <para>Deprecated Version. Returns a block of the listener (master)'s spectrum data.</para>
       </summary>
-      <param name="numSamples"></param>
-      <param name="channel"></param>
-      <param name="window"></param>
+      <param name="numSamples">Number of values (the length of the samples array). Must be a power of 2. Min = 64. Max = 8192.</param>
+      <param name="channel">The channel to sample from.</param>
+      <param name="window">The FFTWindow type to use when sampling.</param>
     </member>
     <member name="T:UnityEngine.AudioLowPassFilter">
       <summary>
@@ -5636,9 +5636,9 @@ Note: Every time you call the method with tolerance specified, a new instance of
       <summary>
         <para>Deprecated Version. Returns a block of the currently playing source's spectrum data.</para>
       </summary>
-      <param name="numSamples"></param>
-      <param name="channel"></param>
-      <param name="window"></param>
+      <param name="numSamples">The number of samples to retrieve. Must be a power of 2.</param>
+      <param name="channel">The channel to sample from.</param>
+      <param name="window">The FFTWindow type to use when sampling.</param>
     </member>
     <member name="M:UnityEngine.AudioSource.Pause">
       <summary>
@@ -7233,6 +7233,14 @@ The values passed to stereoTargetEye are found in the StereoTargetEyeMask enum. 
         <para>Returns the default material that can be used for rendering text elements on the Canvas.</para>
       </summary>
     </member>
+    <member name="M:UnityEngine.Canvas.GetETC1SupportedCanvasMaterial">
+      <summary>
+        <para>Gets or generates the ETC1 material.</para>
+      </summary>
+      <returns>
+        <para>The generated ETC1 material from the Canvas.</para>
+      </returns>
+    </member>
     <member name="T:UnityEngine.CanvasGroup">
       <summary>
         <para>A Canvas placable element that can be used to modify children Alpha, Raycasting, Enabled state.</para>
@@ -7396,6 +7404,12 @@ See Also: CanvasRenderer.EnableRectClipping, CanvasRenderer.DisableRectClipping.
         <para>Set the alpha of the renderer. Will be multiplied with the UIVertex alpha and the Canvas alpha.</para>
       </summary>
       <param name="alpha">Alpha.</param>
+    </member>
+    <member name="M:UnityEngine.CanvasRenderer.SetAlphaTexture(UnityEngine.Texture)">
+      <summary>
+        <para>The Alpha Texture that will be passed to the shader under the _AlphaTex property.</para>
+      </summary>
+      <param name="texture">The Texture to be passed.</param>
     </member>
     <member name="M:UnityEngine.CanvasRenderer.SetColor(UnityEngine.Color)">
       <summary>
@@ -8596,7 +8610,7 @@ See Also: CanvasRenderer.SetMaterialCount, CanvasRenderer.SetTexture.</para>
     </member>
     <member name="M:UnityEngine.Color32.#ctor(System.Byte,System.Byte,System.Byte,System.Byte)">
       <summary>
-        <para>Constructs a new Color with given r, g, b, a components.</para>
+        <para>Constructs a new Color32 with given r, g, b, a components.</para>
       </summary>
       <param name="r"></param>
       <param name="g"></param>
@@ -8947,7 +8961,7 @@ See Also: CanvasRenderer.SetMaterialCount, CanvasRenderer.SetTexture.</para>
       <summary>
         <para>Generic version. See the page for more details.</para>
       </summary>
-      <param name="includeInactive">Should inactive GameObjects be included in the found set?</param>
+      <param name="includeInactive">Should Components on inactive GameObjects be included in the found set?</param>
       <returns>
         <para>A list of all found components matching the specified type.</para>
       </returns>
@@ -10104,7 +10118,7 @@ Sometimes it is not possible to project (for example when the joints form a cycl
     </member>
     <member name="P:UnityEngine.Debug.developerConsoleVisible">
       <summary>
-        <para>Opens or closes developer console.</para>
+        <para>Reports whether the development console is visible. The development console cannot be made to appear using:</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Debug.isDebugBuild">
@@ -11324,7 +11338,7 @@ You can specify either the absolute path or the relative path. When the path you
     </member>
     <member name="M:UnityEngine.Events.UnityEventBase.RemoveAllListeners">
       <summary>
-        <para>Remove all listeners from the event.</para>
+        <para>Remove all non-persisent (ie created from script) listeners  from the event.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Events.UnityEventBase.SetPersistentListenerState(System.Int32,UnityEngine.Events.UnityEventCallState)">
@@ -13400,11 +13414,31 @@ A trigger parameter is a bool parameter that gets reset to false when it has bee
         <para>Returns the component of Type type in the GameObject or any of its children using depth first search.</para>
       </summary>
       <param name="type">The type of Component to retrieve.</param>
+      <param name="includeInactive"></param>
+      <returns>
+        <para>A component of the matching type, if found.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.GameObject.GetComponentInChildren(System.Type,System.Boolean)">
+      <summary>
+        <para>Returns the component of Type type in the GameObject or any of its children using depth first search.</para>
+      </summary>
+      <param name="type">The type of Component to retrieve.</param>
+      <param name="includeInactive"></param>
       <returns>
         <para>A component of the matching type, if found.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.GameObject.GetComponentInChildren()">
+      <summary>
+        <para>Generic version. See the page for more details.</para>
+      </summary>
+      <param name="includeInactive"></param>
+      <returns>
+        <para>A component of the matching type, if found.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.GameObject.GetComponentInChildren(System.Boolean)">
       <summary>
         <para>Generic version. See the page for more details.</para>
       </summary>
@@ -13421,7 +13455,7 @@ A trigger parameter is a bool parameter that gets reset to false when it has bee
     </member>
     <member name="M:UnityEngine.GameObject.GetComponentInParent">
       <summary>
-        <para>Returns the component of Type type in the GameObject or any of its parents.</para>
+        <para>Returns the component &lt;T&gt; in the GameObject or any of its parents.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.GameObject.GetComponents(System.Type)">
@@ -13434,6 +13468,19 @@ A trigger parameter is a bool parameter that gets reset to false when it has bee
       <summary>
         <para>Generic version. See the page for more details.</para>
       </summary>
+    </member>
+    <member name="M:UnityEngine.GameObject.GetComponents(System.Type,System.Collections.Generic.List`1&lt;UnityEngine.Component&gt;)">
+      <summary>
+        <para>Returns all components of Type type in the GameObject into List results. Note that results is of type Component, not the type of the component retrieved.</para>
+      </summary>
+      <param name="type">The type of Component to retrieve.</param>
+      <param name="results">List to receive the results.</param>
+    </member>
+    <member name="M:UnityEngine.GameObject.GetComponents(System.Collections.Generic.List`1&lt;T&gt;)">
+      <summary>
+        <para>Returns all components of Type type in the GameObject into List results.</para>
+      </summary>
+      <param name="results">List of type T to receive the results.</param>
     </member>
     <member name="M:UnityEngine.GameObject.GetComponentsInChildren(System.Type)">
       <summary>
@@ -13449,6 +13496,15 @@ A trigger parameter is a bool parameter that gets reset to false when it has bee
       <param name="type">The type of Component to retrieve.</param>
       <param name="includeInactive">Should Components on inactive GameObjects be included in the found set?</param>
     </member>
+    <member name="M:UnityEngine.GameObject.GetComponentsInChildren">
+      <summary>
+        <para>Generic version. See the page for more details.</para>
+      </summary>
+      <param name="includeInactive">Should inactive GameObjects be included in the found set?</param>
+      <returns>
+        <para>A list of all found components matching the specified type.</para>
+      </returns>
+    </member>
     <member name="M:UnityEngine.GameObject.GetComponentsInChildren(System.Boolean)">
       <summary>
         <para>Generic version. See the page for more details.</para>
@@ -13458,13 +13514,19 @@ A trigger parameter is a bool parameter that gets reset to false when it has bee
         <para>A list of all found components matching the specified type.</para>
       </returns>
     </member>
-    <member name="M:UnityEngine.GameObject.GetComponentsInChildren">
+    <member name="M:UnityEngine.GameObject.GetComponentsInChildren(System.Collections.Generic.List`1&lt;T&gt;)">
       <summary>
-        <para>Generic version. See the page for more details.</para>
+        <para>Return all found Components into List results.</para>
       </summary>
-      <returns>
-        <para>A list of all found components matching the specified type.</para>
-      </returns>
+      <param name="results">List to receive found Components.</param>
+      <param name="includeInactive">Should inactive GameObjects be included in the found set?</param>
+    </member>
+    <member name="M:UnityEngine.GameObject.GetComponentsInChildren(System.Boolean,System.Collections.Generic.List`1&lt;T&gt;)">
+      <summary>
+        <para>Return all found Components into List results.</para>
+      </summary>
+      <param name="results">List to receive found Components.</param>
+      <param name="includeInactive">Should inactive GameObjects be included in the found set?</param>
     </member>
     <member name="M:UnityEngine.GameObject.GetComponentsInParent(System.Type,System.Boolean)">
       <summary>
@@ -13473,17 +13535,24 @@ A trigger parameter is a bool parameter that gets reset to false when it has bee
       <param name="type">The type of Component to retrieve.</param>
       <param name="includeInactive">Should inactive Components be included in the found set?</param>
     </member>
+    <member name="M:UnityEngine.GameObject.GetComponentsInParent">
+      <summary>
+        <para>Generic version. See the page for more details.</para>
+      </summary>
+      <param name="includeInactive">Should inactive Components be included in the found set?</param>
+    </member>
     <member name="M:UnityEngine.GameObject.GetComponentsInParent(System.Boolean)">
       <summary>
         <para>Generic version. See the page for more details.</para>
       </summary>
       <param name="includeInactive">Should inactive Components be included in the found set?</param>
     </member>
-    <member name="M:UnityEngine.GameObject.GetComponentsInParent">
+    <member name="M:UnityEngine.GameObject.GetComponentsInParent(System.Boolean,System.Collections.Generic.List`1&lt;T&gt;)">
       <summary>
-        <para>Generic version. See the page for more details.</para>
+        <para>Find Components in GameObject or parents, and return them in List results.</para>
       </summary>
       <param name="includeInactive">Should inactive Components be included in the found set?</param>
+      <param name="results">List holding the found Components.</param>
     </member>
     <member name="M:UnityEngine.GameObject.SendMessage(System.String)">
       <summary>
@@ -20052,6 +20121,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
     <member name="P:UnityEngine.Input.mousePosition">
       <summary>
         <para>The current mouse position in pixel coordinates. (Read Only)</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.Input.mousePresent">
+      <summary>
+        <para>Indicates if a mouse device is detected.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Input.mouseScrollDelta">
@@ -26774,7 +26848,7 @@ Note that updating a light probe volume every frame may be costly. The cost depe
       </summary>
       <param name="config">Connection config for special connection.</param>
       <returns>
-        <para>Id of this connection, user should use this id when he calls Networking.NetworkTransport.Connect.</para>
+        <para>Id of this connection. You should use this id when you call Networking.NetworkTransport.Connect.</para>
       </returns>
     </member>
     <member name="M:UnityEngine.Networking.HostTopology.#ctor(UnityEngine.Networking.ConnectionConfig,System.Int32)">
@@ -27336,7 +27410,7 @@ Note that updating a light probe volume every frame may be costly. The cost depe
     </member>
     <member name="F:UnityEngine.Networking.NetworkEventType.BroadcastEvent">
       <summary>
-        <para>Broadcast discovery event received. To obtain sender connection info and possible complimentary message from him call GetBroadcastConnectionInfo() and GetBroadcastConnectionMessage() functions.</para>
+        <para>Broadcast discovery event received. To obtain sender connection info and possible complimentary message from them, call GetBroadcastConnectionInfo() and GetBroadcastConnectionMessage() functions.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.Networking.NetworkEventType.ConnectEvent">
@@ -28724,6 +28798,34 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
       <param name="original">An existing object that you want to make a copy of.</param>
       <param name="position">Position for the new object (default Vector3.zero).</param>
       <param name="rotation">Orientation of the new object (default Quaternion.identity).</param>
+      <param name="parent">The transform the object will be parented to.</param>
+      <param name="worldPositionStays">If when assigning the parent the original world position should be maintained.</param>
+      <returns>
+        <para>A clone of the original object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Object.Instantiate(UnityEngine.Object,UnityEngine.Transform)">
+      <summary>
+        <para>Returns a copy of the object original.</para>
+      </summary>
+      <param name="original">An existing object that you want to make a copy of.</param>
+      <param name="position">Position for the new object (default Vector3.zero).</param>
+      <param name="rotation">Orientation of the new object (default Quaternion.identity).</param>
+      <param name="parent">The transform the object will be parented to.</param>
+      <param name="worldPositionStays">If when assigning the parent the original world position should be maintained.</param>
+      <returns>
+        <para>A clone of the original object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Object.Instantiate(UnityEngine.Object,UnityEngine.Transform,System.Boolean)">
+      <summary>
+        <para>Returns a copy of the object original.</para>
+      </summary>
+      <param name="original">An existing object that you want to make a copy of.</param>
+      <param name="position">Position for the new object (default Vector3.zero).</param>
+      <param name="rotation">Orientation of the new object (default Quaternion.identity).</param>
+      <param name="parent">The transform the object will be parented to.</param>
+      <param name="worldPositionStays">If when assigning the parent the original world position should be maintained.</param>
       <returns>
         <para>A clone of the original object.</para>
       </returns>
@@ -28735,6 +28837,21 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
       <param name="original">An existing object that you want to make a copy of.</param>
       <param name="position">Position for the new object (default Vector3.zero).</param>
       <param name="rotation">Orientation of the new object (default Quaternion.identity).</param>
+      <param name="parent">The transform the object will be parented to.</param>
+      <param name="worldPositionStays">If when assigning the parent the original world position should be maintained.</param>
+      <returns>
+        <para>A clone of the original object.</para>
+      </returns>
+    </member>
+    <member name="M:UnityEngine.Object.Instantiate(UnityEngine.Object,UnityEngine.Vector3,UnityEngine.Quaternion,UnityEngine.Transform)">
+      <summary>
+        <para>Returns a copy of the object original.</para>
+      </summary>
+      <param name="original">An existing object that you want to make a copy of.</param>
+      <param name="position">Position for the new object (default Vector3.zero).</param>
+      <param name="rotation">Orientation of the new object (default Quaternion.identity).</param>
+      <param name="parent">The transform the object will be parented to.</param>
+      <param name="worldPositionStays">If when assigning the parent the original world position should be maintained.</param>
       <returns>
         <para>A clone of the original object.</para>
       </returns>
@@ -32000,8 +32117,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="direction">Vector representing the direction of the shape.</param>
       <param name="distance">Maximum distance over which to cast the shape.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The cast results returned.</para>
       </returns>
@@ -32016,8 +32133,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="direction">Vector representing the direction of the shape.</param>
       <param name="distance">Maximum distance over which to cast the shape.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The cast results returned.</para>
       </returns>
@@ -32033,8 +32150,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="results">Array to receive results.</param>
       <param name="distance">Maximum distance over which to cast the shape.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The number of results returned.</para>
       </returns>
@@ -32048,8 +32165,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="direction">Vector representing the direction of the shape.</param>
       <param name="distance">Maximum distance over which to cast the shape.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The cast results returned.</para>
       </returns>
@@ -32063,8 +32180,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="direction">Vector representing the direction of the shape.</param>
       <param name="distance">Maximum distance over which to cast the shape.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The cast results returned.</para>
       </returns>
@@ -32079,8 +32196,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="results">Array to receive results.</param>
       <param name="distance">Maximum distance over which to cast the shape.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The number of results returned.</para>
       </returns>
@@ -32195,8 +32312,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="start">The start point of the line in world space.</param>
       <param name="end">The end point of the line in world space.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The cast results returned.</para>
       </returns>
@@ -32208,8 +32325,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="start">The start point of the line in world space.</param>
       <param name="end">The end point of the line in world space.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The cast results returned.</para>
       </returns>
@@ -32218,8 +32335,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <summary>
         <para>Casts a line against colliders in the scene.</para>
       </summary>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <param name="start">The start point of the line in world space.</param>
       <param name="end">The end point of the line in world space.</param>
       <param name="results">Returned array of objects that intersect the line.</param>
@@ -32235,8 +32352,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="pointA">One corner of the rectangle.</param>
       <param name="pointB">Diagonally opposite corner of the rectangle.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapAreaAll(UnityEngine.Vector2,UnityEngine.Vector2,System.Int32,System.Single,System.Single)">
       <summary>
@@ -32245,8 +32362,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="pointA">One corner of the rectangle.</param>
       <param name="pointB">Diagonally opposite corner of the rectangle.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapAreaNonAlloc(UnityEngine.Vector2,UnityEngine.Vector2,UnityEngine.Collider2D[],System.Int32,System.Single,System.Single)">
       <summary>
@@ -32256,8 +32373,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="pointB">Diagonally opposite corner of the rectangle.</param>
       <param name="results">Array to receive results.</param>
       <param name="layerMask">Filter to check objects only on specified layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The number of results returned.</para>
       </returns>
@@ -32306,8 +32423,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="point">Centre of the circle.</param>
       <param name="radius">Radius of the circle.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapCircleAll(UnityEngine.Vector2,System.Single,System.Int32,System.Single,System.Single)">
       <summary>
@@ -32316,8 +32433,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="point">Center of the circle.</param>
       <param name="radius">Radius of the circle.</param>
       <param name="layerMask">Filter to check objects only on specified layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapCircleNonAlloc(UnityEngine.Vector2,System.Single,UnityEngine.Collider2D[],System.Int32,System.Single,System.Single)">
       <summary>
@@ -32327,8 +32444,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="radius">Radius of the circle.</param>
       <param name="results">Array to receive results.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The number of results returned.</para>
       </returns>
@@ -32339,15 +32456,15 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       </summary>
       <param name="point">A point in world space.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
     </member>
     <member name="M:UnityEngine.Physics2D.OverlapPointAll(UnityEngine.Vector2,System.Int32,System.Single,System.Single)">
       <summary>
         <para>Get a list of all colliders that overlap a point in space.</para>
       </summary>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <param name="point">A point in space.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
     </member>
@@ -32355,8 +32472,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <summary>
         <para>Get a list of all colliders that overlap a point in space.</para>
       </summary>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <param name="point">A point in space.</param>
       <param name="results">Array to receive results.</param>
       <param name="layerMask">Filter to check objects only on specific layers.</param>
@@ -32372,8 +32489,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="direction">Vector representing the direction of the ray.</param>
       <param name="distance">Maximum distance over which to cast the ray.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The cast results returned.</para>
       </returns>
@@ -32386,8 +32503,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <param name="direction">Vector representing the direction of the ray.</param>
       <param name="distance">Maximum distance over which to cast the ray.</param>
       <param name="layerMask">Filter to detect Colliders only on certain layers.</param>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <returns>
         <para>The cast results returned.</para>
       </returns>
@@ -32396,8 +32513,8 @@ Note that IgnoreLayerCollision will reset the trigger state of affected collider
       <summary>
         <para>Casts a ray into the scene.</para>
       </summary>
-      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than this value.</param>
-      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than this value.</param>
+      <param name="minDepth">Only include objects with a Z coordinate (depth) greater than or equal to this value.</param>
+      <param name="maxDepth">Only include objects with a Z coordinate (depth) less than or equal to this value.</param>
       <param name="origin">The point in 2D space where the ray originates.</param>
       <param name="direction">Vector representing the direction of the ray.</param>
       <param name="results">Array to receive results.</param>
@@ -34329,14 +34446,14 @@ frame. Minimum value is 1 and maximum is 33.</para>
         <para>Returns true if the other rectangle overlaps this one. If allowInverse is present and true, the widths and heights of the Rects are allowed to take negative values (ie, the min value is greater than the max), and the test will still work.</para>
       </summary>
       <param name="other">Other rectangle to test overlapping with.</param>
-      <param name="allowInverse">Does the test allow the Rects' widths and heights to be negative?</param>
+      <param name="allowInverse">Does the test allow the widths and heights of the Rects to be negative?</param>
     </member>
     <member name="M:UnityEngine.Rect.Overlaps(UnityEngine.Rect,System.Boolean)">
       <summary>
         <para>Returns true if the other rectangle overlaps this one. If allowInverse is present and true, the widths and heights of the Rects are allowed to take negative values (ie, the min value is greater than the max), and the test will still work.</para>
       </summary>
       <param name="other">Other rectangle to test overlapping with.</param>
-      <param name="allowInverse">Does the test allow the Rects' widths and heights to be negative?</param>
+      <param name="allowInverse">Does the test allow the widths and heights of the Rects to be negative?</param>
     </member>
     <member name="M:UnityEngine.Rect.PointToNormalized(UnityEngine.Rect,UnityEngine.Vector2)">
       <summary>
@@ -35789,7 +35906,7 @@ See Also: ReflectionProbeTimeSlicingMode.</para>
     </member>
     <member name="M:UnityEngine.Rendering.CommandBuffer.SetGlobalTexture(System.String,UnityEngine.Rendering.RenderTargetIdentifier)">
       <summary>
-        <para>Add a "set global shader texture property" command.</para>
+        <para>Add a "set global shader texture property" command, referencing a RenderTexture.</para>
       </summary>
       <param name="name"></param>
       <param name="value"></param>
@@ -35797,7 +35914,7 @@ See Also: ReflectionProbeTimeSlicingMode.</para>
     </member>
     <member name="M:UnityEngine.Rendering.CommandBuffer.SetGlobalTexture(System.Int32,UnityEngine.Rendering.RenderTargetIdentifier)">
       <summary>
-        <para>Add a "set global shader texture property" command.</para>
+        <para>Add a "set global shader texture property" command, referencing a RenderTexture.</para>
       </summary>
       <param name="name"></param>
       <param name="value"></param>
@@ -37327,7 +37444,7 @@ Updating a probe's cubemap is a costly operation. Unity needs to render the enti
     </member>
     <member name="T:UnityEngine.RequireComponent">
       <summary>
-        <para>The RequireComponent attribute lets automatically add required component as a dependency.</para>
+        <para>The RequireComponent attribute automatically adds required components as dependencies.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.RequireComponent.#ctor(System.Type)">
@@ -38602,10 +38719,11 @@ A scene may be invalid if, for example, you tried to open a scene that does not 
         <para>Scene management at run-time.</para>
       </summary>
     </member>
-    <member name="?:UnityEngine.SceneManagement.SceneManager.activeSceneChanged">
+    <member name="?:UnityEngine.SceneManagement.SceneManager.activeSceneChanged(UnityEngine.Events.UnityAction`2&lt;UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.Scene&gt;)">
       <summary>
-        <para>Add a delegate to this to get notifications when the active scene has changed</para>
+        <para>Add a delegate to this to get notifications when the active scene has changed.</para>
       </summary>
+      <param name="value"></param>
     </member>
     <member name="P:UnityEngine.SceneManagement.SceneManager.sceneCount">
       <summary>
@@ -38617,15 +38735,17 @@ A scene may be invalid if, for example, you tried to open a scene that does not 
         <para>Number of scenes in Build Settings.</para>
       </summary>
     </member>
-    <member name="?:UnityEngine.SceneManagement.SceneManager.sceneLoaded">
+    <member name="?:UnityEngine.SceneManagement.SceneManager.sceneLoaded(UnityEngine.Events.UnityAction`2&lt;UnityEngine.SceneManagement.Scene,UnityEngine.SceneManagement.LoadSceneMode&gt;)">
       <summary>
         <para>Add a delegate to this to get notifications when a scene has loaded</para>
       </summary>
+      <param name="value"></param>
     </member>
-    <member name="?:UnityEngine.SceneManagement.SceneManager.sceneUnloaded">
+    <member name="?:UnityEngine.SceneManagement.SceneManager.sceneUnloaded(UnityEngine.Events.UnityAction`1&lt;UnityEngine.SceneManagement.Scene&gt;)">
       <summary>
         <para>Add a delegate to this to get notifications when a scene has unloaded</para>
       </summary>
+      <param name="value"></param>
     </member>
     <member name="M:UnityEngine.SceneManagement.SceneManager.CreateScene(System.String)">
       <summary>
@@ -39613,7 +39733,7 @@ It is required that the GameObject is at the root of its current scene.</para>
     </member>
     <member name="?:UnityEngine.SocialPlatforms.IAchievement">
       <summary>
-        <para>Information for a users achievement.</para>
+        <para>Information for a user's achievement.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.SocialPlatforms.IAchievement.completed">
@@ -39771,7 +39891,7 @@ It is required that the GameObject is at the root of its current scene.</para>
     </member>
     <member name="M:UnityEngine.SocialPlatforms.ILocalUser.Authenticate(System.Action`1&lt;System.Boolean&gt;)">
       <summary>
-        <para>Authenticate the local user to the current active Social API implementation and fetch his profile data.</para>
+        <para>Authenticate the local user to the current active Social API implementation and fetch their profile data.</para>
       </summary>
       <param name="callback">Callback that is called whenever the authentication operation is finished.</param>
     </member>
@@ -39982,12 +40102,12 @@ It is required that the GameObject is at the root of its current scene.</para>
     </member>
     <member name="F:UnityEngine.SocialPlatforms.UserState.OnlineAndAway">
       <summary>
-        <para>The user is online but away from his computer.</para>
+        <para>The user is online but away from their computer.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.SocialPlatforms.UserState.OnlineAndBusy">
       <summary>
-        <para>The user is only but set his status to busy.</para>
+        <para>The user is online but set their status to busy.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.SocialPlatforms.UserState.Playing">
@@ -41529,10 +41649,13 @@ Returns NULL if there is no associated alpha texture for the source sprite. This
       <summary>
         <para>Returns the alpha map at a position x, y given a width and height.</para>
       </summary>
-      <param name="x"></param>
-      <param name="y"></param>
-      <param name="width"></param>
-      <param name="height"></param>
+      <param name="x">The x offset to read from.</param>
+      <param name="y">The y offset to read from.</param>
+      <param name="width">The width of the alpha map area to read.</param>
+      <param name="height">The height of the alpha map area to read.</param>
+      <returns>
+        <para>A 3D array of floats, where the 3rd dimension represents the mixing weight of each splatmap at each x,y coordinate.</para>
+      </returns>
     </member>
     <member name="M:UnityEngine.TerrainData.GetDetailLayer(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
       <summary>
@@ -42362,8 +42485,8 @@ Returns NULL if there is no associated alpha texture for the source sprite. This
       <summary>
         <para>Set a block of pixel colors.</para>
       </summary>
-      <param name="colors"></param>
-      <param name="miplevel"></param>
+      <param name="colors">The array of pixel colours to assign (a 2D image flattened to a 1D array).</param>
+      <param name="miplevel">The mip level of the texture to write to.</param>
     </member>
     <member name="M:UnityEngine.Texture2D.SetPixels(System.Int32,System.Int32,System.Int32,System.Int32,UnityEngine.Color[],System.Int32)">
       <summary>
@@ -44753,7 +44876,7 @@ Useful for restarting a trail from a new position.</para>
     </member>
     <member name="M:UnityEngine.VR.InputTracking.Recenter">
       <summary>
-        <para>Center tracking on the current pose.</para>
+        <para>Center tracking to the current position and orientation of the HMD.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.VR.VRDevice">
@@ -45710,7 +45833,7 @@ Useful for restarting a trail from a new position.</para>
     </member>
     <member name="F:UnityEngine.VR.WSA.SurfaceData.bakeCollider">
       <summary>
-        <para>Set this field to true when requesting data to bake collider data.  This field will be set to true when receiving baked data if it was requested.  Setting this field to true requires that a valid outputCollider is aalso specified.</para>
+        <para>Set this field to true when requesting data to bake collider data.  This field will be set to true when receiving baked data if it was requested.  Setting this field to true requires that a valid outputCollider is also specified.</para>
       </summary>
     </member>
     <member name="F:UnityEngine.VR.WSA.SurfaceData.id">
@@ -45738,7 +45861,7 @@ Useful for restarting a trail from a new position.</para>
         <para>This value controls the basic resolution of baked mesh data and is returned with the SurfaceDataReadyDelegate.  The device will deliver up to this number of triangles per cubic meter.</para>
       </summary>
     </member>
-    <member name="M:UnityEngine.VR.WSA.SurfaceData.#ctor">
+    <member name="M:UnityEngine.VR.WSA.SurfaceData.#ctor(UnityEngine.VR.WSA.SurfaceId,UnityEngine.MeshFilter,UnityEngine.VR.WSA.WorldAnchor,UnityEngine.MeshCollider,System.Single,System.Boolean)">
       <summary>
         <para>Constructor for conveniently filling out a SurfaceData struct.</para>
       </summary>

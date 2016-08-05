@@ -235,11 +235,19 @@ public class NetworkManager : MonoBehaviour
                     
                     GameObject p1Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                     GameObject p2Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    p1 = Player.MakePlayer(p1Object, PhotonNetwork.playerList[0].ID, PhotonNetwork.playerList[0].name);
-                    p2 = Player.MakePlayer(p2Object, PhotonNetwork.playerList[1].ID, PhotonNetwork.playerList[1].name);
+                    p1 = Player.MakePlayer(p1Object, PhotonNetwork.masterClient.ID, PhotonNetwork.masterClient.name);
+                    foreach(PhotonPlayer p in PhotonNetwork.playerList)
+                    {
+                        if(p != PhotonNetwork.masterClient)
+                        {
+                            p2 = Player.MakePlayer(p2Object, p.ID, p.name);
+                        }
+                    }
+                    
                     Debug.Log("Instantiated 2 players on the network and assigned their names/ids");
 
                     //Now the network manager gives a handle to the users and to the game.
+                    Debug.Log("Setting p1=" + p1.id + " p2=" + p2.id);
                     g = new Game(p1, p2, gameSeed);
                     g.RequestSetPlayer1Deck(randomDeck);
                     g.RequestSetPlayer2Deck(randomDeck);
@@ -289,12 +297,19 @@ public class NetworkManager : MonoBehaviour
 
                 GameObject p1Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
                 GameObject p2Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                p1 = Player.MakePlayer(p1Object, PhotonNetwork.playerList[0].ID, PhotonNetwork.playerList[0].name);
-                p2 = Player.MakePlayer(p2Object, PhotonNetwork.playerList[1].ID, PhotonNetwork.playerList[1].name);
+                p1 = Player.MakePlayer(p1Object, PhotonNetwork.masterClient.ID, PhotonNetwork.masterClient.name);
+                foreach (PhotonPlayer p in PhotonNetwork.playerList)
+                {
+                    if (p != PhotonNetwork.masterClient)
+                    {
+                        p2 = Player.MakePlayer(p2Object, p.ID, p.name);
+                    }
+                }
                 Debug.Log("Instantiated 2 players on the network and assigned their names/ids");
 
                 //Now the network manager gives a handle to the users and to the game.
                 g = new Game(p1, p2, randomGameId);
+                Debug.Log("Setting p1=" + p1.id + " p2=" + p2.id);
                 g.RequestSetPlayer1Deck(randomDeck);
                 g.RequestSetPlayer2Deck(randomDeck);
                 g.setCurrentGame();

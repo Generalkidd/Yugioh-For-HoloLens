@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     public static GameManager MakeManager(GameObject toAddTo, Player pMe, Texture CardBack, NetworkManager networkManager)
     {
         GameManager myManager = toAddTo.AddComponent<GameManager>();
+        Debug.Log("pMe Id=" + pMe.id);
         me = pMe;
         CardBackTexture = CardBack;
         netManager = networkManager;
@@ -114,7 +115,102 @@ public class GameManager : MonoBehaviour
 
     private void placeMyMonsterCardOnGUI()
     {
-       // throw new NotImplementedException();
+        Debug.Log("Trying to instantiate monster");
+        for(int i=0; i<me.FaceDownCardsInMonsterZone.Count; i++)
+        {
+            GameObject spawnSpot = null;
+            if(i==0)
+            {
+                spawnSpot= GameObject.Find("Player1Monster1");
+            }
+            else if(i==1)
+            {
+                spawnSpot = GameObject.Find("Player1Monster2");
+            }
+            else if (i == 2)
+            {
+                spawnSpot = GameObject.Find("Player1Monster3");
+            }
+            else if (i == 3)
+            {
+                spawnSpot = GameObject.Find("Player1Monster4");
+            }
+            else if (i == 4)
+            {
+                spawnSpot = GameObject.Find("Player1Monster5");
+            }
+            else if (i == 5)
+            {
+                spawnSpot = GameObject.Find("Player1Monster6");
+            }
+            try
+            {
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnSpot.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+                //Add The new Monster
+                GameObject monster = Instantiate(Resources.Load(me.FaceDownCardsInMonsterZone[i].CardName)) as GameObject;
+                monster.transform.parent = spawnSpot.transform;
+                monster.transform.position = spawnSpot.transform.position;
+               
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Problem instantiating monster prefab. It Probably doesn't exist. error=" + e.Message + ". Summoning Dummy Instead.");
+                GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
+                monster.transform.parent = spawnSpot.transform;
+                monster.transform.position = spawnSpot.transform.position;
+            }
+        }
+        for (int i = 0; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
+        {
+            GameObject spawnSpot = null;
+            if (i == 0)
+            {
+                spawnSpot = GameObject.Find("Player1Monster1");
+            }
+            else if (i == 1)
+            {
+                spawnSpot = GameObject.Find("Player1Monster2");
+            }
+            else if (i == 2)
+            {
+                spawnSpot = GameObject.Find("Player1Monster3");
+            }
+            else if (i == 3)
+            {
+                spawnSpot = GameObject.Find("Player1Monster4");
+            }
+            else if (i == 4)
+            {
+                spawnSpot = GameObject.Find("Player1Monster5");
+            }
+            else if (i == 5)
+            {
+                spawnSpot = GameObject.Find("Player1Monster6");
+            }
+            try
+            {
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnSpot.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+                //Add The new Monster
+                GameObject monster = Instantiate(Resources.Load(me.MeReadOnly.FaceUpMonsters[i].CardName)) as GameObject;
+                monster.transform.parent = spawnSpot.transform;
+                monster.transform.position = spawnSpot.transform.position;
+
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Problem instantiating monster prefab. It Probably doesn't exist. error=" + e.Message + ". Summoning Dummy Instead.");
+                GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
+                monster.transform.parent = spawnSpot.transform;
+                monster.transform.position = spawnSpot.transform.position;
+            }
+        }
+
     }
 
     public void setSelectedCard(Card toSelect, CurrentlySelectedCardType toSelectType)
@@ -189,16 +285,12 @@ public class GameManager : MonoBehaviour
 
     void OnSummon()
     {
-        Debug.Log("Trying to summon: " + getCurrentlySelectedCard());
+        Debug.Log("Trying to summon: " + getCurrentlySelectedCard()+". My Id is="+me.id);
+
         string tmp = me.NormalSummon(getCurrentlySelectedCard());
         Debug.Log("Tried to normal summon with result= "+tmp);
-        if (tmp == "")
-        {
-            Debug.Log("Trying to instantiate monster");
-            GameObject monster = Instantiate((Resources.Load(currentlySelectedCard.name) as UnityEngine.Object), new Vector3(this.transform.position.x, 1.5f, 10f), rotation) as GameObject;
-            placeMyHandCardsOnGUI();
-            placeMyMonsterCardOnGUI();
-        }
+        placeMyMonsterCardOnGUI();
+        placeMyHandCardsOnGUI();
     }
 
     void OnSet()
