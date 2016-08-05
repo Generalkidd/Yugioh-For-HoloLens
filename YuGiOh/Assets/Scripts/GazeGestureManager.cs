@@ -46,6 +46,7 @@ public class GazeGestureManager : MonoBehaviour
         {
             // If the raycast hit a hologram, use that as the focused object.
             FocusedObject = hitInfo.collider.gameObject;
+            FocusedObject.SendMessageUpwards("OnSelect");
         }
         else
         {
