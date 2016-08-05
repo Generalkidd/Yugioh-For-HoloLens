@@ -24,6 +24,8 @@ public class NetworkManager : MonoBehaviour
     bool gameCreated = false;
     bool multiplayerSelected = false;
     int gameSeed = -1;
+    string returnsFromRPC = "-1";
+    GameManager gm1 = null;
 
     // Use this for initialization
     void Start()
@@ -208,7 +210,71 @@ public class NetworkManager : MonoBehaviour
         PhotonNetwork.CreateRoom(null,roomOptions,null);
     }
 
-   
+    internal string EndTurn(int endingTurnId)
+    {
+        GetComponent<PhotonView>().RPC("EndTurn_RPC", PhotonTargets.All, endingTurnId);
+        while (returnsFromRPC == "-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+    [PunRPC]
+    void EndTurn_RPC(int endingTurnId)
+    {
+        Debug.Log("ID " + endingTurnId + " is trying to end turn.");
+        if (p1.id == endingTurnId)
+        {
+            Debug.Log("Player 1 ends turn");
+            returnsFromRPC = p1.EndTurn();
+        }
+        else if (p2.id == endingTurnId)
+        {
+            Debug.Log("Player 2 ends turn");
+            returnsFromRPC = p2.EndTurn();
+        }
+        Debug.Log("Tried to end turn with result= " + returnsFromRPC);
+        if (gm1 != null)
+        {
+            gm1.updateLayout();
+        }
+    }
+
+    internal string Summon(int cardIndexInHand, int summoningId)
+    {
+        GetComponent<PhotonView>().RPC("Summon_RPC", PhotonTargets.All, cardIndexInHand,summoningId);
+        while(returnsFromRPC=="-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+   [PunRPC]
+    void Summon_RPC(int cardIndexInHand, int summoningId)
+    {
+        Debug.Log("ID " + summoningId + " is trying to summon");
+        if (p1.id == summoningId)
+        {
+            Debug.Log("Player 1 summons card number " + cardIndexInHand);
+            returnsFromRPC = p1.NormalSummon(p1.Hand[cardIndexInHand]);
+        }
+        else if (p2.id == summoningId)
+        {
+            Debug.Log("Player 2 summons card number " + cardIndexInHand);
+            returnsFromRPC = p2.NormalSummon(p2.Hand[cardIndexInHand]);
+        }
+        Debug.Log("Tried to normal summon with result= " + returnsFromRPC);
+        if(gm1!=null)
+        {
+            gm1.updateLayout();
+        }
+    }
 
     [PunRPC]
     void SendGame_RPC(int randomGameSeed)
@@ -361,6 +427,7 @@ public class NetworkManager : MonoBehaviour
                     Debug.Log("Found Game GameObject, Loading game manager");
                     GameObject gObject = Resources.Load("GameManagerPrefab") as GameObject;
                     GameManager gm = GameManager.MakeManager(gObject, g.myPlayer(PhotonNetwork.player.ID), CardBackTexture, this);
+                    gm1 = gm;
                     Instantiate(gObject);
                     hasMadeGameManager = true;
                     Debug.Log("Created GameManager.Ready to Rock and Roll on the Network.");

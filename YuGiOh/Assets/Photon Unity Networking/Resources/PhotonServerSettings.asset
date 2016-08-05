@@ -41,4 +41,6 @@ MonoBehaviour:
   - SendGame
   - SendGame_RPC
   - UpdateGame_RPC
+  - Summon_RPC
+  - EndTurn_RPC
   DisableAutoOpenWizard: 1

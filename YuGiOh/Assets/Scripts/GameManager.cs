@@ -46,22 +46,23 @@ public class GameManager : MonoBehaviour
         placeOpponentsHandOnGUI();
     }
 
+    public void updateLayout()
+    {
+        placeMyHandCardsOnGUI();
+        placeMyMonsterCardOnGUI();
+        placeMyTrapsOnGUI();
+        placeOpponentsMonstersOnGUI();
+        placeOpponentsTrapsOnGUI();
+        placeOpponentsHandOnGUI();
+    }
+
     // Update is called once per frame
     void Update () {
-        /*
-        //Update every 5000 frames
-        if (frameCounter > 5000)
+        if (Input.GetKeyDown("space"))
         {
-            placeMyHandCardsOnGUI();
-            placeMyMonsterCardOnGUI();
-            placeMyTrapsOnGUI();
-            placeOpponentsMonstersOnGUI();
-            placeOpponentsTrapsOnGUI();
-            placeOpponentsHandOnGUI();
-            frameCounter = 0;
+            OnEndTurn();
         }
-        frameCounter++; */
-	}
+    }
 
     ///Returns a monster card air tapped by user from his/her monster zone.
     public MonsterCard PromptForOneOfMyMonstersOnField()
@@ -95,7 +96,101 @@ public class GameManager : MonoBehaviour
 
     private void placeOpponentsHandOnGUI()
     {
-        //throw new NotImplementedException();
+        GameObject spawnPoint = null;
+        for (int i = 0; i < me.getOpponent().NumberOfCardsInHand; i++)
+        {
+            if (i == 0)
+            {
+                spawnPoint = GameObject.Find("Player2Hand1");
+            }
+            else if(i==1)
+            {
+                spawnPoint = GameObject.Find("Player2Hand2");
+            }
+            else if (i == 2)
+            {
+                spawnPoint = GameObject.Find("Player2Hand3");
+            }
+            else if (i == 3)
+            {
+                spawnPoint = GameObject.Find("Player2Hand4");
+            }
+            else if (i == 4)
+            {
+                spawnPoint = GameObject.Find("Player2Hand5");
+            }
+            else if (i == 5)
+            {
+                spawnPoint = GameObject.Find("Player2Hand6");
+            }
+            //Destroy the Old Card
+            var children = new List<GameObject>();
+            foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+            children.ForEach(child => Destroy(child));
+
+            //Add The new Card
+            GameObject cardGO = Resources.Load("Card") as GameObject;
+            GameObject myCardGO = Instantiate(cardGO);
+            myCardGO.transform.parent = spawnPoint.transform;
+            myCardGO.transform.position = spawnPoint.transform.position;
+            myCardGO.GetComponent<Renderer>().material.mainTexture = CardBackTexture;
+        }
+        for (int i = me.getOpponent().NumberOfCardsInHand; i < 6; i++)
+        {
+            if (i == 0)
+            {
+                spawnPoint = GameObject.Find("Player2Hand1");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+            }
+            else if (i == 1)
+            {
+                spawnPoint = GameObject.Find("Player2Hand2");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 2)
+            {
+                spawnPoint = GameObject.Find("Player2Hand3");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+            }
+            else if (i == 3)
+            {
+                spawnPoint = GameObject.Find("Player2Hand4");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 4)
+            {
+                spawnPoint = GameObject.Find("Player2Hand5");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 5)
+            {
+                spawnPoint = GameObject.Find("Player2Hand6");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+        }
+
     }
 
     private void placeOpponentsTrapsOnGUI()
@@ -105,7 +200,157 @@ public class GameManager : MonoBehaviour
 
     private void placeOpponentsMonstersOnGUI()
     {
-        //throw new NotImplementedException();
+        for (int i = 0; i < me.getOpponent().NumberOfFaceDownCardsInMonsterZone; i++)
+        {
+            GameObject spawnSpot = null;
+            if (i == 0)
+            {
+                spawnSpot = GameObject.Find("Player2Monster1");
+            }
+            else if (i == 1)
+            {
+                spawnSpot = GameObject.Find("Player2Monster2");
+            }
+            else if (i == 2)
+            {
+                spawnSpot = GameObject.Find("Player2Monster3");
+            }
+            else if (i == 3)
+            {
+                spawnSpot = GameObject.Find("Player2Monster4");
+            }
+            else if (i == 4)
+            {
+                spawnSpot = GameObject.Find("Player2Monster5");
+            }
+            else if (i == 5)
+            {
+                spawnSpot = GameObject.Find("Player2Monster6");
+            }
+            try
+            {
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnSpot.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+                //Add The new Monster
+                GameObject monster = Instantiate(Resources.Load("FaceDownCard")) as GameObject;
+                monster.transform.parent = spawnSpot.transform;
+                monster.transform.position = spawnSpot.transform.position;
+
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Problem instantiating monster prefab. It Probably doesn't exist. error=" + e.Message + ". Summoning Dummy Instead.");
+                GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
+                monster.transform.parent = spawnSpot.transform;
+                monster.transform.position = spawnSpot.transform.position;
+            }
+        }
+        for (int i = me.getOpponent().NumberOfFaceDownCardsInMonsterZone; i < me.getOpponent().FaceUpMonsters.Count; i++)
+        {
+            GameObject spawnSpot = null;
+            if (i == 0)
+            {
+                spawnSpot = GameObject.Find("Player2Monster1");
+            }
+            else if (i == 1)
+            {
+                spawnSpot = GameObject.Find("Player2Monster2");
+            }
+            else if (i == 2)
+            {
+                spawnSpot = GameObject.Find("Player2Monster3");
+            }
+            else if (i == 3)
+            {
+                spawnSpot = GameObject.Find("Player2Monster4");
+            }
+            else if (i == 4)
+            {
+                spawnSpot = GameObject.Find("Player2Monster5");
+            }
+            else if (i == 5)
+            {
+                spawnSpot = GameObject.Find("Player2Monster6");
+            }
+            try
+            {
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnSpot.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+                //Add The new Monster
+                GameObject monster = Instantiate(Resources.Load(me.MeReadOnly.FaceUpMonsters[i].CardName)) as GameObject;
+                monster.transform.parent = spawnSpot.transform;
+                monster.transform.position = spawnSpot.transform.position;
+
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Problem instantiating monster prefab. It Probably doesn't exist. error=" + e.Message + ". Summoning Dummy Instead.");
+                GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
+                monster.transform.parent = spawnSpot.transform;
+                monster.transform.position = spawnSpot.transform.position;
+            }
+        }
+
+        for (int i = me.getOpponent().NumberOfFaceDownCardsInMonsterZone + me.getOpponent().FaceUpMonsters.Count; i < 6; i++)
+        {
+            if (i == 0)
+            {
+                GameObject spawnPoint = GameObject.Find("Player2Monster1");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+            }
+            else if (i == 1)
+            {
+                GameObject spawnPoint = GameObject.Find("Player2Monster2");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 2)
+            {
+                GameObject spawnPoint = GameObject.Find("Player2Monster3");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+            }
+            else if (i == 3)
+            {
+                GameObject spawnPoint = GameObject.Find("Player2Monster4");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 4)
+            {
+                GameObject spawnPoint = GameObject.Find("Player2Monster5");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 5)
+            {
+                GameObject spawnPoint = GameObject.Find("Player2Monster6");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+        }
+
     }
 
     private void placeMyTrapsOnGUI()
@@ -163,7 +408,7 @@ public class GameManager : MonoBehaviour
                 monster.transform.position = spawnSpot.transform.position;
             }
         }
-        for (int i = 0; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
+        for (int i = me.FaceDownCardsInMonsterZone.Count; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
         {
             GameObject spawnSpot = null;
             if (i == 0)
@@ -208,6 +453,61 @@ public class GameManager : MonoBehaviour
                 GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
+            }
+        }
+        for (int i = me.FaceDownCardsInMonsterZone.Count+ me.MeReadOnly.FaceUpMonsters.Count; i < 6; i++)
+        {
+            if (i == 0)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Monster1");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+            }
+            else if (i == 1)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Monster2");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 2)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Monster3");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+            }
+            else if (i == 3)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Monster4");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 4)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Monster5");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
+            }
+            else if (i == 5)
+            {
+                GameObject spawnPoint = GameObject.Find("Player1Monster6");
+                //Destroy the Old Card
+                var children = new List<GameObject>();
+                foreach (Transform child in spawnPoint.transform) children.Add(child.gameObject);
+                children.ForEach(child => Destroy(child));
+
             }
         }
 
@@ -286,11 +586,14 @@ public class GameManager : MonoBehaviour
     void OnSummon()
     {
         Debug.Log("Trying to summon: " + getCurrentlySelectedCard()+". My Id is="+me.id);
-
-        string tmp = me.NormalSummon(getCurrentlySelectedCard());
-        Debug.Log("Tried to normal summon with result= "+tmp);
-        placeMyMonsterCardOnGUI();
-        placeMyHandCardsOnGUI();
+        for (int i = 0; i < me.Hand.Count; i++)
+        {
+            if (me.Hand[i] == getCurrentlySelectedCard())
+            {
+                netManager.Summon(i, me.id);
+            }
+        }
+        updateLayout();
     }
 
     void OnSet()
@@ -305,7 +608,9 @@ public class GameManager : MonoBehaviour
 
     void OnEndTurn()
     {
-        me.EndTurn();
+        Debug.Log("Trying to End Turn" + ". My Id is=" + me.id);
+        netManager.EndTurn(me.id);
+        updateLayout();
     }
 
     private void placeMyHandCardsOnGUI()
