@@ -22,6 +22,7 @@ GameObject:
   - 33: {fileID: 33000010140367022}
   - 65: {fileID: 65000014010132840}
   - 23: {fileID: 23000014141148436}
+  - 114: {fileID: 114000012587185502}
   m_Layer: 0
   m_Name: FaceDownCard
   m_TagString: Untagged
@@ -90,3 +91,14 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114000012587185502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014029133756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4be591666099584c8a4c3fa4192aedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

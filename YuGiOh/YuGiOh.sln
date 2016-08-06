@@ -1,11 +1,11 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.CSharp.Plugins", "YuGiOh.CSharp.Plugins.csproj", "{ECF9155E-EC88-9050-8999-7C7741186DC3}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{F7F0C948-AC71-72A5-9D4A-DB37DFDA9FFF}") = "YuGiOh", "Assembly-CSharp-firstpass.csproj", "{026EECE1-ABE7-B795-D196-5AE8D8D0C67E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.CSharp", "YuGiOh.CSharp.csproj", "{9C1BB5AF-AFE7-4518-A62D-A80848938A85}"
+Project("{F7F0C948-AC71-72A5-9D4A-DB37DFDA9FFF}") = "YuGiOh", "Assembly-CSharp.csproj", "{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.CSharp.Editor", "YuGiOh.CSharp.Editor.csproj", "{01387728-BCF4-BB99-5A99-11ED04FDF9FB}"
+Project("{F7F0C948-AC71-72A5-9D4A-DB37DFDA9FFF}") = "YuGiOh", "Assembly-CSharp-Editor.csproj", "{E9CE4FCB-01C0-D497-DD09-E8498AEE89D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +13,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ECF9155E-EC88-9050-8999-7C7741186DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECF9155E-EC88-9050-8999-7C7741186DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECF9155E-EC88-9050-8999-7C7741186DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECF9155E-EC88-9050-8999-7C7741186DC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01387728-BCF4-BB99-5A99-11ED04FDF9FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01387728-BCF4-BB99-5A99-11ED04FDF9FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01387728-BCF4-BB99-5A99-11ED04FDF9FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01387728-BCF4-BB99-5A99-11ED04FDF9FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{026EECE1-ABE7-B795-D196-5AE8D8D0C67E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{026EECE1-ABE7-B795-D196-5AE8D8D0C67E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{026EECE1-ABE7-B795-D196-5AE8D8D0C67E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{026EECE1-ABE7-B795-D196-5AE8D8D0C67E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{134C3B89-1C2F-4E15-E2A3-385F18E32A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9CE4FCB-01C0-D497-DD09-E8498AEE89D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9CE4FCB-01C0-D497-DD09-E8498AEE89D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9CE4FCB-01C0-D497-DD09-E8498AEE89D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9CE4FCB-01C0-D497-DD09-E8498AEE89D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
