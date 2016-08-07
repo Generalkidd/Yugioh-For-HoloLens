@@ -43,4 +43,6 @@ MonoBehaviour:
   - UpdateGame_RPC
   - Summon_RPC
   - EndTurn_RPC
+  - Sacrifice_RPC
+  - Spell_RPC
   DisableAutoOpenWizard: 1

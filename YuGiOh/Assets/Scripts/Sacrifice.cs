@@ -24,6 +24,10 @@ public class Sacrifice : MonoBehaviour
 
     void OnSelect()
     {
-
+        if (myGameManager != null)
+        {
+            Debug.Log("Game Manager not null and Sacrifice selected->");
+            myGameManager.OnSacrifice();
+        }
     }
 }

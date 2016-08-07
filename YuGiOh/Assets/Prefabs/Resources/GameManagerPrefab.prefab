@@ -94,6 +94,7 @@ GameObject:
   - 114: {fileID: 114000013182116576}
   - 114: {fileID: 114000011967829732}
   - 114: {fileID: 114000012998523610}
+  - 114: {fileID: 114000011708820534}
   m_Layer: 0
   m_Name: GameManagerPrefab
   m_TagString: Untagged
@@ -423,6 +424,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114000011697248098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012760194398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c14fd53b1108147aac3cf9e250cdd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114000011708820534
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

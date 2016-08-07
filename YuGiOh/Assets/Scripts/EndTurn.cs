@@ -7,7 +7,7 @@ public class EndTurn : MonoBehaviour
     internal GameManager.CurrentlySelectedCardType myZone;
     // Use this for initialization
     void Start () {
-	
+        myGameManager = null;
 	}
 	
 	// Update is called once per frame
@@ -24,6 +24,10 @@ public class EndTurn : MonoBehaviour
 
     void OnSelect()
     {
-        
+        if(myGameManager!=null)
+        {
+            Debug.Log("Game Manager not null and End Turn selected->");
+            myGameManager.OnEndTurn();
+        }
     }
 }

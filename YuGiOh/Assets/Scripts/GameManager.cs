@@ -44,6 +44,9 @@ public class GameManager : MonoBehaviour
         placeOpponentsMonstersOnGUI();
         placeOpponentsTrapsOnGUI();
         placeOpponentsHandOnGUI();
+        GameObject.Find("EndTurn").GetComponent<EndTurn>().setGameManager(this);
+        GameObject.Find("Sacrifice").GetComponent<Sacrifice>().setGameManager(this);
+
     }
 
     public void updateLayout()
@@ -61,6 +64,10 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown("space"))
         {
             OnEndTurn();
+        }
+        else if(Input.GetKeyDown("s"))
+        {
+            OnSacrifice();
         }
     }
 
@@ -524,9 +531,16 @@ public class GameManager : MonoBehaviour
         //If the same card is hit twice
         if (myCurrentlySelectedCardObject == toSelect)
         {
-            Debug.Log("Same card has been clicked twice. Summoning...");
+            Debug.Log("Same card has been clicked twice. Summoning Or SpellCasting...");
             //Summon It
-            OnSummon();
+            if(myCurrentlySelectedCard is MonsterCard)
+            {
+                OnSummon();
+            }
+            else
+            {
+                OnSpell();
+            }
             //Reset
             myCurrentlySelectedCardObject = null;
             setCurrentlySelectedCard(null);
@@ -596,6 +610,19 @@ public class GameManager : MonoBehaviour
         updateLayout();
     }
 
+    void OnSpell()
+    {
+        Debug.Log("Trying to summon: " + getCurrentlySelectedCard() + ". My Id is=" + me.id);
+        for (int i = 0; i < me.Hand.Count; i++)
+        {
+            if (me.Hand[i] == getCurrentlySelectedCard())
+            {
+                netManager.Spell(i, me.id);
+            }
+        }
+        updateLayout();
+    }
+
     void OnSet()
     {
         
@@ -606,7 +633,20 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void OnEndTurn()
+    internal void OnSacrifice()
+    {
+        Debug.Log("Trying to summon: " + getCurrentlySelectedCard() + ". My Id is=" + me.id);
+        for (int i = 0; i < me.Hand.Count; i++)
+        {
+            if (me.Hand[i] == getCurrentlySelectedCard())
+            {
+                netManager.Sacrifice(i, me.id);
+            }
+        }
+        updateLayout();
+    }
+
+    internal void OnEndTurn()
     {
         Debug.Log("Trying to End Turn" + ". My Id is=" + me.id);
         netManager.EndTurn(me.id);

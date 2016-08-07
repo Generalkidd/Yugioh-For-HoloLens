@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Assets.Scripts.BattleHandler.Game;
+using Assets.Scripts.BattleHandler.Cards;
 
 public class NetworkManager : MonoBehaviour
 {
@@ -209,6 +210,101 @@ public class NetworkManager : MonoBehaviour
         roomOptions.MaxPlayers = 2;
         PhotonNetwork.CreateRoom(null,roomOptions,null);
     }
+
+    internal string Spell(int cardIndexInHand, int summoningId)
+    {
+        GetComponent<PhotonView>().RPC("Spell_RPC", PhotonTargets.All, cardIndexInHand, summoningId);
+        while (returnsFromRPC == "-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+    [PunRPC]
+    void Spell_RPC(int cardIndexInHand, int summoningId)
+    {
+        Debug.Log("ID " + summoningId + " is trying to sacrifice");
+        if (p1.id == summoningId)
+        {
+            if (p1.Hand[cardIndexInHand] is SpellAndTrapCard)
+            {
+                Debug.Log("Player 1 spells card number " + cardIndexInHand);
+                returnsFromRPC = p1.CastSpellOrTrap(p1.Hand[cardIndexInHand]);
+            }
+            else
+            {
+                returnsFromRPC = "Card is not a spell or trap. Cannot Cast.";
+            }
+        }
+        else if (p2.id == summoningId)
+        {
+            if (p2.Hand[cardIndexInHand] is SpellAndTrapCard)
+            {
+                Debug.Log("Player 2 spells card number " + cardIndexInHand);
+                returnsFromRPC = p2.CastSpellOrTrap(p2.Hand[cardIndexInHand]);
+            }
+            else
+            {
+                returnsFromRPC = "Card is not monster. Cannot Sacrifice.";
+            }
+        }
+        Debug.Log("Tried to spell with result= " + returnsFromRPC);
+        if (gm1 != null)
+        {
+            gm1.updateLayout();
+        }
+    }
+
+    internal string Sacrifice(int sacrificingId, int indexOfMonsterToSacrifice)
+    {
+        GetComponent<PhotonView>().RPC("Sacrifice_RPC", PhotonTargets.All, indexOfMonsterToSacrifice, sacrificingId);
+        while (returnsFromRPC == "-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+    [PunRPC]
+    void Sacrifice_RPC(int cardIndexInHand, int summoningId)
+    {
+        Debug.Log("ID " + summoningId + " is trying to sacrifice");
+        if (p1.id == summoningId)
+        {
+            if (p1.Hand[cardIndexInHand] is MonsterCard)
+            {
+                Debug.Log("Player 1 sacrifices card number " + cardIndexInHand);
+                returnsFromRPC = p1.Sacrifice(p1.Hand[cardIndexInHand] as MonsterCard);
+            }
+            else
+            {
+                returnsFromRPC = "Card is not monster. Cannot Sacrifice.";
+            }
+        }
+        else if (p2.id == summoningId)
+        {
+            if (p2.Hand[cardIndexInHand] is MonsterCard)
+            {
+                Debug.Log("Player 2 sacrifices card number " + cardIndexInHand);
+                returnsFromRPC = p2.Sacrifice(p2.Hand[cardIndexInHand] as MonsterCard);
+            }
+            else
+            {
+                returnsFromRPC = "Card is not monster. Cannot Sacrifice.";
+            }
+        }
+        Debug.Log("Tried to sacrifice with result= " + returnsFromRPC);
+        if (gm1 != null)
+        {
+            gm1.updateLayout();
+        }
+    }
+
 
     internal string EndTurn(int endingTurnId)
     {
