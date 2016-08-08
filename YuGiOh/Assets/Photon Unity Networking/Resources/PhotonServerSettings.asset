@@ -45,4 +45,7 @@ MonoBehaviour:
   - EndTurn_RPC
   - Sacrifice_RPC
   - Spell_RPC
+  - AttackFD_RPC
+  - AttackFU_RPC
+  - AttackLP_RPC
   DisableAutoOpenWizard: 1

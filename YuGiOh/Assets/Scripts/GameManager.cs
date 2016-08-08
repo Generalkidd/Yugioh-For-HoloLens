@@ -16,8 +16,11 @@ public class GameManager : MonoBehaviour
     List<Assets.Scripts.BattleHandler.Cards.Card> hand = new List<Assets.Scripts.BattleHandler.Cards.Card>();
     private CurrentlySelectedCardType currentlySelectedCardType=CurrentlySelectedCardType.None;
     private Assets.Scripts.BattleHandler.Cards.Card myCurrentlySelectedCard;
+    private Assets.Scripts.BattleHandler.Cards.Card toAttackCard;
+    private int toAttackIndexIfFaceDown = -1;
     private Card myCurrentlySelectedCardObject;
     internal Quaternion rotation = new Quaternion(0f, 90f, 0f, 0f);
+    bool attackWorked = false;
 
     public enum CurrentlySelectedCardType
     {
@@ -242,6 +245,10 @@ public class GameManager : MonoBehaviour
 
                 //Add The new Monster
                 GameObject monster = Instantiate(Resources.Load("FaceDownCard")) as GameObject;
+                Card c = monster.AddComponent<Card>();
+                c.setGameManager(this);
+                c.setCardName(i + "");
+                c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
 
@@ -250,6 +257,10 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Problem instantiating monster prefab. It Probably doesn't exist. error=" + e.Message + ". Summoning Dummy Instead.");
                 GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
+                Card c = monster.GetComponent<Card>();
+                c.setGameManager(this);
+                c.setCardName(i + "");
+                c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
             }
@@ -289,6 +300,10 @@ public class GameManager : MonoBehaviour
 
                 //Add The new Monster
                 GameObject monster = Instantiate(Resources.Load(me.MeReadOnly.FaceUpMonsters[i].CardName)) as GameObject;
+                Card c = monster.AddComponent<Card>();
+                c.setCardName(me.MeReadOnly.FaceUpMonsters[i].CardName);
+                c.setGameManager(this);
+                c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
 
@@ -297,6 +312,10 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Problem instantiating monster prefab. It Probably doesn't exist. error=" + e.Message + ". Summoning Dummy Instead.");
                 GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
+                Card c = monster.GetComponent<Card>();
+                c.setCardName(me.MeReadOnly.FaceUpMonsters[i].CardName);
+                c.setGameManager(this);
+                c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
             }
@@ -403,6 +422,10 @@ public class GameManager : MonoBehaviour
 
                 //Add The new Monster
                 GameObject monster = Instantiate(Resources.Load(me.FaceDownCardsInMonsterZone[i].CardName)) as GameObject;
+                Card c = monster.AddComponent<Card>();
+                c.setCardName(me.FaceDownCardsInMonsterZone[i].CardName);
+                c.setGameManager(this);
+                c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
                
@@ -411,6 +434,10 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Problem instantiating monster prefab. It Probably doesn't exist. error=" + e.Message + ". Summoning Dummy Instead.");
                 GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
+                Card c = monster.GetComponent<Card>();
+                c.setCardName(me.FaceDownCardsInMonsterZone[i].CardName);
+                c.setGameManager(this);
+                c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
             }
@@ -450,6 +477,10 @@ public class GameManager : MonoBehaviour
 
                 //Add The new Monster
                 GameObject monster = Instantiate(Resources.Load(me.MeReadOnly.FaceUpMonsters[i].CardName)) as GameObject;
+                Card c = monster.AddComponent<Card>();
+                c.setCardName(me.MeReadOnly.FaceUpMonsters[i].CardName);
+                c.setGameManager(this);
+                c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
 
@@ -458,6 +489,10 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Problem instantiating monster prefab. It Probably doesn't exist. error=" + e.Message + ". Summoning Dummy Instead.");
                 GameObject monster = Instantiate(Resources.Load("dummy")) as GameObject;
+                Card c = monster.GetComponent<Card>();
+                c.setCardName(me.MeReadOnly.FaceUpMonsters[i].CardName);
+                c.setGameManager(this);
+                c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
             }
@@ -523,13 +558,14 @@ public class GameManager : MonoBehaviour
     public void setSelectedCard(Card toSelect, CurrentlySelectedCardType toSelectType)
     {
         //Return Old Selected Cards to Normal Positions
-        if (currentlySelectedCardType == CurrentlySelectedCardType.Hand)
+        if (currentlySelectedCardType == CurrentlySelectedCardType.Monster || currentlySelectedCardType == CurrentlySelectedCardType.Hand)
         {
-            myCurrentlySelectedCardObject.gameObject.transform.position = new Vector3(myCurrentlySelectedCardObject.gameObject.transform.position.x, myCurrentlySelectedCardObject.gameObject.transform.position.y -.3f, myCurrentlySelectedCardObject.gameObject.transform.position.z);
+            myCurrentlySelectedCardObject.gameObject.transform.position = new Vector3(myCurrentlySelectedCardObject.gameObject.transform.position.x, myCurrentlySelectedCardObject.gameObject.transform.position.y - .3f, myCurrentlySelectedCardObject.gameObject.transform.position.z);
         }
+        attackWorked = false;
 
         //If the same card is hit twice
-        if (myCurrentlySelectedCardObject == toSelect)
+        if (myCurrentlySelectedCardObject == toSelect && currentlySelectedCardType==CurrentlySelectedCardType.Hand)
         {
             Debug.Log("Same card has been clicked twice. Summoning Or SpellCasting...");
             //Summon It
@@ -548,37 +584,93 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            //Lift Newly Selected Cards On GUI so User knows it is selected
-            toSelect.gameObject.transform.position = new Vector3(toSelect.gameObject.transform.position.x, toSelect.gameObject.transform.position.y + .3f, toSelect.gameObject.transform.position.z);
-            myCurrentlySelectedCardObject = toSelect;
-            currentlySelectedCardType = toSelectType;
-            if (toSelectType == CurrentlySelectedCardType.Hand)
+            //If we are currently selecting a monster and click on another monster, it is probable we are trying to attack
+            if (currentlySelectedCardType == CurrentlySelectedCardType.Monster && toSelectType == CurrentlySelectedCardType.Monster)
             {
-                foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.Hand)
+                Debug.Log("Both Selected And About to Select are monsters...trying to attack-->");
+                //Reset toAttackCard and Check if opponents field has the monster to attack
+                toAttackCard = null;
+                toAttackIndexIfFaceDown = -1;
+
+                //If toSelect's card name is an index number it is facedown.
+                if (toSelect.CardName == "0")
                 {
-                    Debug.Log("Checking " + c.CardName+ " against object"+toSelect.getCardName());
-                    if (c.CardName == toSelect.getCardName())
+                    toAttackIndexIfFaceDown = 0;
+                }
+                else if (toSelect.CardName == "1")
+                {
+                    toAttackIndexIfFaceDown = 1;
+                }
+                else if (toSelect.CardName == "2")
+                {
+                    toAttackIndexIfFaceDown = 2;
+                }
+                else if (toSelect.CardName == "3")
+                {
+                    toAttackIndexIfFaceDown = 3;
+                }
+                else if (toSelect.CardName == "4")
+                {
+                    toAttackIndexIfFaceDown = 4;
+                }
+                else if (toSelect.CardName == "5")
+                {
+                    toAttackIndexIfFaceDown = 5;
+                }
+                if (toAttackIndexIfFaceDown == -1)
+                {
+                    for (int i = 0; i < me.getOpponent().FaceUpMonsters.Count; i++)
                     {
-                        setCurrentlySelectedCard(c);
+                        if (me.getOpponent().FaceUpMonsters[i].CardName == toSelect.CardName)
+                        {
+                            toAttackCard = me.getOpponent().FaceUpMonsters[i];
+                        }
                     }
+                }
+                Debug.Log("toAttackCard="+toAttackCard+"  index="+toAttackIndexIfFaceDown);
+                if (toAttackCard != null || toAttackIndexIfFaceDown != -1)
+                {
+                    OnAttack();
                 }
             }
-            else if(toSelectType==CurrentlySelectedCardType.Monster)
+            //Else if The selected card has no type it must be the person and so we attack lifepoints
+            else if(toSelectType==CurrentlySelectedCardType.None && currentlySelectedCardType==CurrentlySelectedCardType.Monster)
             {
-                foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.FaceDownCardsInMonsterZone)
+                Debug.Log("CurrentlySelected is Monster and clicked on nocard type....trying to attack lifepoints-->");
+                OnAttackLifePoints();
+            }
+            if (attackWorked == false)
+            {
+                Debug.Log("Attack either failed or was never tried....lifting newly selected card-->");
+                //Lift Newly Selected Cards On GUI so User knows it is selected
+                toSelect.gameObject.transform.position = new Vector3(toSelect.gameObject.transform.position.x, toSelect.gameObject.transform.position.y + .3f, toSelect.gameObject.transform.position.z);
+                myCurrentlySelectedCardObject = toSelect;
+                currentlySelectedCardType = toSelectType;
+                if (toSelectType == CurrentlySelectedCardType.Hand)
                 {
-                    Debug.Log("Checking " + c.CardName + " against object" + toSelect.getCardName());
-                    if (c.CardName == toSelect.getCardName())
+                    foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.Hand)
                     {
-                        setCurrentlySelectedCard(c);
+                        if (c.CardName == toSelect.getCardName())
+                        {
+                            setCurrentlySelectedCard(c);
+                        }
                     }
                 }
-                foreach(Assets.Scripts.BattleHandler.Cards.Card c in me.MeReadOnly.FaceUpMonsters)
+                else if (toSelectType == CurrentlySelectedCardType.Monster)
                 {
-                    Debug.Log("Checking " + c.CardName + " against object" + toSelect.getCardName());
-                    if (c.CardName==toSelect.getCardName())
+                    foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.FaceDownCardsInMonsterZone)
                     {
-                        setCurrentlySelectedCard(c);
+                        if (c.CardName == toSelect.getCardName())
+                        {
+                            setCurrentlySelectedCard(c);
+                        }
+                    }
+                    foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.MeReadOnly.FaceUpMonsters)
+                    {
+                        if (c.CardName == toSelect.getCardName())
+                        {
+                            setCurrentlySelectedCard(c);
+                        }
                     }
                 }
             }
@@ -588,6 +680,16 @@ public class GameManager : MonoBehaviour
     Assets.Scripts.BattleHandler.Cards.Card getCurrentlySelectedCard()
     {
         return myCurrentlySelectedCard;
+    }
+
+    Assets.Scripts.BattleHandler.Cards.Card getToAttackCard()
+    {
+        return toAttackCard;
+    }
+
+    int getToAttackFaceDownIndex()
+    {
+        return toAttackIndexIfFaceDown;
     }
 
     void setCurrentlySelectedCard(Assets.Scripts.BattleHandler.Cards.Card toSet)
@@ -628,9 +730,82 @@ public class GameManager : MonoBehaviour
         
     }
 
+    void OnAttackLifePoints()
+    {
+        Debug.Log("Trying to attack lifepoints with : " + getCurrentlySelectedCard() + ". My Id is=" + me.id);
+        for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
+        {
+            if (me.FaceDownCardsInMonsterZone[i] == getCurrentlySelectedCard())
+            {
+                netManager.AttackLP(i, me.id);
+            }
+        }
+        for (int i = 0; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
+        {
+            if (me.MeReadOnly.FaceUpMonsters[i] == getCurrentlySelectedCard())
+            {
+                netManager.AttackLP(i+me.FaceDownCardsInMonsterZone.Count, me.id);
+            }
+        }
+        updateLayout();
+    }
+
     void OnAttack()
     {
+        Debug.Log(getCurrentlySelectedCard().CardName+" is trying to attack: " + getToAttackCard().CardName + " or a facedown card at index "+getToAttackFaceDownIndex()+". My Id is=" + me.id);
+        string result = "idk";
+        if (getToAttackCard()!=null)
+        {
+            for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
+            {
+                if (me.FaceDownCardsInMonsterZone[i] == getCurrentlySelectedCard())
+                {
+                    for(int j=0; j<me.getOpponent().FaceUpMonsters.Count; j++)
+                    {
+                        if(me.getOpponent().FaceUpMonsters[j]==getToAttackCard())
+                        {
+                            result=netManager.AttackFU(i, me.id, j);
+                        }
+                    }
+                }
+            }
+            for(int i=0; i<me.MeReadOnly.FaceUpMonsters.Count; i++)
+            {
+                if(me.MeReadOnly.FaceUpMonsters[i]==getCurrentlySelectedCard())
+                {
+                    for (int j = 0; j < me.getOpponent().FaceUpMonsters.Count; j++)
+                    {
+                        if (me.getOpponent().FaceUpMonsters[j] == getToAttackCard())
+                        {
+                            result=netManager.AttackFU(i+me.FaceDownCardsInMonsterZone.Count, me.id, j);
+                        }
+                    }
+                }
+            }
+        }
+        else if(getToAttackFaceDownIndex()!=-1)
+        {
+            for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
+            {
+                if (me.FaceDownCardsInMonsterZone[i] == getCurrentlySelectedCard())
+                {
+                    result=netManager.AttackFD(i, me.id);
+                }
+            }
+            for (int i = 0; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
+            {
+                if (me.MeReadOnly.FaceUpMonsters[i] == getCurrentlySelectedCard())
+                {
+                    result=netManager.AttackFD(i + me.FaceDownCardsInMonsterZone.Count, me.id);
+                }
+            }
+        }
         
+        if(result=="")
+        {
+            attackWorked = true;
+        }
+        updateLayout();
     }
 
     internal void OnSacrifice()

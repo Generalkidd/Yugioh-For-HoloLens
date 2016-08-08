@@ -170,19 +170,15 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
-        internal Result RequestAttackOnFaceDownCard(int idOfAttacker, MonsterCard attackingCard, Mode m)
+        internal Result RequestAttackOnFaceDownCard(int idOfAttacker, MonsterCard attackingCard)
         {
             if (player1.id == idOfAttacker && playerWhosTurnItIs == 1)
             {
                 List<MonsterCard> p2cards = player2.FaceDownCardsInMonsterZone;
                 MonsterCard toAttack = null;
-                int i = 0;
-                while (toAttack == null && i < p2cards.Count)
+                if (p2cards.Count > 0)
                 {
-                    if (p2cards[i].Mode == m)
-                    {
-                        toAttack = p2cards[i];
-                    }
+                    toAttack = p2cards[0];
                 }
                 if (toAttack != null)
                 {
@@ -199,15 +195,11 @@ namespace Assets.Scripts.BattleHandler.Game
             }
             else if (player2.id == idOfAttacker && playerWhosTurnItIs == 2)
             {
-                IList<MonsterCard> p1cards = player1.FaceDownCardsInMonsterZone;
+                List<MonsterCard> p1cards = player1.FaceDownCardsInMonsterZone;
                 MonsterCard toAttack = null;
-                int i = 0;
-                while (toAttack == null && i < p1cards.Count)
+                if (p1cards.Count > 0)
                 {
-                    if (p1cards[i].Mode == m)
-                    {
-                        toAttack = p1cards[i];
-                    }
+                    toAttack = p1cards[0];
                 }
                 if (toAttack != null)
                 {

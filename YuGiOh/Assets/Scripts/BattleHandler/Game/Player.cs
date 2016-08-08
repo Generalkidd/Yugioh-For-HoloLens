@@ -548,9 +548,9 @@ namespace Assets.Scripts.BattleHandler.Game
             }
         }
 
-        public string AttackFaceDownOpponent(MonsterCard attackingCard, Mode faceDownCardsMode)
+        public string AttackFaceDownOpponent(MonsterCard attackingCard)
         {
-            Result r = MyCurrentGame.RequestAttackOnFaceDownCard(id, attackingCard, faceDownCardsMode);
+            Result r = MyCurrentGame.RequestAttackOnFaceDownCard(id, attackingCard);
             if (r.Equals(Result.Success))
             {
                 return "";

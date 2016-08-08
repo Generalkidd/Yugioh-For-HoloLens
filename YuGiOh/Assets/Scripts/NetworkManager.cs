@@ -211,6 +211,147 @@ public class NetworkManager : MonoBehaviour
         PhotonNetwork.CreateRoom(null,roomOptions,null);
     }
 
+    internal string AttackLP(int attackingCardIndexInMyMonsterZone, int attackingId)
+    {
+        GetComponent<PhotonView>().RPC("AttackLP_RPC", PhotonTargets.All, attackingCardIndexInMyMonsterZone, attackingId);
+        while (returnsFromRPC == "-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+    [PunRPC]
+    void AttackLP_RPC(int attackingCardIndexInMyMonsterZone, int attackingId)
+    {
+        Debug.Log("ID " + attackingId + " is trying to attack lifepoints");
+        if (p1.id == attackingId)
+        {
+            if (attackingCardIndexInMyMonsterZone > p1.FaceDownCardsInMonsterZone.Count)
+            {
+                attackingCardIndexInMyMonsterZone = attackingCardIndexInMyMonsterZone - p1.FaceDownCardsInMonsterZone.Count;
+                returnsFromRPC = p1.AttackLifePoints(p1.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone]);
+            }
+            else
+            {
+                returnsFromRPC = p1.AttackLifePoints(p1.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone]);
+            }
+        }
+        else if (p2.id == attackingId)
+        {
+            if (attackingCardIndexInMyMonsterZone > p2.FaceDownCardsInMonsterZone.Count)
+            {
+                attackingCardIndexInMyMonsterZone = attackingCardIndexInMyMonsterZone - p2.FaceDownCardsInMonsterZone.Count;
+                returnsFromRPC = p2.AttackLifePoints(p2.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone]);
+            }
+            else
+            {
+                returnsFromRPC = p2.AttackLifePoints(p2.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone]);
+            }
+        }
+        Debug.Log("Tried to attack face up with result= " + returnsFromRPC);
+        if (gm1 != null)
+        {
+            gm1.updateLayout();
+        }
+    }
+
+    internal string AttackFU(int attackingCardIndexInMyMonsterZone, int attackingId, int defendingIndexInOppMonsterZone)
+    {
+        GetComponent<PhotonView>().RPC("AttackFU_RPC", PhotonTargets.All, attackingCardIndexInMyMonsterZone, attackingId, defendingIndexInOppMonsterZone);
+        while (returnsFromRPC == "-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+    [PunRPC]
+    void AttackFU_RPC(int attackingCardIndexInMyMonsterZone, int attackingId, int defendingIndexInOppMonsterZone)
+    {
+        Debug.Log("ID " + attackingId + " is trying to attack a face up card");
+        if (p1.id == attackingId)
+        {
+            if (attackingCardIndexInMyMonsterZone > p1.FaceDownCardsInMonsterZone.Count)
+            {
+                attackingCardIndexInMyMonsterZone = attackingCardIndexInMyMonsterZone - p1.FaceDownCardsInMonsterZone.Count;
+                returnsFromRPC = p1.AttackFaceUpOpponent(p1.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone], p1.getOpponent().FaceUpMonsters[defendingIndexInOppMonsterZone]);
+            }
+            else
+            {
+                returnsFromRPC = p1.AttackFaceUpOpponent(p1.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone], p1.getOpponent().FaceUpMonsters[defendingIndexInOppMonsterZone]);
+            }
+        }
+        else if (p2.id == attackingId)
+        {
+            if (attackingCardIndexInMyMonsterZone > p2.FaceDownCardsInMonsterZone.Count)
+            {
+                attackingCardIndexInMyMonsterZone = attackingCardIndexInMyMonsterZone - p2.FaceDownCardsInMonsterZone.Count;
+                returnsFromRPC = p2.AttackFaceUpOpponent(p2.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone], p2.getOpponent().FaceUpMonsters[defendingIndexInOppMonsterZone]);
+            }
+            else
+            {
+                returnsFromRPC = p2.AttackFaceUpOpponent(p2.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone], p2.getOpponent().FaceUpMonsters[defendingIndexInOppMonsterZone]);
+            }
+        }
+        Debug.Log("Tried to attack face up with result= " + returnsFromRPC);
+        if (gm1 != null)
+        {
+            gm1.updateLayout();
+        }
+    }
+
+    internal string AttackFD(int attackingCardIndexInMyMonsterZone, int attackingId)
+    {
+        GetComponent<PhotonView>().RPC("AttackFD_RPC", PhotonTargets.All, attackingCardIndexInMyMonsterZone, attackingId);
+        while (returnsFromRPC == "-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+    [PunRPC]
+    void AttackFD_RPC(int attackingCardIndexInMyMonsterZone, int attackingId)
+    {
+        Debug.Log("ID " + attackingId + " is trying to attack a face down card");
+        if (p1.id == attackingId)
+        {
+            if(attackingCardIndexInMyMonsterZone>p1.FaceDownCardsInMonsterZone.Count)
+            {
+                attackingCardIndexInMyMonsterZone = attackingCardIndexInMyMonsterZone - p1.FaceDownCardsInMonsterZone.Count;
+                returnsFromRPC = p1.AttackFaceDownOpponent(p1.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone]);
+            }
+            else
+            {
+                returnsFromRPC = p1.AttackFaceDownOpponent(p1.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone]);
+            }
+        }
+        else if (p2.id == attackingId)
+        {
+            if (attackingCardIndexInMyMonsterZone > p2.FaceDownCardsInMonsterZone.Count)
+            {
+                attackingCardIndexInMyMonsterZone = attackingCardIndexInMyMonsterZone - p2.FaceDownCardsInMonsterZone.Count;
+                returnsFromRPC = p2.AttackFaceDownOpponent(p2.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone]);
+            }
+            else
+            {
+                returnsFromRPC = p2.AttackFaceDownOpponent(p2.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone]);
+            }
+        }
+        Debug.Log("Tried to attack face down with result= " + returnsFromRPC);
+        if (gm1 != null)
+        {
+            gm1.updateLayout();
+        }
+    }
+
     internal string Spell(int cardIndexInHand, int summoningId)
     {
         GetComponent<PhotonView>().RPC("Spell_RPC", PhotonTargets.All, cardIndexInHand, summoningId);
@@ -395,8 +536,8 @@ public class NetworkManager : MonoBehaviour
                     //Build the players.
                     gameSeed = randomGameSeed;
                     
-                    GameObject p1Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    GameObject p2Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    GameObject p1Object = Instantiate((Resources.Load("Player") as UnityEngine.Object)) as GameObject;
+                    GameObject p2Object = Instantiate((Resources.Load("Player") as UnityEngine.Object)) as GameObject;
                     p1 = Player.MakePlayer(p1Object, PhotonNetwork.masterClient.ID, PhotonNetwork.masterClient.name);
                     foreach(PhotonPlayer p in PhotonNetwork.playerList)
                     {
@@ -457,8 +598,8 @@ public class NetworkManager : MonoBehaviour
                 int randomGameId = rand.Next();
                 Debug.Log("Assigning gameId=" + randomGameId);
 
-                GameObject p1Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                GameObject p2Object = Instantiate((Resources.Load("Player") as UnityEngine.Object), new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                GameObject p1Object = Instantiate((Resources.Load("Player") as UnityEngine.Object)) as GameObject;
+                GameObject p2Object = Instantiate((Resources.Load("Player") as UnityEngine.Object)) as GameObject;
                 p1 = Player.MakePlayer(p1Object, PhotonNetwork.masterClient.ID, PhotonNetwork.masterClient.name);
                 foreach (PhotonPlayer p in PhotonNetwork.playerList)
                 {
@@ -526,6 +667,24 @@ public class NetworkManager : MonoBehaviour
                     gm1 = gm;
                     Instantiate(gObject);
                     hasMadeGameManager = true;
+                    GameObject[] playersGOs=GameObject.FindGameObjectsWithTag("Player");
+                    foreach(GameObject gos in playersGOs)
+                    {
+                        if(gos.GetComponent<Player>()==g.myPlayer(PhotonNetwork.player.ID))
+                        {
+                            GameObject spawn=GameObject.Find("Player1");
+                            gos.transform.position = spawn.transform.position;
+                            gos.transform.parent = spawn.transform; 
+                        }
+                        else
+                        {
+                            GameObject spawn = GameObject.Find("Player2");
+                            gos.transform.position = spawn.transform.position;
+                            gos.transform.parent = spawn.transform;
+                        }
+                        Card c = gos.AddComponent<Card>();
+                        c.myZone = GameManager.CurrentlySelectedCardType.None;
+                    }
                     Debug.Log("Created GameManager.Ready to Rock and Roll on the Network.");
                 }
             }
