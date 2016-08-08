@@ -537,7 +537,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: 8ce94bff-3fde-40e4-b153-8aa199a99985
-  projectName: YuGiOh
-  organizationId: kitchenseth10
+  cloudProjectId: 
+  projectName: 
+  organizationId: 
   cloudEnabled: 0

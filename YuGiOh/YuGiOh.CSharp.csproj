@@ -239,10 +239,13 @@
     <Compile Include="Assets\Scripts\GameManagerLocal.cs" />
     <Compile Include="Assets\Scripts\GazeGestureManager.cs" />
     <Compile Include="Assets\Scripts\GodCard.cs" />
+    <Compile Include="Assets\Scripts\Lifepoints.cs" />
     <Compile Include="Assets\Scripts\Local.cs" />
     <Compile Include="Assets\Scripts\MiniSpeechManager.cs" />
     <Compile Include="Assets\Scripts\NetworkManager.cs" />
+    <Compile Include="Assets\Scripts\Notifications.cs" />
     <Compile Include="Assets\Scripts\Online.cs" />
+    <Compile Include="Assets\Scripts\PlayerModel.cs" />
     <Compile Include="Assets\Scripts\Reset.cs" />
     <Compile Include="Assets\Scripts\Sacrifice.cs" />
     <Compile Include="Assets\Scripts\Seal.cs" />
