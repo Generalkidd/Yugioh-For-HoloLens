@@ -1,4 +1,5 @@
-﻿using YugiohAPI.Model.Cards;
+﻿using System;
+using YugiohAPI.Model.Cards;
 
 namespace YugiohAPI.Managers
 {
@@ -18,6 +19,10 @@ namespace YugiohAPI.Managers
 			if (!IsActivated)
 			{
 				IsSet = true;
+			}
+			else
+			{
+				throw new InvalidOperationException("You can't set a card once it's been activated");
 			}
 		}
 

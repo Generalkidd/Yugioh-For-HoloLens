@@ -1,4 +1,5 @@
-﻿using YugiohAPI.Model.Cards;
+﻿using System;
+using YugiohAPI.Model.Cards;
 using System.Collections.Generic;
 
 namespace YugiohAPI.Managers
@@ -9,6 +10,8 @@ namespace YugiohAPI.Managers
 		public List<ModifierEffect> ModifierEffects { get; private set; }
 		public int DefensePoints { get { return calculateDefensePoints(); } private set { } }
 		public int AttackPoints { get { return calculateAttackPoints(); } private set { } }
+		public bool CanAttack { get; private set; }
+		public bool CanSwitchModes { get; private set; }
 
 		public MonsterCardInstance(MonsterCard monsterCard): base(monsterCard)
 		{
@@ -58,20 +61,52 @@ namespace YugiohAPI.Managers
 		{
 			if (!IsActivated)
 			{
-				Mode = MonsterMode.Defense;
+				SwitchMode(MonsterMode.Defense);
 				base.Set();
+			}
+			else
+			{
+				throw new InvalidOperationException("You can't set a card once it's been activated");
 			}
 		}
 
 		public void Summon()
 		{
-			Mode = MonsterMode.Attack;
-			base.Activate();
+			if (!IsActivated)
+			{
+				SwitchMode(MonsterMode.Attack);
+				base.Activate();
+			}
+			else
+			{
+				throw new InvalidOperationException("You can't summon a card twice");
+			}
 		}
 
 		public void FlipSummon()
 		{
-			Summon();
+			if (!IsActivated)
+			{
+				SwitchMode(MonsterMode.Attack);
+				base.Activate();
+			}
+			else
+			{
+				throw new InvalidOperationException("You can't summon a card twice");
+			}
+		}
+
+		public void SwitchMode(MonsterMode mode)
+		{
+			if (CanSwitchModes)
+			{
+				Mode = mode;
+				CanSwitchModes = false;
+			}
+			else
+			{
+				throw new InvalidOperationException("You can't switch the mode of a card which has taken action this turn");
+			}
 		}
 	}
 }
