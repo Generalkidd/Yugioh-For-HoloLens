@@ -12,8 +12,11 @@ public class EndTurn : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        if (Input.GetKeyDown("space"))
+        {
+            myGameManager.OnEndTurn();
+        }
+    }
 
     internal void setGameManager(GameManager gm)
     {

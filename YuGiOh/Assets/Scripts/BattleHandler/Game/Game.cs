@@ -242,6 +242,7 @@ namespace Assets.Scripts.BattleHandler.Game
                                     int toTakeOffLifePoints = attackingWith - defendingWith;
                                     player2.SendToGraveYard(defendingCard as object, Zone.Monster);
                                     player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
+                                    player1.switchCanAttack(attackingCard);
                                 }
                                 else if (attackingWith == defendingWith)
                                 {
@@ -254,7 +255,6 @@ namespace Assets.Scripts.BattleHandler.Game
                                     player1.SendToGraveYard(attackingCard as object, Zone.Monster);
                                     player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
                                 }
-                                player1.switchCanAttack(attackingCard);
                                 return Result.Success;
                             }
                             else
@@ -292,6 +292,7 @@ namespace Assets.Scripts.BattleHandler.Game
                                         int toTakeOffLifePoints = attackingWith - defendingWith;
                                         player2.SendToGraveYard(defendingCard as object, Zone.Monster);
                                         player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
+                                        player1.switchCanAttack(attackingCard);
                                     }
                                     else if (attackingWith == defendingWith)
                                     {
@@ -304,7 +305,7 @@ namespace Assets.Scripts.BattleHandler.Game
                                         player1.SendToGraveYard(attackingCard as object, Zone.Monster);
                                         player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
                                     }
-                                    player1.switchCanAttack(attackingCard);
+                                    
                                     return Result.Success;
                                 }
                                 else
@@ -353,6 +354,8 @@ namespace Assets.Scripts.BattleHandler.Game
                 {
                     if (attackingCard.CanAttack)
                     {
+                        player2.switchFaceDownToFaceUp(attackingCard);
+                        player1.switchFaceDownToFaceUp(defendingCard);
                         if (attackingCard.Mode == Mode.Attack)
                         {
                             int attackingWith = attackingCard.AttackPoints;
@@ -365,6 +368,7 @@ namespace Assets.Scripts.BattleHandler.Game
                                     int toTakeOffLifePoints = attackingWith - defendingWith;
                                     player1.SendToGraveYard(defendingCard as object, Zone.Monster);
                                     player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                    player2.switchCanAttack(attackingCard);
                                 }
                                 else if (attackingWith == defendingWith)
                                 {
@@ -375,10 +379,8 @@ namespace Assets.Scripts.BattleHandler.Game
                                 {
                                     int toTakeOffLifePoints = defendingWith - attackingWith;
                                     player2.SendToGraveYard(attackingCard as object, Zone.Monster);
-                                    player2.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                    player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
                                 }
-                                player2.switchFaceDownToFaceUp(attackingCard);
-                                player1.switchFaceDownToFaceUp(defendingCard);
                                 return Result.Success;
                             }
                             else
@@ -397,15 +399,14 @@ namespace Assets.Scripts.BattleHandler.Game
                                     int toTakeOffLifePoints = defendingWith - attackingWith;
                                     player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
                                 }
-                                player2.switchFaceDownToFaceUp(attackingCard);
-                                player1.switchFaceDownToFaceUp(defendingCard);
+                                player2.switchCanAttack(attackingCard);
                                 return Result.Success;
                             }
                         }
                         else
                         {
                             RequestChangeModeOfCard(idOfAttacker, attackingCard);
-                            if (player1.MeReadOnly.FaceUpMonsters.Contains(attackingCard))
+                            if (player2.MeReadOnly.FaceUpMonsters.Contains(attackingCard))
                             {
                                 int attackingWith = attackingCard.AttackPoints;
                                 int defendingWith = 0;
@@ -417,6 +418,7 @@ namespace Assets.Scripts.BattleHandler.Game
                                         int toTakeOffLifePoints = attackingWith - defendingWith;
                                         player1.SendToGraveYard(defendingCard as object, Zone.Monster);
                                         player1.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                        player2.switchCanAttack(attackingCard);
                                     }
                                     else if (attackingWith == defendingWith)
                                     {
@@ -427,10 +429,9 @@ namespace Assets.Scripts.BattleHandler.Game
                                     {
                                         int toTakeOffLifePoints = defendingWith - attackingWith;
                                         player2.SendToGraveYard(attackingCard as object, Zone.Monster);
-                                        player2.setLifePoints(player1.getLifePoints() - toTakeOffLifePoints);
+                                        player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
                                     }
-                                    player2.switchFaceDownToFaceUp(attackingCard);
-                                    player1.switchFaceDownToFaceUp(defendingCard);
+
                                     return Result.Success;
                                 }
                                 else
@@ -449,8 +450,7 @@ namespace Assets.Scripts.BattleHandler.Game
                                         int toTakeOffLifePoints = defendingWith - attackingWith;
                                         player2.setLifePoints(player2.getLifePoints() - toTakeOffLifePoints);
                                     }
-                                    player2.switchFaceDownToFaceUp(attackingCard);
-                                    player1.switchFaceDownToFaceUp(defendingCard);
+                                    player2.switchCanAttack(attackingCard);
                                     return Result.Success;
                                 }
                             }

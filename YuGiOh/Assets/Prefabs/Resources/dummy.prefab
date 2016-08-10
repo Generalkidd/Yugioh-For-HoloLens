@@ -24,7 +24,6 @@ GameObject:
   - 23: {fileID: 23000011957655414}
   - 222: {fileID: 222000014147445454}
   - 114: {fileID: 114000012721375222}
-  - 114: {fileID: 114000011724413388}
   m_Layer: 0
   m_Name: dummy
   m_TagString: Untagged
@@ -80,17 +79,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114000011724413388
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013966410534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7477e7851cb3b744c9ab32d0529e4c8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000012721375222
 MonoBehaviour:
   m_ObjectHideFlags: 1

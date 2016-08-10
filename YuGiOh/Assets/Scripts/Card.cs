@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    Vector3 originalPosition;
+    //Vector3 originalPosition;
     internal string CardName = "";
     internal string CardType = "";
     //private Vector3 spawnPos = new Vector3(6.5f, -1.5f, 6.5f);
@@ -19,12 +19,22 @@ public class Card : MonoBehaviour
     void Start()
     {
         // Grab the original local position of the sphere when the app starts.
-        originalPosition = this.transform.localPosition;
+       // originalPosition = this.transform.localPosition;
     }
 
     internal void setCardName(string toSet)
     {
         CardName = toSet;
+    }
+
+    internal void setZone(GameManager.CurrentlySelectedCardType toSet)
+    {
+        myZone = toSet;
+    }
+
+    internal GameManager.CurrentlySelectedCardType getZone()
+    {
+        return myZone;
     }
 
     internal string getCardName()

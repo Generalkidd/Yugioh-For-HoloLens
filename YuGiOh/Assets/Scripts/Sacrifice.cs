@@ -11,9 +11,13 @@ public class Sacrifice : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
+	void Update ()
+    {
+	    if (Input.GetKeyDown("s"))
+        {
+            myGameManager.OnSacrifice();
+        }
+    }
 
     internal void setGameManager(GameManager gm)
     {

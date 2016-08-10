@@ -208,7 +208,7 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("onFailedJoinRandom");
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 2;
-        PhotonNetwork.CreateRoom(null,roomOptions,null);
+        PhotonNetwork.CreateRoom(null, roomOptions, null);
     }
 
     internal string AttackLP(int attackingCardIndexInMyMonsterZone, int attackingId)
@@ -323,14 +323,20 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("ID " + attackingId + " is trying to attack a face down card");
         if (p1.id == attackingId)
         {
-            if(attackingCardIndexInMyMonsterZone>p1.FaceDownCardsInMonsterZone.Count)
+            if (attackingCardIndexInMyMonsterZone > p1.FaceDownCardsInMonsterZone.Count)
             {
                 attackingCardIndexInMyMonsterZone = attackingCardIndexInMyMonsterZone - p1.FaceDownCardsInMonsterZone.Count;
-                returnsFromRPC = p1.AttackFaceDownOpponent(p1.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone]);
+                if (p1.MeReadOnly.FaceUpMonsters.Count > attackingCardIndexInMyMonsterZone && attackingCardIndexInMyMonsterZone > -1)
+                {
+                    returnsFromRPC = p1.AttackFaceDownOpponent(p1.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone]);
+                }
             }
             else
             {
-                returnsFromRPC = p1.AttackFaceDownOpponent(p1.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone]);
+                if (p1.FaceDownCardsInMonsterZone.Count > attackingCardIndexInMyMonsterZone && attackingCardIndexInMyMonsterZone > -1)
+                {
+                    returnsFromRPC = p1.AttackFaceDownOpponent(p1.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone]);
+                }
             }
         }
         else if (p2.id == attackingId)
@@ -338,11 +344,17 @@ public class NetworkManager : MonoBehaviour
             if (attackingCardIndexInMyMonsterZone > p2.FaceDownCardsInMonsterZone.Count)
             {
                 attackingCardIndexInMyMonsterZone = attackingCardIndexInMyMonsterZone - p2.FaceDownCardsInMonsterZone.Count;
-                returnsFromRPC = p2.AttackFaceDownOpponent(p2.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone]);
+                if (p2.MeReadOnly.FaceUpMonsters.Count > attackingCardIndexInMyMonsterZone && attackingCardIndexInMyMonsterZone > -1)
+                {
+                    returnsFromRPC = p2.AttackFaceDownOpponent(p2.MeReadOnly.FaceUpMonsters[attackingCardIndexInMyMonsterZone]);
+                }
             }
             else
             {
-                returnsFromRPC = p2.AttackFaceDownOpponent(p2.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone]);
+                if (p2.FaceDownCardsInMonsterZone.Count > attackingCardIndexInMyMonsterZone && attackingCardIndexInMyMonsterZone > -1)
+                {
+                    returnsFromRPC = p2.AttackFaceDownOpponent(p2.FaceDownCardsInMonsterZone[attackingCardIndexInMyMonsterZone]);
+                }
             }
         }
         Debug.Log("Tried to attack face down with result= " + returnsFromRPC);
@@ -482,8 +494,8 @@ public class NetworkManager : MonoBehaviour
 
     internal string Summon(int cardIndexInHand, int summoningId)
     {
-        GetComponent<PhotonView>().RPC("Summon_RPC", PhotonTargets.All, cardIndexInHand,summoningId);
-        while(returnsFromRPC=="-1")
+        GetComponent<PhotonView>().RPC("Summon_RPC", PhotonTargets.All, cardIndexInHand, summoningId);
+        while (returnsFromRPC == "-1")
         {
 
         }
@@ -492,7 +504,7 @@ public class NetworkManager : MonoBehaviour
         return toReturn;
     }
 
-   [PunRPC]
+    [PunRPC]
     void Summon_RPC(int cardIndexInHand, int summoningId)
     {
         Debug.Log("ID " + summoningId + " is trying to summon");
@@ -507,7 +519,7 @@ public class NetworkManager : MonoBehaviour
             returnsFromRPC = p2.NormalSummon(p2.Hand[cardIndexInHand]);
         }
         Debug.Log("Tried to normal summon with result= " + returnsFromRPC);
-        if(gm1!=null)
+        if (gm1 != null)
         {
             gm1.updateLayout();
         }
@@ -535,18 +547,18 @@ public class NetworkManager : MonoBehaviour
 
                     //Build the players.
                     gameSeed = randomGameSeed;
-                    
+
                     GameObject p1Object = Instantiate((Resources.Load("Player") as UnityEngine.Object)) as GameObject;
                     GameObject p2Object = Instantiate((Resources.Load("Player") as UnityEngine.Object)) as GameObject;
                     p1 = Player.MakePlayer(p1Object, PhotonNetwork.masterClient.ID, PhotonNetwork.masterClient.name);
-                    foreach(PhotonPlayer p in PhotonNetwork.playerList)
+                    foreach (PhotonPlayer p in PhotonNetwork.playerList)
                     {
-                        if(p != PhotonNetwork.masterClient)
+                        if (p != PhotonNetwork.masterClient)
                         {
                             p2 = Player.MakePlayer(p2Object, p.ID, p.name);
                         }
                     }
-                    
+
                     Debug.Log("Instantiated 2 players on the network and assigned their names/ids");
 
                     //Now the network manager gives a handle to the users and to the game.
@@ -624,7 +636,7 @@ public class NetworkManager : MonoBehaviour
             catch (Exception e)
             {
                 Debug.Log("Failed to create game: " + e.Message);
-            }   
+            }
         }
     }
 
@@ -658,7 +670,7 @@ public class NetworkManager : MonoBehaviour
             if (!hasMadeGameManager)
             {
                 if (g != null)
-                { 
+                {
                     GameObject field = Resources.Load("DuelingField") as GameObject;
                     Instantiate(field);
                     Debug.Log("Found Game GameObject, Loading game manager");
@@ -667,14 +679,14 @@ public class NetworkManager : MonoBehaviour
                     gm1 = gm;
                     Instantiate(gObject);
                     hasMadeGameManager = true;
-                    GameObject[] playersGOs=GameObject.FindGameObjectsWithTag("Player");
-                    foreach(GameObject gos in playersGOs)
+                    GameObject[] playersGOs = GameObject.FindGameObjectsWithTag("Player");
+                    foreach (GameObject gos in playersGOs)
                     {
-                        if(gos.GetComponent<Player>()==g.myPlayer(PhotonNetwork.player.ID))
+                        if (gos.GetComponent<Player>() == g.myPlayer(PhotonNetwork.player.ID))
                         {
-                            GameObject spawn=GameObject.Find("Player1");
+                            GameObject spawn = GameObject.Find("Player1");
                             gos.transform.position = spawn.transform.position;
-                            gos.transform.parent = spawn.transform; 
+                            gos.transform.parent = spawn.transform;
                         }
                         else
                         {
