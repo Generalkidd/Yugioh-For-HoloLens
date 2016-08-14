@@ -38,12 +38,16 @@ namespace Assets.Scripts.BattleHandler.Game
             {
                 TextAsset database = Resources.Load("CardMaster") as TextAsset;
                 string allLines = database.text;
+                Debug.Log("Loaded CardMaster Text Asset");
                 string[] splitIntoIndividualLines = allLines.Split('\n');
+                Debug.Log("Number of Lines: " + splitIntoIndividualLines.Length);
                 for (int i = 1; i < splitIntoIndividualLines.Length; i++)
                 {
                     string[] split = splitIntoIndividualLines[i].Split(',');
+                    Debug.Log("Line starting with " + split[0] + " has length " + split.Length);
                     Assets.Scripts.BattleHandler.Cards.Card c = new Assets.Scripts.BattleHandler.Cards.Card();
                     string imageName = split[14].Substring(0, split[14].IndexOf("."));
+                    Debug.Log("Found Image Name: " + imageName);
                     Texture bi = Resources.Load(imageName) as Texture;
                     if (split[2] == "Spell")
                     {
@@ -409,6 +413,7 @@ namespace Assets.Scripts.BattleHandler.Game
                         c = new MonsterCard(split[0], int.Parse(split[1]), CardAttributeOrType.Light, split[3], int.Parse(split[4]), int.Parse(split[5]), split[6], long.Parse(split[7]), isPendulum, isXyz, isSynchro, isSynchroTuner, isFusion, isRitual, bi);
                     }
                     allPossibleCards.Add(c);
+                    Debug.Log("Was able to fully create: " + c.CardName);
                 }
                 //return true;
             }

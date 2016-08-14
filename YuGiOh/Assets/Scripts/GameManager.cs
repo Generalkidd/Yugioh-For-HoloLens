@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager MakeManager(GameObject toAddTo, Player pMe, Texture CardBack, NetworkManager networkManager)
     {
-        GameManager myManager = toAddTo.AddComponent<GameManager>();
+        GameManager myManager = toAddTo.GetComponent<GameManager>();
         //Debug.Log("pMe Id=" + pMe.id);
         me = pMe;
         CardBackTexture = CardBack;
@@ -41,12 +41,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        placeMyHandCardsOnGUI();
-        placeMyMonsterCardOnGUI();
-        placeMyTrapsOnGUI();
-        placeOpponentsMonstersOnGUI();
-        placeOpponentsTrapsOnGUI();
-        placeOpponentsHandOnGUI();
+        updateLayout();
         GameObject.Find("EndTurn").GetComponent<EndTurn>().setGameManager(this);
         GameObject.Find("Sacrifice").GetComponent<Sacrifice>().setGameManager(this);
 
@@ -54,17 +49,24 @@ public class GameManager : MonoBehaviour
 
     public void updateLayout()
     {
-        placeMyHandCardsOnGUI();
-        placeMyMonsterCardOnGUI();
-        placeMyTrapsOnGUI();
-        placeOpponentsMonstersOnGUI();
-        placeOpponentsTrapsOnGUI();
-        placeOpponentsHandOnGUI();
-        updateLifePoints();
-        currentlySelectedCard = null;
-        currentlySelectedCardType = CurrentlySelectedCardType.None;
-        myCurrentlySelectedCard = null;
-        myCurrentlySelectedCardObject = null;
+        try
+        {
+            placeMyHandCardsOnGUI();
+            placeMyMonsterCardOnGUI();
+            placeMyTrapsOnGUI();
+            placeOpponentsMonstersOnGUI();
+            placeOpponentsTrapsOnGUI();
+            placeOpponentsHandOnGUI();
+            updateLifePoints();
+            currentlySelectedCard = null;
+            currentlySelectedCardType = CurrentlySelectedCardType.None;
+            myCurrentlySelectedCard = null;
+            myCurrentlySelectedCardObject = null;
+        }
+        catch(Exception e)
+        {
+            Debug.Log("Problem updating layout: " + e.Message);
+        }
     }
 
     public void updateLifePoints()
@@ -899,6 +901,7 @@ public class GameManager : MonoBehaviour
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
+               
                 /*
                 GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 plane.transform.Rotate(90, 180, 0);
@@ -1105,6 +1108,7 @@ public class GameManager : MonoBehaviour
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
             }
+            Debug.Log("Placed " + me.Hand[i].CardName + " into hand on GUI");
         }
         for (int i = hand.Count; i < 6; i++)
         {

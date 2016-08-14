@@ -674,7 +674,8 @@ public class NetworkManager : MonoBehaviour
                     GameObject field = Resources.Load("DuelingField") as GameObject;
                     Instantiate(field);
                     Debug.Log("Found Game GameObject, Loading game manager");
-                    GameObject gObject = Resources.Load("GameManagerPrefab") as GameObject;
+                    GameObject gmPrefab = Resources.Load("GameManagerPrefab") as GameObject;
+                    GameObject gObject = Instantiate(gmPrefab);
                     GameManager gm = GameManager.MakeManager(gObject, g.myPlayer(PhotonNetwork.player.ID), CardBackTexture, this);
                     gm1 = gm;
                     Instantiate(gObject);
