@@ -562,7 +562,7 @@ public class NetworkManager : MonoBehaviour
                     Debug.Log("Instantiated 2 players on the network and assigned their names/ids");
 
                     //Now the network manager gives a handle to the users and to the game.
-                    Debug.Log("Setting p1=" + p1.id + " p2=" + p2.id);
+                    Debug.Log("Setting p1=" + p1.id + " p2=" + p2.id+" and game seed to "+gameSeed);
                     g = new Game(p1, p2, gameSeed);
                     g.RequestSetPlayer1Deck(randomDeck);
                     g.RequestSetPlayer2Deck(randomDeck);
@@ -632,6 +632,7 @@ public class NetworkManager : MonoBehaviour
                 Debug.Log("Instantiated a game on the network and started it.");
                 gameCreated = true;
                 GetComponent<PhotonView>().RPC("SendGame_RPC", PhotonTargets.All, randomGameId);
+                Debug.Log("Sent other client id the game seed=" + randomGameId);
             }
             catch (Exception e)
             {

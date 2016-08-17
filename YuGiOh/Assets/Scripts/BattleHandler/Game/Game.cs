@@ -657,6 +657,7 @@ namespace Assets.Scripts.BattleHandler.Game
 
         internal void StartGame()
         {
+            Debug.Log("Shuffling decks with id=" + gameID);
             player1.shuffleAllDecks(gameID);
             player2.shuffleAllDecks(gameID);
             player1.draw5Cards();
