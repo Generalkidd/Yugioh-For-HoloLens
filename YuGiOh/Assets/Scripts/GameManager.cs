@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     static NetworkManager netManager;
     static Card currentlySelectedCard;
     List<Assets.Scripts.BattleHandler.Cards.Card> hand = new List<Assets.Scripts.BattleHandler.Cards.Card>();
-    private CurrentlySelectedCardType currentlySelectedCardType=CurrentlySelectedCardType.None;
+    private CurrentlySelectedCardType currentlySelectedCardType = CurrentlySelectedCardType.None;
     private Assets.Scripts.BattleHandler.Cards.Card myCurrentlySelectedCard;
     private Assets.Scripts.BattleHandler.Cards.Card toAttackCard;
     private int toAttackIndexIfFaceDown = -1;
@@ -44,7 +44,15 @@ public class GameManager : MonoBehaviour
         updateLayout();
         GameObject.Find("EndTurn").GetComponent<EndTurn>().setGameManager(this);
         GameObject.Find("Sacrifice").GetComponent<Sacrifice>().setGameManager(this);
-
+        GameObject nBox = GameObject.Find("NotificationsBox");
+        nBox.GetComponent<MeshCollider>().enabled = true;
+        MeshRenderer[] mrs = nBox.GetComponents<MeshRenderer>();
+        foreach (MeshRenderer mr in mrs)
+        {
+            mr.enabled = true;
+        }
+        nBox.GetComponentInChildren<MeshRenderer>().enabled = true;
+        nBox.GetComponentInChildren<TextMesh>().text = "Started Game Manager";
     }
 
     public void updateLayout()
@@ -63,22 +71,24 @@ public class GameManager : MonoBehaviour
             myCurrentlySelectedCard = null;
             myCurrentlySelectedCardObject = null;
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             Debug.Log("Problem updating layout: " + e.Message);
+            GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Couldn't Update Layout";
         }
     }
 
     public void updateLifePoints()
     {
-        GameObject myLPBox=GameObject.Find("MyLifePointsBox");
+        GameObject myLPBox = GameObject.Find("MyLifePointsBox");
         GameObject oppLPBox = GameObject.Find("OppLifePointsBox");
         myLPBox.GetComponent<MeshCollider>().enabled = true;
-        MeshRenderer[] mrs=myLPBox.GetComponents<MeshRenderer>();
-        foreach(MeshRenderer mr in mrs)
+        MeshRenderer[] mrs = myLPBox.GetComponents<MeshRenderer>();
+        foreach (MeshRenderer mr in mrs)
         {
             mr.enabled = true;
         }
+        myLPBox.GetComponentInChildren<MeshRenderer>().enabled = true;
         myLPBox.GetComponentInChildren<TextMesh>().text = PhotonNetwork.playerName + ": " + me.getLifePoints();
         oppLPBox.GetComponent<MeshCollider>().enabled = true;
         MeshRenderer[] mrs2 = oppLPBox.GetComponents<MeshRenderer>();
@@ -94,6 +104,7 @@ public class GameManager : MonoBehaviour
                 oppLPBox.GetComponentInChildren<TextMesh>().text = pp.name + ": " + me.getOpponent().LifePoints;
             }
         }
+        GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Updated Lifepoints";
     }
 
 
@@ -136,7 +147,7 @@ public class GameManager : MonoBehaviour
             {
                 spawnPoint = GameObject.Find("Player2Hand1");
             }
-            else if(i==1)
+            else if (i == 1)
             {
                 spawnPoint = GameObject.Find("Player2Hand2");
             }
@@ -223,12 +234,13 @@ public class GameManager : MonoBehaviour
 
             }
         }
+        GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Updated Opponents Hand";
 
     }
 
     private void placeOpponentsTrapsOnGUI()
     {
-       // throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 
     private void placeOpponentsMonstersOnGUI()
@@ -399,25 +411,26 @@ public class GameManager : MonoBehaviour
 
             }
         }
+        GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Updated Opponents Monsters";
 
     }
 
     private void placeMyTrapsOnGUI()
     {
-       // throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 
     private void placeMyMonsterCardOnGUI()
     {
         //Debug.Log("Trying to instantiate monster");
-        for(int i=0; i<me.FaceDownCardsInMonsterZone.Count; i++)
+        for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
         {
             GameObject spawnSpot = null;
-            if(i==0)
+            if (i == 0)
             {
-                spawnSpot= GameObject.Find("Player1Monster1");
+                spawnSpot = GameObject.Find("Player1Monster1");
             }
-            else if(i==1)
+            else if (i == 1)
             {
                 spawnSpot = GameObject.Find("Player1Monster2");
             }
@@ -451,7 +464,7 @@ public class GameManager : MonoBehaviour
                 c.myZone = CurrentlySelectedCardType.Monster;
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
-               
+
             }
             catch (Exception e)
             {
@@ -464,6 +477,7 @@ public class GameManager : MonoBehaviour
                 monster.transform.parent = spawnSpot.transform;
                 monster.transform.position = spawnSpot.transform.position;
             }
+
         }
         for (int i = me.FaceDownCardsInMonsterZone.Count; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
         {
@@ -520,7 +534,7 @@ public class GameManager : MonoBehaviour
                 monster.transform.position = spawnSpot.transform.position;
             }
         }
-        for (int i = me.FaceDownCardsInMonsterZone.Count+ me.MeReadOnly.FaceUpMonsters.Count; i < 6; i++)
+        for (int i = me.FaceDownCardsInMonsterZone.Count + me.MeReadOnly.FaceUpMonsters.Count; i < 6; i++)
         {
             if (i == 0)
             {
@@ -575,6 +589,7 @@ public class GameManager : MonoBehaviour
 
             }
         }
+        GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Updated My Monsters";
 
     }
 
@@ -588,22 +603,32 @@ public class GameManager : MonoBehaviour
         attackWorked = false;
 
         //If the same card is hit twice
-        if (myCurrentlySelectedCardObject == toSelect && currentlySelectedCardType==CurrentlySelectedCardType.Hand)
+        if (myCurrentlySelectedCardObject == toSelect && currentlySelectedCardType == CurrentlySelectedCardType.Hand)
         {
             Debug.Log("Same card has been clicked twice. Summoning Or SpellCasting...");
             //Summon It
-            if(myCurrentlySelectedCard is MonsterCard)
+            if (myCurrentlySelectedCard is MonsterCard)
             {
                 OnSummon();
+                if (currentlySelectedCard != null)
+                {
+                    GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Set " + currentlySelectedCard.CardName;
+                }
+
             }
             else
             {
                 OnSpell();
+                if (currentlySelectedCard != null)
+                {
+                    GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Casted " + currentlySelectedCard.CardName;
+                }
             }
             //Reset
             myCurrentlySelectedCardObject = null;
             setCurrentlySelectedCard(null);
             currentlySelectedCardType = CurrentlySelectedCardType.None;
+
         }
         else
         {
@@ -650,17 +675,30 @@ public class GameManager : MonoBehaviour
                         }
                     }
                 }
-                Debug.Log("toAttackCard="+toAttackCard+"  index="+toAttackIndexIfFaceDown);
+                Debug.Log("toAttackCard=" + toAttackCard + "  index=" + toAttackIndexIfFaceDown);
                 if (toAttackCard != null || toAttackIndexIfFaceDown != -1)
                 {
                     OnAttack();
+                    if (currentlySelectedCard != null)
+                    {
+                        if (toAttackIndexIfFaceDown != -1)
+                        {
+                            GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = currentlySelectedCard.CardName + " Attacked Face Down Monster";
+                        }
+                        else
+                        {
+                            GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = currentlySelectedCard.CardName + " Attacked " + toAttackCard.CardName;
+                        }
+                    }
                 }
             }
             //Else if The selected card has no type it must be the person and so we attack lifepoints
-            else if(toSelectType==CurrentlySelectedCardType.None && currentlySelectedCardType==CurrentlySelectedCardType.Monster)
+            else if (toSelectType == CurrentlySelectedCardType.None && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
             {
                 Debug.Log("CurrentlySelected is Monster and clicked on nocard type....trying to attack lifepoints-->");
                 OnAttackLifePoints();
+                GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = currentlySelectedCard.CardName + " Attacked Lifepoints";
+
             }
             if (attackWorked == false)
             {
@@ -676,6 +714,10 @@ public class GameManager : MonoBehaviour
                         if (c.CardName == toSelect.getCardName())
                         {
                             setCurrentlySelectedCard(c);
+                            if (currentlySelectedCard != null)
+                            {
+                                GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Currently Selecting Hand Card" + currentlySelectedCard.CardName;
+                            }
                         }
                     }
                 }
@@ -686,6 +728,7 @@ public class GameManager : MonoBehaviour
                         if (c.CardName == toSelect.getCardName())
                         {
                             setCurrentlySelectedCard(c);
+                            GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Currently Selecting Face Down Monster " + currentlySelectedCard.CardName;
                         }
                     }
                     foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.MeReadOnly.FaceUpMonsters)
@@ -693,6 +736,7 @@ public class GameManager : MonoBehaviour
                         if (c.CardName == toSelect.getCardName())
                         {
                             setCurrentlySelectedCard(c);
+                            GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Currently Selecting Face Up Monster " + currentlySelectedCard.CardName;
                         }
                     }
                 }
@@ -726,7 +770,7 @@ public class GameManager : MonoBehaviour
 
     void OnSummon()
     {
-        Debug.Log("Trying to summon: " + getCurrentlySelectedCard().CardName+". My Id is="+me.id);
+        Debug.Log("Trying to summon: " + getCurrentlySelectedCard().CardName + ". My Id is=" + me.id);
         for (int i = 0; i < me.Hand.Count; i++)
         {
             if (me.Hand[i] == getCurrentlySelectedCard())
@@ -752,7 +796,7 @@ public class GameManager : MonoBehaviour
 
     void OnSet()
     {
-        
+
     }
 
     void OnAttackLifePoints()
@@ -769,7 +813,7 @@ public class GameManager : MonoBehaviour
         {
             if (me.MeReadOnly.FaceUpMonsters[i] == getCurrentlySelectedCard())
             {
-                netManager.AttackLP(i+me.FaceDownCardsInMonsterZone.Count, me.id);
+                netManager.AttackLP(i + me.FaceDownCardsInMonsterZone.Count, me.id);
             }
         }
         updateLayout();
@@ -782,56 +826,56 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log(getToAttackCard().CardName);
         }
-        Debug.Log(" or a facedown card at index "+getToAttackFaceDownIndex()+". My Id is=" + me.id);
+        Debug.Log(" or a facedown card at index " + getToAttackFaceDownIndex() + ". My Id is=" + me.id);
         string result = "idk";
-        if (getToAttackCard()!=null)
+        if (getToAttackCard() != null)
         {
             for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
             {
                 if (me.FaceDownCardsInMonsterZone[i] == getCurrentlySelectedCard())
-                {
-                    for(int j=0; j<me.getOpponent().FaceUpMonsters.Count; j++)
-                    {
-                        if(me.getOpponent().FaceUpMonsters[j]==getToAttackCard())
-                        {
-                            result=netManager.AttackFU(i, me.id, j);
-                        }
-                    }
-                }
-            }
-            for(int i=0; i<me.MeReadOnly.FaceUpMonsters.Count; i++)
-            {
-                if(me.MeReadOnly.FaceUpMonsters[i]==getCurrentlySelectedCard())
                 {
                     for (int j = 0; j < me.getOpponent().FaceUpMonsters.Count; j++)
                     {
                         if (me.getOpponent().FaceUpMonsters[j] == getToAttackCard())
                         {
-                            result=netManager.AttackFU(i+me.FaceDownCardsInMonsterZone.Count, me.id, j);
+                            result = netManager.AttackFU(i, me.id, j);
                         }
                     }
-                }
-            }
-        }
-        else if(getToAttackFaceDownIndex()!=-1)
-        {
-            for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
-            {
-                if (me.FaceDownCardsInMonsterZone[i] == getCurrentlySelectedCard())
-                {
-                    result=netManager.AttackFD(i, me.id);
                 }
             }
             for (int i = 0; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
             {
                 if (me.MeReadOnly.FaceUpMonsters[i] == getCurrentlySelectedCard())
                 {
-                    result=netManager.AttackFD(i + me.FaceDownCardsInMonsterZone.Count, me.id);
+                    for (int j = 0; j < me.getOpponent().FaceUpMonsters.Count; j++)
+                    {
+                        if (me.getOpponent().FaceUpMonsters[j] == getToAttackCard())
+                        {
+                            result = netManager.AttackFU(i + me.FaceDownCardsInMonsterZone.Count, me.id, j);
+                        }
+                    }
                 }
             }
         }
-        
-        if(result=="")
+        else if (getToAttackFaceDownIndex() != -1)
+        {
+            for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
+            {
+                if (me.FaceDownCardsInMonsterZone[i] == getCurrentlySelectedCard())
+                {
+                    result = netManager.AttackFD(i, me.id);
+                }
+            }
+            for (int i = 0; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
+            {
+                if (me.MeReadOnly.FaceUpMonsters[i] == getCurrentlySelectedCard())
+                {
+                    result = netManager.AttackFD(i + me.FaceDownCardsInMonsterZone.Count, me.id);
+                }
+            }
+        }
+
+        if (result == "")
         {
             attackWorked = true;
         }
@@ -881,7 +925,7 @@ public class GameManager : MonoBehaviour
                 Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
-                  //  Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    //  Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
                     card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
@@ -901,7 +945,7 @@ public class GameManager : MonoBehaviour
                     myCardGO.GetComponent<Renderer>().material.mainTexture = hand[i].CardImage;
                     myCardGO.transform.Find("CardBack").GetComponent<Renderer>().material.mainTexture = CardBackTexture;
                 }
-               
+
                 /*
                 GameObject plane = GameObject.CreatePrimitive(PrimitiveType.Plane);
                 plane.transform.Rotate(90, 180, 0);
@@ -935,7 +979,7 @@ public class GameManager : MonoBehaviour
                 Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
-                  //  Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    //  Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
                     card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
@@ -973,7 +1017,7 @@ public class GameManager : MonoBehaviour
                 Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
-                   // Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    // Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
                     card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
@@ -1049,7 +1093,7 @@ public class GameManager : MonoBehaviour
                 Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
-                   // Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    // Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
                     card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;
@@ -1083,11 +1127,11 @@ public class GameManager : MonoBehaviour
                 GameObject myCardGO = Instantiate(cardGO);
                 myCardGO.transform.parent = spawnPoint.transform;
                 myCardGO.transform.position = spawnPoint.transform.position;
-               // Debug.Log("Found Card GameObject, Loading specific Card");
+                // Debug.Log("Found Card GameObject, Loading specific Card");
                 Card card = myCardGO.AddComponent<Card>();
                 if (me.Hand[i] is MonsterCard)
                 {
-                  //  Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
+                    //  Debug.Log("Setting CardName to " + (me.Hand[i] as MonsterCard).CardName);
                     card.setCardName((me.Hand[i] as MonsterCard).CardName);
                     card.attack = (me.Hand[i] as MonsterCard).AttackPoints;
                     card.defense = (me.Hand[i] as MonsterCard).DefensePoints;

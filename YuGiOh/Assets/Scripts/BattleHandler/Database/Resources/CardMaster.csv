@@ -1,20 +1,20 @@
 Name,Level,Attribute,Type,Attack,Defense,Description,Card Number,isPendulum,isXyz,isSynchro,isSynchroTuner,isFusion,isRitual,CardImage,Rarity,Edition
 Archfiend Marmot of Nefariousness,2,Earth,Beast,400,600,An air marmot that has a nefarious horn and wings. It attacks by throwing acorns.,75889523,N,N,N,N,N,N,ArchfiendMarmotofNefariousness.jpg,Common,1
 Archfiend Mirror,2,Dark,Fiend,700,600,A wicked mirror that hypnotizes enemies diverting attacks from their intended targets.,15150371,N,N,N,N,N,N,ArchfiendMirror.jpg,Common,1
-Battle Ox,4,Earth,Beast-Warrior,1700,1000,A monster with tremendous power it destroys enemies with a swing of its axe.,5053103,N,N,N,N,N,N,BattleOx-YSKR-EN-C-1E.png,Common,1
+Battle Ox,4,Earth,Beast-Warrior,1700,1000,A monster with tremendous power it destroys enemies with a swing of its axe.,5053103,N,N,N,N,N,N,Battle Ox.png,Common,1
 Beast Fangs,0,Spell,Equip,0,0,A Beast-Type monster equipped with this card increases its ATK and DEF by 300 points.,46009906,N,N,N,N,N,N,BeastFangs.jpg,Rare,1
-Blue-Eyes White Dragon,8,Light,Dragon,3000,2500,This legendary dragon is a powerful engine of destruction. Virtually invincible very few have faced this awesome creature and lived to tell the tale.,89631139,N,N,N,N,N,N,Blue-Eyes_White_Dragon.png,Ultra Rare,1
+Blue-Eyes White Dragon,8,Light,Dragon,3000,2500,This legendary dragon is a powerful engine of destruction. Virtually invincible very few have faced this awesome creature and lived to tell the tale.,89631139,N,N,N,N,N,N,Blue-Eyes White Dragon.png,Ultra Rare,1
 Book of Secret Arts,0,Spell,Equip,0,0,A Spellcaster-Type monster equipped with this card increases its ATK and DEF by 300 points.,91595718,N,N,N,N,N,N,BookofSecretArts.png,Rare,1
 Candle of Fate,2,Dark,Fiend,600,600,Decides the fate of an opponent when the candle on its fingertip burns out.,47695416,N,N,N,N,N,N,CandleofFate.jpg,Common,1
 Curtain of the Dark Ones,2,Dark,Spellcaster,600,500,A curtain that a spellcaster made it is said to raise a dark power.,22026707,N,N,N,N,N,N,CurtainoftheDarkOnes.png,Common,1
-D. Human,4,Earth,Warrior,1300,1100,Gifted with the power of dragons this warrior wields a sword created from a dragon's fang.,81057959,N,N,N,N,N,N,DHuman-SDK-NA-C-UE.png,Common,1
-Dark Assailant,4,Dark,Zombie,1200,1200,Armed with the Psycho Sword this sinister assassin rules the bad land.,41949033,N,N,N,N,N,N,DarkAssailant-SDK-NA-C-UE.png,Common,1
+D. Human,4,Earth,Warrior,1300,1100,Gifted with the power of dragons this warrior wields a sword created from a dragon's fang.,81057959,N,N,N,N,N,N,D Human.png,Common,1
+Dark Assailant,4,Dark,Zombie,1200,1200,Armed with the Psycho Sword this sinister assassin rules the bad land.,41949033,N,N,N,N,N,N,Dark Assailant.png,Common,1
 Dark Energy,0,Spell,Equip,0,0,Increase the ATK and DEF of a Fiend-Type monster equipped with this card by 300 points.,4614116,N,N,N,N,N,N,DarkEnergy.jpg,Common,1
 Dark Gray,3,Earth,Beast,800,900,Entirely gray this beast has rarely been seen by mortal eyes.,9159938,N,N,N,N,N,N,DarkGray.jpg,Common,1
 Dark Hole,0,Spell,Normal,0,0,Destroy all monsters on the field.,53129443,N,N,N,N,N,N,DarkHole.png,Super Rare,1
 Dark Magician,7,Dark,Spellcaster,2500,2100,The ultimate wizard in terms of attack and defense,46986414,N,N,N,N,N,N,DarkMagician.png,Ultra Rare,1
-Dark Titan of Terror,4,Dark,Fiend,1300,1100,A fiend said to dwell in the world of dreams it attacks enemies in their sleep.,89494469,N,N,N,N,N,N,DarkTitanofTerror-SDK-NA-C-UE.png,Common,1
-De-Spell,0,Spell,Normal,0,0,Select 1 Spell Card on the field and destroy it. If the selected card is Set pick up and see the card. If it is a Spell Card it is destroyed. If it is a Trap Card return it to its original position.,19159413,N,N,N,N,N,N,DeSpell-SKE-EN-C-1E.jpg,Common,1
+Dark Titan of Terror,4,Dark,Fiend,1300,1100,A fiend said to dwell in the world of dreams it attacks enemies in their sleep.,89494469,N,N,N,N,N,N,Dark Titan Of Terror.png,Common,1
+De-Spell,0,Spell,Normal,0,0,Select 1 Spell Card on the field and destroy it. If the selected card is Set pick up and see the card. If it is a Spell Card it is destroyed. If it is a Trap Card return it to its original position.,19159413,N,N,N,N,N,N,De-Spell.jpg,Common,1
 Destroyer Golem,4,Earth,Rock,1500,1000,A golem with a massive right hand for crushing its victims.,73481154,N,N,N,N,N,N,destroyerGolem.jpg,Common,1
 Eyearmor,2,Earth,Warrior,600,500,This warrior transforms into various creatures to confuse enemies in battle.,64511793,N,N,N,N,N,N,Eyearmor.jpg,Common,1
 Fiend's Hand,2,Dark,Zombie,600,600,Arms that reach out from the Swamp of Chaos to drag down the damned.,52800428,N,N,N,N,N,N,FiendsHand.jpg,Common,1
@@ -22,51 +22,51 @@ Fire Reaper,2,Dark,Zombie,700,500,A reaper with a flaming arrow that burns an en
 Firegrass,2,Earth,Plant,700,600,A fire-breathing plant found growing near volcanoes.,53293545,N,N,N,N,N,N,Firegrass.jpg,Common,1
 Fissure,0,Spell,Normal,0,0,Destroy the 1 face-up monster your opponent controls that has the lowest ATK (your choice if tied).,66788016,N,N,N,N,N,N,Fissure.png,Super Rare,1
 Gaia The Fierce Knight,7,Earth,Warrior,2300,2100,A knight whose horse travels faster than the wind. His battle-charge is a force to be reckoned with.,6368038,N,N,N,N,N,N,GaiaTheFierceKnight.png,Ultra Rare,1
-Gyakutenno Megami,6,Light,Fairy,1800,2000,This fairy uses her mystical power to protect the weak and provide spiritual support.,31122090,N,N,N,N,N,N,Gyakutenno-Megami_15057.jpg,Ultra Rare,1
+Gyakutenno Megami,6,Light,Fairy,1800,2000,This fairy uses her mystical power to protect the weak and provide spiritual support.,31122090,N,N,N,N,N,N,Gyakutenno Megami.jpg,Ultra Rare,1
 Haniwa,2,Earth,Rock,500,500,An earthen figure that protects the tomb of an ancient ruler.,84285623,N,N,N,N,N,N,Haniwa.jpg,Common,1
 Hitodenchak,2,Water,Aqua,600,700,A rabid starfish that spits a lethal acid that can melt almost anything.,46718686,N,N,N,N,N,N,Hitodenchak.jpg,Common,1
 Hitotsu-Me Giant,4,Earth,Beast-Warrior,1200,1000,A one-eyed behemoth with thick powerful arms made for delivering punishing blows,76184692,N,N,N,N,N,N,HitotsuMeGiant.png,Common,1
 Hourglass of Life,2,Light,Fairy,700,600,This creature grants power instead of shortening life.,8783685,N,N,N,N,N,N,HourglassofLife.jpg,Common,1
-Invigoration,0,Spell,Equip,0,0,An EARTH monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.,98374133,N,N,N,N,N,N,InvigorationSDK-EN-C.jpg,Common,1
-Judge Man,6,Earth,Warrior,2200,1500,This club-wielding warrior battles to the end and will never surrender.,30113682,N,N,N,N,N,N,JudgeMan-DPKB-EN-C-1E.png,Common,1
+Invigoration,0,Spell,Equip,0,0,An EARTH monster equipped with this card increases its ATK by 400 points and decreases its DEF by 200 points.,98374133,N,N,N,N,N,N,Invigoration.jpg,Common,1
+Judge Man,6,Earth,Warrior,2200,1500,This club-wielding warrior battles to the end and will never surrender.,30113682,N,N,N,N,N,N,Judge Man.png,Common,1
 Kagemusha of the Blue Flame,2,Earth,Warrior,800,400,Serving as a double for the Ruler of the Blue Flame he's a master swordsman that wields a fine blade.,15401633,N,N,N,N,N,N,KagemushaoftheBlueFlame.png,Common,1
-Kojikocy,4,Earth,Warrior,1500,1200,A man-hunter with powerful arms that can crush boulders.,1184620,N,N,N,N,N,N,Kojikocy-DB1-EN-C-UE.jpg,Common,1
+Kojikocy,4,Earth,Warrior,1500,1200,A man-hunter with powerful arms that can crush boulders.,1184620,N,N,N,N,N,N,Kojikocy.jpg,Common,1
 Koumori Dragon,4,Dark,Dragon,1500,1200,A vicious fire-breathing dragon whose wicked flame corrupts the souls of its victims.,67724379,N,N,N,N,N,N,KoumoriDragon.jpg,Common,1
 Kurama,3,Wind,Winged Beast,800,800,A vicious bird that attacks from the skies with its whip-like tail.,85705804,N,N,N,N,N,N,Kurama.png,Common,1
-La Jinn the Mystical Genie of the Lamp,4,Dark,Fiend,1800,1000,A genie of the lamp that is at the beck and call of its master.,97590747,N,N,N,N,N,N,LaJinntheMysticalGenieoftheLamp-YSKR-EN-C-1E.png,Rare,1
+La Jinn the Mystical Genie of the Lamp,4,Dark,Fiend,1800,1000,A genie of the lamp that is at the beck and call of its master.,97590747,N,N,N,N,N,N,LaJinn The Mystical Genie Of The Lamp.png,Rare,1
 LaLa Li-Oon,2,Wind,Thunder,600,600,An electric cloud creature its acid rain makes it very dangerous.,9430387,N,N,N,N,N,N,LaLaLiOon.jpg,Common,1
 Legendary Sword,0,Spell,Equip,0,0,A Warrior-Type monster equipped with this card increases its ATK and DEF by 300 points.,61854111,N,N,N,N,N,N,LegendarySword.jpg,Rare,1
 Mammoth Graveyard,3,Earth,Dinosaur,1200,800,A mammoth that protects the graves of its pack and is absolutely merciless when facing grave-robbers.,40374923,N,N,N,N,N,N,MammothGraveyard.png,Common,1
-Master & Expert,4,Earth,Beast,1200,1000,A deadly duo consisting of a beast master and its loyal servant.,75499502,N,N,N,N,N,N,MasterExpert-SDK-NA-C-UE.png,Common,1
+Master & Expert,4,Earth,Beast,1200,1000,A deadly duo consisting of a beast master and its loyal servant.,75499502,N,N,N,N,N,N,Master & Expert.png,Common,1
 Meotoko,2,Earth,Beast,700,600,Dis big ol' guy wit' a big ol' eye shoots a nasty ray beam right atcha!,53832650,N,N,N,N,N,N,Meotoko.png,Common,1
 Mystic Clown,4,Dark,Fiend,1500,1000,Nothing can stop the mad attack of this powerful creature.,47060154,N,N,N,N,N,N,MysticClown.jpg,Common,1
 Mystic Horseman,4,Earth,Beast,1300,1550,Half man and half horse this monster is known for its extreme speed.,68516705,N,N,N,N,N,N,mysticHorseman.jpg,Common,1
 Nemuriko,3,Dark,Spellcaster,800,700,A child-like creature that controls a sleep fiend to beckon enemies into eternal slumber.,90963488,N,N,N,N,N,N,Nemuriko.jpg,Common,1
-Ogre of the Black Shadow,4,Earth,Beast-Warrior,1200,1400,An ogre possessed by the powers of the dark. Few can withstand its rapid charge.,45121025,N,N,N,N,N,N,OgreoftheBlackShadow-SDK-NA-C-UE.png,Common,1
+Ogre of the Black Shadow,4,Earth,Beast-Warrior,1200,1400,An ogre possessed by the powers of the dark. Few can withstand its rapid charge.,45121025,N,N,N,N,N,N,Ogre Of The Black Shadow.png,Common,1
 Ookazi,0,Spell,Normal,0,0,Inflict 800 damage to your opponent.,19523799,N,N,N,N,N,N,Ookazi.png,Common,1
-Pale Beast,4,Earth,Beast,1500,1200,With skin tinged a bluish-white this strange creature is a fearsome sight to behold.,21263083,N,N,N,N,N,N,PaleBeast.jpg,Common,1
+Pale Beast,4,Earth,Beast,1500,1200,With skin tinged a bluish-white this strange creature is a fearsome sight to behold.,21263083,N,N,N,N,N,N,Pale Beast.jpg,Common,1
 Petit Angel,3,Light,Fairy,600,900,A quick-moving and tiny fairy that's very difficult to hit.,38142739,N,N,N,N,N,N,PetitAngel.png,Common,1
 Petit Dragon,2,Wind,Dragon,600,700,A very small dragon known for its vicious attacks.,75356564,N,N,N,N,N,N,PetitDragon.jpg,Common,1
 Power of Kaishin,0,Spell,Equip,0,0,An Aqua-Type monster equipped with this card increases its ATK and DEF by 300 points.,77027445,N,N,N,N,N,N,PowerofKaishin.png,Rare,1
 Red Medicine,0,Spell,Normal,0,0,Increase your Life Points by 500 points.,38199696,N,N,N,N,N,N,RedMedicine.png,Common,1
-Rogue Doll,4,Light,Spellcaster,1600,1000,A deadly doll gifted with mystical power it is particularly powerful when attacking against dark forces.,91939608,N,N,N,N,N,N,RogueDoll-SKE-EN-C-1E.jpg,Common,1
-Rude Kaiser,5,Earth,Beast-Warrior,1800,1600,With an axe in each hand this monster delivers heavy damage.,26378150,N,N,N,N,N,N,RudeKaiser-LCJW-EN-C-1E.png,Common,1
-Ryu-Kishin,3,Dark,Fiend,1000,500,A very elusive creature that looks like a harmless statue until it attacks.,15303296,N,N,N,N,N,N,RyuKishin-SDK-NA-C-1E.png,Common,1
-Ryu-Kishin Powered,4,Dark,Fiend,1600,1200,A gargoyle enhanced by the powers of darkness. Very sharp talons make it a worthy opponent.,24611934,N,N,N,N,N,N,RyuKishinPowered-DB2-EN-C-UE.jpg,Common,1
+Rogue Doll,4,Light,Spellcaster,1600,1000,A deadly doll gifted with mystical power it is particularly powerful when attacking against dark forces.,91939608,N,N,N,N,N,N,Rougue Doll.jpg,Common,1
+Rude Kaiser,5,Earth,Beast-Warrior,1800,1600,With an axe in each hand this monster delivers heavy damage.,26378150,N,N,N,N,N,N,Rude Kaiser.png,Common,1
+Ryu-Kishin,3,Dark,Fiend,1000,500,A very elusive creature that looks like a harmless statue until it attacks.,15303296,N,N,N,N,N,N,Ryu Kishin.png,Common,1
+Ryu-Kishin Powered,4,Dark,Fiend,1600,1200,A gargoyle enhanced by the powers of darkness. Very sharp talons make it a worthy opponent.,24611934,N,N,N,N,N,N,Ryu Kishin Powered.jpg,Common,1
 Sectarian of Secrets,2,Dark,Spellcaster,700,500,This wizard worships the darkness and is served by a sinister hand that drags its enemies into oblivion.,15507080,N,N,N,N,N,N,SectarianofSecrets.jpg,Common,1
 Silver Fang,3,Earth,Beast,1200,800,A snow wolf that's beautiful to the eye but absolutely vicious in battle.,90357090,N,N,N,N,N,N,SilverFang.jpg,Common,1
-Skull Red Bird,4,Wind,Winged Beast,1550,1200,This monster swoops down and attacks with a rain of knives stored in its wings.,10202894,N,N,N,N,N,N,SkullRedBird-LOB-NA-C-1E.jpg,Common,1
+Skull Red Bird,4,Wind,Winged Beast,1550,1200,This monster swoops down and attacks with a rain of knives stored in its wings.,10202894,N,N,N,N,N,N,Skull Red Bird.jpg,Common,1
 Sparks,0,Spell,Normal,0,0,Inflict 200 points of damage to your opponent's Life Points.,76103675,N,N,N,N,N,N,Sparks.png,Common,1
-Swordstalker,6,Dark,Warrior,2000,1600,A monster formed by the vengeful souls of those who passed away in battle.,50005633,N,N,N,N,N,N,Swordstalker-DPKB-EN-C-1E.png,Common,1
-Terra The Terrible,4,Dark,Fiend,1200,1300,Known as a swamp dweller this creature is a minion of the dark forces.,63308047,N,N,N,N,N,N,TerratheTerrible-LOB-NA-C-1E.jpg,Common,1
+Swordstalker,6,Dark,Warrior,2000,1600,A monster formed by the vengeful souls of those who passed away in battle.,50005633,N,N,N,N,N,N,Sword Stalker.png,Common,1
+Terra The Terrible,4,Dark,Fiend,1200,1300,Known as a swamp dweller this creature is a minion of the dark forces.,63308047,N,N,N,N,N,N,Terra The Terrible.jpg,Common,1
 The Drdek,3,Dark,Fiend,700,800,A bipedal eyeball that seldom misses an enemy with its lethal talons.,8944575,N,N,N,N,N,N,TheDrdek.jpg,Common,1
 The Furious Sea King,3,Water,Aqua,800,700,Grand King of the Seven Seas he's able to summon massive tidal waves to drown the enemy.,18710707,N,N,N,N,N,N,TheFuriousSeaKing.jpg,Common,1
-The Wicked Worm Beast,3,Earth,Beast/Effect,1400,700,This face-up card on the field is returned to the owner's hand during the End Phase of your turn.,6285791,N,N,N,N,N,N,TheWickedWormBeast-GLD4-EN-C-LE.png,Common,1
+The Wicked Worm Beast,3,Earth,Beast/Effect,1400,700,This face-up card on the field is returned to the owner's hand during the End Phase of your turn.,6285791,N,N,N,N,N,N,The Wicked Worm Beast.png,Common,1
 Thunder Kid,2,Wind,Thunder,700,600,This monster stores electricity within his body and can unleash it with catastrophic power.,15510988,N,N,N,N,N,N,ThunderKid.jpg,Common,1
 Tomozaurus,2,Earth,Dinosaur,500,400,Small but vicious this monster even attacks its own kind.,46457856,N,N,N,N,N,N,Tomozaurus.png,Common,1
 Trap Hole,0,Trap,Normal,0,0,When your opponent Normal or Flip Summons 1 monster with 1000 or more ATK: Target that monster; destroy that target.,4206964,N,N,N,N,N,N,TrapHole.png,Super Rare,1
-Two-Pronged Attack,0,Trap,Normal,0,0,Select and destroy 2 of your monsters and 1 of your opponent's monsters.,83887306,N,N,N,N,N,N,two-prongedattack.jpg,Common,1
-Unknown Warrior of Fiend,3,Dark,Warrior,1000,500,The speed of this warrior creates an intense vacuum that can slice through a monster's hide.,97360116,N,N,N,N,N,N,UnknownWarriorofFiend-SDK-NA-C-UE.png,Common,1
+Two-Pronged Attack,0,Trap,Normal,0,0,Select and destroy 2 of your monsters and 1 of your opponent's monsters.,83887306,N,N,N,N,N,N,Two-Pronged Attack.jpg,Common,1
+Unknown Warrior of Fiend,3,Dark,Warrior,1000,500,The speed of this warrior creates an intense vacuum that can slice through a monster's hide.,97360116,N,N,N,N,N,N,Unkown Warrior Of Fiend.png,Common,1
 Uraby,4,Earth,Dinosaur,1500,800,Fast on its feet this dinosaur rips enemies to shreds with its sharp claws.,1784619,N,N,N,N,N,N,Uraby.jpg,Common,1
 Violet Crystal,0,Spell,Equip,0,0,A Zombie-Type monster equipped with this card increases its ATK and DEF by 300 points.,15052462,N,N,N,N,N,N,VioletCrystal.png,Rare,1
 Winged Cleaver,2,Earth,Insect,700,700,Few can withstand the scythe-like arms of this dangerous creature.,39175982,N,N,N,N,N,N,WingedCleaver.jpg,Common,1
