@@ -14,6 +14,8 @@ public class Card : MonoBehaviour
     internal Quaternion rotation = new Quaternion(0f, 90f, 0f, 0f);
     static internal GameManager myGameManager;
     internal GameManager.CurrentlySelectedCardType myZone;
+    float timeSinceLastCall = .5f;
+    float oldTime = 0;
 
     // Use this for initialization
     void Start()
@@ -49,18 +51,34 @@ public class Card : MonoBehaviour
         Debug.Log("Set game manager:" + myGameManager);
     }
 
+    float getTimeSinceLastCall()
+    {
+        return timeSinceLastCall;
+    }
+
+    void addDeltaTime()
+    {
+        timeSinceLastCall = Time.time - oldTime;
+        oldTime = Time.time;
+    }
+
     void OnSelect()
     {
-        Debug.Log(myGameManager);
-        Debug.Log(myZone);
-        myGameManager.setSelectedCard(this, myZone);
+        addDeltaTime();
+        if (getTimeSinceLastCall() > .5)
+        {
+            Debug.Log(myGameManager);
+            Debug.Log(myZone);
+            myGameManager.setSelectedCard(this, getZone());
+            timeSinceLastCall = 0;
+        }
     }
 
     void OnMouseDown()
     {
         Debug.Log(myGameManager);
         Debug.Log(myZone);
-        myGameManager.setSelectedCard(this, myZone);
+        myGameManager.setSelectedCard(this, getZone());
     }
     //OldCode
     /*

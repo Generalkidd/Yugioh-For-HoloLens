@@ -5,6 +5,9 @@ public class EndTurn : MonoBehaviour
 {
     static internal GameManager myGameManager;
     internal GameManager.CurrentlySelectedCardType myZone;
+    float timeSinceLastCall = .5f;
+    float oldTime = 0;
+
     // Use this for initialization
     void Start () {
         myGameManager = null;
@@ -17,6 +20,18 @@ public class EndTurn : MonoBehaviour
             myGameManager.OnEndTurn();
         }
     }
+
+    float getTimeSinceLastCall()
+    {
+        return timeSinceLastCall;
+    }
+
+    void addDeltaTime()
+    {
+        timeSinceLastCall = Time.time - oldTime;
+        oldTime = Time.time;
+    }
+
 
     internal void setGameManager(GameManager gm)
     {

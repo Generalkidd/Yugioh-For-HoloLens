@@ -4,6 +4,9 @@ using UnityEngine.SceneManagement;
 
 public class Online : MonoBehaviour {
 
+    float timeSinceLastCall=.5f;
+    float oldTime = 0;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -13,6 +16,17 @@ public class Online : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    float getTimeSinceLastCall()
+    {
+        return timeSinceLastCall;
+    }
+    
+    void addDeltaTime()
+    {
+        timeSinceLastCall = Time.time - oldTime;
+        oldTime = Time.time;
+    }
 
     void OnMouseDown()
     {
@@ -24,9 +38,13 @@ public class Online : MonoBehaviour {
 
     void OnSelect()
     {
-        SceneManager.LoadScene(2);
-        GameObject camera = Camera.main.gameObject;
-        NetworkManager nm=camera.AddComponent<NetworkManager>();
-        nm.Connect();
+        addDeltaTime();
+        if (getTimeSinceLastCall() > .5)
+        {
+            SceneManager.LoadScene(2);
+            GameObject camera = Camera.main.gameObject;
+            NetworkManager nm = camera.AddComponent<NetworkManager>();
+            nm.Connect();
+        }
     }
 }

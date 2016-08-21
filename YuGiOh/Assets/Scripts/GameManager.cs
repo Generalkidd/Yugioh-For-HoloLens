@@ -728,7 +728,10 @@ public class GameManager : MonoBehaviour
                         if (c.CardName == toSelect.getCardName())
                         {
                             setCurrentlySelectedCard(c);
-                            GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Currently Selecting Face Down Monster " + currentlySelectedCard.CardName;
+                            if (currentlySelectedCard != null)
+                            {
+                                GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Currently Selecting Face Down Monster " + currentlySelectedCard.CardName;
+                            }
                         }
                     }
                     foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.MeReadOnly.FaceUpMonsters)
@@ -736,8 +739,11 @@ public class GameManager : MonoBehaviour
                         if (c.CardName == toSelect.getCardName())
                         {
                             setCurrentlySelectedCard(c);
-                            GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Currently Selecting Face Up Monster " + currentlySelectedCard.CardName;
-                        }
+                            if (currentlySelectedCard != null)
+                            {
+                                GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = "Currently Selecting Face Up Monster " + currentlySelectedCard.CardName;
+                            }
+                       }
                     }
                 }
             }

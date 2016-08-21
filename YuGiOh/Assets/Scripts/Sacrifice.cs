@@ -5,6 +5,9 @@ public class Sacrifice : MonoBehaviour
 {
     static internal GameManager myGameManager;
     internal GameManager.CurrentlySelectedCardType myZone;
+    float timeSinceLastCall = .5f;
+    float oldTime = 0;
+
     // Use this for initialization
     void Start () {
 	
@@ -19,6 +22,19 @@ public class Sacrifice : MonoBehaviour
         }
     }
 
+    float getTimeSinceLastCall()
+    {
+        return timeSinceLastCall;
+    }
+
+    void addDeltaTime()
+    {
+        timeSinceLastCall = Time.time - oldTime;
+        oldTime = Time.time;
+    }
+
+
+
     internal void setGameManager(GameManager gm)
     {
         Debug.Log("Setting game manager to: " + gm);
@@ -30,8 +46,12 @@ public class Sacrifice : MonoBehaviour
     {
         if (myGameManager != null)
         {
-            Debug.Log("Game Manager not null and Sacrifice selected->");
-            myGameManager.OnSacrifice();
+            addDeltaTime();
+            if (getTimeSinceLastCall() > .5)
+            {
+                Debug.Log("Game Manager not null and Sacrifice selected->");
+                myGameManager.OnSacrifice();
+            }
         }
     }
 }

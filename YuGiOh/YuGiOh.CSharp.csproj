@@ -250,7 +250,6 @@
     <Compile Include="Assets\Scripts\Sacrifice.cs" />
     <Compile Include="Assets\Scripts\Seal.cs" />
     <Compile Include="Assets\Scripts\SpeechManager.cs" />
-    <Compile Include="Assets\Scripts\TapToPlaceParent.cs" />
     <Compile Include="Assets\Scripts\TextWrap.cs" />
     <Compile Include="Assets\Scripts\WorldCursor.cs" />
     <Compile Include="Assets\Support\AniCrane\AnimationSpeed.cs" />
