@@ -458,6 +458,88 @@ public class NetworkManager : MonoBehaviour
         }
     }
 
+    internal string ChangeMode(int changingModeId, int sendZeroForFaceUpOrOneForFaceDown, int indexOfCardOnField)
+    {
+        GetComponent<PhotonView>().RPC("ChangeMode_RPC", PhotonTargets.All, changingModeId, sendZeroForFaceUpOrOneForFaceDown, indexOfCardOnField);
+        while (returnsFromRPC == "-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+    [PunRPC]
+    void ChangeMode_RPC(int changingModeId, int sendZeroForFaceUpOrOneForFaceDown, int cardIndexOnField)
+    {
+        Debug.Log("ID " + changingModeId + " is trying to change mode of card "+cardIndexOnField);
+        if (p1.id == changingModeId)
+        {
+            if (sendZeroForFaceUpOrOneForFaceDown == 0)
+            {
+                Debug.Log("Player 1 changes mode face up card number " + cardIndexOnField);
+                returnsFromRPC = p1.ChangeModeOfCard(p1.MeReadOnly.FaceUpMonsters[cardIndexOnField]);
+            }
+            else if(sendZeroForFaceUpOrOneForFaceDown==1)
+            {
+                Debug.Log("Player 1 changes mode of face down card number" + cardIndexOnField);
+                returnsFromRPC = p1.ChangeModeOfCard(p1.FaceDownCardsInMonsterZone[cardIndexOnField]);
+            }
+        }
+        if (p2.id == changingModeId)
+        {
+            if (sendZeroForFaceUpOrOneForFaceDown == 0)
+            {
+                Debug.Log("Player 2 changes mode face up card number " + cardIndexOnField);
+                returnsFromRPC = p2.ChangeModeOfCard(p2.MeReadOnly.FaceUpMonsters[cardIndexOnField]);
+            }
+            else if (sendZeroForFaceUpOrOneForFaceDown == 1)
+            {
+                Debug.Log("Player 2 changes mode of face down card number" + cardIndexOnField);
+                returnsFromRPC = p2.ChangeModeOfCard(p2.FaceDownCardsInMonsterZone[cardIndexOnField]);
+            }
+        }
+        Debug.Log("Tried to normal summon with result= " + returnsFromRPC);
+        if (gm1 != null)
+        {
+            gm1.updateLayout();
+        }
+    }
+
+    internal string Equip(string cardToEquipToName, int indexInHandOfEquipableCard, int equippingId)
+    {
+        GetComponent<PhotonView>().RPC("Equip_RPC", PhotonTargets.All, equippingId, indexInHandOfEquipableCard, cardToEquipToName);
+        while (returnsFromRPC == "-1")
+        {
+
+        }
+        string toReturn = returnsFromRPC;
+        returnsFromRPC = "-1";
+        return toReturn;
+    }
+
+    [PunRPC]
+    void Equip_RPC(int equipingId, int indexInHandOfEquipableCard, string cardToEquipTo)
+    {
+        Debug.Log("ID " + equipingId + " is trying to equip.");
+        if (p1.id == equipingId)
+        {
+            Debug.Log("Player 1 equips");
+            returnsFromRPC = p1.TryEquip(p1.Hand[indexInHandOfEquipableCard], cardToEquipTo);
+        }
+        else if (p2.id == equipingId)
+        {
+            Debug.Log("Player 2 equips");
+            returnsFromRPC = p2.TryEquip(p1.Hand[indexInHandOfEquipableCard], cardToEquipTo);
+        }
+        Debug.Log("Tried to equip with result= " + returnsFromRPC);
+        if (gm1 != null)
+        {
+            gm1.updateLayout();
+        }
+    }
+
 
     internal string EndTurn(int endingTurnId)
     {
@@ -696,8 +778,7 @@ public class NetworkManager : MonoBehaviour
                             gos.transform.position = spawn.transform.position;
                             gos.transform.parent = spawn.transform;
                         }
-                        Card c = gos.AddComponent<Card>();
-                        c.myZone = GameManager.CurrentlySelectedCardType.None;
+                        gos.AddComponent<Lifepoints>().setGameManager(gm);
                     }
                     Debug.Log("Created GameManager.Ready to Rock and Roll on the Network.");
                 }

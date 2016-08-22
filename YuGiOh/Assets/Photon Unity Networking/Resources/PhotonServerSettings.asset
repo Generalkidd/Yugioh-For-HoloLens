@@ -48,4 +48,6 @@ MonoBehaviour:
   - AttackFD_RPC
   - AttackFU_RPC
   - AttackLP_RPC
+  - ChangeMode_RPC
+  - Equip_RPC
   DisableAutoOpenWizard: 1

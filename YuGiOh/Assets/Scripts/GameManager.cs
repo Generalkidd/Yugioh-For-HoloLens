@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
         updateLayout();
         GameObject.Find("EndTurn").GetComponent<EndTurn>().setGameManager(this);
         GameObject.Find("Sacrifice").GetComponent<Sacrifice>().setGameManager(this);
+        GameObject.Find("ChangeCardPosition").GetComponent<ChangeCardMode>().setGameManager(this);
         GameObject nBox = GameObject.Find("NotificationsBox");
         nBox.GetComponent<MeshCollider>().enabled = true;
         MeshRenderer[] mrs = nBox.GetComponents<MeshRenderer>();
@@ -692,13 +693,24 @@ public class GameManager : MonoBehaviour
                     }
                 }
             }
-            //Else if The selected card has no type it must be the person and so we attack lifepoints
-            else if (toSelectType == CurrentlySelectedCardType.None && currentlySelectedCardType == CurrentlySelectedCardType.Monster)
+            //If we are currently selecting a spell card and we click on a monster we are likely trying to equip.
+            if (currentlySelectedCardType == CurrentlySelectedCardType.Hand && myCurrentlySelectedCard.Attribute==CardAttributeOrType.Spell && toSelectType == CurrentlySelectedCardType.Monster)
             {
-                Debug.Log("CurrentlySelected is Monster and clicked on nocard type....trying to attack lifepoints-->");
-                OnAttackLifePoints();
-                GameObject.Find("NotificationsBox").GetComponentInChildren<TextMesh>().text = currentlySelectedCard.CardName + " Attacked Lifepoints";
-
+                Debug.Log("Selected is Spell and And About to Select is Monster...trying to equip-->");
+                foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.FaceDownCardsInMonsterZone)
+                {
+                    if (c.CardName == toSelect.getCardName())
+                    {
+                        OnEquip(c as MonsterCard);
+                    }
+                }
+                foreach (Assets.Scripts.BattleHandler.Cards.Card c in me.MeReadOnly.FaceUpMonsters)
+                {
+                    if (c.CardName == toSelect.getCardName())
+                    {
+                        OnEquip(c as MonsterCard);
+                    }
+                }
             }
             if (attackWorked == false)
             {
@@ -787,17 +799,36 @@ public class GameManager : MonoBehaviour
         updateLayout();
     }
 
+    void OnEquip(MonsterCard toEquip)
+    {
+        if (getCurrentlySelectedCard() != null)
+        {
+            Debug.Log("Trying to equip: " + getCurrentlySelectedCard().CardName + " to "+toEquip.CardName+". My Id is=" + me.id);
+            for (int i = 0; i < me.Hand.Count; i++)
+            {
+                if (me.Hand[i] == getCurrentlySelectedCard())
+                {
+                    netManager.Equip(toEquip.CardName, i, me.id);
+                }
+            }
+            updateLayout();
+        }
+    }
+
     void OnSpell()
     {
-        Debug.Log("Trying to cast: " + getCurrentlySelectedCard().CardName + ". My Id is=" + me.id);
-        for (int i = 0; i < me.Hand.Count; i++)
+        if (getCurrentlySelectedCard() != null)
         {
-            if (me.Hand[i] == getCurrentlySelectedCard())
+            Debug.Log("Trying to cast: " + getCurrentlySelectedCard().CardName + ". My Id is=" + me.id);
+            for (int i = 0; i < me.Hand.Count; i++)
             {
-                netManager.Spell(i, me.id);
+                if (me.Hand[i] == getCurrentlySelectedCard())
+                {
+                    netManager.Spell(i, me.id);
+                }
             }
+            updateLayout();
         }
-        updateLayout();
     }
 
     void OnSet()
@@ -805,24 +836,27 @@ public class GameManager : MonoBehaviour
 
     }
 
-    void OnAttackLifePoints()
+    internal void OnAttackLifePoints()
     {
-        Debug.Log("Trying to attack lifepoints with : " + getCurrentlySelectedCard().CardName + ". My Id is=" + me.id);
-        for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
+        if (getCurrentlySelectedCard() != null)
         {
-            if (me.FaceDownCardsInMonsterZone[i] == getCurrentlySelectedCard())
+            Debug.Log("Trying to attack lifepoints with : " + getCurrentlySelectedCard().CardName + ". My Id is=" + me.id);
+            for (int i = 0; i < me.FaceDownCardsInMonsterZone.Count; i++)
             {
-                netManager.AttackLP(i, me.id);
+                if (me.FaceDownCardsInMonsterZone[i] == getCurrentlySelectedCard())
+                {
+                    netManager.AttackLP(i, me.id);
+                }
             }
-        }
-        for (int i = 0; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
-        {
-            if (me.MeReadOnly.FaceUpMonsters[i] == getCurrentlySelectedCard())
+            for (int i = 0; i < me.MeReadOnly.FaceUpMonsters.Count; i++)
             {
-                netManager.AttackLP(i + me.FaceDownCardsInMonsterZone.Count, me.id);
+                if (me.MeReadOnly.FaceUpMonsters[i] == getCurrentlySelectedCard())
+                {
+                    netManager.AttackLP(i + me.FaceDownCardsInMonsterZone.Count, me.id);
+                }
             }
+            updateLayout();
         }
-        updateLayout();
     }
 
     void OnAttack()
@@ -899,6 +933,20 @@ public class GameManager : MonoBehaviour
             }
         }
         updateLayout();
+    }
+
+    internal void OnChangeMode()
+    {
+        if (myCurrentlySelectedCard is MonsterCard && me.FaceDownCardsInMonsterZone.Contains(myCurrentlySelectedCard as MonsterCard))
+        {
+            Debug.Log("Trying to change my card's mode" + ". My Id is=" + me.id);
+            netManager.ChangeMode(me.id,1,me.FaceDownCardsInMonsterZone.IndexOf(myCurrentlySelectedCard as MonsterCard));
+        }
+        else if(myCurrentlySelectedCard is MonsterCard && me.MeReadOnly.FaceUpMonsters.Contains(myCurrentlySelectedCard as MonsterCard))
+        {
+            Debug.Log("Trying to change my card's mode" + ". My Id is=" + me.id);
+            netManager.ChangeMode(me.id, 0, me.MeReadOnly.FaceUpMonsters.IndexOf(myCurrentlySelectedCard as MonsterCard));
+        }
     }
 
     internal void OnEndTurn()
