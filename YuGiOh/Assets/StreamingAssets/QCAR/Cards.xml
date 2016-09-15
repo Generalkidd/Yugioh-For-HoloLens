@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="Dark_Magician_Girl" size="0.060452 0.088587" />
+    <ImageTarget name="Mystical_Elf" size="0.060452 0.088037" />
+    <ImageTarget name="Buster_Blader" size="0.060452 0.088485" />
+    <ImageTarget name="The_Winged_Dragon_Of_Ra" size="0.060452 0.088037" />
+    <ImageTarget name="Slife_The_Sky_Dragon" size="0.060452 0.088122" />
+    <ImageTarget name="Obelisk_The_Tormentor" size="0.060452 0.088610" />
+    <ImageTarget name="Blue_Eyes_White_Dragon" size="0.060452 0.087655" />
+  </Tracking>
+</QCARConfig>

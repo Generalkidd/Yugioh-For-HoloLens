@@ -10961,7 +10961,7 @@ You can specify either the absolute path or the relative path. When the path you
     </member>
     <member name="T:UnityEngine.Display">
       <summary>
-        <para>Provides access to a display / screen for rendering operations. </para>
+        <para>Provides access to a display / screen for rendering operations.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Display.colorBuffer">
@@ -10981,28 +10981,27 @@ You can specify either the absolute path or the relative path. When the path you
     </member>
     <member name="P:UnityEngine.Display.main">
       <summary>
-        <para>Main Display.
-</para>
+        <para>Main Display.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Display.renderingHeight">
       <summary>
-        <para>Rendering Height.</para>
+        <para>Vertical resolution that the display is rendering at.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Display.renderingWidth">
       <summary>
-        <para>Rendering Width.</para>
+        <para>Horizontal resolution that the display is rendering at.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Display.systemHeight">
       <summary>
-        <para>System Height.</para>
+        <para>Vertical native display resolution.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.Display.systemWidth">
       <summary>
-        <para>System Width.</para>
+        <para>Horizontal native display resolution.</para>
       </summary>
     </member>
     <member name="M:UnityEngine.Display.Activate">
@@ -11026,7 +11025,7 @@ You can specify either the absolute path or the relative path. When the path you
     </member>
     <member name="M:UnityEngine.Display.SetParams(System.Int32,System.Int32,System.Int32,System.Int32)">
       <summary>
-        <para>This Windows only function can be used to set Size and Position of the Screen when Multi-Display is enabled.</para>
+        <para>Set rendering size and position on screen (Windows only).</para>
       </summary>
       <param name="width">Change Window Width (Windows Only).</param>
       <param name="height">Change Window Height (Windows Only).</param>
@@ -11035,10 +11034,10 @@ You can specify either the absolute path or the relative path. When the path you
     </member>
     <member name="M:UnityEngine.Display.SetRenderingResolution(System.Int32,System.Int32)">
       <summary>
-        <para>Sets Rendering resolution for the display.</para>
+        <para>Sets rendering resolution for the display.</para>
       </summary>
-      <param name="w">Rendering width.</param>
-      <param name="h">Rendering height.</param>
+      <param name="w">Rendering width in pixels.</param>
+      <param name="h">Rendering height in pixels.</param>
     </member>
     <member name="T:UnityEngine.DistanceJoint2D">
       <summary>
@@ -23901,6 +23900,11 @@ Only usable on Android, Windows Phone or Windows Tablets.</para>
         <para>Shadow mapping constant bias.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.Light.shadowCustomResolution">
+      <summary>
+        <para>The custom resolution of the shadow map.</para>
+      </summary>
+    </member>
     <member name="P:UnityEngine.Light.shadowNearPlane">
       <summary>
         <para>Near plane value to use for shadow frustums.</para>
@@ -32227,6 +32231,11 @@ If a string, the string will be converted to raw bytes via &lt;a href="http:msdn
         <para>Choose what action to perform when particles are outside the trigger volume.</para>
       </summary>
     </member>
+    <member name="P:UnityEngine.ParticleSystem.TriggerModule.radiusScale">
+      <summary>
+        <para>A multiplier applied to the size of each particle before overlaps are processed.</para>
+      </summary>
+    </member>
     <member name="M:UnityEngine.ParticleSystem.TriggerModule.GetCollider(System.Int32)">
       <summary>
         <para>Get a collision shape associated with this particle system trigger.</para>
@@ -35107,6 +35116,11 @@ frame. Minimum value is 1 and maximum is 33.</para>
     <member name="P:UnityEngine.QualitySettings.shadowProjection">
       <summary>
         <para>Directional light shadow projection.</para>
+      </summary>
+    </member>
+    <member name="P:UnityEngine.QualitySettings.shadowResolution">
+      <summary>
+        <para>The default resolution of the shadow maps.</para>
       </summary>
     </member>
     <member name="P:UnityEngine.QualitySettings.softVegetation">
@@ -41015,6 +41029,31 @@ It is required that the GameObject is at the root of its current scene.</para>
     <member name="F:UnityEngine.ShadowProjection.StableFit">
       <summary>
         <para>Stable shadow maps with spherical fadeout.</para>
+      </summary>
+    </member>
+    <member name="T:UnityEngine.ShadowResolution">
+      <summary>
+        <para>Default shadow resolution.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ShadowResolution.High">
+      <summary>
+        <para>High shadow map resolution.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ShadowResolution.Low">
+      <summary>
+        <para>Low shadow map resolution.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ShadowResolution.Medium">
+      <summary>
+        <para>Medium shadow map resolution.</para>
+      </summary>
+    </member>
+    <member name="F:UnityEngine.ShadowResolution.VeryHigh">
+      <summary>
+        <para>Very high shadow map resolution.</para>
       </summary>
     </member>
     <member name="T:UnityEngine.SharedBetweenAnimatorsAttribute">

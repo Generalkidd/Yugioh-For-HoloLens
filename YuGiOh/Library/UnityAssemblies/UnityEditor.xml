@@ -12022,12 +12022,6 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
         <para>GameObject utility functions.</para>
       </summary>
     </member>
-    <member name="M:UnityEditor.GameObjectUtility.Align(UnityEngine.GameObject)">
-      <summary>
-        <para>Resets a GameObject local position, rotation and scale.</para>
-      </summary>
-      <param name="child">The GameObject to position.</param>
-    </member>
     <member name="M:UnityEditor.GameObjectUtility.AreStaticEditorFlagsSet(UnityEngine.GameObject,UnityEditor.StaticEditorFlags)">
       <summary>
         <para>Returns true if the passed in StaticEditorFlags are set on the GameObject specified.</para>
@@ -12108,13 +12102,6 @@ More information - https:msdn.microsoft.comen-uslibrary/dn584397(v=vs.110).aspx.
       <returns>
         <para>Unique name for a new GameObject.</para>
       </returns>
-    </member>
-    <member name="M:UnityEditor.GameObjectUtility.SetLayerRecursively(UnityEngine.GameObject,System.Int32)">
-      <summary>
-        <para>Recursively sets the layer of a GameObject and its children.</para>
-      </summary>
-      <param name="go">The GameObject recursively visited.</param>
-      <param name="layer">The layer to set.</param>
     </member>
     <member name="M:UnityEditor.GameObjectUtility.SetNavMeshArea(UnityEngine.GameObject,System.Int32)">
       <summary>

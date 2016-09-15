@@ -4,37 +4,37 @@
     <assembly>
       <name>UnityEngine.HoloLens</name>
     </assembly>
-    <member name="T:UnityEngine.HoloLens.AudioSpatializer">
+    <member name="T:UnityEngine.VR.WSA.AudioSpatializer">
       <summary>
         <para>This component enables control over properties attached to AudioSource components for spatial sound in Unity.</para>
       </summary>
     </member>
-    <member name="F:UnityEngine.HoloLens.AudioSpatializer.bypassUnityVolumeAttenuation">
+    <member name="F:UnityEngine.VR.WSA.AudioSpatializer.bypassUnityVolumeAttenuation">
       <summary>
         <para>Bypass Unity's curves.</para>
       </summary>
     </member>
-    <member name="F:UnityEngine.HoloLens.AudioSpatializer.gainDistance">
+    <member name="F:UnityEngine.VR.WSA.AudioSpatializer.gainDistance">
       <summary>
         <para>A distance scalar for how much distance it takes for attenuation to take a target effect.</para>
       </summary>
     </member>
-    <member name="F:UnityEngine.HoloLens.AudioSpatializer.maximumGain">
+    <member name="F:UnityEngine.VR.WSA.AudioSpatializer.maximumGain">
       <summary>
         <para>Greatest possible gain.</para>
       </summary>
     </member>
-    <member name="F:UnityEngine.HoloLens.AudioSpatializer.minimumGain">
+    <member name="F:UnityEngine.VR.WSA.AudioSpatializer.minimumGain">
       <summary>
         <para>Lowest possible gain.</para>
       </summary>
     </member>
-    <member name="F:UnityEngine.HoloLens.AudioSpatializer.roomSize">
+    <member name="F:UnityEngine.VR.WSA.AudioSpatializer.roomSize">
       <summary>
         <para>Describes room size to for audio effects.</para>
       </summary>
     </member>
-    <member name="T:UnityEngine.HoloLens.AudioSpatializer.RoomSize">
+    <member name="T:UnityEngine.VR.WSA.AudioSpatializer.RoomSize">
       <summary>
         <para>Describes room size to for audio effects.</para>
       </summary>

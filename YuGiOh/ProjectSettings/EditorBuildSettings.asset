@@ -11,3 +11,9 @@ EditorBuildSettings:
     path: Assets/Scenes/LocalMultiplayer.unity
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Vuforia-0-Splash.unity
+  - enabled: 1
+    path: Assets/Scenes/Vuforia-1-Loading.unity
+  - enabled: 1
+    path: Assets/Scenes/Vuforia-2-Hololens.unity
