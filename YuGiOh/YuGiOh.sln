@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.CSharp.Plugins", "YuGiOh.CSharp.Plugins.csproj", "{ECF9155E-EC88-9050-8999-7C7741186DC3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.Plugins", "YuGiOh.Plugins.csproj", "{D4092967-E880-F172-AC9B-29F079F41BED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.CSharp", "YuGiOh.CSharp.csproj", "{9C1BB5AF-AFE7-4518-A62D-A80848938A85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh", "YuGiOh.csproj", "{77E0FBA2-805D-CD34-377E-A006DFA8A06A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.CSharp.Editor", "YuGiOh.CSharp.Editor.csproj", "{01387728-BCF4-BB99-5A99-11ED04FDF9FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YuGiOh.Editor", "YuGiOh.Editor.csproj", "{007C376D-410F-E3A8-157E-97DA9DCDCFDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,18 +13,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ECF9155E-EC88-9050-8999-7C7741186DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECF9155E-EC88-9050-8999-7C7741186DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECF9155E-EC88-9050-8999-7C7741186DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECF9155E-EC88-9050-8999-7C7741186DC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9C1BB5AF-AFE7-4518-A62D-A80848938A85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{01387728-BCF4-BB99-5A99-11ED04FDF9FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{01387728-BCF4-BB99-5A99-11ED04FDF9FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{01387728-BCF4-BB99-5A99-11ED04FDF9FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{01387728-BCF4-BB99-5A99-11ED04FDF9FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4092967-E880-F172-AC9B-29F079F41BED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4092967-E880-F172-AC9B-29F079F41BED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4092967-E880-F172-AC9B-29F079F41BED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4092967-E880-F172-AC9B-29F079F41BED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77E0FBA2-805D-CD34-377E-A006DFA8A06A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77E0FBA2-805D-CD34-377E-A006DFA8A06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77E0FBA2-805D-CD34-377E-A006DFA8A06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77E0FBA2-805D-CD34-377E-A006DFA8A06A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{007C376D-410F-E3A8-157E-97DA9DCDCFDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{007C376D-410F-E3A8-157E-97DA9DCDCFDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{007C376D-410F-E3A8-157E-97DA9DCDCFDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{007C376D-410F-E3A8-157E-97DA9DCDCFDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

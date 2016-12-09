@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Vuforia-2-Hololens.unity
+- path: Assets/Scenes/MainScene.unity
   isLoaded: 1
   isActive: 1
