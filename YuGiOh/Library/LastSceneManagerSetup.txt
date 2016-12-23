@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/MainMenu.unity
+- path: Assets/Single User Test (Legacy)/LegacyMode.unity
   isLoaded: 1
   isActive: 1
