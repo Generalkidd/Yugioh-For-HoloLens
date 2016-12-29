@@ -1,0 +1,8 @@
+Assembly-CSharp-firstpass.dll
+Assembly-CSharp.dll
+UnityEngine.UI.dll
+UnityEngine.HoloLens.dll
+UnityEngine.Networking.dll
+Vuforia.UnityExtensions.dll
+UnityEngine.VR.dll
+Photon3Unity3D.dll

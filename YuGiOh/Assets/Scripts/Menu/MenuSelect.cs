@@ -36,6 +36,6 @@ public class MenuSelect : MonoBehaviour
     void OnReleased()
     {
         tmp = GameObject.Find("MenuTitle");
-        tmp.GetComponent<MenuManager>().Action = Action;
+        tmp.GetComponent<MenuManager>().Action = this.GetComponent<TextMesh>().text;
     }
 }
