@@ -34,7 +34,7 @@ public class MenuAnimator : MonoBehaviour
         mVisibility = 0;
         mVisible = false;
         this.transform.position = mInvisiblePos;
-        mCanvas = GetComponentInChildren<Canvas>();
+        mCanvas = GetComponentsInChildren<Canvas>(true)[0];
         mMenuOptions = FindObjectOfType<MenuOptions>();
     }
     
@@ -45,7 +45,8 @@ public class MenuAnimator : MonoBehaviour
         if (mVisible)
         {
             // Switch ON the UI Canvas.
-            if (!mCanvas.enabled) 
+            mCanvas.gameObject.SetActive(true);
+            if (!mCanvas.enabled)
                 mCanvas.enabled = true;
 
             if (mVisibility < 1)
@@ -64,6 +65,7 @@ public class MenuAnimator : MonoBehaviour
                 this.transform.position = Vector3.Slerp(mInvisiblePos, mVisiblePos, mVisibility);
 
                 // Switch OFF the UI Canvas when the transition is done.
+                mCanvas.gameObject.SetActive(false);
                 if (mVisibility < 0.01f)
                 {
                     if (mCanvas.enabled)

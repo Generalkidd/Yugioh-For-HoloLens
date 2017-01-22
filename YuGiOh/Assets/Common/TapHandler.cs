@@ -47,11 +47,7 @@ public class TapHandler : MonoBehaviour
         // On Android, the Back button is mapped to the Esc key
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-#if (UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
-            Application.LoadLevel("Vuforia-1-About");   
-#else // UNITY_5_3 or above
             UnityEngine.SceneManagement.SceneManager.LoadScene("Vuforia-1-About");
-#endif
         }
 #endif
     }

@@ -27,11 +27,7 @@ namespace Vuforia
         void Awake()
         {
             // Check for an initialization error on start.
-            VuforiaAbstractBehaviour vuforiaBehaviour = (VuforiaAbstractBehaviour)FindObjectOfType(typeof(VuforiaAbstractBehaviour));
-            if (vuforiaBehaviour)
-            {
-                vuforiaBehaviour.RegisterVuforiaInitErrorCallback(OnVuforiaInitializationError);
-            }
+            VuforiaRuntime.Instance.RegisterVuforiaInitErrorCallback(OnVuforiaInitializationError);
         }
 
         void OnGUI()
@@ -47,11 +43,7 @@ namespace Vuforia
         /// </summary>
         void OnDestroy()
         {
-            VuforiaAbstractBehaviour vuforiaBehaviour = (VuforiaAbstractBehaviour)FindObjectOfType(typeof(VuforiaAbstractBehaviour));
-            if (vuforiaBehaviour)
-            {
-                vuforiaBehaviour.UnregisterVuforiaInitErrorCallback(OnVuforiaInitializationError);
-            }
+            VuforiaRuntime.Instance.UnregisterVuforiaInitErrorCallback(OnVuforiaInitializationError);
         }
 
         #endregion // UNTIY_MONOBEHAVIOUR_METHODS

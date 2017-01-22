@@ -356,11 +356,7 @@ namespace Vuforia.EditorClasses
         [PostProcessBuildAttribute(1)]
         public static void OnPostprocessBuild(BuildTarget target, string pathToBuiltProject)
         {
-#if UNITY_5_0
-            if (target == BuildTarget.iPhone)
-#else // UNITY_5_1 or above
             if (target == BuildTarget.iOS)
-#endif
             {
                 var xCodeProjFullPath = Path.Combine(pathToBuiltProject, "Unity-iPhone.xcodeproj");
 

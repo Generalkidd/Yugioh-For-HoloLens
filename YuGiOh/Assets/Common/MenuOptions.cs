@@ -26,6 +26,9 @@ public class MenuOptions : MonoBehaviour
         mCamSettings = FindObjectOfType<CameraSettings>();
         mTrackableSettings = FindObjectOfType<TrackableSettings>();
         mMenuAnim = FindObjectOfType<MenuAnimator>();
+
+        var vuforia = VuforiaARController.Instance;
+        vuforia.RegisterOnPauseCallback(OnPaused);
     }
     #endregion //MONOBEHAVIOUR_METHODS
 
@@ -33,11 +36,7 @@ public class MenuOptions : MonoBehaviour
     #region PUBLIC_METHODS
     public void ShowAboutPage()
     {
-#if (UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
-        Application.LoadLevel("Vuforia-1-About");
-#else
         UnityEngine.SceneManagement.SceneManager.LoadScene("Vuforia-1-About");
-#endif
     }
 
     public void ToggleAutofocus()
@@ -45,29 +44,31 @@ public class MenuOptions : MonoBehaviour
         Toggle autofocusToggle = FindUISelectableWithText<Toggle>("Autofocus");
         if (autofocusToggle && mCamSettings)
             mCamSettings.SwitchAutofocus(autofocusToggle.isOn);
-        
-        CloseMenu();
     }
 
     public void ToggleTorch()
     {
         Toggle flashToggle = FindUISelectableWithText<Toggle>("Flash");
-        if (flashToggle && mCamSettings) 
+        if (flashToggle && mCamSettings)
         {
-            mCamSettings.SwitchFlashTorch (flashToggle.isOn);
+            mCamSettings.SwitchFlashTorch(flashToggle.isOn);
 
             // Update UI toggle status (ON/OFF) in case the flash switch failed
             flashToggle.isOn = mCamSettings.IsFlashTorchEnabled();
         }
-        CloseMenu();
     }
 
     public void SelectCamera(bool front)
     {
         if (mCamSettings)
-            mCamSettings.SelectCamera(front ? CameraDevice.CameraDirection.CAMERA_FRONT : CameraDevice.CameraDirection.CAMERA_BACK);
-        
-        CloseMenu();
+		{
+			mCamSettings.SelectCamera(front ? CameraDevice.CameraDirection.CAMERA_FRONT : CameraDevice.CameraDirection.CAMERA_BACK);
+
+			// Toggle flash if it is on while switching to front camera
+			Toggle flashToggle = FindUISelectableWithText<Toggle>("Flash");
+			if (front && flashToggle && flashToggle.isOn)
+				ToggleTorch();
+		}
     }
 
     public void ToggleExtendedTracking()
@@ -75,16 +76,12 @@ public class MenuOptions : MonoBehaviour
         Toggle extTrackingToggle = FindUISelectableWithText<Toggle>("Extended");
         if (extTrackingToggle && mTrackableSettings)
             mTrackableSettings.SwitchExtendedTracking(extTrackingToggle.isOn);
-        
-        CloseMenu();
     }
 
     public void ActivateDataset(string datasetName)
     {
         if (mTrackableSettings)
             mTrackableSettings.ActivateDataSet(datasetName);
-
-        CloseMenu();
     }
 
     public void UpdateUI()
@@ -110,12 +107,16 @@ public class MenuOptions : MonoBehaviour
             rearCamToggle.isOn = !mCamSettings.IsFrontCameraActive();
         
         Toggle stonesAndChipsToggle = FindUISelectableWithText<Toggle>("Stones");
-        if (stonesAndChipsToggle && mTrackableSettings)
-            stonesAndChipsToggle.isOn = mTrackableSettings.GetActiveDatasetName().Contains("Stones");
-
         Toggle tarmacToggle = FindUISelectableWithText<Toggle>("Tarmac");
-        if (tarmacToggle && mTrackableSettings)
-            tarmacToggle.isOn = mTrackableSettings.GetActiveDatasetName().Contains("Tarmac");
+
+        if (mTrackableSettings)
+        {
+            if (stonesAndChipsToggle && stonesAndChipsToggle.gameObject.activeInHierarchy)
+                stonesAndChipsToggle.isOn = mTrackableSettings.GetActiveDatasetName().Contains("Stones");
+
+            if (tarmacToggle && mTrackableSettings && tarmacToggle.gameObject.activeInHierarchy)
+                tarmacToggle.isOn = mTrackableSettings.GetActiveDatasetName().Contains("Tarmac");
+        }        
     }
 
     public void CloseMenu()
@@ -129,7 +130,7 @@ public class MenuOptions : MonoBehaviour
     #region PROTECTED_METHODS
     protected T FindUISelectableWithText<T>(string text) where T : UnityEngine.UI.Selectable
     {
-        T[] uiElements = GetComponentsInChildren<T>();
+        T[] uiElements = GetComponentsInChildren<T>(true);
         foreach (var uielem in uiElements)
         {
             string childText = uielem.GetComponentInChildren<Text>().text;
@@ -139,4 +140,21 @@ public class MenuOptions : MonoBehaviour
         return null;
     }
     #endregion //PROTECTED_METHODS
+
+    #region PRIVATE_METHODS
+    private void OnPaused(bool paused)
+    {
+        bool appResumed = !paused;
+        if (appResumed)
+        {
+            // The flash torch is switched off by the OS automatically when app is paused.
+            // On resume, update torch UI toggle to match torch status.
+            Toggle flashToggle = FindUISelectableWithText<Toggle>("Flash");
+
+            if (flashToggle != null)
+                flashToggle.isOn = mCamSettings.IsFlashTorchEnabled();
+        }
+    }
+    #endregion //PRIVATE_METHODS
+
 }

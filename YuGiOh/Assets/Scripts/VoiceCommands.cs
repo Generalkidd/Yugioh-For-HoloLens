@@ -4,10 +4,15 @@ Copyright (c) 2016 PTC Inc. All Rights Reserved.
 Vuforia is a trademark of PTC Inc., registered in the United States and other 
 countries.
 ===============================================================================*/
+#if ENABLE_HOLOLENS_MODULE_API || UNITY_5_5_OR_NEWER
+#if UNITY_WSA_10_0
+#define HOLOLENS_API_AVAILABLE
+#endif
+#endif
 
 using UnityEngine;
 
-#if ENABLE_HOLOLENS_MODULE_API
+#if HOLOLENS_API_AVAILABLE
 using UnityEngine.Windows.Speech;
 #endif
 
@@ -21,8 +26,8 @@ public class VoiceCommands : MonoBehaviour
 // So that this builds against older versions of the Unity DLLs we need to 
 // #if the code that uses HoloLens specific features out.
 // Unity have suggested that UNITY_HOLOGRAPHIC should be defined but we
-// have not seen this work
-#if ENABLE_HOLOLENS_MODULE_API
+    // have not seen this work
+#if HOLOLENS_API_AVAILABLE
     
     #region PRIVATE_MEMBERS
     KeywordRecognizer keywordRecognizer = null;
@@ -93,6 +98,6 @@ public class VoiceCommands : MonoBehaviour
     }
     #endregion //PRIVATE_METHODS
 
-#endif // ENABLE_HOLOLENS_MODULE_API
+#endif // HOLOLENS_API_AVAILABLE
 
 }

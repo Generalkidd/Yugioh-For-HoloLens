@@ -15,11 +15,7 @@ public class AboutScreen : MonoBehaviour
     public void OnStartAR()
     {
         Debug.Log("Starttt");
-#if (UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
-        Application.LoadLevel("Vuforia-2-Loading");
-#else // UNITY_5_3 or above
         UnityEngine.SceneManagement.SceneManager.LoadScene("Vuforia-2-Loading");
-#endif
     }
     #endregion // PUBLIC_METHODS
 

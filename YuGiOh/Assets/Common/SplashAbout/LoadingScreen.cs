@@ -42,11 +42,7 @@ public class LoadingScreen : MonoBehaviour
     #region PRIVATE_METHODS
     private void LoadNextSceneAsync()
     {
-#if (UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
-        Application.LoadLevelAsync(Application.loadedLevel+1);
-#else // UNITY_5_3 or above
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1);
-#endif
     }
 
     private RawImage FindSpinnerImage()

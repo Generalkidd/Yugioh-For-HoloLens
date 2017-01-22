@@ -38,13 +38,13 @@ public class VRIntegrationHelper : MonoBehaviour
 
     void Start()
     {
-        VuforiaBehaviour.Instance.RegisterVuforiaStartedCallback(OnVuforiaStarted);
+        VuforiaARController.Instance.RegisterVuforiaStartedCallback(OnVuforiaStarted);
     }
 
     void OnVuforiaStarted()
     {
-        mLeftCamera = DigitalEyewearBehaviour.Instance.PrimaryCamera;
-        mRightCamera = DigitalEyewearBehaviour.Instance.SecondaryCamera;
+        mLeftCamera = DigitalEyewearARController.Instance.PrimaryCamera;
+        mRightCamera = DigitalEyewearARController.Instance.SecondaryCamera;
 
         mLeftExcessAreaBehaviour = mLeftCamera.GetComponent<HideExcessAreaAbstractBehaviour>();
         mRightExcessAreaBehaviour = mRightCamera.GetComponent<HideExcessAreaAbstractBehaviour>();
@@ -58,8 +58,8 @@ public class VRIntegrationHelper : MonoBehaviour
             if (mLeftCameraDataAcquired && mRightCameraDataAcquired)
             {
                 // make sure the central anchor point is set to the latest head tracking pose:
-                DigitalEyewearBehaviour.Instance.CentralAnchorPoint.localRotation = mLeftCamera.transform.localRotation;
-                DigitalEyewearBehaviour.Instance.CentralAnchorPoint.localPosition = mLeftCamera.transform.localPosition;
+                DigitalEyewearARController.Instance.CentralAnchorPoint.localRotation = mLeftCamera.transform.localRotation;
+                DigitalEyewearARController.Instance.CentralAnchorPoint.localPosition = mLeftCamera.transform.localPosition;
 
                 // temporarily set the primary and secondary cameras to their offset position and set the pixelrect they will have for rendering
                 Vector3 localPosLeftCam = mLeftCamera.transform.localPosition;
@@ -75,32 +75,30 @@ public class VRIntegrationHelper : MonoBehaviour
                 mRightCamera.pixelRect = mRightCameraPixelRect;
 
                 BackgroundPlaneBehaviour bgPlane = mLeftCamera.GetComponentInChildren<BackgroundPlaneBehaviour>();
-                bgPlane.BackgroundOffset = mLeftCamera.transform.position - DigitalEyewearBehaviour.Instance.CentralAnchorPoint.position;
+                bgPlane.BackgroundOffset = mLeftCamera.transform.position - DigitalEyewearARController.Instance.CentralAnchorPoint.position;
 
-                mLeftExcessAreaBehaviour.PlaneOffset = mLeftCamera.transform.position - DigitalEyewearBehaviour.Instance.CentralAnchorPoint.position;
-                mRightExcessAreaBehaviour.PlaneOffset = mRightCamera.transform.position - DigitalEyewearBehaviour.Instance.CentralAnchorPoint.position;
+                mLeftExcessAreaBehaviour.PlaneOffset = mLeftCamera.transform.position - DigitalEyewearARController.Instance.CentralAnchorPoint.position;
+                mRightExcessAreaBehaviour.PlaneOffset = mRightCamera.transform.position - DigitalEyewearARController.Instance.CentralAnchorPoint.position;
 
                 if (TrackableParent != null)
                     TrackableParent.localPosition = Vector3.zero;
 
                 // update Vuforia explicitly
-                VuforiaBehaviour.Instance.UpdateState(false, true);
+                VuforiaARController.Instance.UpdateState(false, true);
 
                 if (TrackableParent != null)
                     TrackableParent.position += bgPlane.BackgroundOffset;
 
                 // set the projection matrices for skewing
-                VuforiaBehaviour.Instance.ApplyCorrectedProjectionMatrix(mLeftCameraMatrixOriginal, true);
-                VuforiaBehaviour.Instance.ApplyCorrectedProjectionMatrix(mRightCameraMatrixOriginal, false);
+                VuforiaARController.Instance.ApplyCorrectedProjectionMatrix(mLeftCameraMatrixOriginal, true);
+                VuforiaARController.Instance.ApplyCorrectedProjectionMatrix(mRightCameraMatrixOriginal, false);
 
-#if !(UNITY_5_2 || UNITY_5_1 || UNITY_5_0) // UNITY_5_3 and above
 
                 // read back the projection matrices set by Vuforia and set them to the stereo cameras
                 // not sure if the matrices would automatically propagate between the left and right, so setting it explicitly twice
                 mLeftCamera.SetStereoProjectionMatrices(mLeftCamera.projectionMatrix, mRightCamera.projectionMatrix);
                 mRightCamera.SetStereoProjectionMatrices(mLeftCamera.projectionMatrix, mRightCamera.projectionMatrix);
 
-#endif
                 // reset the left camera
                 mLeftCamera.transform.localPosition = localPosLeftCam;
                 mLeftCamera.pixelRect = leftCamPixelRect;

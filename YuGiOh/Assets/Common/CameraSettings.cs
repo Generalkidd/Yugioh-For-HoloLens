@@ -23,7 +23,7 @@ public class CameraSettings : MonoBehaviour
     #region MONOBEHAVIOUR_METHODS
     void Start () 
     {
-        VuforiaAbstractBehaviour vuforia = FindObjectOfType<VuforiaAbstractBehaviour>();
+        var vuforia = VuforiaARController.Instance;
         vuforia.RegisterVuforiaStartedCallback(OnVuforiaStarted);
         vuforia.RegisterOnPauseCallback(OnPaused);
     }
@@ -125,8 +125,10 @@ public class CameraSettings : MonoBehaviour
                 CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_CONTINUOUSAUTO);
             else
                 CameraDevice.Instance.SetFocusMode(CameraDevice.FocusMode.FOCUS_MODE_NORMAL);
-
-            // Set the torch flag to false on resume (cause the flash torch is switched off by the OS automatically)
+        }
+        else
+        {
+            // Set the torch flag to false on pause (because the flash torch is switched off by the OS automatically)
             mFlashTorchEnabled = false;
         }
     }

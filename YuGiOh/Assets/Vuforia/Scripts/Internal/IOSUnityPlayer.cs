@@ -35,9 +35,9 @@ namespace Vuforia
         }
 
         /// <summary>
-        /// Initializes Vuforia; called from Start
+        /// Initializes Vuforia
         /// </summary>
-        public VuforiaUnity.InitError Start(string licenseKey)
+        public VuforiaUnity.InitError InitializeVuforia(string licenseKey)
         {
             VuforiaRenderer.RendererAPI rendererAPI = VuforiaRenderer.Instance.GetRendererAPI();
             int errorCode = initQCARiOS((int)rendererAPI, (int)Screen.orientation, licenseKey);
@@ -45,6 +45,12 @@ namespace Vuforia
                 InitializeSurface();
             return (VuforiaUnity.InitError)errorCode;
         }
+
+        /// <summary>
+        /// Called on start each time a new scene is loaded
+        /// </summary>
+        public void StartScene()
+        { }
 
         /// <summary>
         /// Called from Update, checks for various life cycle events that need to be forwarded

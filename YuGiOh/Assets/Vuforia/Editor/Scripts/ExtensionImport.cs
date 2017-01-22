@@ -46,6 +46,18 @@ namespace Vuforia.EditorClasses
                     imp.SetCompatibleWithEditor(true);
                 }
             }
+
+
+
+            // create default Vuforia Configuration and check clipping shader
+            var config = VuforiaConfigurationEditor.LoadConfigurationObject();
+            var videoBgConfig = config.VideoBackground;
+            if (videoBgConfig.MatteShader == null && videoBgConfig.ClippingMode != HideExcessAreaAbstractBehaviour.CLIPPING_MODE.NONE)
+            {
+                Undo.RecordObject(config, "Setting Matte Shader");
+                videoBgConfig.SetDefaultMatteShader();
+                EditorUtility.SetDirty(config);
+            }
         }
         
         static void UpdatePlayerSettings()
@@ -75,12 +87,11 @@ namespace Vuforia.EditorClasses
                     PlayerSettings.Android.androidTVCompatibility = false;
                 }
 
-#if !UNITY_5_0 // UNITY_5_1 and newer
                 Debug.Log("Setting Android Graphics API to OpenGL ES 2.0.");
                 PlayerSettings.SetGraphicsAPIs(
                     BuildTarget.Android,
                     new UnityEngine.Rendering.GraphicsDeviceType[]{UnityEngine.Rendering.GraphicsDeviceType.OpenGLES2});
-#endif
+
                 // Here we set the scripting define symbols for Android
                 // so we can remember that the settings were set once.
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android,
@@ -112,6 +123,17 @@ namespace Vuforia.EditorClasses
                 PlayerSettings.SetScriptingDefineSymbolsForGroup(iOSBuildTarget, 
                                                                  iOSSymbols + ";" + VUFORIA_IOS_SETTINGS);
             }
+
+
+#if UNITY_5_4_OR_NEWER
+#if ! (UNITY_5_4_0 || UNITY_5_4_1)
+            if (PlayerSettings.iOS.cameraUsageDescription.Length == 0)
+            {
+                Debug.Log("Setting default camera usage description for iOS.");
+                PlayerSettings.iOS.cameraUsageDescription = "Camera access required for target detection and tracking";
+            }
+#endif
+#endif
 
             string wsaSymbols = PlayerSettings.GetScriptingDefineSymbolsForGroup(wsaBuildTarget);
             wsaSymbols = wsaSymbols ?? "";

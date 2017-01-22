@@ -27,11 +27,7 @@ public class AsyncSceneLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
 
-#if (UNITY_5_2 || UNITY_5_1 || UNITY_5_0)
-        Application.LoadLevel(Application.loadedLevel+1);
-#else
         UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex+1);
-#endif
     }
     #endregion //PRIVATE_METHODS
 }

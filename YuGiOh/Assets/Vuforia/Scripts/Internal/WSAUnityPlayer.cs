@@ -1,14 +1,22 @@
 /*==============================================================================
-Copyright (c) 2013-2014 Qualcomm Connected Experiences, Inc.
-All Rights Reserved.
+Copyright (c) 2016 PTC Inc. All Rights Reserved.
+
 Confidential and Proprietary - Protected under copyright and other laws.
+Vuforia is a trademark of PTC Inc., registered in the United States and other
+countries.
 ==============================================================================*/
+
+#if ENABLE_HOLOLENS_MODULE_API || UNITY_5_5_OR_NEWER
+#if UNITY_WSA_10_0
+#define HOLOLENS_API_AVAILABLE
+#endif
+#endif
 
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
-#if ENABLE_HOLOLENS_MODULE_API
+#if HOLOLENS_API_AVAILABLE
 using UnityEngine.VR.WSA;
 #endif
 
@@ -24,7 +32,7 @@ namespace Vuforia
     /// </summary>
     class WSAUnityPlayer : IUnityPlayer
     {
-#if ENABLE_HOLOLENS_MODULE_API
+#if HOLOLENS_API_AVAILABLE
         #region NESTED
 
         private class HoloLensApiImplementation : IHoloLensApiAbstraction
@@ -55,10 +63,37 @@ namespace Vuforia
                 {
                     WorldAnchor wa = mWorldAnchors[trackableID];
                     mWorldAnchors.Remove(trackableID);
+
+                    InternalDeleteWA(wa);
+                }
+            }
+
+            public void DeleteWorldAnchor(TrackableBehaviour trackableBehaviour)
+            {
+                WorldAnchor wa = trackableBehaviour.GetComponent<WorldAnchor>();
+                if (wa != null)
+                {
+                    if (mWorldAnchors.ContainsValue(wa))
+                    {
+                        // find all occurrences of that world anchor and remove them from the dict:
+                        List<TrackableIdPair> idsToRemove = new List<TrackableIdPair>();
+                        foreach (KeyValuePair<TrackableIdPair, WorldAnchor> kvp in mWorldAnchors)
+                            if (kvp.Value == wa)
+                                idsToRemove.Add(kvp.Key);
+
+                        foreach (TrackableIdPair trackableIdPair in idsToRemove)
+                            mWorldAnchors.Remove(trackableIdPair);
+                    }
+
+                    InternalDeleteWA(wa);
+                }
+            }
+
+            private void InternalDeleteWA(WorldAnchor wa)
+            {
                     // unregister for callbacks first
                     wa.OnTrackingChanged -= OnWorldAnchorTrackingChanged;
                     GameObject.DestroyImmediate(wa);
-                }
             }
 
             public void SetSpatialAnchorTrackingCallback(Action<TrackableIdPair, bool> trackingCallback)
@@ -83,10 +118,11 @@ namespace Vuforia
         }
 
         #endregion // NESTED
+
+        private static string UNITY_HOLOLENS_IDENTIFIER = "HoloLens";
 #endif
 
         private ScreenOrientation mScreenOrientation = ScreenOrientation.Unknown;
-        private static string UNITY_HOLOLENS_IDENTIFIER = "HoloLens";
 
         /// <summary>
         /// Loads native plugin libraries on platforms where this is explicitly required.
@@ -104,16 +140,16 @@ namespace Vuforia
         }
 
         /// <summary>
-        /// Initializes Vuforia; called from Start
+        /// Initializes Vuforia
         /// </summary>
-        public VuforiaUnity.InitError Start(string licenseKey)
+        public VuforiaUnity.InitError InitializeVuforia(string licenseKey)
         {
             int errorCode = initVuforiaWSA(licenseKey);
             if (errorCode >= 0)
             {
                 InitializeSurface();
 
-#if ENABLE_HOLOLENS_MODULE_API
+#if HOLOLENS_API_AVAILABLE
                 // This determines if we are starting on a holographic device
                 if (UnityEngine.VR.VRSettings.loadedDeviceName.Equals(UNITY_HOLOLENS_IDENTIFIER)
                     && UnityEngine.VR.VRDevice.isPresent)
@@ -122,14 +158,28 @@ namespace Vuforia
                     VuforiaUnity.SetHoloLensApiAbstraction(new HoloLensApiImplementation());
 
                     Debug.Log("Detected Holographic Device");
-                    if (!VuforiaUnity.SetHoloLensWorldCoordinateSystem(WorldManager.GetNativeISpatialCoordinateSystemPtr()))
-                    {
-                        return VuforiaUnity.InitError.INIT_ERROR;
-                    }
                 }
 #endif
             }
             return (VuforiaUnity.InitError)errorCode;
+        }
+
+        /// <summary>
+        /// Called on start each time a new scene is loaded
+        /// </summary>
+        public void StartScene()
+        {
+#if HOLOLENS_API_AVAILABLE
+                // This determines if we are starting on a holographic device
+                if (UnityEngine.VR.VRSettings.loadedDeviceName.Equals(UNITY_HOLOLENS_IDENTIFIER)
+                    && UnityEngine.VR.VRDevice.isPresent)
+                {
+                    if (!VuforiaUnity.SetHolographicAppCoordinateSystem(WorldManager.GetNativeISpatialCoordinateSystemPtr()))
+                    {
+                        Debug.LogError("Failed to set holographic coordinate system pointer!");
+                    }
+                }
+#endif
         }
 
         /// <summary>
