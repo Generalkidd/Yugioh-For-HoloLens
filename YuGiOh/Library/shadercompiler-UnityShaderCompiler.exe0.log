@@ -1,20 +1,54 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
+Cmd: preprocess
+  insize=2776 outsize=3300 ok=1
+Cmd: preprocess
+  insize=2161 outsize=1627 ok=1
+Cmd: preprocess
+  insize=4246 outsize=571 ok=1
+Cmd: preprocess
+  insize=688 outsize=688 ok=1
+Cmd: preprocess
+  insize=1819 outsize=997 ok=1
+Cmd: preprocess
+  insize=838 outsize=838 ok=1
+Cmd: preprocess
+  insize=12649 outsize=6122 ok=1
+Cmd: preprocess
+  insize=539 outsize=539 ok=1
+Cmd: preprocess
+  insize=2202 outsize=1668 ok=1
+Cmd: preprocess
+  insize=2828 outsize=2952 ok=1
+Cmd: preprocess
+  insize=2532 outsize=3059 ok=1
+Cmd: preprocess
+  insize=4206 outsize=589 ok=1
+Cmd: preprocess
+  insize=944 outsize=244 ok=1
+Cmd: preprocess
+  insize=1192 outsize=524 ok=1
+Cmd: preprocess
+  insize=445 outsize=445 ok=1
+Cmd: preprocess
+  insize=2584 outsize=2712 ok=1
+Cmd: preprocess
+  insize=2580 outsize=1976 ok=1
+Cmd: preprocess
+  insize=2540 outsize=1936 ok=1
+Cmd: preprocess
+  insize=699 outsize=699 ok=1
+Cmd: preprocess
+  insize=923 outsize=923 ok=1
+Cmd: preprocess
+  insize=290 outsize=290 ok=1
+Cmd: preprocess
+  insize=4390 outsize=717 ok=1
+Cmd: preprocess
+  insize=1218 outsize=549 ok=1
+Cmd: preprocess
+  insize=807 outsize=807 ok=1
 Cmd: compileSnippet
-  api=4 type=0 insize=830 outsize=442 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 UNITY_HARDWARE_TIER1 UNITY_COLORSPACE_GAMMA ok=1
+  api=4 type=0 insize=1517 outsize=666 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING SHADER_API_DESKTOP UNITY_HARDWARE_TIER3 UNITY_COLORSPACE_GAMMA ok=1
 Cmd: compileSnippet
-  api=4 type=1 insize=830 outsize=218 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 UNITY_HARDWARE_TIER1 UNITY_COLORSPACE_GAMMA ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=1020 outsize=542 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_HARDWARE_TIER2 UNITY_COLORSPACE_GAMMA ok=1
-Cmd: compileSnippet
-  api=8 type=0 insize=1020 outsize=790 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING SHADER_API_MOBILE UNITY_HARDWARE_TIER3 UNITY_COLORSPACE_GAMMA ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=1020 outsize=250 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 UNITY_HARDWARE_TIER1 UNITY_COLORSPACE_GAMMA ok=1
-Cmd: compileSnippet
-  api=8 type=1 insize=1020 outsize=330 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING SHADER_API_MOBILE UNITY_HARDWARE_TIER2 UNITY_COLORSPACE_GAMMA ok=1
-Cmd: compileSnippet
-  api=4 type=0 insize=3744 outsize=442 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 UNITY_HARDWARE_TIER1 UNITY_COLORSPACE_GAMMA ok=1
-Cmd: compileSnippet
-  api=4 type=1 insize=3744 outsize=578 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 UNITY_HARDWARE_TIER1 UNITY_COLORSPACE_GAMMA ok=1
-Cmd: compileSnippet
-  api=4 type=4 insize=3744 outsize=1462 kw= pd=UNITY_NO_SCREENSPACE_SHADOWS UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF3 UNITY_HARDWARE_TIER1 UNITY_COLORSPACE_GAMMA ok=1
+  api=4 type=1 insize=1517 outsize=666 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING SHADER_API_DESKTOP UNITY_HARDWARE_TIER3 UNITY_COLORSPACE_GAMMA ok=1

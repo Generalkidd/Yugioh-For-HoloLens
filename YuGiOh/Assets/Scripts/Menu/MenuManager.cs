@@ -54,7 +54,7 @@ public class MenuManager : MonoBehaviour
                 Action = "";
                 break;
             case "Duel Disk Mode":
-                //SceneManager.LoadScene(4);
+                SceneManager.LoadScene(7);
                 Action = "";
                 break;
         }

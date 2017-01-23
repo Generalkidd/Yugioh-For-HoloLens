@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Vuforia-2-Hololens.unity
   - enabled: 1
     path: Assets/Scenes/LocalMultiplayer.unity
+  - enabled: 1
+    path: Assets/Scenes/Duel Disk.unity
